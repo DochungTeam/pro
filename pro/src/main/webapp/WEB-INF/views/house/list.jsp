@@ -39,7 +39,7 @@
 					<figure class="korea">
 						<a href="http://jinia_.blog.me/220844754267" class="thumb"><img src="/resources/img/house/korea1.jpg" alt="alt" /></a>
 						<figcaption>
-							<a href="http://jinia_.blog.me/220844754267l"><h3 class="heading"> 참마루 한식부페 </h3></a>
+							<a href="http://jinia_.blog.me/220844754267"><h3 class="heading"> 참마루 한식부페 </h3></a>
 							주소 : 경기도 고양시 일산동구 성석동 984-145<br> TEL : 031-977-7740<br>  </figcaption>
 					</figure>
 					
@@ -55,7 +55,7 @@
 						<a href="http://9001177.blog.me/220844882772" class="thumb"><img src="/resources/img/house/china1.jpg" alt="alt" /></a>
 						<figcaption>
 							<a href="http://9001177.blog.me/220844882772" ><h3 class="heading">피올리앙</h3></a>
-							주소 : 인천 연수구 송도동149 롯데캐슬상가 204호 <br> TEL : 032-813-8259</figcaption>
+							주소 : 인천 연수구 송도동149 롯데캐슬 204호 <br> TEL : 032-813-8259</figcaption>
 					</figure>
 					
 					

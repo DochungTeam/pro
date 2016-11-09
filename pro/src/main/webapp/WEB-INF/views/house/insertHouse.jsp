@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<%@include file="../include/header.jsp"%>
-
+<%@include file="../include/script.jsp"%>
 <style>
 .fileDrop {
   width: 50%;
@@ -14,6 +13,7 @@
 }
 </style>
 
+<%@include file="../include/header.jsp"%>
 <!-- Main content -->
 <section class="content">
 	<div class="row">
