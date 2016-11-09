@@ -4,7 +4,7 @@
 <html class="no-js">
 
 	<head>
-		<title>메인화면</title>
+		<title>맛집 리스트</title>
 		<jsp:include page="../include/script.jsp"/>
 	</head>
 	
