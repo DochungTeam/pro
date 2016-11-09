@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kedu.mapper.HouseMapper">
+<select id="listAll" resultType="HouseDto">
+	<![CDATA[
+	select * 
+	  from house
+	 where hno>0
+	 order by hno desc
+	]]>
+</select>
+
+<select id="getTime" resultType="string">
+select now()
+</select>
+
+<insert id="insertHouse">
+insert into house (hno, hnm, hcontent, hkind, hphone, hmenu, hdetail, himg, hspecial, haddr, hlevel, hvisit, 
+					htime, hholiday, zipbunho, hwriterdt, hlocation, hmapx, hmapy) values
+(#{hno}, #{hnm}, #{hcontent}, #{hkind}, #{hphone}, #{hmenu}, #{hdetail}, #{himg}, #{hspecial}, #{haddr}, #{hlevel}, #{hvisit}, 
+					#{htime}, #{hholiday}, #{zipbunho}, #{hwriterdt}, #{hlocation}, #{hmapx}, #{hmapy})
+</insert>
+
+<insert id="addAttach">
+	insert into house_attach(fullname, hno) values(#{fullName}, LAST_INSERT_ID())
+</insert>
+
+<select id="getAttach" resultType="string">
+select fullname from tb1_attach where hno = #{hno} order by regdate
+</select>
+
+</mapper>
+
+    

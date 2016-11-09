@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kedu.mapper.MemberMapper">
+
+  <select id="login" resultType="MemberDto">
+  
+  select mid, mpw, mnm from member where mid = #{mid} and mpw = #{mpw}
+  
+  </select>
+  
+  <update id="keepLogin" >
+  update member set sessionKey = #{sessionId}, sessionLimit = #{next} where mid = #{mid}
+  </update>
+
+	<select id="checkMemberWithSessionKey" resultType="MemberDto">
+	select * from member where sessionKey = #{value}  and sessionlimit > now()
+	</select>	
+
+</mapper>
+
+
