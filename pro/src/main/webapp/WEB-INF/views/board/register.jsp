@@ -8,15 +8,15 @@
 
 <form role="form" method="post">
 	<div>
-		<div>
+		<div class="form-group">
 			<label>제목</label>
 			<input type="text" name="btitle" placeholder="제목을 입력하세요...">
 		</div>
-		<div>
+		<div class="form-group">
 			<label>내용</label>
-			<textarea rows="3" name="bcontent"></textarea>
+			<textarea rows="3" name="bcontent" placeholder="내용을 입력하세요..."></textarea>
 		</div>
-		<div>
+		<div class="form-group">
 			<input type="text" name="bwriter" value="${boardDto.bwriter }" readonly="readonly">
 		</div>
 	</div>
