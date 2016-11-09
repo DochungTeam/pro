@@ -2,8 +2,8 @@
 function check_ok() {
 	var reg_frm = document.reg_frm;
 	
-	if (document.getElementById("sname").value == "") {
-		alert("이름을  써주세요.");
+	if (document.getElementById("hnm").value == "") {
+		alert("맛집 이름을  써주세요.");
 		reg_frm.sname.focus();
 		return false;
 	}

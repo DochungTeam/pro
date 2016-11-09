@@ -26,7 +26,7 @@
 				</div>
 				<!-- /.box-header -->
 
-				<form role="form" method="post" name="frm" id="insertForm">
+				<form action="list" role="form" method="post" name="frm" id="insertForm">
 					<div class="box-body">
 						<div class="form-group" style=" text-align : center">
 							<label for="exampleInputEmail1">맛집 사진 등록(사진 파일을 드래그 해서 올려주세요.)</label>

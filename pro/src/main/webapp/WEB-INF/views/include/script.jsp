@@ -66,3 +66,6 @@
 		<link rel="stylesheet" href="/resources/css/flexslider.css" >
 		<script src="/resources/js/jquery.flexslider.js"></script>
 		
+		<!-- insertHouse -->
+		<script src="/resources/js/inserthouse.js"></script>
+		
