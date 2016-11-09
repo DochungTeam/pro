@@ -1,162 +1,131 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ page session="false"%>
+    pageEncoding="UTF-8"%>
+<!doctype html>
+<html class="no-js">
 
-<%@include file="../include/header.jsp"%>
-
-<!-- Main content -->
-<section class="content">
-	<div class="row">
-		<!-- left column -->
-
-
-		<div class="col-md-12">
-			<!-- general form elements -->
-			<div class='box'>
-				<div class="box-header with-border">
-					<h3 class="box-title">게시글 검색</h3>
-				</div>
-
-
-				<div class='box-body'>
-
-					<select name="searchType">
-						<option value="n"
-							<c:out value="${cri.searchType == null?'selected':''}"/>>
-							---</option>
-						<option value="t"
-							<c:out value="${cri.searchType eq 't'?'selected':''}"/>>
-							제목</option>
-						<option value="c"
-							<c:out value="${cri.searchType eq 'c'?'selected':''}"/>>
-							내용</option>
-						<option value="w"
-							<c:out value="${cri.searchType eq 'w'?'selected':''}"/>>
-							작성자</option>
-						<option value="tc"
-							<c:out value="${cri.searchType eq 'tc'?'selected':''}"/>>
-							제목 / 내용</option>
-						<option value="cw"
-							<c:out value="${cri.searchType eq 'cw'?'selected':''}"/>>
-							내용 / 작성자</option>
-						<option value="tcw"
-							<c:out value="${cri.searchType eq 'tcw'?'selected':''}"/>>
-							제목 / 내용 / 작성자</option>
-					</select> <input type="text" name='keyword' id="keywordInput"
-						value='${cri.keyword }'>
-					<button id='searchBtn'>검색</button>
-					<button id='newBtn'>게시글 등록</button>
-
-				</div>
+	<head>
+		<title>메인화면</title>
+		<jsp:include page="../include/script.jsp"/>
+	</head>
+	
+	
+	<body class="home">
+	
+		<!-- HEADER -->
+		
+		<jsp:include page="../include/header.jsp"/>
+		<!-- ENDS HEADER -->
+		
+		<!-- MAIN -->
+		<div id="main">
+			<div class="wrapper cf">
+			
+			
+			
+			
+				
+			<!-- featured -->
+			<div class="home-featured">
+			
+				<ul id="filter-buttons">
+					<li><a href="#" data-filter="*" class="selected">show all</a></li>
+					<li><a href="#" data-filter=".web">web</a></li>
+					<li><a href="#" data-filter=".print">print</a></li>
+					<li><a href="#" data-filter=".design">design</a></li>
+					<li><a href="#" data-filter=".photo">photo</a></li>
+				</ul>
+				
+				<!-- Filter container -->
+				<div id="filter-container" class="cf">
+					<figure class="web">
+						<a href="project.html" class="thumb"><img src="/resources/img/dummies/featured/01.jpg" alt="alt" /></a>
+						<figcaption>
+							<a href="project.html"><h3 class="heading">Pellentesque </h3></a>
+							Tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. </figcaption>
+					</figure>
+					
+					<figure class="print">
+						<a href="project.html" class="thumb"><img src="/resources/img/dummies/featured/02.jpg" alt="alt" /></a>
+						<figcaption>
+							<a href="project.html"><h3 class="heading">Pellentesque habitant morbi</h3></a>
+							Tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. </figcaption>
+					</figure>
+					
+					
+					<figure class="design">
+						<a href="project.html" class="thumb"><img src="/resources/img/dummies/featured/03.jpg" alt="alt" /></a>
+						<figcaption>
+							<a href="project.html" ><h3 class="heading">Habitant morbi</h3></a>
+							Tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. </figcaption>
+					</figure>
+					
+					
+					<figure class="photo">
+						<a href="project.html" class="thumb"><img src="/resources/img/dummies/featured/04.jpg" alt="alt" /></a>
+						<figcaption>
+							<a href="project.html" ><h3 class="heading">Pellentesque habitant morbi</h3></a>
+							Tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. </figcaption>
+					</figure>
+					
+					
+					<figure class="web photo">
+						<a href="project.html" class="thumb"><img src="/resources/img/dummies/featured/05.jpg" alt="alt" /></a>
+						<figcaption>
+							<a href="project.html" ><h3 class="heading">Pellentesque habitant morbi</h3></a>
+							Tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. </figcaption>
+					</figure>
+					
+					
+					<figure class="web print">
+						<a href="project.html" class="thumb"><img src="/resources/img/dummies/featured/06.jpg" alt="alt" /></a>
+						<figcaption>
+							<a href="project.html" ><h3 class="heading">Pellentesque habitant morbi</h3></a>
+							Tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. </figcaption>
+					</figure>
+					
+					
+					<figure class="photo">
+						<a href="project.html" class="thumb"><img src="/resources/img/dummies/featured/04.jpg" alt="alt" /></a>
+						<figcaption>
+							<a href="project.html" ><h3 class="heading">Pellentesque habitant morbi</h3></a>
+							Tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. </figcaption>
+					</figure>
+					
+					
+					<figure class="web photo">
+						<a href="project.html" class="thumb"><img src="/resources/img/dummies/featured/05.jpg" alt="alt" /></a>
+						<figcaption>
+							<a href="project.html" ><h3 class="heading">Pellentesque habitant morbi</h3></a>
+							Tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. </figcaption>
+					</figure>
+					
+					
+					<figure class="web print">
+						<a href="project.html" class="thumb"><img src="/resources/img/dummies/featured/01.jpg" alt="alt" /></a>
+						<figcaption>
+							<a href="project.html" ><h3 class="heading">Pellentesque habitant morbi</h3></a>
+							Tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. </figcaption>
+					</figure>
+					
+				</div><!-- ENDS Filter container -->
+				
 			</div>
-
-
-			<div class="box">
-				<div class="box-header with-border">
-					<h3 class="box-title">게시글 목록</h3>
-				</div>
-				<div class="box-body">
-					<table class="table table-bordered">
-						<tr>
-							<th style="width: 10px">no</th>
-							<th>제목</th>
-							<th>작성자</th>
-							<th>등록 날짜</th>
-							<th style="width: 40px">조회</th>
-						</tr>
-
-						<c:forEach items="${list}" var="houseDto">
-
-							<tr>
-								<td>${houseDto.hno}</td>
-								<td><a
-									href='/house/readPage${pageMaker.makeSearch(pageMaker.cri.page) }&hno=${houseDto.hno}'>
-										${houseDto.title} <strong>[ ${houseDto.replycnt }]</strong> 
-										</a></td>
-								<td>${houseDto.writer}</td>
-								<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm"
-										value="${houseDto.regdate}" /></td>
-								<td><span class="badge bg-red">${houseDto.viewcnt }</span></td>
-							</tr>
-
-						</c:forEach>
-
-					</table>
-				</div>
-				<!-- /.box-body -->
-
-
-				<div class="box-footer">
-
-					<div class="text-center">
-						<ul class="pagination">
-
-							<c:if test="${pageMaker.prev}">
-								<li><a
-									href="list${pageMaker.makeSearch(pageMaker.startPage - 1) }">&laquo;</a></li>
-							</c:if>
-
-							<c:forEach begin="${pageMaker.startPage }"
-								end="${pageMaker.endPage }" var="idx">
-								<li
-									<c:out value="${pageMaker.cri.page == idx?'class =active':''}"/>>
-									<a href="list${pageMaker.makeSearch(idx)}">${idx}</a>
-								</li>
-							</c:forEach>
-
-							<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
-								<li><a
-									href="list${pageMaker.makeSearch(pageMaker.endPage +1) }">&raquo;</a></li>
-							</c:if>
-
-						</ul>
-					</div>
-
-				</div>
-				<!-- /.box-footer-->
-			</div>
+			<!-- ENDS featured -->
+			
+			
+			
+			
+			</div><!-- ENDS WRAPPER -->
 		</div>
-		<!--/.col (left) -->
-
-	</div>
-	<!-- /.row -->
-</section>
-<!-- /.content -->
-
-
-<script>
-	var result = '${msg}';
-
-	if (result == 'SUCCESS') {
-		alert("처리가 완료되었습니다.");
-	}
-</script>
-
-<script>
-	$(document).ready(
-			function() {
-
-				$('#searchBtn').on(
-						"click",
-						function(event) {
-
-							self.location = "list"
-									+ '${pageMaker.makeQuery(1)}'
-									+ "&searchType="
-									+ $("select option:selected").val()
-									+ "&keyword=" + $('#keywordInput').val();
-
-						});
-
-				$('#newBtn').on("click", function(evt) {
-
-					self.location = "register";
-
-				});
-
-			});
-</script>
-
-<%@include file="../include/footer.jsp"%>
+		<!-- ENDS MAIN -->
+		
+		
+		<!-- FOOTER -->
+		<jsp:include page="../include/footer.jsp"/>
+		<!-- ENDS FOOTER -->
+		
+	</body>
+	
+	
+	
+</html>
