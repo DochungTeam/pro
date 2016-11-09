@@ -13,7 +13,7 @@
 	<input type="hidden" name="searchType" value="${cri.searchType }">
 	<input type="hidden" name="keyword" value="${cri.keyword }">
 
-	<div>
+	<div class="">
 		<div>
 			<input type="text" name="bno" value="${boardDto.bno }" readonly="readonly">
 			<input type="text" name="btitle" value="${boardDto.btitle }">

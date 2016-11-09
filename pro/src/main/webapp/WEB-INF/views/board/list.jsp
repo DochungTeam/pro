@@ -2,10 +2,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ page session="false" %>
-
 <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <jsp:include page="../include/header.jsp"/>
-
 <table>
 	<tr>
 		<th>글번호</th>
@@ -21,7 +19,7 @@
 		<td>${boardDto.bno }</td>
 		<td><a href="/board/readPage${pageMaker.makeSearch(pageMaker.cri.page) }&bno=${boardDto.bno}">${boardDto.btitle }</a></td>
 		<td>${boardDto.bwriter }</td>
-		<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${boardDto.bwritedt }" /></td>
+		<td><fmt:formatDate pattern="yyyy-MM-dd" value="${boardDto.bwritedt }" /></td>
 		<td><span>${boardDto.bcount }</span></td>
 	</tr>
 	
@@ -131,5 +129,4 @@ $(document).ready(function(){
 	});
 });
 </script>
-
 <jsp:include page="../include/footer.jsp"/>
