@@ -13,7 +13,7 @@
 	
 		<!-- HEADER -->
 		
-		<jsp:include page="../include/mainheader.jsp"/>
+		<jsp:include page="../include/header.jsp"/>
 		<!-- ENDS HEADER -->
 		
 		<!-- MAIN -->

@@ -13,6 +13,7 @@
 			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
 		
+		<jsp:include page="../include/script.jsp"/>
 		
 		<!-- 회원가입 from 장식용 -->
 		<link rel="stylesheet" href="/resources/css/forminput.css"/>

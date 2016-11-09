@@ -21,14 +21,14 @@
 #sns_facebook a.loginBtn {text-decoration:none;}
 #sns_facebook .loginBtn:hover {background: #5577BD;cursor:hand;}
 #sns_facebook span.label {font-weight:bold;}
-#sns_facebook span.icon {background: url('/img/social/white_facebook.png') transparent 10px 50% no-repeat;display: inline-block;vertical-align: middle;width: 40px;height:40px;}
+#sns_facebook span.icon {background: url('/resources/img/social/white_facebook.png') transparent 10px 50% no-repeat;display: inline-block;vertical-align: middle;width: 40px;height:40px;}
 #sns_facebook span.buttonText {display:inline-block;vertical-align:middle;padding-left:10px;}
 
 #sns_google .loginBtn {display:inline-block;background: #cc3732;color: white; width: 175px;border-radius:5px;text-align:left;}
 #sns_google a.loginBtn {text-decoration:none;}
 #sns_google .loginBtn:hover {background: #e74b37;cursor:hand;}
 #sns_google span.label {font-weight:bold;}
-#sns_google span.icon {background: url('/img/social/white_google.png') transparent 10px 50% no-repeat;display: inline-block;vertical-align: middle;width: 40px;height:40px;}
+#sns_google span.icon {background: url('/resources/img/social/white_google.png') transparent 10px 50% no-repeat;display: inline-block;vertical-align: middle;width: 40px;height:40px;}
 #sns_google span.buttonText {display:inline-block;vertical-align:middle;padding-left:10px;}
 
 #sns_naver .loginBtn {display:inline-block;background: #1ec800;color: white; width: 175px;border-radius:5px;text-align:left;}

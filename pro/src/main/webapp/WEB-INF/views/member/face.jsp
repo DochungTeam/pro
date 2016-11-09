@@ -12,7 +12,7 @@
 
 <link rel="stylesheet" media="all" href="/resources/css/style.css" />
 <link rel="stylesheet" media="all" href="/resources/css/skin.css" />
-<script src="/js/jquery-1.7.1.min.js"></script>
+<script src="/resources/js/jquery-1.7.1.min.js"></script>
 	
 <!-- 버튼 장식용  -->
 <link rel="stylesheet" href="/resources/css/elements.css" />
@@ -129,8 +129,7 @@
 	    console.log(element.id);
 	    auth2.attachClickHandler(element, {},
 	        function(googleUser) {
-	          document.getElementById('name').innerText = "Signed in: " +
-	              googleUser.getBasicProfile().getName();
+	          document.getElementById('name').innerText = googleUser.getBasicProfile().getName();
 	        }, function(error) {
 	          alert(JSON.stringify(error, undefined, 2));
 	        });
@@ -196,6 +195,7 @@
 							<span class="buttonText">실험용 버튼2</span>	
 						</button>
 					</div>
+					<button onclick="onSignIn">테스트</button>
 					<div>
 					id : <span id="id"></span><br/>
 					name : <span id="name"></span><br/>
