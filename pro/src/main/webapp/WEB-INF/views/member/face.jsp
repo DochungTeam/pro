@@ -10,17 +10,17 @@
 <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
 <script src="https://apis.google.com/js/api:client.js"></script>
 
-<link rel="stylesheet" media="all" href="/css/style.css" />
-<link rel="stylesheet" media="all" href="/css/skin.css" />
+<link rel="stylesheet" media="all" href="/resources/css/style.css" />
+<link rel="stylesheet" media="all" href="/resources/css/skin.css" />
 <script src="/js/jquery-1.7.1.min.js"></script>
 	
 <!-- 버튼 장식용  -->
-<link rel="stylesheet" href="/css/elements.css" />
+<link rel="stylesheet" href="/resources/css/elements.css" />
 <!-- 로그인 from 장식용 -->
-<link rel="stylesheet" href="/css/formlogin.css" />
+<link rel="stylesheet" href="/resources/css/formlogin.css" />
 
 <!-- 소셜로그인 장식용 -->
-<link rel="stylesheet" href="/css/sociallogin.css" />
+<link rel="stylesheet" href="/resources/css/sociallogin.css" />
 
 
 <style type="text/css">
