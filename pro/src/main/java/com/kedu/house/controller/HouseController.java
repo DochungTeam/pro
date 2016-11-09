@@ -6,13 +6,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.kedu.house.dto.PageMaker;
-import com.kedu.house.dto.SearchCriteria;
 import com.kedu.house.dto.HouseDto;
 import com.kedu.house.service.HouseService;
 
@@ -51,7 +48,7 @@ public class HouseController {
 	  }
 	
 	  @RequestMapping(value="/list",method=RequestMethod.GET)
-		public void memberL(Model model)throws Exception{
+		public void listman(Model model)throws Exception{
 		
 		}
 	  
