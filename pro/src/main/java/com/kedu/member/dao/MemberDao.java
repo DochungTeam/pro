@@ -9,9 +9,9 @@ public interface MemberDao {
 	
 	public MemberDto login(LoginDto dto)throws Exception;
 
-	  public void keepLogin(String mid, String sessionId, Date next);
-
-  public MemberDto checkMemberWithSessionKey(String value);	
+	public MemberDto checkMemberWithSessionKey(String value);
+	
+	public void insert(MemberDto dto) throws Exception;
 }
 
 

@@ -1,65 +1,5 @@
 package com.kedu.member.controller;
 
-//import org.slf4j.Logger;
-//import org.slf4j.LoggerFactory;
-//import org.springframework.stereotype.Controller;
-//import org.springframework.ui.Model;
-//import org.springframework.web.bind.annotation.RequestMapping;
-//import org.springframework.web.bind.annotation.RequestMethod;
-//
-////@Controller
-////@RequestMapping("/member/*")
-////public class MemberController {
-////	
-////	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
-////
-////	
-////	@RequestMapping(value="/input",method=RequestMethod.GET)
-////	public void memberInput(Model model)throws Exception{
-////		logger.info("회원가입창");
-////	}
-////
-////	@RequestMapping(value="/login",method=RequestMethod.GET)
-////	public void memberLogin(Model model)throws Exception{
-////		logger.info("회원가입창");
-////	}
-////	@RequestMapping(value="/main",method=RequestMethod.GET)
-////	public void memberL(Model model)throws Exception{
-////	}
-////	@RequestMapping(value="/face",method=RequestMethod.GET)
-////	public void memberF(Model model)throws Exception{
-////	}
-//=======
-//<<<<<<< HEAD
-//import org.slf4j.Logger;
-//import org.slf4j.LoggerFactory;
-//import org.springframework.stereotype.Controller;
-//import org.springframework.ui.Model;
-//import org.springframework.web.bind.annotation.RequestMapping;
-//import org.springframework.web.bind.annotation.RequestMethod;
-//
-//@Controller
-//@RequestMapping("/member/*")
-//public class MemberController {
-//	
-//	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
-//
-//	
-//	@RequestMapping(value="/input",method=RequestMethod.GET)
-//	public void memberInput(Model model)throws Exception{
-//		logger.info("회원가입창");
-//	}
-//
-//	@RequestMapping(value="/login",method=RequestMethod.GET)
-//	public void memberLogin(Model model)throws Exception{
-//		logger.info("회원가입창");
-//	}
-//	@RequestMapping(value="/main",method=RequestMethod.GET)
-//	public void memberL(Model model)throws Exception{
-//	}
-//	@RequestMapping(value="/face",method=RequestMethod.GET)
-//	public void memberF(Model model)throws Exception{
-//	}
 import java.util.Date;
 
 import javax.inject.Inject;
@@ -97,8 +37,13 @@ public class MemberController {
   
   
 	@RequestMapping(value="/input",method=RequestMethod.GET)
-	public void memberInput(Model model)throws Exception{
+	public void memberInputGET(Model model)throws Exception{
 		logger.info("회원가입창");
+	}
+
+	@RequestMapping(value="/input",method=RequestMethod.POST)
+	public void memberInputPOST(MemberDto member,Model model)throws Exception{
+		
 	}
 	
 
@@ -130,7 +75,6 @@ public class MemberController {
 
 			Date sessionLimit = new Date(System.currentTimeMillis() + (1000 * amount));
 
-			service.keepLogin(vo.getMid(), session.getId(), sessionLimit);
 		}
 
 	}
@@ -154,7 +98,6 @@ public class MemberController {
 	  			loginCookie.setPath("/");
 	  			loginCookie.setMaxAge(0);
 	  			response.addCookie(loginCookie);
-	  			service.keepLogin(dto.getMid(), session.getId(), new Date());
 	  		}
 	  	}
   	}

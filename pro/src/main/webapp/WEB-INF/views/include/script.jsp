@@ -10,7 +10,7 @@
 		<script src="/resources/js/jquery-1.7.1.min.js"></script>
 		<script src="/resources/js/custom.js"></script>
 		<script src="/resources/js/tabs.js"></script>
-		<script src="/resources/js/resources/css3-mediaqueries.js"></script>
+		<script src="/resources/js/css3-mediaqueries.js"></script>
 		<script src="/resources/js/jquery.columnizer.min.js"></script>
 		
 		<!-- Isotope -->

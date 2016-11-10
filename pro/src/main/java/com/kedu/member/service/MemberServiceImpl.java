@@ -22,13 +22,6 @@ public class MemberServiceImpl implements MemberService {
     return dao.login(dto);
   }
   
-  @Override
-  public void keepLogin(String mid, String sessionId, Date next)
-      throws Exception {
-    
-    dao.keepLogin(mid, sessionId, next);
-    
-  }
 
   @Override
   public MemberDto checkLoginBefore(String value) {

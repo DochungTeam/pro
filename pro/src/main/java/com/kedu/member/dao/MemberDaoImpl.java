@@ -16,6 +16,7 @@ import com.kedu.member.dto.MemberDto;
 public class MemberDaoImpl implements MemberDao {
 	
 	@Inject
+	
 	private SqlSession session;
 	
 	private static String namespace ="com.kedu.mapper.MemberMapper";	
@@ -26,21 +27,14 @@ public class MemberDaoImpl implements MemberDao {
 		return session.selectOne(namespace +".login", dto);
 	}
 	
-  @Override
-  public void keepLogin(String mid, String sessionId, Date next) {
+	@Override
+	public MemberDto checkMemberWithSessionKey(String value) {
 
-    Map<String, Object> paramMap = new HashMap<String, Object>();
-    paramMap.put("mid", mid);
-    paramMap.put("sessionId", sessionId);
-    paramMap.put("next", next);
-    
-    session.update(namespace+".keepLogin", paramMap);
-    
-  }
-
-  @Override
-  public MemberDto checkMemberWithSessionKey(String value) {
-
-    return session.selectOne(namespace +".checkMemberWithSessionKey", value);
-  }	
+		return session.selectOne(namespace +".checkMemberWithSessionKey", value);
+	}
+  
+	@Override
+	public void insert(MemberDto dto) throws Exception {
+			
+	}
 }

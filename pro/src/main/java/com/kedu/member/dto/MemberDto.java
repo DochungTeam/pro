@@ -5,11 +5,15 @@ public class MemberDto {
 	private String mid;
 	private String mpw;
 	private String mnm;
+	private String muuid;
 	private int mgender;
 	private int mmanyn;
 	private String mphone;
-	private String maddr;
+	private String mzipcd;
+	private String maddrbase;
+	private String maddrsemi;
 	private String memail;
+	
 	public String getMid() {
 		return mid;
 	}
@@ -27,6 +31,12 @@ public class MemberDto {
 	}
 	public void setMnm(String mnm) {
 		this.mnm = mnm;
+	}
+	public String getMuuid() {
+		return muuid;
+	}
+	public void setMuuid(String muuid) {
+		this.muuid = muuid;
 	}
 	public int getMgender() {
 		return mgender;
@@ -46,11 +56,23 @@ public class MemberDto {
 	public void setMphone(String mphone) {
 		this.mphone = mphone;
 	}
-	public String getMaddr() {
-		return maddr;
+	public String getMzipcd() {
+		return mzipcd;
 	}
-	public void setMaddr(String maddr) {
-		this.maddr = maddr;
+	public void setMzipcd(String mzipcd) {
+		this.mzipcd = mzipcd;
+	}
+	public String getMaddrbase() {
+		return maddrbase;
+	}
+	public void setMaddrbase(String maddrbase) {
+		this.maddrbase = maddrbase;
+	}
+	public String getMaddrsemi() {
+		return maddrsemi;
+	}
+	public void setMaddrsemi(String maddrsemi) {
+		this.maddrsemi = maddrsemi;
 	}
 	public String getMemail() {
 		return memail;
@@ -58,11 +80,12 @@ public class MemberDto {
 	public void setMemail(String memail) {
 		this.memail = memail;
 	}
+	
 	@Override
 	public String toString() {
-		return "MemberDto [mid=" + mid + ", mpw=" + mpw + ", mnm=" + mnm + ", mgender=" + mgender + ", mmanyn=" + mmanyn
-				+ ", mphone=" + mphone + ", maddr=" + maddr + ", memail=" + memail + "]";
+		return "MemberDto [mid=" + mid + ", mpw=" + mpw + ", mnm=" + mnm + ", muuid=" + muuid + ", mgender=" + mgender
+				+ ", mmanyn=" + mmanyn + ", mphone=" + mphone + ", mzipcd=" + mzipcd + ", maddrbase=" + maddrbase
+				+ ", maddrsemi=" + maddrsemi + ", memail=" + memail + "]";
 	}
-	
 	
 }
