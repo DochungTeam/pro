@@ -9,73 +9,51 @@ function housecheck_ok() {
 		return false;
 	}
 	
-//	if (frm.email1.value == "") {
-//		alert("이메일을 끝까지 입력하셔야 합니다.");
-//		frm.email1.value= "";
-//		frm.email1.focus();
-//		return false;
-//	}
-//
-//	if (frm.email2.value == "") {
-//		alert("이메일을 끝까지 입력하셔야 합니다.");
-//		frm.email2.value= "";
-//		frm.email2.focus();
-//		return false;			
-//	}
-	
 	else if (frm.hphone.value == "") {
 		alert("전화번호를 끝까지 입력하셔야 합니다.");
+		frm.hphone.value= "";
 		frm.hphone.focus();
 		return false;			
 	}
 	
 	else if (isNaN(frm.hphone.value)) {
 		alert("전화번호는 숫자로 입력하셔야 합니다.");
+		frm.hphone.value= "";
 		frm.hphone.focus();
 		return false;			
 	}
 	
-	if (frm.hp2.value=="") {
-		alert("전화번호를 끝까지 입력하셔야 합니다.");
-		frm.hp2.value= "";
-		frm.hp2.focus();
-		return false;			
-	}
-	
-	if (frm.hp3.value=="") {
-		alert("전화번호를 끝까지 입력하셔야 합니다.");
-		frm.hp3.value= "";
-		frm.hp3.focus();
-		return false;			
-	}
-		
-	if (frm.zipcode.value=="") {
+	//주소 api받아서 등록되면 적용 시키기!!!!!주석 지우지말것!!
+	/*else if (frm.haddr.value=="") {
 		alert("우편번호를 입력하셔야 합니다.");
-		frm.zipcode.value= "";
-		frm.zipcode.focus();
+		frm.haddr.value= "";
+		frm.haddr.focus();
 		return false;			
 	}
 	
-	if (frm.addr2.value=="") {
+	else if (frm.haddr2.value=="") {
 		alert("주소를 입력하셔야 합니다.");
-		frm.addr2.value= "";
-		frm.addr2.focus();
+		frm.haddr2.value= "";
+		frm.haddr2.focus();
 		return false;			
-	}
+	}*/
 	
-	
-	if (frm.skill.value=="") {
-		alert("한가지 이상의 기술을 입력하셔야 합니다.");
-		frm.skill.value= "";
-		frm.skill.focus();
-		return false;			
-	}
-	
-	if (frm.pictureUrl.value==""){
-		alert("사진을 등록하셔야 합니다.");
-		frm.pictureUrl.value= "";
-		frm.pictureUrl.focus();
+	else if (frm.hkind.value == "") {
+		alert("맛집테마를 입력하셔야 합니다.");
+		frm.hkind.focus();
 		return false;
+	}
+	
+	else if (frm.hmenu.value == "") {
+		alert("맛집메뉴를 입력하셔야 합니다.");
+		frm.hmenu.focus();
+		return false;			
+	}
+	
+	else if (frm.hcontent.value=="") {
+		alert("맛집설명을 입력하셔야 합니다.");
+		frm.hcontent.focus();
+		return false;			
 	}
 	
 	return true;
