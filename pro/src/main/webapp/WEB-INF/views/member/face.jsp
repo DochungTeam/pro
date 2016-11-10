@@ -130,6 +130,8 @@
 	    auth2.attachClickHandler(element, {},
 	        function(googleUser) {
 	          document.getElementById('name').innerText = googleUser.getBasicProfile().getName();
+	          document.getElementById('email').innerText = googleUser.getBasicProfile().getEmail();
+	          
 	        }, function(error) {
 	          alert(JSON.stringify(error, undefined, 2));
 	        });

@@ -5,19 +5,67 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="com.kedu.mapper.MemberMapper">
 
-  <select id="login" resultType="MemberDto">
+	<select id="login" resultType="MemberDto">
   
-  select mid, mpw, mnm from member where mid = #{mid} and mpw = #{mpw}
+		select 
+			  mid
+			, mpw
+			, mnm
+			, muuid 
+		from 
+			member 
+		where 
+			1=1
+		and
+			mid = #{mid} 
+		and 
+			mpw = #{mpw}
   
-  </select>
+	</select>
   
-  <update id="keepLogin" >
-  update member set sessionKey = #{sessionId}, sessionLimit = #{next} where mid = #{mid}
-  </update>
 
 	<select id="checkMemberWithSessionKey" resultType="MemberDto">
-	select * from member where sessionKey = #{value}  and sessionlimit > now()
-	</select>	
+		select 
+			* 
+		from 
+			member 
+		where 
+			1=1
+		and
+			sessionKey = #{value} 
+		and 
+			sessionlimit > now()
+	</select>
+	
+	<insert id="memberInsert">
+		insert into
+		member(
+			  mid
+			, mpw
+			, mnm
+			, muuid
+			, mgender
+			, mmanyn
+			, mphone
+			, mzipcd
+			, maddrbase
+			, maddrsemi
+			, memail
+		)
+		value(
+			  #{mid}
+			, #{mpw}
+			, #{mnm}
+			, #{muuid}
+			, #{mgender}
+			, 2
+			, #{mphone}
+			, #{mzipcd}
+			, #{maddrbase}
+			, #{maddrsemi}
+			, #{memail}
+		)
+	</insert>
 
 </mapper>
 
