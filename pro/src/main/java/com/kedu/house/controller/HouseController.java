@@ -44,7 +44,7 @@ public class HouseController {
 
 	    rttr.addFlashAttribute("msg", "SUCCESS");
 
-	    return "redirect:/house/houseList";
+	    return "redirect:/house/list";
 	  }
 	
 	  @RequestMapping(value="/list",method=RequestMethod.GET)

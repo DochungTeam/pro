@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 
 <%@include file="../include/script.jsp"%>
+
 <style>
 .fileDrop {
   width: 50%;
@@ -26,7 +27,7 @@
 				</div>
 				<!-- /.box-header -->
 
-				<form action="list" role="form" method="post" name="frm" id="insertForm">
+				<form role="form" method="post" name="frm" id="insertForm">
 					<div class="box-body">
 						<div class="form-group" style=" text-align : center">
 							<label for="exampleInputEmail1">맛집 사진 등록(사진 파일을 드래그 해서 올려주세요.)</label>
@@ -45,26 +46,31 @@
 					
 					<div>
 					<hr>
+					(*는 필수 사항입니다.)
 					<table style="width : 750px">
 					<tr>
-						<th style="background-color : #B8B8B8; "> 맛집이름 </th>
+						<th style="background-color : #B8B8B8; "> 맛집이름 *</th>
 						<td><input type ="text" name="hnm" size="20" ></td>
 					</tr>
 					<tr>
-						<th style="background-color : #B8B8B8; "> 전화번호 </th>
-						<td><input type ="text" name="hphone" size="20"></td>
+						<th style="background-color : #B8B8B8; "> 전화번호 *</th>
+						<td><input type ="text" name="hphone" size="20" maxlength="11">(전화번호는 - 없이 입력해주세요.)</td>
 					</tr>
-					<tr>
-						<th style="background-color : #B8B8B8; "> 주소1 </th>
+					 <tr>
+						<th style="background-color : #B8B8B8; "> 주소1 *</th>
 						<td><input type ="text" name="haddr" readonly><input type ="button" value="주소검색"></td>
+					</tr> 
+					<tr>
+						<th style="background-color : #B8B8B8; "> 주소2 *</th>
+						<td><input type ="text" name="haddr2" >(나머지 주소)</td>
 					</tr>
 					<tr>
-						<th style="background-color : #B8B8B8; "> 주소2 </th>
-						<td><input type ="text" name="haddr" ></td>
-					</tr>
-					<tr>
-						<th style="background-color : #B8B8B8; "> 테마정보 </th>
+						<th style="background-color : #B8B8B8; "> 맛집테마 *</th>
 						<td><input type ="text" name="hkind" size="20"></td>
+					</tr>
+					<tr>
+						<th style="background-color : #B8B8B8; "> 맛집메뉴 *</th>
+						<td><input type ="text" name="hmenu" size="20"></td>
 					</tr>
 					<tr>
 						<th style="background-color : #B8B8B8; "> 영업시간 </th>
@@ -74,9 +80,13 @@
 						<th style="background-color : #B8B8B8; "> 휴무 </th>
 						<td><input type ="text" name="hholiday" size="20"></td>
 					</tr>
+					<tr>
+						<th style="background-color : #B8B8B8; "> 맛집설명 *</th>
+						<td><input type ="text" name="hcontent" size="20"></td>
+					</tr>
 	
 				</table>
-			<button type="submit" class="btn btn-primary">등록</button>
+			<button type="submit" class="btn btn-primary" onclick="return housecheck_ok()" >등록</button>
 			</div>
 			
 		</form>
@@ -165,6 +175,7 @@ $("#insertForm").submit(function(event){
 
 
 </script>
+
 
  
 
