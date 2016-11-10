@@ -28,6 +28,10 @@
 </table>
 
 <div>
+	<button type="submit">글쓰기</button>
+</div>
+
+<div>
 	<ul class="pagination">
 		
 		<c:if test="${pageMaker.prev }">
@@ -53,18 +57,6 @@
 	<input type="hidden" name="perPageNum" value="${pageMaker.cri.perPageNum }">
 </form>
 
-<c:forEach items="${list }" var="boardDto">
-
-	<tr>
-		<td>${boardDto.bno }</td>
-		<td><a href="/board/readPage${pageMaker.makeQuery(pageMaker.cri.page) }&bno=${boardDto.bno}">${boardDto.btitle }</a></td>
-		<td>${boardDto.bwriter }</td>
-		<td><fmt:formatDate value="${boardDto.bwritedt }" pattern="yyyy-MM-dd HH:mm" /></td>
-		<td><span>${boardDto.bcount }</span></td>
-	</tr>
-	
-</c:forEach>
-
 <div>
 
 	<select name="searchType">
@@ -82,12 +74,6 @@
 		</option>
 		<option value="tc"
 			<c:out value="${cri.searchType eq 'tc'?'selected':'' }"/>>제목 또는 내용
-		</option>
-		<option value="cw"
-			<c:out value="${cri.searchType eq 'cw'?'selected':'' }"/>>내용 또는 작성자
-		</option>
-		<option value="tcw"
-			<c:out value="${cri.searchType eq 'tcw'?'selected':'' }"/>>제목 또는 내용 또는 작성자
 		</option>
 	</select>
 
