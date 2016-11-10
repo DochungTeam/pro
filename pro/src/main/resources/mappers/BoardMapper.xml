@@ -56,19 +56,19 @@
 	
 		<if test="searchType != null">
 			<if test="searchType == 't'.toString()">
-				and title like CONCAT('%', #{keyword}, '%')
+				and btitle like CONCAT('%', #{keyword}, '%')
 			</if>
 			<if test="searchType == 'c'.toString()">
-				and content like CONCAT('%', #{keyword}, '%')
+				and bcontent like CONCAT('%', #{keyword}, '%')
 			</if>
 			<if test="searchType == 'w'.toString()">
-				and writer like CONCAT('%', #{keyword}, '%')
+				and bwriter like CONCAT('%', #{keyword}, '%')
 			</if>
 			<if test="searchType == 'tc'.toString()">
-				and (title like CONCAT('%', #{keyword}, '%') OR content like CONCAT('%', #{keyword}, '%'))
+				and (btitle like CONCAT('%', #{keyword}, '%') OR bcontent like CONCAT('%', #{keyword}, '%'))
 			</if>
 			<if test="searchType == 'cw'.toString()">
-				and (content like CONCAT('%', #{keyword}, '%') OR writer like CONCAT('%', #{keyword}, '%'))
+				and (bcontent like CONCAT('%', #{keyword}, '%') OR bwriter like CONCAT('%', #{keyword}, '%'))
 			</if>
 		</if>
 	
@@ -82,6 +82,24 @@
 		select count(bno) from board
 		where bno > 0
 	]]>
+	
+		<if test="searchType != null">
+			<if test="searchType == 't'.toString()">
+				and btitle like CONCAT('%', #{keyword}, '%')
+			</if>
+			<if test="searchType == 'c'.toString()">
+				and bcontent like CONCAT('%', #{keyword}, '%')
+			</if>
+			<if test="searchType == 'w'.toString()">
+				and bwriter like CONCAT('%', #{keyword}, '%')
+			</if>
+			<if test="searchType == 'tc'.toString()">
+				and (btitle like CONCAT('%', #{keyword}, '%') OR bcontent like CONCAT('%', #{keyword}, '%'))
+			</if>
+			<if test="searchType == 'cw'.toString()">
+				and (bcontent like CONCAT('%', #{keyword}, '%') OR bwriter like CONCAT('%', #{keyword}, '%'))
+			</if>
+		</if>
 	</select>
 
 </mapper>

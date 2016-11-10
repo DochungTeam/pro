@@ -2,15 +2,17 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ page session="false" %>
+
 <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <jsp:include page="../include/header.jsp"/>
-<table>
+
+<table class="">
 	<tr>
-		<th>글번호</th>
+		<th style="width: 10px">글번호</th>
 		<th>제목</th>
 		<th>작성자</th>
 		<th>등록일</th>
-		<th>조회수</th>
+		<th style="width: 40px">조회수</th>
 	</tr>
 
 <c:forEach items="${list }" var="boardDto">
@@ -27,11 +29,11 @@
 
 </table>
 
-<div>
-	<button type="submit">글쓰기</button>
+<div class="">
+	<button type="submit" id="newBtn">글쓰기</button>
 </div>
 
-<div>
+<div class="text-center">
 	<ul class="pagination">
 		
 		<c:if test="${pageMaker.prev }">
@@ -57,12 +59,9 @@
 	<input type="hidden" name="perPageNum" value="${pageMaker.cri.perPageNum }">
 </form>
 
-<div>
+<div class="">
 
 	<select name="searchType">
-		<option value="n"
-			<c:out value="${cri.searchType == null?'selected':'' }"/>>---
-		</option>
 		<option value="t"
 			<c:out value="${cri.searchType eq 't'?'selected':'' }"/>>제목
 		</option>
@@ -97,7 +96,7 @@ $(document).ready(function(){
 		
 		var jobForm = $("#jobForm");
 		jobForm.find("[name='page']").val(targetPage);
-		jobForm.attr("action", "/board/listPage").attr("method", "get");
+		jobForm.attr("action", "/board/list").attr("method", "get");
 		jobForm.submit();
 	});
 	
@@ -115,4 +114,5 @@ $(document).ready(function(){
 	});
 });
 </script>
+
 <jsp:include page="../include/footer.jsp"/>

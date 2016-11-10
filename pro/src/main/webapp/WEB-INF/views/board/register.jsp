@@ -7,22 +7,21 @@
 <jsp:include page="../include/header.jsp"/>
 
 <form role="form" method="post">
-	<div>
+	<div class="">
 		<div class="form-group">
 			<label>제목</label>
 			<input type="text" name="btitle" placeholder="제목을 입력하세요...">
+			<input type="text" name="bwriter" value="${boardDto.bwriter }" readonly="readonly">
 		</div>
 		<div class="form-group">
 			<label>내용</label>
 			<textarea rows="3" name="bcontent" placeholder="내용을 입력하세요..."></textarea>
 		</div>
-		<div class="form-group">
-			<input type="text" name="bwriter" value="${boardDto.bwriter }" readonly="readonly">
-		</div>
 	</div>
 	
 	<div>
 		<button type="submit">등록</button>
+		<button type="submit" >취소</button>
 	</div>
 </form>
 
