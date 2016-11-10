@@ -32,6 +32,17 @@
 			<artifactId>spring-webmvc</artifactId>
 			<version>${org.springframework-version}</version>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>${org.springframework-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+			<version>${org.springframework-version}</version>
+		</dependency>
+		
 				
 		<!-- AspectJ -->
 		<dependency>
@@ -208,6 +219,14 @@
 			<artifactId>spring-social-facebook-web</artifactId>
 			<version>1.1.1.RELEASE</version>
 		</dependency>
+		
+	    <dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>mail</artifactId>
+		<version>1.4.3</version>
+	</dependency>
+		
+		
 	</dependencies>
     <build>
         <plugins>

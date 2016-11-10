@@ -13,19 +13,23 @@ import com.kedu.member.dto.MemberDto;
 @Service
 public class MemberServiceImpl implements MemberService {
 
-  @Inject
-  private MemberDao dao;
+	@Inject
+	private MemberDao dao;
 
-  @Override
-  public MemberDto login(LoginDto dto) throws Exception {
+	@Override
+	public MemberDto login(LoginDto dto) throws Exception {
 
-    return dao.login(dto);
-  }
+		return dao.login(dto);
+	}
   
 
-  @Override
-  public MemberDto checkLoginBefore(String value) {
-    
-    return dao.checkMemberWithSessionKey(value);
-  }
+	@Override
+	public MemberDto checkLoginBefore(String value) {
+		return dao.checkMemberWithSessionKey(value);
+	}
+  
+	@Override
+	public void insert(MemberDto member) throws Exception {
+		dao.insert(member);
+	}
 }

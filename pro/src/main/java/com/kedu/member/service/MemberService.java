@@ -11,4 +11,6 @@ public interface MemberService {
   
   public MemberDto checkLoginBefore(String value);  
   
+  public void insert(MemberDto member) throws Exception;
+  
 }

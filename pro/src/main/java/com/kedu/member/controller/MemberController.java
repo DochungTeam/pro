@@ -1,6 +1,7 @@
 package com.kedu.member.controller;
 
 import java.util.Date;
+import java.util.UUID;
 
 import javax.inject.Inject;
 import javax.servlet.http.Cookie;
@@ -43,6 +44,18 @@ public class MemberController {
 
 	@RequestMapping(value="/input",method=RequestMethod.POST)
 	public void memberInputPOST(MemberDto member,Model model)throws Exception{
+		logger.info("회원가입처리");
+		
+		UUID muuid = UUID.randomUUID();
+		
+		
+		member.setMemail(member.getFirstmemail() + member.getSecondmemail());
+		member.setMuuid(muuid.toString());
+		
+		service.insert(member);
+		
+		
+		
 		
 	}
 	

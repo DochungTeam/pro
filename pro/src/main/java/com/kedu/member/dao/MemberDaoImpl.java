@@ -35,6 +35,7 @@ public class MemberDaoImpl implements MemberDao {
   
 	@Override
 	public void insert(MemberDto dto) throws Exception {
-			
+		
+		session.insert(namespace + ".memberInsert", dto);
 	}
 }
