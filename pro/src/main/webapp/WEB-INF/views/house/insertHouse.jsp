@@ -70,7 +70,15 @@
 					</tr>
 					<tr>
 						<th style="background-color : #B8B8B8; "> 맛집테마 *</th>
-						<td><input type ="text" name="hkind" size="20"></td>
+						<td><select class="select" name="hkind">
+								<option value="">선택하세요</option>
+								<option value="00">한식</option>
+								<option value="01">양식</option>
+								<option value="03">중식</option>
+								<option value="04">일식</option>
+								<option value="05">퓨전</option>
+								<option value="06">디저트</option>
+						</select></td>
 					</tr>
 					<tr>
 						<th style="background-color : #B8B8B8; "> 맛집메뉴 *</th>

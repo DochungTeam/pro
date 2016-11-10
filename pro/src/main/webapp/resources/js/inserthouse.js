@@ -38,10 +38,11 @@ function housecheck_ok() {
 		return false;			
 	}*/
 	
-	else if (frm.hkind.value == "") {
-		alert("맛집테마를 입력하셔야 합니다.");
+	else if (frm.hkind.value=="") {
+		alert("맛집테마를 선택하셔야 합니다.");
+		frm.hkind.value= "";
 		frm.hkind.focus();
-		return false;
+		return false;			
 	}
 	
 	else if (frm.hmenu.value == "") {
