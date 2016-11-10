@@ -16,10 +16,10 @@ select now()
 </select>
 
 <insert id="insertHouse">
-insert into house (hno, hnm, hcontent, hkind, hphone, hmenu, hdetail, himg, hspecial, haddr, haddr2, hlevel, hvisit, 
-					htime, hholiday, hwriterdt, hlocation, hmapx, hmapy) values
-(#{hno}, #{hnm}, #{hcontent}, #{hkind}, #{hphone}, #{hmenu}, #{hdetail}, #{himg}, #{hspecial}, #{haddr}, #{haddr2}, #{hlevel}, #{hvisit}, 
-					#{htime}, #{hholiday}, #{hwriterdt}, #{hlocation}, #{hmapx}, #{hmapy})
+insert into house (hno, hnm, hcontent, hkind, hphone, hmenu, hdetail, himg, hspecial, hzipcode, haddr, haddr2, hlevel, hvisit, 
+					htime, hholiday, hwriterdt, hlocation, hmapx, hmapy, hurl) values
+(#{hno}, #{hnm}, #{hcontent}, #{hkind}, #{hphone}, #{hmenu}, #{hdetail}, #{himg}, #{hspecial}, #{hzipcode}, #{haddr}, #{haddr2}, #{hlevel}, #{hvisit}, 
+					#{htime}, #{hholiday}, #{hwriterdt}, #{hlocation}, #{hmapx}, #{hmapy}, #{hurl})
 </insert>
 
 <insert id="addAttach">

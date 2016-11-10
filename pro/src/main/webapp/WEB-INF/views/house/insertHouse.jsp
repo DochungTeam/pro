@@ -56,9 +56,13 @@
 						<th style="background-color : #B8B8B8; "> 전화번호 *</th>
 						<td><input type ="text" name="hphone" size="20" maxlength="11">(전화번호는 - 없이 입력해주세요.)</td>
 					</tr>
-					 <tr>
+					<tr>
+						<th style="background-color : #B8B8B8; "> 우편번호 *</th>
+						<td><input type ="text" name="hzipcode" readonly><input type ="button" value="주소검색"></td>
+					</tr>
+					<tr>
 						<th style="background-color : #B8B8B8; "> 주소1 *</th>
-						<td><input type ="text" name="haddr" readonly><input type ="button" value="주소검색"></td>
+						<td><input type ="text" name="haddr" readonly></td>
 					</tr> 
 					<tr>
 						<th style="background-color : #B8B8B8; "> 주소2 *</th>
@@ -83,6 +87,10 @@
 					<tr>
 						<th style="background-color : #B8B8B8; "> 맛집설명 *</th>
 						<td><input type ="text" name="hcontent" size="20"></td>
+					</tr>
+					<tr>
+						<th style="background-color : #B8B8B8; "> 블로그주소 *</th>
+						<td><input type ="text" name="hurl" size="20"></td>
 					</tr>
 	
 				</table>

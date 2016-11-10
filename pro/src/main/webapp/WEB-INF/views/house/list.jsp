@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ page session="false"%>
+
 <!doctype html>
 <html class="no-js">
 
@@ -24,6 +28,9 @@
 			
 				
 			<!-- featured -->
+			<form role="form" method="post">
+			<input type='hidden' name='hno' value="${houseDto.hno}">
+			
 			<div class="home-featured">
 			
 				<ul id="filter-buttons">
@@ -39,7 +46,7 @@
 					<figure class="korea">
 						<a href="http://jinia_.blog.me/220844754267" class="thumb"><img src="/resources/img/house/korea1.jpg" alt="alt" /></a>
 						<figcaption>
-							<a href="http://jinia_.blog.me/220844754267"><h3 class="heading"> 참마루 한식부페 </h3></a>
+							<a href="http://jinia_.blog.me/220844754267"><h3 class="heading"> ${houseDto.hnm} </h3></a>
 							주소 : 경기도 고양시 일산동구 성석동 984-145<br> TEL : 031-977-7740<br>  </figcaption>
 					</figure>
 					
@@ -112,7 +119,7 @@
 			<!-- ENDS featured -->
 			
 			
-			
+			</form>
 			
 			</div><!-- ENDS WRAPPER -->
 		<!-- ENDS MAIN -->

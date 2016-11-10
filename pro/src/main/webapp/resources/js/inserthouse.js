@@ -56,6 +56,12 @@ function housecheck_ok() {
 		return false;			
 	}
 	
+	else if (frm.hurl.value=="") {
+		alert("블로그주소를 입력하셔야 합니다.");
+		frm.hurl.focus();
+		return false;			
+	}
+	
 	return true;
 }
 

@@ -13,6 +13,7 @@ public class HouseDto {
 	private String hdetail;
 	private String himg;
 	private String hspecial;
+	private String hzipcode;
 	private String haddr;
 	private String haddr2;
 	private String hlevel;
@@ -24,6 +25,7 @@ public class HouseDto {
 	private String hlocation;
 	private int hmapx;
 	private int hmapy;
+	private String hurl;
 	private String[] files;
 	public int getHno() {
 		return hno;
@@ -78,6 +80,12 @@ public class HouseDto {
 	}
 	public void setHspecial(String hspecial) {
 		this.hspecial = hspecial;
+	}
+	public String getHzipcode() {
+		return hzipcode;
+	}
+	public void setHzipcode(String hzipcode) {
+		this.hzipcode = hzipcode;
 	}
 	public String getHaddr() {
 		return haddr;
@@ -145,6 +153,12 @@ public class HouseDto {
 	public void setHmapy(int hmapy) {
 		this.hmapy = hmapy;
 	}
+	public String getHurl() {
+		return hurl;
+	}
+	public void setHurl(String hurl) {
+		this.hurl = hurl;
+	}
 	public String[] getFiles() {
 		return files;
 	}
@@ -155,12 +169,11 @@ public class HouseDto {
 	public String toString() {
 		return "HouseDto [hno=" + hno + ", hnm=" + hnm + ", hcontent=" + hcontent + ", hkind=" + hkind + ", hphone="
 				+ hphone + ", hmenu=" + hmenu + ", hdetail=" + hdetail + ", himg=" + himg + ", hspecial=" + hspecial
-				+ ", haddr=" + haddr + ", haddr2=" + haddr2 + ", hlevel=" + hlevel + ", hvisit=" + hvisit + ", htime="
-				+ htime + ", hholiday=" + hholiday + ", hwriterdt=" + hwriterdt + ", hregdate=" + hregdate
-				+ ", hlocation=" + hlocation + ", hmapx=" + hmapx + ", hmapy=" + hmapy + ", files="
-				+ Arrays.toString(files) + "]";
+				+ ", hzipcode=" + hzipcode + ", haddr=" + haddr + ", haddr2=" + haddr2 + ", hlevel=" + hlevel
+				+ ", hvisit=" + hvisit + ", htime=" + htime + ", hholiday=" + hholiday + ", hwriterdt=" + hwriterdt
+				+ ", hregdate=" + hregdate + ", hlocation=" + hlocation + ", hmapx=" + hmapx + ", hmapy=" + hmapy
+				+ ", hurl=" + hurl + ", files=" + Arrays.toString(files) + "]";
 	}
-	
 	
 	
 	
