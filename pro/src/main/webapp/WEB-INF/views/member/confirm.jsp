@@ -11,7 +11,6 @@
 		<script src="/resources/js/jquery-1.7.1.min.js"></script>
 		<script type="text/javascript">
 			$(document).ready(function(){
-				var conf = function(){
 					if('${msg}' == 'SUCCESS'){
 						alert("회원 인증에 성공하셨습니다.");
 					}else if('${msg}' == 'FALL'){
@@ -20,9 +19,6 @@
 						alert("비 정상적인 접근입니다.");
 					}
 					location.replace("/member/main");
-				}
-				
-				
 			});
 		</script>
 		
