@@ -14,6 +14,7 @@
 		<![endif]-->
 		
 		<jsp:include page="../include/script.jsp"/>
+		<script src="/resources/js/insertmember.js"></script>
 		
 		<!-- 회원가입 from 장식용 -->
 		<link rel="stylesheet" href="/resources/css/forminput.css"/>
@@ -24,13 +25,7 @@
 			console.log('statusChangeCallback');
 			console.log(response);
 			
-			alert(response.status);		
-			
 			if (response.status === 'connected') {
-				FB.api('/me', function(response){
-					alert("페이스북에 로그인 중이십니다.");
-					alert(response.name + '님. 방문을 환영합니다!');
-				});
 			} else if (response.status === 'not_authorized') {
 			} else {
 			}
@@ -83,22 +78,6 @@
 		
 		</script>
 		
-		<script type="text/javascript">
-		$(function(){
-			var logintest = function(){
-				if (window.sessionStorage) {
-		              var loginMember = sessionStorage.getItem('LoginId');
-		              var loginMember = sessionStorage.getItem('LoginName');
-		              alert('구글 테스트 :'+loginId);
-		              alert('구글 테스트 :'+loginName);
-		        }
-			}		
-		});
-		
-		</script>
-		
-		
-		
 		<style type="text/css">
 			.phonetext{
 				width: 40px;
@@ -116,15 +95,6 @@
 		
 	</head>
 
-<!-- 
-	<c:if test="${loginEmp.empid == null}">
-		<script type="text/javascript">
-		alert('비정상적인 접근입니다.');
-		location.href='staff.do?command=staff_loginForm';
-		</script>
-	</c:if>
- -->	
-	
 	<body class="page">
 	
 		<jsp:include page="../include/header.jsp"/>
@@ -171,7 +141,7 @@
 					<div>
 						<h4>성별</h4>
 						<p></p>
-						<label for="mmgender" class="bigfont">남</label><input type="radio" id="mmgender" name="mgender" value="0">&nbsp;
+						<label for="mmgender" class="bigfont">남</label><input type="radio" id="mmgender" name="mgender" value="0" checked="checked">&nbsp;
 						<label for="mwgender" class="bigfont">여</label><input type="radio" id="mwgender" name="mgender" value="1">
 						<p></p>
 						<p></p>
@@ -191,10 +161,9 @@
 							<option value="@daum.net">daum.net</option>							
 						</select>
 					</div>
-					<button type="submit" class="link-button green">&nbsp;등록&nbsp;</button>
-					</form>
+					<button type="submit" class="link-button green" onclick="return membercheck_ok();">&nbsp;등록&nbsp;</button>
 					<button id="cencle" class="link-button red">&nbsp;취소&nbsp;</button>
-					<button class="a">&nbsp;버튼&nbsp;</button>
+					</form>
 	        		
 	        		
 										
