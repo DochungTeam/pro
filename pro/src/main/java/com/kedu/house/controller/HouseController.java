@@ -18,6 +18,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.kedu.house.dto.SearchCriteria;
 import com.kedu.house.dto.HouseDto;
+import com.kedu.house.dto.PageMaker;
 import com.kedu.house.service.HouseService;
 
 @Controller
@@ -54,10 +55,27 @@ public class HouseController {
 	    return "redirect:/house/list";
 	  }
 	
-	  @RequestMapping(value="/list",method=RequestMethod.GET)
-		public void listman(Model model)throws Exception{
-		
-		}
+//	  @RequestMapping(value="/list",method=RequestMethod.GET)
+//		public void listPage(Model model)throws Exception{
+//		
+//		}
+	  
+	  @RequestMapping(value = "/list", method = RequestMethod.GET)
+	  public void listPage(@ModelAttribute("cri") SearchCriteria cri, Model model) throws Exception {
+
+	    logger.info(cri.toString());
+
+	    // model.addAttribute("list", service.listCriteria(cri));
+	    model.addAttribute("list", service.listSearchCriteria(cri));
+
+	    PageMaker pageMaker = new PageMaker();
+	    pageMaker.setCri(cri);
+
+	    // pageMaker.setTotalCount(service.listCountCriteria(cri));
+	    pageMaker.setTotalCount(service.listSearchCount(cri));
+
+	    model.addAttribute("pageMaker", pageMaker);
+	  }
 	  
 	  @RequestMapping(value = "/readHouse", method = RequestMethod.GET)
 	  public void read(@RequestParam("hno") int hno, @ModelAttribute("cri") SearchCriteria cri, Model model)

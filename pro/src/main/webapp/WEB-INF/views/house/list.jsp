@@ -15,48 +15,10 @@
 
 		<div class="col-md-12">
 			<!-- general form elements -->
-			<div class='box'>
-				<div class="box-header with-border">
-					<h3 class="box-title">게시글 검색</h3>
-				</div>
-
-
-				<div class='box-body'>
-
-					<select name="searchType">
-						<option value="n"
-							<c:out value="${cri.searchType == null?'selected':''}"/>>
-							---</option>
-						<option value="t"
-							<c:out value="${cri.searchType eq 't'?'selected':''}"/>>
-							제목</option>
-						<option value="c"
-							<c:out value="${cri.searchType eq 'c'?'selected':''}"/>>
-							내용</option>
-						<option value="w"
-							<c:out value="${cri.searchType eq 'w'?'selected':''}"/>>
-							작성자</option>
-						<option value="tc"
-							<c:out value="${cri.searchType eq 'tc'?'selected':''}"/>>
-							제목 / 내용</option>
-						<option value="cw"
-							<c:out value="${cri.searchType eq 'cw'?'selected':''}"/>>
-							내용 / 작성자</option>
-						<option value="tcw"
-							<c:out value="${cri.searchType eq 'tcw'?'selected':''}"/>>
-							제목 / 내용 / 작성자</option>
-					</select> <input type="text" name='keyword' id="keywordInput"
-						value='${cri.keyword }'>
-					<button id='searchBtn'>검색</button>
-					<button id='newBtn'>게시글 등록</button>
-
-				</div>
-			</div>
-
 
 			<div class="box">
 				<div class="box-header with-border">
-					<h3 class="box-title">게시글 목록</h3>
+					<h3 class="box-title">맛집 리스트</h3>
 				</div>
 				<div class="box-body">
 					<table class="table table-bordered">
@@ -74,12 +36,12 @@
 								<td>${houseDto.hno}</td>
 								<td><a
 									href='/house/readHouse${pageMaker.makeSearch(pageMaker.cri.page) }&hno=${houseDto.hno}'>
-										${houseDto.hnm}  
+										${houseDto.hnm} <strong>[ ${houseDto.hreplycnt }]</strong> 
 										</a></td>
 								<td>${houseDto.hkind}</td>
 								<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm"
 										value="${houseDto.hregdate}" /></td>
-								<td><span class="badge bg-red">${houseDto.hmenu }</span></td>
+								<td><span class="badge bg-red">${houseDto.hviewcnt }</span></td>
 							</tr>
 
 						</c:forEach>

@@ -53,17 +53,17 @@
 				<div class="box-body">
 					<div class="form-group">
 						<label for="exampleInputEmail1">제목</label> <input type="text"
-							name='title' class="form-control" value="${houseDto.hnm}"
+							name='hnm' class="form-control" value="${houseDto.hnm}"
 							readonly="readonly">
 					</div>
 					<div class="form-group">
 						<label for="exampleInputPassword1">내용</label>
-						<textarea class="form-control" name="content" rows="3"
+						<textarea class="form-control" name="hcontent" rows="3"
 							readonly="readonly">${houseDto.hcontent}</textarea>
 					</div>
 					<div class="form-group">
 						<label for="exampleInputEmail1">작성자</label> <input type="text"
-							name="writer" class="form-control" value="${houseDto.hkind}"
+							name="hkind" class="form-control" value="${houseDto.hkind}"
 							readonly="readonly">
 					</div>
 				</div>

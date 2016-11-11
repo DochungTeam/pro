@@ -27,6 +27,10 @@ public class HouseDto {
 	private int hmapy;
 	private String hurl;
 	private String[] files;
+	private int hreplycnt;
+	private int hviewcnt;
+	
+	
 	public int getHno() {
 		return hno;
 	}
@@ -165,6 +169,18 @@ public class HouseDto {
 	public void setFiles(String[] files) {
 		this.files = files;
 	}
+	public int getHreplycnt() {
+		return hreplycnt;
+	}
+	public void setHreplycnt(int hreplycnt) {
+		this.hreplycnt = hreplycnt;
+	}
+	public int getHviewcnt() {
+		return hviewcnt;
+	}
+	public void setHviewcnt(int hviewcnt) {
+		this.hviewcnt = hviewcnt;
+	}
 	@Override
 	public String toString() {
 		return "HouseDto [hno=" + hno + ", hnm=" + hnm + ", hcontent=" + hcontent + ", hkind=" + hkind + ", hphone="
@@ -172,8 +188,10 @@ public class HouseDto {
 				+ ", hzipcode=" + hzipcode + ", haddr=" + haddr + ", haddr2=" + haddr2 + ", hlevel=" + hlevel
 				+ ", hvisit=" + hvisit + ", htime=" + htime + ", hholiday=" + hholiday + ", hwriterdt=" + hwriterdt
 				+ ", hregdate=" + hregdate + ", hlocation=" + hlocation + ", hmapx=" + hmapx + ", hmapy=" + hmapy
-				+ ", hurl=" + hurl + ", files=" + Arrays.toString(files) + "]";
+				+ ", hurl=" + hurl + ", files=" + Arrays.toString(files) + ", hreplycnt=" + hreplycnt + ", hviewcnt="
+				+ hviewcnt + "]";
 	}
+	
 	
 	
 	

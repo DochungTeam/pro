@@ -30,6 +30,133 @@ insert into house (hno, hnm, hcontent, hkind, hphone, hmenu, hdetail, himg, hspe
 select fullname from house_attach where hno = #{hno} order by regdate
 </select>
 
+
+
+<select id="read" resultType="com.kedu.house.dto.HouseDto">
+ select 
+   hno, hnm, hcontent, hkind, hregdate, hviewcnt 
+ from 
+   house 
+ where hno = #{hno}
+ </select>
+
+ <update id="update">
+ update house set hnm =#{hnm}, hcontent =#{hcontent} 
+ where hno = #{hno}
+ </update>
+
+ <delete id="delete">
+ delete from house where hno = #{hno}
+ </delete>
+
+ <select id="listPage" resultType="HouseDto">
+ <![CDATA[
+ select 
+   hno, hnm, hcontent, hkind, hregdate, hviewcnt 
+ from 
+   house 
+ where hno > 0 
+ order by hno desc, hregdate desc
+ limit #{page}, 10
+ ]]>  
+ </select>
+
+  <select id="listCriteria" resultType="HouseDto">
+ <![CDATA[
+ select 
+   hno, hnm, hcontent, hkind, hregdate, hviewcnt, hreplycnt 
+ from 
+   house
+ where hno > 0 
+ order by hno desc, hregdate desc
+ limit #{pageStart}, #{perPageNum}
+ ]]>  
+ </select>
+
+
+
+ <select id="countPaging" resultType="int">
+ <![CDATA[
+ select 
+   count(hno) 
+ from 
+   house 
+ where 
+   hno > 0 
+ ]]>
+ </select>
+
+
+
+<sql id="search">
+ <if test="searchType != null" > 
+   <if test="searchType == 't'.toString()">
+     and title like CONCAT('%', #{keyword}, '%')
+   </if>
+   <if test="searchType == 'c'.toString()">
+     and content like CONCAT('%', #{keyword}, '%')
+   </if>
+   <if test="searchType == 'w'.toString()">
+     and writer like CONCAT('%', #{keyword}, '%')
+   </if>     
+   <if test="searchType == 'tc'.toString()">
+     and ( title like CONCAT('%', #{keyword}, '%') OR content like CONCAT('%', #{keyword}, '%'))
+   </if>        
+   <if test="searchType == 'cw'.toString()">
+     and ( content like CONCAT('%', #{keyword}, '%') OR writer like CONCAT('%', #{keyword}, '%'))
+   </if>        
+   <if test="searchType == 'tcw'.toString()">
+     and (   title like CONCAT('%', #{keyword}, '%') 
+           OR 
+             content like CONCAT('%', #{keyword}, '%') 
+           OR 
+             writer like CONCAT('%', #{keyword}, '%'))
+   </if>              
+ </if>  
+</sql>
+ 
+<select id="listSearch" resultType="HouseDto">
+<![CDATA[  
+  select * 
+  from house 
+  where hno > 0 
+]]>  
+
+  <include refid="search"></include>
+  
+<![CDATA[    
+  order by hno desc
+  limit #{pageStart}, #{perPageNum}
+]]>  
+</select>
+  
+<select id="listSearchCount" resultType="int">
+<![CDATA[  
+  select count(hno) 
+  from house 
+  where hno > 0 
+]]>
+  <include refid="search"></include>
+ 
+</select>  
+  
+<update id="updateReplyCnt">
+  update house set hreplycnt = hreplycnt + #{amount} where hno = #{hno}
+</update>
+
+
+<update id="updateViewCnt">
+  update house set hviewcnt = hviewcnt +1 where hno = #{hno}
+</update>
+ 
+ 
+<delete id="deleteAttach">
+delete from house where hno = #{hno}
+</delete>
+
+<insert id="replaceAttach">
+insert into house_attach(fullname, hno) values (#{fullName}, #{hno})
+</insert>
 </mapper>
 
     
