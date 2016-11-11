@@ -4,6 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>   
 
+<%@include file="../include/script.jsp"%>
 <%@include file="../include/header.jsp"%>
 <script type="text/javascript" src="/resources/js/upload.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
@@ -52,17 +53,17 @@
 				<div class="box-body">
 					<div class="form-group">
 						<label for="exampleInputEmail1">제목</label> <input type="text"
-							name='title' class="form-control" value="${houseDto.title}"
+							name='title' class="form-control" value="${houseDto.hnm}"
 							readonly="readonly">
 					</div>
 					<div class="form-group">
 						<label for="exampleInputPassword1">내용</label>
 						<textarea class="form-control" name="content" rows="3"
-							readonly="readonly">${houseDto.content}</textarea>
+							readonly="readonly">${houseDto.hcontent}</textarea>
 					</div>
 					<div class="form-group">
 						<label for="exampleInputEmail1">작성자</label> <input type="text"
-							name="writer" class="form-control" value="${houseDto.writer}"
+							name="writer" class="form-control" value="${houseDto.hkind}"
 							readonly="readonly">
 					</div>
 				</div>
