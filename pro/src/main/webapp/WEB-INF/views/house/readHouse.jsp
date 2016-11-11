@@ -36,7 +36,7 @@
 			<!-- general form elements -->
 			<div class="box box-primary">
 				<div class="box-header">
-					<h3 class="box-title">글 상세보기</h3>
+					<h3 class="box-title">맛집 상세보기</h3>
 				</div>
 				<!-- /.box-header -->
 
@@ -52,17 +52,17 @@
 
 				<div class="box-body">
 					<div class="form-group">
-						<label for="exampleInputEmail1">제목</label> <input type="text"
+						<label for="exampleInputEmail1">맛집 이름</label> <input type="text"
 							name='hnm' class="form-control" value="${houseDto.hnm}"
 							readonly="readonly">
 					</div>
 					<div class="form-group">
-						<label for="exampleInputPassword1">내용</label>
+						<label for="exampleInputPassword1">맛집 설명</label>
 						<textarea class="form-control" name="hcontent" rows="3"
 							readonly="readonly">${houseDto.hcontent}</textarea>
 					</div>
 					<div class="form-group">
-						<label for="exampleInputEmail1">작성자</label> <input type="text"
+						<label for="exampleInputEmail1">hkind</label> <input type="text"
 							name="hkind" class="form-control" value="${houseDto.hkind}"
 							readonly="readonly">
 					</div>
@@ -75,10 +75,10 @@
 
     <ul class="mailbox-attachments clearfix uploadedList">
     </ul>
- <c:if test="${login.uid == houseDto.writer}">
+ <%-- <c:if test="${login.uid == houseDto.writer}"> --%>
     <button type="submit" class="btn btn-warning" id="modifyBtn">수정</button>
     <button type="submit" class="btn btn-danger" id="removeBtn">삭제</button>
- </c:if>
+ <%-- </c:if> --%>
     <button type="submit" class="btn btn-primary" id="goListBtn">목록 </button>
   </div>
 
@@ -132,7 +132,7 @@
 		  <!-- timeline time label -->
 		<li class="time-label" id="repliesDiv">
 		  <span class="bg-green">
-		    댓글 목록 <small id='replycntSmall'> [ ${houseDto.replycnt} ] </small>
+		  <%--   댓글 목록 <small id='replycntSmall'> [ ${houseDto.replycnt} ] </small> --%>
 		    </span>
 		  </li>
 		</ul>

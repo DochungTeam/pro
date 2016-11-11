@@ -17,17 +17,18 @@
 			<!-- general form elements -->
 
 			<div class="box">
+			<button><a href='/house/insertHouse'>맛집 등록</a></button>
 				<div class="box-header with-border">
 					<h3 class="box-title">맛집 리스트</h3>
 				</div>
 				<div class="box-body">
 					<table class="table table-bordered">
 						<tr>
-							<th style="width: 10px">no</th>
-							<th>제목</th>
-							<th>작성자</th>
-							<th>등록 날짜</th>
-							<th style="width: 40px">조회</th>
+							<th style="width: 20px">no</th>
+							<th style="width: 100px">맛집이름</th>
+							<th style="width: 70px">맛집테마</th>
+							<th style="width: 100px">등록 날짜</th>
+							<th style="width: 100px">조회</th>
 						</tr>
 
 						<c:forEach items="${list}" var="houseDto">
