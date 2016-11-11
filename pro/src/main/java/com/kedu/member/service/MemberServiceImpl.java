@@ -32,4 +32,14 @@ public class MemberServiceImpl implements MemberService {
 	public void insert(MemberDto member) throws Exception {
 		dao.insert(member);
 	}
+	
+	@Override
+	public int confrim(MemberDto member) throws Exception {
+		return dao.confrim(member);
+	}
+	
+	@Override
+	public void mailConfrim(MemberDto member) throws Exception {
+		dao.mailConfrim(member);				
+	}
 }

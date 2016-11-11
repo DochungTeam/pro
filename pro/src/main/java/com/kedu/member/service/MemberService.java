@@ -13,4 +13,8 @@ public interface MemberService {
   
   public void insert(MemberDto member) throws Exception;
   
+  public int confrim(MemberDto member) throws Exception;
+  
+  public void mailConfrim(MemberDto member) throws Exception;
+  
 }

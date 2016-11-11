@@ -12,6 +12,11 @@ public interface MemberDao {
 	public MemberDto checkMemberWithSessionKey(String value);
 	
 	public void insert(MemberDto dto) throws Exception;
+	
+	public int confrim(MemberDto dto) throws Exception;
+	
+	public void mailConfrim(MemberDto dto) throws Exception;
+	
 }
 
 

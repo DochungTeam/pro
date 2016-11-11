@@ -17,6 +17,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.util.WebUtils;
 
@@ -47,15 +48,18 @@ public class MemberController {
 	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
   
   
+//	회원가입 창으로 이동
 	@RequestMapping(value="/input",method=RequestMethod.GET)
 	public void memberInputGET(Model model)throws Exception{
 		logger.info("회원가입창");
 	}
 
+//	회원가입처리
 	@RequestMapping(value="/input",method=RequestMethod.POST)
 	public String memberInputPOST(MemberDto member,Model model)throws Exception{
 		logger.info("회원가입처리");
 		
+//		메일 인증을 위한 유일값 랜덤 생성.
 		UUID muuid = UUID.randomUUID();
 
 		
@@ -63,12 +67,16 @@ public class MemberController {
 		member.setMemail(member.getFirstmemail() + member.getSecondmemail());
 		member.setMuuid(muuid.toString());
 		
+//		회원정보 insert
 		service.insert(member);
 		
-		email.setContent("http://projecy.mooo.com:8080/member/Confirm?muuid="+muuid.toString()+" 이 링크를 클릭해 인증을 완료해주세요.");
+//		회원가입 후 메일 전송
+//		메일 작성
+		email.setContent("http://projecy.mooo.com:8080/member/confirm?muuid="+muuid.toString()+"&mid="+member.getMid()+" 이 링크를 클릭해 인증을 완료해주세요.");
 		email.setReceiver(member.getMemail());
 		email.setSubject(member.getMnm()+"님 회원 가입을 축하합니다!");
 		
+//		작성한 메일 전송
 		emailSender.SendEmail(email);
 		
 		
@@ -77,6 +85,26 @@ public class MemberController {
 	}
 	
 
+//	메일 인증 처리
+	@RequestMapping(value="/confirm",method=RequestMethod.GET)
+	public void confirm (@RequestParam("muuid") String muuid, @RequestParam("mid") String mid, Model model)throws Exception{
+		
+		MemberDto member = new MemberDto();
+		
+		member.setMid(mid);
+		member.setMuuid(muuid);
+		
+		int con = service.confrim(member);
+		
+		if(con==1){
+			service.mailConfrim(member);
+			model.addAttribute("msg", "SUCCESS");			
+		}else{
+			model.addAttribute("msg", "FALL");
+		}
+		
+	}
+	
 	@RequestMapping(value="/main",method=RequestMethod.GET)
 	public void memberL(Model model)throws Exception{
 	
