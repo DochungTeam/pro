@@ -11,13 +11,17 @@ import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.util.WebUtils;
 
+import com.kedu.member.dto.EmailDto;
+import com.kedu.member.dto.EmailSender;
 import com.kedu.member.dto.LoginDto;
 import com.kedu.member.dto.MemberDto;
 import com.kedu.member.service.MemberService;
@@ -25,9 +29,15 @@ import com.kedu.member.service.MemberService;
 @Controller
 @RequestMapping("/member/*")
 public class MemberController {
-
+	
 	@Inject
 	private MemberService service;
+	
+	@Autowired
+	private EmailSender emailSender;
+	@Autowired
+	private EmailDto email;
+	
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public void loginGET(@ModelAttribute("dto") LoginDto dto) {
@@ -43,10 +53,11 @@ public class MemberController {
 	}
 
 	@RequestMapping(value="/input",method=RequestMethod.POST)
-	public void memberInputPOST(MemberDto member,Model model)throws Exception{
+	public String memberInputPOST(MemberDto member,Model model)throws Exception{
 		logger.info("회원가입처리");
 		
 		UUID muuid = UUID.randomUUID();
+
 		
 		
 		member.setMemail(member.getFirstmemail() + member.getSecondmemail());
@@ -54,9 +65,15 @@ public class MemberController {
 		
 		service.insert(member);
 		
+		email.setContent("http://projecy.mooo.com:8080/member/Confirm?muuid="+muuid.toString()+" 이 링크를 클릭해 인증을 완료해주세요.");
+		email.setReceiver(member.getMemail());
+		email.setSubject(member.getMnm()+"님 회원 가입을 축하합니다!");
+		
+		emailSender.SendEmail(email);
 		
 		
-		
+		return "redirect:/member/main";
+				
 	}
 	
 
