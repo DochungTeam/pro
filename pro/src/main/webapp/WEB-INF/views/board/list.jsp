@@ -4,6 +4,7 @@
 <%@ page session="false" %>
 
 <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<jsp:include page="../include/script.jsp"/>
 <jsp:include page="../include/header.jsp"/>
 
 <table class="">
@@ -61,7 +62,7 @@
 
 <div class="">
 
-	<select name="searchType">
+	<select id="selectSearch" name="searchType">
 		<option value="t"
 			<c:out value="${cri.searchType eq 't'?'selected':'' }"/>>제목
 		</option>
@@ -88,24 +89,11 @@ $(document).ready(function(){
 		alert("처리가 완료되었습니다.");
 	}
 	
-	$(".pagination li a").on("click", function(event){
-		
-		event.preventDefault();
-		
-		var targetPage = $(this).attr("href");
-		
-		var jobForm = $("#jobForm");
-		jobForm.find("[name='page']").val(targetPage);
-		jobForm.attr("action", "/board/list").attr("method", "get");
-		jobForm.submit();
-	});
-	
 	$('#searchBtn').on("click", function(event) {
-		
 		self.location = "list"
 			+ '${pageMaker.makeQuery(1)}'
 			+ "&searchType="
-			+ $("select option:selected").val()
+			+ $("#selectSearch option:selected").val()
 			+ "&keyword=" + $('#keywordInput').val();
 	});
 	

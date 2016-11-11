@@ -54,24 +54,8 @@
 		where bno > 0 
 	]]>
 	
-		<if test="searchType != null">
-			<if test="searchType == 't'.toString()">
-				and btitle like CONCAT('%', #{keyword}, '%')
-			</if>
-			<if test="searchType == 'c'.toString()">
-				and bcontent like CONCAT('%', #{keyword}, '%')
-			</if>
-			<if test="searchType == 'w'.toString()">
-				and bwriter like CONCAT('%', #{keyword}, '%')
-			</if>
-			<if test="searchType == 'tc'.toString()">
-				and (btitle like CONCAT('%', #{keyword}, '%') OR bcontent like CONCAT('%', #{keyword}, '%'))
-			</if>
-			<if test="searchType == 'cw'.toString()">
-				and (bcontent like CONCAT('%', #{keyword}, '%') OR bwriter like CONCAT('%', #{keyword}, '%'))
-			</if>
-		</if>
-	
+	<include refid="search"></include>
+		
 	<![CDATA[
 		order by bno desc, bwritedt desc limit #{pageStart}, #{perPageNum}
 	]]>
@@ -83,6 +67,11 @@
 		where bno > 0
 	]]>
 	
+		<include refid="search"></include>
+		
+	</select>
+
+<sql id="search">
 		<if test="searchType != null">
 			<if test="searchType == 't'.toString()">
 				and btitle like CONCAT('%', #{keyword}, '%')
@@ -96,10 +85,6 @@
 			<if test="searchType == 'tc'.toString()">
 				and (btitle like CONCAT('%', #{keyword}, '%') OR bcontent like CONCAT('%', #{keyword}, '%'))
 			</if>
-			<if test="searchType == 'cw'.toString()">
-				and (bcontent like CONCAT('%', #{keyword}, '%') OR bwriter like CONCAT('%', #{keyword}, '%'))
-			</if>
 		</if>
-	</select>
-
+</sql>
 </mapper>

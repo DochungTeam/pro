@@ -4,6 +4,7 @@
 <%@ page session="false" %>
 
 <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<jsp:include page="../include/script.jsp"/>
 <jsp:include page="../include/header.jsp"/>
 
 <form role="form" action="modifyPage" method="post">
@@ -34,6 +35,31 @@
 	<button type="submit" class="btn btn-list">목록</button>
 </div>
 
+<div class="row">
+	<div class="">
+		<div class="">
+			<div class="">
+				<h3 class="box-title">댓글</h3>
+			</div>
+			<div class="">
+				<input type="hidden" name="bwriter" value="${boardDto.bwriter }">
+				<input type="text" class="" id="newReplyText" placeholder="댓글을 입력하세요">
+			</div>
+			
+			<div class="">
+				<button type="submit" class="btn btn-insert" id="replyAddBtn">등록</button>
+			</div>
+		</div>
+		
+		<ul class="timeline">
+			<li class="time-label" id="repliesDiv"><span class="">댓글 목록</span></li>
+		</ul>
+		
+		<div class="text-center">
+			<ul id="pagination" class="pagination pagination-sm no-margin"></ul>
+		</div>
+	</div>
+</div>
 <script type="text/javascript">
 
 $(document).ready(function(){
@@ -62,5 +88,74 @@ $(document).ready(function(){
 });
 
 </script>
-
+<script id="template" type="text/x-handlebars-template">
+{{#each .}}
+<li class="relplyLi" data-rno={{rno}}>
+<i class="fa fa-comments"></i>
+	<div class="timeline-item">
+		<span class="time">
+			<i class="fa fa-clock-o"></i>{{prettifyDate rwritedt}}
+		</span>
+`		<h3 class="timeline-header"><strong>{{rno}}</strong> -{{rwriter}}<h3>
+		<div class="timeline-body">{{rcontent}} </div>
+			<div class="timeline-footer">
+				<a class="btn btn-insert btn-xs" data-toggle="modal" data-target="#modifyModal">수정</a>
+			</div>
+	</div>
+</li>
+{{/each}}
+</script>
+<script>
+$(document).ready(function(){
+	Handlebars.registerHelper("prettifyDate", function(timeValue) {
+		var dateObj = new Date(timeValue);
+		var year = dataObj.getFullYear();
+		var month = dataObj.getMonth() + 1;
+		var date = dateObj.getDate();
+		return year + "/" + month + "/" + date;
+	});
+	
+	var printData = function (replyArr, target, templateObject) {
+		
+		var template = Handlebars.compile(templateObject.html());
+		
+		var html = template(replyArr);
+		$(".replyLi").remove();
+		target.after(html);
+	}
+});
+</script>
+<script type="text/javascript">
+$(document).ready(function(){
+	var bno = ${boardDto.bno};
+	var replyPage = 1;
+	
+	function getPage(pageInfo){
+		$.getJSON(pageInfo,function(data){
+			printData(data.list, $("#repliesDiv"), $('#template'));
+			printPaging(data.pageMaker, $(".pagination"));
+		});
+	}
+	
+	var printPaging = function(pageMaker, target){
+		
+		var str = "";
+		
+		if(pageMaker.prev){
+			str += "<li><a href='"+(pageMaker.startPage-1)+"'> << </a></li>";
+		}
+		
+		for(var i=pageMaker.startPage, len = pageMaker.endPage; i <= len; i++){
+			var strClass = pageMaker.cri.page == i?'class=active':'';
+			str += "<li " + strClass +"><a href='"+ i + "'>"+ i +"</a></li>";
+		}
+		
+		if(pageMaker.next){
+			str += "<li><a href='"+(pageMaker.endPage + 1)+"'> >> </a></li>";
+		}
+		
+		target.html(str);
+	};
+});
+</script>
 <jsp:include page="../include/footer.jsp"/>

@@ -4,6 +4,7 @@
 <%@ page session="false" %>
 
 <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<jsp:include page="../include/script.jsp"/>
 <jsp:include page="../include/header.jsp"/>
 
 <form role="form" action="modifyPage" method="post">
@@ -19,7 +20,7 @@
 			<input type="text" name="btitle" value="${boardDto.btitle }">
 			<input type="text" name="bwriter" value="${boardDto.bwriter }" readonly="readonly">
 		</div>
-		<div>
+		<div class="">
 			<textarea rows="3" name="bcontent">${boardDto.bcontent }</textarea>
 		</div>
 	</div>

@@ -57,7 +57,7 @@ public class BoardDaoImpl implements BoardDao {
 	
 	@Override
 	public List<BoardDto> listCriteria(BoardCriteria cri) throws Exception {
-		return session.selectList(namespace + ".listCriteria", cri);
+		return session.selectList(namespace + ".listSearch", cri);
 	}
 	
 	@Override

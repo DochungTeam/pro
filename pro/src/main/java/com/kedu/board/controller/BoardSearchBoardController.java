@@ -28,7 +28,6 @@ public class BoardSearchBoardController {
 	
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public void listPage(@ModelAttribute("cri") BoardSearchCriteria cri, Model model) throws Exception {
-		
 		logger.info(cri.toString());
 		
 		model.addAttribute("list", service.listCriteria(cri));
