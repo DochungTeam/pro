@@ -21,6 +21,12 @@ public interface HouseService {
 	  public int listSearchCount(SearchCriteria cri) throws Exception;
 	  
 	  public List<String> getAttach(Integer hno)throws Exception;
+	  
+	  public HouseDto read(Integer hno) throws Exception;
+	  
+	  public void modify(HouseDto house) throws Exception;
+
+	  public void remove(Integer hno) throws Exception;
 
 	}
 	

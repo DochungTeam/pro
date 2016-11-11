@@ -13,6 +13,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -85,6 +86,38 @@ public class HouseServiceImpl implements HouseService{
 	    
 	    return dao.getAttach(hno);
 	  }   
+	  
+	  @Transactional(isolation=Isolation.READ_COMMITTED)
+	  @Override
+	  public HouseDto read(Integer hno) throws Exception {
+	    dao.updateViewCnt(hno);
+	    return dao.read(hno);
+	  }
+	  
+	  @Transactional
+	  @Override
+	  public void modify(HouseDto house) throws Exception {
+	    dao.update(house);
+	    
+	    Integer hno = house.getHno();
+	    
+	    dao.deleteAttach(hno);
+	    
+	    String[] files = house.getFiles();
+	    
+	    if(files == null) { return; } 
+	    
+	    for (String fileName : files) {
+	      dao.replaceAttach(fileName, hno);
+	    }
+	  }
+	  
+	  @Transactional
+	  @Override
+	  public void remove(Integer hno) throws Exception {
+	    dao.deleteAttach(hno);
+	    dao.delete(hno);
+	  } 
 
 	
 /*

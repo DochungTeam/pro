@@ -26,4 +26,20 @@ public interface HouseDao {
 	  public int listSearchCount(SearchCriteria cri)throws Exception;
 	  
 	  public List<String> getAttach(Integer hno)throws Exception;
+	  
+	  public HouseDto read(Integer hno) throws Exception;
+	  
+	  public void updateReplyCnt(Integer hno, int amount)throws Exception;
+
+	  public void updateViewCnt(Integer hno)throws Exception;
+	  
+	  public void deleteAttach(Integer hno)throws Exception;
+	  
+	  public void replaceAttach(String fullName, Integer hno)throws Exception;
+	  
+	  public void update(HouseDto dto) throws Exception;
+	  
+	  public void delete(Integer bno) throws Exception;
+	  
+	  
 }

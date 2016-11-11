@@ -44,16 +44,16 @@
 				
 				<div id="filter-container" class="cf">
 				
-				<c:forEach items="${list}" var="houseDto">
+				<%-- <c:forEach items="${list}" var="houseDto"> --%>
 				
-					<figure class="korea">
-						<a href="http://jinia_.blog.me/220844754267" class="thumb"><img src="/resources/img/house/korea1.jpg" alt="alt" /></a>
+					<figure class="${houseDto.hkind}">
+						<a href="${houseDto.hurl}" class="thumb"><img src="/resources/img/house/korea1.jpg" alt="alt" /></a>
 						<figcaption>
-							<a href="http://jinia_.blog.me/220844754267"><h3 class="heading"> 맛집이름 </h3></a>
-							주소 : 경기도 고양시 일산동구 성석동 984-145<br> TEL : 031-977-7740<br>  </figcaption>
+							<a href="${houseDto.hurl}"><h3 class="heading"> ${houseDto.hnm} </h3></a>
+							주소 : ${houseDto.hzipcode}<br> TEL : ${houseDto.hphone}<br>  </figcaption>
 					</figure>
 				
-				</c:forEach>	
+				<%-- </c:forEach> --%>	
 					
 				</div><!-- ENDS Filter container -->
 				
