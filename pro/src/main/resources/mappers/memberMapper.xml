@@ -6,7 +6,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.kedu.mapper.MemberMapper">
 
 	<select id="login" resultType="MemberDto">
-  
 		select 
 			  mid
 			, mpw
@@ -20,10 +19,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			mid = #{mid} 
 		and 
 			mpw = #{mpw}
-  
 	</select>
-  
-
+	<select id="confirm" resultType="int">
+		select 
+			  count(mid)
+		from 
+			member 
+		where 
+			1=1
+		and
+			mid = #{mid} 
+		and 
+			muuid = #{muuid}
+	</select>
 	<select id="checkMemberWithSessionKey" resultType="MemberDto">
 		select 
 			* 
@@ -36,7 +44,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		and 
 			sessionlimit > now()
 	</select>
-	
 	<insert id="memberInsert">
 		insert into
 		member(
@@ -47,9 +54,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			, mgender
 			, mmanyn
 			, mphone
-			, mzipcd
-			, maddrbase
-			, maddrsemi
 			, memail
 		)
 		value(
@@ -60,12 +64,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			, #{mgender}
 			, 2
 			, #{mphone}
-			, #{mzipcd}
-			, #{maddrbase}
-			, #{maddrsemi}
 			, #{memail}
 		)
 	</insert>
+	<update id="mailConfrim">
+		update
+			member
+		set
+			mmanyn = 1
+		where
+			1=1
+		and
+			mid = #{mid}
+		and
+			muuid = #{muuid}
+	</update>
 
 </mapper>
 

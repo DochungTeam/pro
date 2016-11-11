@@ -38,4 +38,16 @@ public class MemberDaoImpl implements MemberDao {
 		
 		session.insert(namespace + ".memberInsert", dto);
 	}
+	
+	@Override
+	public int confrim(MemberDto dto) throws Exception {
+		return session.selectOne(namespace + ".confirm", dto);
+	}
+	
+	@Override
+	public void mailConfrim(MemberDto dto) throws Exception {
+		
+		session.update(namespace + ".mailConfrim", dto);
+	}
+	
 }

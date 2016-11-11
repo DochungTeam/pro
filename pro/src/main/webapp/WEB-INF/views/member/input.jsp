@@ -182,18 +182,6 @@
 						<p></p>
 					</div>
 					<div>
-						<h4>우편번호</h4>
-						<input type="text" id="maddrcd" name="mzipcd" readonly="readonly">
-						<p></p>
-					</div>
-					<div>
-						<h4>주소 &nbsp; <input type="button" id="addrbtn" value="주소찾기"></h4>
-						<input type="text" id="maddr" name="maddrbase" class="addrinput" readonly="readonly">
-						<h4>상세주소</h4>
-						<input type="text" id="maddr" name="maddrsemi" class="addrinput">
-						<p></p>
-					</div>
-					<div>
 						<h4>이메일</h4>
 						<input type="text" id="firstmemail" name="firstmemail"><span class="bigfont"> @ </span>
 						<select id="secondmemail" name="secondmemail" class="selectbox">
