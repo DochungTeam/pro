@@ -23,21 +23,21 @@
 	<select id="listAll" resultType="BoardDto">
 	<![CDATA[
 		select bno, btitle, bcontent, bwritedt, bcount, bwriter from board
-		where bno > 0 order by bno desc, bwritedt desc
+		where bno > 0 order by bno desc
 	]]>
 	</select>
 	
 	<select id="listPage" resultType="BoardDto">
 	<![CDATA[
 		select bno, btitle, bcontent, bwritedt, bcount, bwriter from board
-		where bno > 0 order by bno desc, bwritedt desc limit #{page}, 10
+		where bno > 0 order by bno desc limit #{page}, 10
 	]]>
 	</select>
 	
 	<select id="listCriteria" resultType="BoardDto">
 	<![CDATA[
-		select bno, btitle, bcontent, bwritedt, bcount, bwriter from board
-		where bno > 0 order by bno desc, bwritedt desc limit #{pageStart}, #{perPageNum}
+		select bno, btitle, bcontent, bwritedt, bcount, bwriter, rcount from board
+		where bno > 0 order by bno desc limit #{pageStart}, #{perPageNum}
 	]]>
 	</select>
 	
@@ -57,7 +57,7 @@
 	<include refid="search"></include>
 		
 	<![CDATA[
-		order by bno desc, bwritedt desc limit #{pageStart}, #{perPageNum}
+		order by bno desc limit #{pageStart}, #{perPageNum}
 	]]>
 	</select>
 	
@@ -71,6 +71,11 @@
 		
 	</select>
 
+	<update id="updateReplyCnt">
+		update board set rcount = (select count(rno) from reply where bno = board.bno)
+		where bno > 0
+	</update>
+	
 <sql id="search">
 		<if test="searchType != null">
 			<if test="searchType == 't'.toString()">
