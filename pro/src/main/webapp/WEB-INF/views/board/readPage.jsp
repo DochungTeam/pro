@@ -4,6 +4,8 @@
 <%@ page session="false" %>
 
 <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
 <jsp:include page="../include/script.jsp"/>
 <jsp:include page="../include/header.jsp"/>
 
