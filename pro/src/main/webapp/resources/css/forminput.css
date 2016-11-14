@@ -14,7 +14,7 @@
   font-size: 11px;
   color: #888;
 }
-#inputform input,
+#inputform input:not(.link-button),
 #inputform textarea
 {
   padding: 5px 8px;
@@ -50,8 +50,8 @@
   margin-top: 10px;
   margin-bottom: 10px;
 }
-#inputform input[type="submit"],
-#inputform input[type="button"]
+#inputform input[type="submit"]:not(.link-button),
+#inputform input[type="button"]:not(.link-button)
 {
   width: auto;
   color: #444;

@@ -17,6 +17,7 @@ public interface MemberDao {
 	
 	public void mailConfrim(MemberDto dto) throws Exception;
 	
+	public int idcheck(MemberDto dto) throws Exception;
 }
 
 
