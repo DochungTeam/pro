@@ -21,14 +21,15 @@ public class HouseDto {
 	private String htime;
 	private String hholiday;
 	private Date hwriterdt;
-	private Date hregdate;
 	private String hlocation;
-	private int hmapx;
-	private int hmapy;
-	private String hurl;
+	private Date hregdate;
+	private String hmapx;
+	private String hmapy;
 	private String[] files;
+	private String hurl;
 	private int hreplycnt;
 	private int hviewcnt;
+	private String hlink;
 	
 	
 	public int getHno() {
@@ -133,41 +134,41 @@ public class HouseDto {
 	public void setHwriterdt(Date hwriterdt) {
 		this.hwriterdt = hwriterdt;
 	}
-	public Date getHregdate() {
-		return hregdate;
-	}
-	public void setHregdate(Date hregdate) {
-		this.hregdate = hregdate;
-	}
 	public String getHlocation() {
 		return hlocation;
 	}
 	public void setHlocation(String hlocation) {
 		this.hlocation = hlocation;
 	}
-	public int getHmapx() {
+	public Date getHregdate() {
+		return hregdate;
+	}
+	public void setHregdate(Date hregdate) {
+		this.hregdate = hregdate;
+	}
+	public String getHmapx() {
 		return hmapx;
 	}
-	public void setHmapx(int hmapx) {
+	public void setHmapx(String hmapx) {
 		this.hmapx = hmapx;
 	}
-	public int getHmapy() {
+	public String getHmapy() {
 		return hmapy;
 	}
-	public void setHmapy(int hmapy) {
+	public void setHmapy(String hmapy) {
 		this.hmapy = hmapy;
-	}
-	public String getHurl() {
-		return hurl;
-	}
-	public void setHurl(String hurl) {
-		this.hurl = hurl;
 	}
 	public String[] getFiles() {
 		return files;
 	}
 	public void setFiles(String[] files) {
 		this.files = files;
+	}
+	public String getHurl() {
+		return hurl;
+	}
+	public void setHurl(String hurl) {
+		this.hurl = hurl;
 	}
 	public int getHreplycnt() {
 		return hreplycnt;
@@ -181,15 +182,22 @@ public class HouseDto {
 	public void setHviewcnt(int hviewcnt) {
 		this.hviewcnt = hviewcnt;
 	}
+	public String getHlink() {
+		return hlink;
+	}
+	public void setHlink(String hlink) {
+		this.hlink = hlink;
+	}
+	
 	@Override
 	public String toString() {
 		return "HouseDto [hno=" + hno + ", hnm=" + hnm + ", hcontent=" + hcontent + ", hkind=" + hkind + ", hphone="
 				+ hphone + ", hmenu=" + hmenu + ", hdetail=" + hdetail + ", himg=" + himg + ", hspecial=" + hspecial
 				+ ", hzipcode=" + hzipcode + ", haddr=" + haddr + ", haddr2=" + haddr2 + ", hlevel=" + hlevel
 				+ ", hvisit=" + hvisit + ", htime=" + htime + ", hholiday=" + hholiday + ", hwriterdt=" + hwriterdt
-				+ ", hregdate=" + hregdate + ", hlocation=" + hlocation + ", hmapx=" + hmapx + ", hmapy=" + hmapy
-				+ ", hurl=" + hurl + ", files=" + Arrays.toString(files) + ", hreplycnt=" + hreplycnt + ", hviewcnt="
-				+ hviewcnt + "]";
+				+ ", hlocation=" + hlocation + ", hregdate=" + hregdate + ", hmapx=" + hmapx + ", hmapy=" + hmapy
+				+ ", files=" + Arrays.toString(files) + ", hurl=" + hurl + ", hreplycnt=" + hreplycnt + ", hviewcnt="
+				+ hviewcnt + ", hlink=" + hlink + "]";
 	}
 	
 	

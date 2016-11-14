@@ -18,7 +18,7 @@ public class BoardReplyDaoImpl implements BoardReplyDao {
 	@Inject
 	private SqlSession session;
 	
-	private static String namespace = "com.kedu.mapper.boardReplyMapper";
+	private static String namespace = "com.kedu.mapper.BoardReplyMapper";
 	
 	@Override
 	public List<BoardReplyDto> list(int bno) throws Exception {
@@ -54,6 +54,11 @@ public class BoardReplyDaoImpl implements BoardReplyDao {
 	@Override
 	public int count(int bno) throws Exception {
 		return session.selectOne(namespace + ".count", bno);
+	}
+	
+	@Override
+	public int getBno(int rno) throws Exception {
+		return session.selectOne(namespace + ".getBno", rno);
 	}
 
 }

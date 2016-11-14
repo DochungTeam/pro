@@ -17,9 +17,9 @@ select now()
 
 <insert id="insertHouse">
 insert into house (hno, hnm, hcontent, hkind, hphone, hmenu, hdetail, himg, hspecial, hzipcode, haddr, haddr2, hlevel, hvisit, 
-					htime, hholiday, hwriterdt, hlocation, hmapx, hmapy, hurl) values
+					htime, hholiday, hwriterdt, hlocation, hmapx, hmapy, hurl, hlink) values
 (#{hno}, #{hnm}, #{hcontent}, #{hkind}, #{hphone}, #{hmenu}, #{hdetail}, #{himg}, #{hspecial}, #{hzipcode}, #{haddr}, #{haddr2}, #{hlevel}, #{hvisit}, 
-					#{htime}, #{hholiday}, #{hwriterdt}, #{hlocation}, #{hmapx}, #{hmapy}, #{hurl})
+					#{htime}, #{hholiday}, #{hwriterdt}, #{hlocation}, #{hmapx}, #{hmapy}, #{hurl}, #{hlink})
 </insert>
 
 <insert id="addAttach">

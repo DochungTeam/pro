@@ -9,7 +9,14 @@ public class BoardReplyDto {
 	private String rcontent;
 	private String mid;
 	private Date rwritedt;
+	private Date rupdatedt;
 	
+	public Date getRupdatedt() {
+		return rupdatedt;
+	}
+	public void setRupdatedt(Date rupdatedt) {
+		this.rupdatedt = rupdatedt;
+	}
 	public int getRno() {
 		return rno;
 	}
@@ -40,10 +47,11 @@ public class BoardReplyDto {
 	public void setRwritedt(Date rwritedt) {
 		this.rwritedt = rwritedt;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "BoardReplyDto [rno=" + rno + ", bno=" + bno + ", rcontent=" + rcontent + ", mid=" + mid + ", rwritedt="
-				+ rwritedt + ", toString()=" + super.toString() + "]";
+				+ rwritedt + ", rupdatedt=" + rupdatedt + ", toString()=" + super.toString() + "]";
 	}
+	
 }

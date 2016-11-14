@@ -20,7 +20,7 @@
 
 	<tr>
 		<td>${boardDto.bno }</td>
-		<td><a href="/board/readPage${pageMaker.makeSearch(pageMaker.cri.page) }&bno=${boardDto.bno}">${boardDto.btitle }</a></td>
+		<td><a href="/board/readPage${pageMaker.makeSearch(pageMaker.cri.page) }&bno=${boardDto.bno}">${boardDto.btitle } <strong>[ ${boardDto.rcount }]</strong></a></td>
 		<td>${boardDto.bwriter }</td>
 		<td><fmt:formatDate pattern="yyyy-MM-dd" value="${boardDto.bwritedt }" /></td>
 		<td><span>${boardDto.bcount }</span></td>
@@ -97,7 +97,7 @@ $(document).ready(function(){
 			+ "&keyword=" + $('#keywordInput').val();
 	});
 	
-	$('#newBtn').on("click", function(evt){
+	$('#newBtn').on("click", function(event){
 		self.location = "register";
 	});
 });
