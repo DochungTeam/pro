@@ -10,8 +10,9 @@
   border: 1px dotted gray;
   background-color: #B8B8B8;
   margin: auto;
-  
 }
+
+
 </style>
 
 <%@include file="../include/header.jsp"%>
@@ -194,5 +195,4 @@ $("#insertForm").submit(function(event){
 
 
  
-
 <%@include file="../include/footer.jsp"%>
