@@ -164,7 +164,7 @@ public class HouseServiceImpl implements HouseService{
 						break;
 					case "address":
 						if(houseDto!=null){
-							houseDto.sethaddr(parser.nextText());
+							houseDto.setHaddr(parser.nextText());
 						}
 						break;
 					case "mapx":
@@ -202,7 +202,7 @@ public class HouseServiceImpl implements HouseService{
 	}
 
 	
-	@Override
+	/*@Override
 	public List<HouseDto> searchImage(String keyword, int display, int start) throws Exception {
 		List<HouseDto> list1=null;
 		
@@ -285,7 +285,10 @@ public class HouseServiceImpl implements HouseService{
 			e.printStackTrace();
 		}
 		return list1;
+	}*/
+	@Override
+	public List<HouseDto> searchImage(String keyword, int display, int start) throws Exception {
+		return null;
 	}
-
 }
 
