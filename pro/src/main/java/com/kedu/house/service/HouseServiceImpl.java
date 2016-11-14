@@ -101,8 +101,6 @@ public class HouseServiceImpl implements HouseService{
 	    
 	    Integer hno = house.getHno();
 	    
-	    dao.deleteAttach(hno);
-	    
 	    String[] files = house.getFiles();
 	    
 	    if(files == null) { return; } 

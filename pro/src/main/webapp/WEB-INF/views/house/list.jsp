@@ -42,7 +42,7 @@
 								<td>${houseDto.hkind}</td>
 								<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm"
 										value="${houseDto.hregdate}" /></td>
-								<td><span class="badge bg-red">${houseDto.hviewcnt }</span></td>
+								<td>${houseDto.hviewcnt }</td>
 							</tr>
 
 						</c:forEach>

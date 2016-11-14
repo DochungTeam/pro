@@ -27,7 +27,7 @@ insert into house (hno, hnm, hcontent, hkind, hphone, hmenu, hdetail, himg, hspe
 </insert>
 
 <select id="getAttach" resultType="string">
-select fullname from house_attach where hno = #{hno} order by regdate
+select fullname from house_attach where hno = #{hno} order by hregdate
 </select>
 
 
