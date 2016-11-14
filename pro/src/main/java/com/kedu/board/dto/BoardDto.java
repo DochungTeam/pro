@@ -12,7 +12,14 @@ public class BoardDto {
 	private int bboard;
 	private Date bupdatedt;
 	private String bwriter;
+	private int rcount;
 	
+	public int getRcount() {
+		return rcount;
+	}
+	public void setRcount(int rcount) {
+		this.rcount = rcount;
+	}
 	public int getBno() {
 		return bno;
 	}
@@ -66,7 +73,7 @@ public class BoardDto {
 	public String toString() {
 		return "BoardDto [bno=" + bno + ", btitle=" + btitle + ", bcontent=" + bcontent + ", bwritedt=" + bwritedt
 				+ ", bcount=" + bcount + ", bboard=" + bboard + ", bupdatedt=" + bupdatedt + ", bwriter=" + bwriter
-				+ ", toString()=" + super.toString() + "]";
+				+ ", rcount=" + rcount + ", toString()=" + super.toString() + "]";
 	}
 	
 }

@@ -71,8 +71,7 @@
 			<hr>
 		</div>
 
-		<ul class="mailbox-attachments clearfix uploadedList">
-		</ul>
+		<ul class="mailbox-attachments clearfix uploadedList"></ul>
 
     <button type="submit" class="btn btn-primary">수정</button> 
     <button type="submit" class="btn btn-primary" id="goListBtn">취소 </button>

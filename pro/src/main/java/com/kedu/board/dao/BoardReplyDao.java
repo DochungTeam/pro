@@ -19,4 +19,6 @@ public interface BoardReplyDao {
 	
 	public int count(int bno) throws Exception;
 	
+	public int getBno(int rno) throws Exception;
+	
 }

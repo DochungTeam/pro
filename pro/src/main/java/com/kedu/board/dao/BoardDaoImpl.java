@@ -1,6 +1,8 @@
 package com.kedu.board.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -73,5 +75,15 @@ public class BoardDaoImpl implements BoardDao {
 	@Override
 	public int listSearchCount(BoardSearchCriteria cri) throws Exception {
 		return session.selectOne(namespace + ".listSearchCount", cri);
+	}
+	
+	@Override
+	public void updateRcount(int bno, int amount) throws Exception {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		
+		paramMap.put("bno", bno);
+		paramMap.put("amount", amount);
+		
+		session.update(namespace + ".updateRcount", paramMap);
 	}
 }
