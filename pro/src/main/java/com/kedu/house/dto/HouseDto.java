@@ -13,24 +13,92 @@ public class HouseDto {
 	private String hdetail;
 	private String himg;
 	private String hspecial;
-	private String hzipcode;
 	private String haddr;
-	private String haddr2;
 	private String hlevel;
 	private String hvisit;
 	private String htime;
 	private String hholiday;
-	private Date hwriterdt;
-	private Date hregdate;
-	private String hlocation;
-	private int hmapx;
-	private int hmapy;
-	private String hurl;
+	private String zipbunho;
+	private String hwritedt;
+	private String title;
+	private String link;
+	private String thumbnail;
+	private String sizeheight;
+	private String sizewidth;
+	
+	
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	public String getLink() {
+		return link;
+	}
+	public void setLink(String link) {
+		this.link = link;
+	}
+	public String getThumbnail() {
+		return thumbnail;
+	}
+	public void setThumbnail(String thumbnail) {
+		this.thumbnail = thumbnail;
+	}
+	public String getSizeheight() {
+		return sizeheight;
+	}
+	public void setSizeheight(String sizeheight) {
+		this.sizeheight = sizeheight;
+	}
+	public String getSizewidth() {
+		return sizewidth;
+	}
+	public void setSizewidth(String sizewidth) {
+		this.sizewidth = sizewidth;
+	}
+	public void setHwritedt(String hwritedt) {
+		this.hwritedt = hwritedt;
+	}
+	private String hmapx;
+	private String hmapy;
+	private String hlink;
 	private String[] files;
-	private int hreplycnt;
-	private int hviewcnt;
 	
+	public String[] getFiles() {
+		return files;
+	}
+	public void setFiles(String[] files) {
+		this.files = files;
+	}
+	public String getHwritedt() {
+		return hwritedt;
+	}
+	public String getHlink() {
+		return hlink;
+	}
+	public void setHlink(String hlink) {
+		this.hlink = hlink;
+	}
+	public String getHaddr() {
+		return haddr;
+	}
+	public void setHaddr(String haddr) {
+		this.haddr = haddr;
+	}
 	
+	public String getHmapx() {
+		return hmapx;
+	}
+	public void setHmapx(String hmapx) {
+		this.hmapx = hmapx;
+	}
+	public String getHmapy() {
+		return hmapy;
+	}
+	public void setHmapy(String hmapy) {
+		this.hmapy = hmapy;
+	}
 	public int getHno() {
 		return hno;
 	}
@@ -85,23 +153,11 @@ public class HouseDto {
 	public void setHspecial(String hspecial) {
 		this.hspecial = hspecial;
 	}
-	public String getHzipcode() {
-		return hzipcode;
-	}
-	public void setHzipcode(String hzipcode) {
-		this.hzipcode = hzipcode;
-	}
-	public String getHaddr() {
+	public String gethaddr() {
 		return haddr;
 	}
-	public void setHaddr(String haddr) {
+	public void sethaddr(String haddr) {
 		this.haddr = haddr;
-	}
-	public String getHaddr2() {
-		return haddr2;
-	}
-	public void setHaddr2(String haddr2) {
-		this.haddr2 = haddr2;
 	}
 	public String getHlevel() {
 		return hlevel;
@@ -127,73 +183,23 @@ public class HouseDto {
 	public void setHholiday(String hholiday) {
 		this.hholiday = hholiday;
 	}
-	public Date getHwriterdt() {
-		return hwriterdt;
+	public String getZipbunho() {
+		return zipbunho;
 	}
-	public void setHwriterdt(Date hwriterdt) {
-		this.hwriterdt = hwriterdt;
+	public void setZipbunho(String zipbunho) {
+		this.zipbunho = zipbunho;
 	}
-	public Date getHregdate() {
-		return hregdate;
-	}
-	public void setHregdate(Date hregdate) {
-		this.hregdate = hregdate;
-	}
-	public String getHlocation() {
-		return hlocation;
-	}
-	public void setHlocation(String hlocation) {
-		this.hlocation = hlocation;
-	}
-	public int getHmapx() {
-		return hmapx;
-	}
-	public void setHmapx(int hmapx) {
-		this.hmapx = hmapx;
-	}
-	public int getHmapy() {
-		return hmapy;
-	}
-	public void setHmapy(int hmapy) {
-		this.hmapy = hmapy;
-	}
-	public String getHurl() {
-		return hurl;
-	}
-	public void setHurl(String hurl) {
-		this.hurl = hurl;
-	}
-	public String[] getFiles() {
-		return files;
-	}
-	public void setFiles(String[] files) {
-		this.files = files;
-	}
-	public int getHreplycnt() {
-		return hreplycnt;
-	}
-	public void setHreplycnt(int hreplycnt) {
-		this.hreplycnt = hreplycnt;
-	}
-	public int getHviewcnt() {
-		return hviewcnt;
-	}
-	public void setHviewcnt(int hviewcnt) {
-		this.hviewcnt = hviewcnt;
-	}
+	
 	@Override
 	public String toString() {
 		return "HouseDto [hno=" + hno + ", hnm=" + hnm + ", hcontent=" + hcontent + ", hkind=" + hkind + ", hphone="
 				+ hphone + ", hmenu=" + hmenu + ", hdetail=" + hdetail + ", himg=" + himg + ", hspecial=" + hspecial
-				+ ", hzipcode=" + hzipcode + ", haddr=" + haddr + ", haddr2=" + haddr2 + ", hlevel=" + hlevel
-				+ ", hvisit=" + hvisit + ", htime=" + htime + ", hholiday=" + hholiday + ", hwriterdt=" + hwriterdt
-				+ ", hregdate=" + hregdate + ", hlocation=" + hlocation + ", hmapx=" + hmapx + ", hmapy=" + hmapy
-				+ ", hurl=" + hurl + ", files=" + Arrays.toString(files) + ", hreplycnt=" + hreplycnt + ", hviewcnt="
-				+ hviewcnt + "]";
+				+ ", haddr=" + haddr + ", hlevel=" + hlevel + ", hvisit=" + hvisit + ", htime=" + htime + ", hholiday="
+				+ hholiday + ", zipbunho=" + zipbunho + ", hwritedt=" + hwritedt + ", title=" + title + ", link=" + link
+				+ ", thumbnail=" + thumbnail + ", sizeheight=" + sizeheight + ", sizewidth=" + sizewidth + ", hmapx="
+				+ hmapx + ", hmapy=" + hmapy + ", hlink=" + hlink + ", files=" + Arrays.toString(files) + "]";
 	}
-	
-	
-	
+
 	
 	
 }
