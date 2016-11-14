@@ -42,4 +42,10 @@ public class MemberServiceImpl implements MemberService {
 	public void mailConfrim(MemberDto member) throws Exception {
 		dao.mailConfrim(member);				
 	}
+
+	@Override
+	public int idcheck(MemberDto member) throws Exception {
+		return dao.idcheck(member);
+	}
+	
 }

@@ -75,7 +75,7 @@
 		</ul>
 
     <button type="submit" class="btn btn-primary">수정</button> 
-    <button type="submit" class="btn btn-warning">취소</button>
+    <button type="submit" class="btn btn-primary" id="goListBtn">취소 </button>
 
 	</div>
 </form>
@@ -211,9 +211,20 @@ $("#popup_img").on("click", function(){
 });	
 </script>
 
-
-
-
+<script>
+$(document).ready(function(){
+	
+	var formObj = $("form[role='form']");
+	
+	console.log(formObj);
+	
+$("#goListBtn ").on("click", function(){
+		formObj.attr("method", "get");
+		formObj.attr("action", "/house/list");
+		formObj.submit();
+	});
+});
+</script>
 
 			</div>
 			<!-- /.box -->

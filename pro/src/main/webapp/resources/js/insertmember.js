@@ -1,4 +1,6 @@
 
+var sub = true;
+
 function membercheck_ok() {
 	
 	var frm = document.frm;
@@ -7,6 +9,12 @@ function membercheck_ok() {
 		alert("아이디는 4자 이상으로 입력해주세요");
 		frm.mid.focus();
 		return false;
+	}
+	
+	else if ((frm.cid.value != frm.mid.value) || frm.cid.value == "") {
+		alert("아이디 중복 체크 해주세용");
+		frm.mid.focus();
+		return false;			
 	}
 	
 	else if (frm.mpw.value.length < 4) {
@@ -41,13 +49,17 @@ function membercheck_ok() {
 		return false;			
 	}
 	
-	
-	
 	else if (frm.firstmemail.value=="") {
 		alert("이메일을 입력하셔야 합니다.");
 		frm.firstmemail.focus();
 		return false;			
 	}
+	
+	else if(!sub){
+		return false;
+	}
+	
+	sub = false;
 	
 	return true;
 }

@@ -17,4 +17,6 @@ public interface MemberService {
   
   public void mailConfrim(MemberDto member) throws Exception;
   
+  public int idcheck(MemberDto member) throws Exception;
+  
 }

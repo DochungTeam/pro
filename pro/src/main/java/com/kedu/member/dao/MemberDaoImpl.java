@@ -50,4 +50,9 @@ public class MemberDaoImpl implements MemberDao {
 		session.update(namespace + ".mailConfrim", dto);
 	}
 	
+	@Override
+	public int idcheck(MemberDto dto) throws Exception {
+		return session.selectOne(namespace + ".idcheck", dto);
+	}
+	
 }
