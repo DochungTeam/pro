@@ -27,4 +27,6 @@ public interface BoardDao {
 	public List<BoardDto> listSearch(BoardSearchCriteria cri) throws Exception;
 	
 	public int listSearchCount(BoardSearchCriteria cri) throws Exception;
+	
+	public void updateRcount(int bno, int amount) throws Exception;
 }

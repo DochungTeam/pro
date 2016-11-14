@@ -3,13 +3,13 @@ package com.kedu.house.dao;
 import java.util.List;
 
 import com.kedu.house.dto.Criteria;
-import com.kedu.house.dto.SearchCriteria;
 import com.kedu.house.dto.HouseDto;
+import com.kedu.house.dto.SearchCriteria;
 
 public interface HouseDao {
 	public List<HouseDto> listAll()throws Exception;
 	
-	public String getTime();
+public String getTime();
 	
 	public void insertHouse(HouseDto dto);
 	
@@ -26,20 +26,5 @@ public interface HouseDao {
 	  public int listSearchCount(SearchCriteria cri)throws Exception;
 	  
 	  public List<String> getAttach(Integer hno)throws Exception;
-	  
-	  public HouseDto read(Integer hno) throws Exception;
-	  
-	  public void updateReplyCnt(Integer hno, int amount)throws Exception;
 
-	  public void updateViewCnt(Integer hno)throws Exception;
-	  
-	  public void deleteAttach(Integer hno)throws Exception;
-	  
-	  public void replaceAttach(String fullName, Integer hno)throws Exception;
-	  
-	  public void update(HouseDto dto) throws Exception;
-	  
-	  public void delete(Integer bno) throws Exception;
-	  
-	  
 }

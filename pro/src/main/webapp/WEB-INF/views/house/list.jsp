@@ -21,7 +21,7 @@
 				<div class="box-header with-border">
 					<h3 class="box-title">맛집 리스트</h3>
 				</div>
-				<div class="box-body">
+				<%-- <div class="box-body">
 					<table class="table table-bordered">
 						<tr>
 							<th style="width: 20px">no</th>
@@ -35,8 +35,7 @@
 
 							<tr>
 								<td>${houseDto.hno}</td>
-								<td><a
-									href='/house/readHouse${pageMaker.makeSearch(pageMaker.cri.page) }&hno=${houseDto.hno}'>
+								<td><a href='/house/readHouse${pageMaker.makeSearch(pageMaker.cri.page) }&hno=${houseDto.hno}'>
 										${houseDto.hnm} <strong>[ ${houseDto.hreplycnt }]</strong> 
 										</a></td>
 								<td>${houseDto.hkind}</td>
@@ -48,7 +47,48 @@
 						</c:forEach>
 
 					</table>
-				</div>
+					
+					
+				</div> --%>
+				
+				<!-- MAIN -->
+			<div class="wrapper cf">
+			
+			
+			
+			
+				
+			<!-- featured -->
+			
+			<div class="home-featured">
+			
+				<ul id="filter-buttons">
+					<li><a href="#" data-filter="*" class="selected">전체</a></li>
+					<li><a href="#" data-filter=".00">한식</a></li>
+					<li><a href="#" data-filter=".01">양식</a></li>
+					<li><a href="#" data-filter=".02">중식</a></li>
+					<li><a href="#" data-filter=".03">일식</a></li>
+					<li><a href="#" data-filter=".04">퓨전</a></li>
+					<li><a href="#" data-filter=".05">기타</a></li>
+				</ul>
+				
+				<!-- Filter container -->
+				
+				
+				<div id="filter-container" class="cf">
+				<c:forEach items="${list}" var="houseDto">
+					<figure class="${houseDto.hkind}">
+						<a href='/house/readHouse${pageMaker.makeSearch(pageMaker.cri.page) }&hno=${houseDto.hno}'class="thumb">
+						<img src="/resources/img/house/china2.jpg" alt="alt" /></a>
+						<figcaption>
+							<a href='/house/readHouse${pageMaker.makeSearch(pageMaker.cri.page) }&hno=${houseDto.hno}'>
+							<h3 class="heading"> ${houseDto.hnm} </h3></a>
+							주소 : ${houseDto.hzipcode} <br> TEL : ${houseDto.hphone}<br>  </figcaption>
+					</figure>
+					</c:forEach>
+					</div>
+					</div>
+					</div>
 				<!-- /.box-body -->
 
 
@@ -121,6 +161,69 @@
 				});
 
 			});
+</script>
+
+<script id="templateAttach" type="text/x-handlebars-template">
+<li data-src='{{fullName}}'>
+  <span class="mailbox-attachment-icon has-img"><img src="{{imgsrc}}" alt="Attachment"></span>
+  <div class="mailbox-attachment-info">
+	<a href="{{getLink}}" class="mailbox-attachment-name">{{fileName}}</a>
+	</span>
+  </div>
+</li>                
+</script>  
+
+<script>
+$(document).ready(function(){
+	
+	var formObj = $("form[role='form']");
+	
+	console.log(formObj);
+
+var hno = ${houseDto.hno};
+	var template = Handlebars.compile($("#templateAttach").html());
+	
+	$.getJSON("/house/getAttach/"+hno,function(list){
+		$(list).each(function(){
+			
+			var fileInfo = getFileInfo(this);
+			
+			var html = template(fileInfo);
+			
+			 $(".uploadedList").append(html);
+			
+		});
+	});
+	
+
+
+	$(".uploadedList").on("click", ".mailbox-attachment-info a", function(event){
+		
+		var fileLink = $(this).attr("href");
+		
+		if(checkImageType(fileLink)){
+			
+			event.preventDefault();
+					
+			var imgTag = $("#popup_img");
+			imgTag.attr("src", fileLink);
+			
+			console.log(imgTag.attr("src"));
+					
+			$(".popup").show('slow');
+			imgTag.addClass("show");		
+		}	
+	});
+	
+	$("#popup_img").on("click", function(){
+		
+		$(".popup").hide('slow');
+		
+	});	
+	
+		
+	
+});
 </script>
 
 <%@include file="../include/footer.jsp"%>
