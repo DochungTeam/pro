@@ -1,24 +1,23 @@
 package com.kedu.house.controller;
 
-import java.util.List;
+import java.io.InputStream;
+import java.net.URL;
+import java.net.URLDecoder;
 
 import javax.inject.Inject;
+import javax.lang.model.element.Element;
+import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.kedu.house.dto.SearchCriteria;
 import com.kedu.house.dto.HouseDto;
-import com.kedu.house.dto.PageMaker;
 import com.kedu.house.service.HouseService;
 
 @Controller
@@ -29,13 +28,26 @@ public class HouseController {
 	@Inject
 	private HouseService service;
 	
-	@RequestMapping(value="/houseList",method=RequestMethod.GET)
+/*	@RequestMapping(value="/houseList",method=RequestMethod.GET)
 	public void listAll(Model model)throws Exception{
 		logger.info("listAll!!");
 		
 		model.addAttribute("list",service.listAll());
-	}
+	}*/
 	
+	@RequestMapping(value="/houseList",method=RequestMethod.GET)
+	public void houseList(@RequestParam(required=false)String keyword,Model model) throws Exception{
+		logger.info(keyword);
+		if(keyword!=null){
+			model.addAttribute("list",service.searchHouse(keyword, 10, 1));
+			System.out.println(keyword);
+
+			model.addAttribute("list1",service.searchImage(keyword, 3, 1));
+			System.out.println(keyword);
+
+			logger.info(keyword);
+		}
+	}
 	@RequestMapping(value = "/insertHouse", method = RequestMethod.GET)
 	  public void insertHouseGET() throws Exception {
 
@@ -54,85 +66,16 @@ public class HouseController {
 
 	    return "redirect:/house/list";
 	  }
-	
-//	  @RequestMapping(value="/list",method=RequestMethod.GET)
-//		public void listPage(Model model)throws Exception{
-//		
-//		}
-	  
-	  @RequestMapping(value = "/list", method = RequestMethod.GET)
-	  public void listPage(@ModelAttribute("cri") SearchCriteria cri, Model model) throws Exception {
 
-	    logger.info(cri.toString());
-
-	    model.addAttribute("list", service.listSearchCriteria(cri));
-
-	    PageMaker pageMaker = new PageMaker();
-	    pageMaker.setCri(cri);
-
-	    pageMaker.setTotalCount(service.listSearchCount(cri));
-
-	    model.addAttribute("pageMaker", pageMaker);
-	  }
-	  
-	  @RequestMapping(value = "/readHouse", method = RequestMethod.GET)
-	  public void read(@RequestParam("hno") int hno, @ModelAttribute("cri") SearchCriteria cri, Model model)
-	      throws Exception {
-
-	    model.addAttribute(service.read(hno));
-	  }
-	  
-	  @RequestMapping(value = "/removePage", method = RequestMethod.POST)
-	  public String remove(@RequestParam("hno") int hno, SearchCriteria cri, RedirectAttributes rttr) throws Exception {
-
-	    service.remove(hno);
-
-	    rttr.addAttribute("page", cri.getPage());
-	    rttr.addAttribute("perPageNum", cri.getPerPageNum());
-	    rttr.addAttribute("searchType", cri.getSearchType());
-	    rttr.addAttribute("keyword", cri.getKeyword());
-
-	    rttr.addFlashAttribute("msg", "SUCCESS");
-
-	    return "redirect:/house/list";
-	  }
-
-	  @RequestMapping(value = "/modifyPage", method = RequestMethod.GET)
-	  public void modifyPagingGET(int hno, @ModelAttribute("cri") SearchCriteria cri, Model model) throws Exception {
-
-	    model.addAttribute(service.read(hno));
-	  }
-
-	  @RequestMapping(value = "/modifyPage", method = RequestMethod.POST)
-	  public String modifyPagingPOST(HouseDto house, SearchCriteria cri, RedirectAttributes rttr) throws Exception {
-
-	    logger.info(cri.toString());
-	    service.modify(house);
-
-	    rttr.addAttribute("page", cri.getPage());
-	    rttr.addAttribute("perPageNum", cri.getPerPageNum());
-	    rttr.addAttribute("searchType", cri.getSearchType());
-	    rttr.addAttribute("keyword", cri.getKeyword());
-
-	    rttr.addFlashAttribute("msg", "SUCCESS");
-
-	    logger.info(rttr.toString());
-
-	    return "redirect:/house/list";
-	  }
-	  
-	  @RequestMapping("/getAttach/{hno}")
-	  @ResponseBody
-	  public List<String> getAttach(@PathVariable("hno")Integer hno)throws Exception{
-	    
-	    return service.getAttach(hno);
-	  }
-	/*
-	@RequestMapping(value="/houseList",method=RequestMethod.GET)
-	public void houseList(@RequestParam(required=false)String keyword,Model model) throws Exception{
+	@RequestMapping(value="/houseRead",method=RequestMethod.GET)
+	public void houseRead(@RequestParam(required=false)String keyword,Model model) throws Exception{
+		logger.info(keyword);
 		if(keyword!=null){
 			model.addAttribute("list",service.searchHouse(keyword, 10, 1));
+			
+			logger.info(keyword);
 		}
 	}
-	*/
+	
+	
 }
