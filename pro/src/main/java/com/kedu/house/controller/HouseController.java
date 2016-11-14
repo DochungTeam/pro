@@ -73,6 +73,8 @@ public class HouseController {
 	    pageMaker.setTotalCount(service.listSearchCount(cri));
 
 	    model.addAttribute("pageMaker", pageMaker);
+	    
+	    
 	  }
 	  
 	  @RequestMapping(value = "/readHouse", method = RequestMethod.GET)

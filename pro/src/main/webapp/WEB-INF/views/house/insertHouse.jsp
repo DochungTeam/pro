@@ -75,10 +75,10 @@
 								<option value="">선택하세요</option>
 								<option value="00">한식</option>
 								<option value="01">양식</option>
-								<option value="03">중식</option>
-								<option value="04">일식</option>
-								<option value="05">퓨전</option>
-								<option value="06">디저트</option>
+								<option value="02">중식</option>
+								<option value="03">일식</option>
+								<option value="04">퓨전</option>
+								<option value="05">디저트</option>
 						</select></td>
 					</tr>
 					<tr>
@@ -104,6 +104,7 @@
 	
 				</table>
 			<button type="submit" class="btn btn-primary" onclick="return housecheck_ok()" >등록</button>
+			<button type="submit" class="btn btn-primary" id="goListBtn">취소 </button>
 			</div>
 			
 		</form>
@@ -191,6 +192,21 @@ $("#insertForm").submit(function(event){
 
 
 
+</script>
+
+<script>
+$(document).ready(function(){
+	
+	var formObj = $("form[role='form']");
+	
+	console.log(formObj);
+	
+$("#goListBtn ").on("click", function(){
+		formObj.attr("method", "get");
+		formObj.attr("action", "/house/list");
+		formObj.submit();
+	});
+});
 </script>
 
 
