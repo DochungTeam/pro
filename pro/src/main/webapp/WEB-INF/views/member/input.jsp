@@ -76,6 +76,44 @@
 
 		}
 		
+		
+		</script>
+		
+		<script type="text/javascript">
+		$(document).ready(function(){
+			$(".checkId").on("click", function(){
+				
+				
+				var mid = $("#mid").val();
+				
+				$.ajax({
+					type : 'post',
+					url : '/member/idcheck/',
+					headers : {
+						"Content-Type" : "application/json",
+						"X-HTTP-Method-Override" : "PUT"
+					},
+					data : JSON.stringify({mid:mid}),
+					dataType : "text",
+					success : function(result){
+						alert(result);
+						console.log("result : " + result);
+						if(result == "SUCCESS"){
+							alert("사용 가능한 아이디입니다!");
+							$("#cid").val(mid);
+							
+						}else if(result == "FALL"){
+							alert("사용 못합니당~");
+							$("#mid").val("");
+						}
+						
+					}
+					
+				});
+			});
+			
+		});
+		
 		</script>
 		
 		<style type="text/css">
@@ -121,6 +159,8 @@
 					<div class="last">
 						<h4>아이디</h4>
 						<input type="text" id="mid" name="mid" maxlength="10">
+						<input type="hidden" id="cid" name="cid" value="">
+						<input type="button" class="checkId" value="중복검사">
 						<p></p>
 					</div>
 					<div class="last">
@@ -161,8 +201,8 @@
 							<option value="@daum.net">daum.net</option>							
 						</select>
 					</div>
-					<button type="submit" class="link-button green" onclick="return membercheck_ok();">&nbsp;등록&nbsp;</button>
-					<button id="cencle" class="link-button red">&nbsp;취소&nbsp;</button>
+					<input type="submit" class="link-button green" onclick="return membercheck_ok();" value="&nbsp;등록&nbsp;"/>
+					<input type="button" id="cencle" class="link-button red" value="&nbsp;취소&nbsp;"/>
 					</form>
 	        		
 	        		

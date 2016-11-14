@@ -12,12 +12,15 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.util.WebUtils;
 
@@ -114,6 +117,24 @@ public class MemberController {
 	public void memberF(Model model)throws Exception{
 	}
   
+	
+	@RequestMapping(value="/idcheck", method=RequestMethod.POST)
+	@ResponseBody
+	public String idcheck(@RequestBody MemberDto member) throws Exception{
+		
+		String result = null;
+		
+		int check = service.idcheck(member);
+		
+		if(check==0){
+			result = "SUCCESS";
+		}else{
+			result = "FALL";
+		}
+		
+		return result;
+		
+	}
 
 
 	@RequestMapping(value = "/loginPost", method = RequestMethod.POST)

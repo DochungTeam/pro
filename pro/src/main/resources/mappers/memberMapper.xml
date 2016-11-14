@@ -79,6 +79,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		and
 			muuid = #{muuid}
 	</update>
+	<select id="idcheck" resultType="int">
+		select 
+			count(mid)
+		from 
+			member 
+		where 
+			1=1
+		and
+			mid = #{mid}
+	</select>
 
 </mapper>
 
