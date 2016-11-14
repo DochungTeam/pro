@@ -2,8 +2,6 @@
 	pageEncoding="UTF-8"%>
 
 <%@include file="../include/script.jsp"%>
-<link href="/resources/jqueryui/jquery-ui.min.css" rel="stylesheet">
-<script type="text/javascript" src="/resources/jqueryui/jquery-ui.min.js"></script>
 
 <style>
 .fileDrop {
@@ -12,40 +10,10 @@
   border: 1px dotted gray;
   background-color: #B8B8B8;
   margin: auto;
-  
 }
-</style>
-<script type="text/javascript">
-$(document).ready(function(){
-	
-	$(".haddr").on("click",function(e){
-	
-		dialog.dialog("open");
-		
-		
-	});
-	var dialog=$(".dialogLayout").dialog({
-		autoOpen:false,
-		open:function(a){
-             
-		/* 	 var name=$(".modalbutton").parents("tr").find("td").eq(0).find("input").val(); 
-			alert(name);
-			$("#modalhnm").text($(".modalbutton").parents("tr").find("td").eq(0).find("input").val()); 
-			$("#modalcontent").text($(".hcontent").val());
-			$("#modaltel").text($(".hphone").val());
-			$("#modallink").text('<a href=' +$(".hlink").val()+'></a>');
-			$("#modalkind").text($(".hkind").val());
-			$("#modaladdr").text($(".haddr").val()); 
-				 */
-		},
-		width:500,
-	});	
-	
-	$(".haddr").button();	
-	
-});
 
-</script>
+
+</style>
 
 <%@include file="../include/header.jsp"%>
 <!-- Main content -->
@@ -90,10 +58,17 @@ $(document).ready(function(){
 						<td><input type ="text" name="hphone" size="20" maxlength="11">(전화번호는 - 없이 입력해주세요.)</td>
 					</tr>
 					<tr>
-						<th style="background-color : #B8B8B8; "> 주소 *</th>
-						<td><input type ="text" name="haddr" readonly><input type ="button" value="주소검색" class="haddr"></td>
+						<th style="background-color : #B8B8B8; "> 우편번호 *</th>
+						<td><input type ="text" name="hzipcode" readonly><input type ="button" value="주소검색"></td>
+					</tr>
+					<tr>
+						<th style="background-color : #B8B8B8; "> 주소1 *</th>
+						<td><input type ="text" name="haddr" readonly></td>
 					</tr> 
-					
+					<tr>
+						<th style="background-color : #B8B8B8; "> 주소2 *</th>
+						<td><input type ="text" name="haddr2" >(나머지 주소)</td>
+					</tr>
 					<tr>
 						<th style="background-color : #B8B8B8; "> 맛집테마 *</th>
 						<td><select class="select" name="hkind">
@@ -138,13 +113,6 @@ $(document).ready(function(){
 	</div>
 		<!--/.col (left) -->
 
-	</div>
-	<div class="dialogLayout" title="주소 검색">
-	<form >
-		<input type="text" name="keyword">
-		<input type="submit" value="맛집 검색">
-		
-	</form>
 	</div>
 	<!-- /.row -->
 </section>
@@ -243,5 +211,4 @@ $("#goListBtn ").on("click", function(){
 
 
  
-
 <%@include file="../include/footer.jsp"%>
