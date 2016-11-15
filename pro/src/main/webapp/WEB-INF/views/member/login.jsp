@@ -204,6 +204,9 @@
 						<input type="submit" class="link-button green" onclick="return logincheck_ok();" value=" 로그인 " /> 
 						<input type="button" id="censle" class="link-button red" value=" 취소 " />
 					</form>
+					<div>
+						<p><a href="/member/input">아이디가 없으십니까?</a></p>
+					</div>
 					<div id="sns_facebook">
 						<button class="loginBtn" onclick="faceLogin();">
 							<span class="icon"></span>
