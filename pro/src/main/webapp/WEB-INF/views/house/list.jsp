@@ -202,7 +202,7 @@ $(document).ready(function(){
 			 str += "<input type='hidden' name='files["+index+"]' value='"+$(this).attr("href") +"'> ";
 	console.log(formObj);
 
-var hno = ${houseDto.hno};
+	var hno = ${houseDto.hno};
 	var template = Handlebars.compile($("#templateAttach").html());
 	
 	$.getJSON("/house/getAttach/"+hno,function(list){
@@ -221,8 +221,8 @@ var hno = ${houseDto.hno};
 		
 		that.get(0).submit();
 	});
-	
-	
+	});	
+});
 	$(".btn-warning").on("click", function(){
 	  self.location = "/house/list?page=${cri.page}&perPageNum=${cri.perPageNum}"+
 			  "&searchType=${cri.searchType}&keyword=${cri.keyword}";
@@ -317,6 +317,20 @@ $("#popup_img").on("click", function(){
 });	
 </script>
 
+<script>
+$(document).ready(function(){
+	
+	var formObj = $("form[role='form']");
+	
+	console.log(formObj);
+	
+	$("#goListBtn ").on("click", function(){
+		formObj.attr("method", "get");
+		formObj.attr("action", "/house/list");
+		formObj.submit();
+	});
+});
+</script>
 
 			</div>
 			<!-- /.box -->
