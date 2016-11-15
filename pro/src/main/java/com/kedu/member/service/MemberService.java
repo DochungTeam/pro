@@ -7,7 +7,7 @@ import com.kedu.member.dto.MemberDto;
 
 public interface MemberService {
 
-  public MemberDto login(LoginDto dto) throws Exception;
+  public MemberDto login(MemberDto member) throws Exception;
   
   public MemberDto checkLoginBefore(String value);  
   
@@ -18,5 +18,7 @@ public interface MemberService {
   public void mailConfrim(MemberDto member) throws Exception;
   
   public int idcheck(MemberDto member) throws Exception;
+  
+  public int logincheck(MemberDto member) throws Exception;
   
 }

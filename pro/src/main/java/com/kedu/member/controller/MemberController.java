@@ -137,26 +137,88 @@ public class MemberController {
 	}
 
 
-	@RequestMapping(value = "/loginPost", method = RequestMethod.POST)
-	public void loginPOST(LoginDto dto, HttpSession session, Model model) throws Exception {
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	public String loginPOST(MemberDto member, HttpSession session, Model model) throws Exception {
 
-		MemberDto vo = service.login(dto);
+		String url = "";
+		String mail = "";
+		StringBuilder mid = null;
+				
+		System.out.println(member);
+				
+		if(member.getMmanyn() == 3){
+			
+			mid = new StringBuilder();
+			
+			mail = member.getMemail();
+			
+			System.out.println(mail.indexOf('@'));
+			System.out.println(mail.substring(0, mail.indexOf('@')));
+			
+			mid.append(mail.substring(0, mail.indexOf('@')));
+			mid.append("(facebook)");
+			
+			member.setMid(mid.toString());
+		
+			session.setAttribute("loginMember", member);
+			model.addAttribute("msg", "방문을 환영합니다 "+member.getMnm()+"님!");
+			url = "redirect:/member/main";
+		} else if (member.getMmanyn() == 4){
+			
+			mid = new StringBuilder();
+			
+			mail = member.getMemail();
+			
+			mid.append(mail.substring(0, mail.indexOf('@')));
+			mid.append("(google)");
+			
+			member.setMid(mid.toString());
+			
+			session.setAttribute("loginMember", member);
 
-		if (vo == null) {
+			model.addAttribute("msg", "방문을 환영합니다 "+member.getMnm()+"님!");
+			url = "redirect:/member/main";
+		} else{
+			
+			int check = service.logincheck(member);
+			
+			System.out.println(check);
+			
+			if(check == 1){
+				member = service.login(member);
+				
+				session.setAttribute("loginMember", member);
+								
+				model.addAttribute("msg", "방문을 환영합니다 "+member.getMnm()+"님!");
+				url = "redirect:/member/main";
+			}else{
+				model.addAttribute("msg", "로그인에 실패하셨습니다.");
+				url = "redirect:/member/login";
+			}
+		}
+		
+		return url;
+		
+		/*
+		MemberDto memberDto = service.login(loginDto);
+
+		if (memberDto == null) {
 			return;
 		}
 
-		model.addAttribute("memberDto", vo);
-
-		if (dto.ismCookie()) {
+		model.addAttribute("memberDto", memberDto);
+		
+		if (loginDto.ismCookie()) {
 
 			int amount = 60 * 60 * 24 * 7;
 
 			Date sessionLimit = new Date(System.currentTimeMillis() + (1000 * amount));
 
 		}
+		*/
 
 	}
+
 
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public void logout(HttpServletRequest request, 
