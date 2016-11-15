@@ -192,7 +192,6 @@ $(document).ready(function(){
 		
 	var formObj = $("form[role='form']");
 	
-<<<<<<< HEAD
 	formObj.submit(function(event){
 		event.preventDefault();
 		
@@ -201,7 +200,6 @@ $(document).ready(function(){
 		var str ="";
 		$(".uploadedList .delbtn").each(function(index){
 			 str += "<input type='hidden' name='files["+index+"]' value='"+$(this).attr("href") +"'> ";
-=======
 	console.log(formObj);
 
 var hno = ${houseDto.hno};
@@ -216,7 +214,6 @@ var hno = ${houseDto.hno};
 			
 			 $(".uploadedList").append(html);
 			
->>>>>>> 7719c60e6b06c9d3084d3e0601a929be2c63c4bf
 		});
 		
 		that.append(str);
@@ -320,20 +317,6 @@ $("#popup_img").on("click", function(){
 });	
 </script>
 
-<script>
-$(document).ready(function(){
-	
-	var formObj = $("form[role='form']");
-	
-	console.log(formObj);
-	
-$("#goListBtn ").on("click", function(){
-		formObj.attr("method", "get");
-		formObj.attr("action", "/house/list");
-		formObj.submit();
-	});
-});
-</script>
 
 			</div>
 			<!-- /.box -->
