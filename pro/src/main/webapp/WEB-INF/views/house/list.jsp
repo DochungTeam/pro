@@ -317,20 +317,7 @@ $("#popup_img").on("click", function(){
 });	
 </script>
 
-<script>
-$(document).ready(function(){
-	
-	var formObj = $("form[role='form']");
-	
-	console.log(formObj);
-	
-	$("#goListBtn ").on("click", function(){
-		formObj.attr("method", "get");
-		formObj.attr("action", "/house/list");
-		formObj.submit();
-	});
-});
-</script>
+
 
 			</div>
 			<!-- /.box -->
