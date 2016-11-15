@@ -28,7 +28,8 @@
 	</beans:bean>
 
   	<beans:bean id="uploadPath" class="java.lang.String">
-    	<beans:constructor-arg value="C:\\zzz\\upload">
+    	<!-- <beans:constructor-arg value="C:\\zzz\\upload"> -->
+    	<beans:constructor-arg value="D:\\dev_spring\\workspace\\teampro\\pro\\src\\main\\webapp\\resources\\img\\house">
     	</beans:constructor-arg>
   	</beans:bean>
 	<!-- 파일업로드끝 -->
