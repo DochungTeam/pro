@@ -193,6 +193,7 @@ $(document).ready(function(){
 		
 	var formObj = $("form[role='form']");
 	
+<<<<<<< HEAD
 	formObj.submit(function(event){
 		event.preventDefault();
 		
@@ -201,6 +202,22 @@ $(document).ready(function(){
 		var str ="";
 		$(".uploadedList .delbtn").each(function(index){
 			 str += "<input type='hidden' name='files["+index+"]' value='"+$(this).attr("href") +"'> ";
+=======
+	console.log(formObj);
+
+var hno = ${houseDto.hno};
+	var template = Handlebars.compile($("#templateAttach").html());
+	
+	$.getJSON("/house/getAttach/"+hno,function(list){
+		$(list).each(function(){
+			
+			var fileInfo = getFileInfo(this);
+			
+			var html = template(fileInfo);
+			
+			 $(".uploadedList").append(html);
+			
+>>>>>>> 7719c60e6b06c9d3084d3e0601a929be2c63c4bf
 		});
 		
 		that.append(str);
