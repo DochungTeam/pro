@@ -83,7 +83,7 @@ public class MemberController {
 		emailSender.SendEmail(email);
 		
 		
-		return "redirect:/member/main";
+		return "redirect:/house/list";
 				
 	}
 	
@@ -161,8 +161,7 @@ public class MemberController {
 			member.setMid(mid.toString());
 		
 			session.setAttribute("loginMember", member);
-			model.addAttribute("msg", "방문을 환영합니다 "+member.getMnm()+"님!");
-			url = "redirect:/member/main";
+			url = "redirect:/house/list";
 		} else if (member.getMmanyn() == 4){
 			
 			mid = new StringBuilder();
@@ -176,8 +175,7 @@ public class MemberController {
 			
 			session.setAttribute("loginMember", member);
 
-			model.addAttribute("msg", "방문을 환영합니다 "+member.getMnm()+"님!");
-			url = "redirect:/member/main";
+			url = "redirect:/house/list";
 		} else{
 			
 			int check = service.logincheck(member);
@@ -189,11 +187,9 @@ public class MemberController {
 				
 				session.setAttribute("loginMember", member);
 								
-				model.addAttribute("msg", "방문을 환영합니다 "+member.getMnm()+"님!");
-				url = "redirect:/member/main";
+				url = "redirect:/house/list";
 			}else{
-				model.addAttribute("msg", "로그인에 실패하셨습니다.");
-				url = "redirect:/member/login";
+				url = "redirect:/house/list";
 			}
 		}
 		
@@ -221,7 +217,7 @@ public class MemberController {
 
 
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
-	public void logout(HttpServletRequest request, 
+	public String logout(HttpServletRequest request, 
 		HttpServletResponse response, HttpSession session) throws Exception {
 
 		Object obj = session.getAttribute("loginMember");
@@ -230,6 +226,8 @@ public class MemberController {
 			session.removeAttribute("loginMember");
 	  		session.invalidate();
 	  	}
+		
+		return "redirect:/house/list";
   	}
 
 }
