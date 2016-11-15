@@ -2,13 +2,13 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
-<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="/resources/plugins/jQuery/jQuery-2.1.4.min.js"></script>
 <jsp:include page="../include/script.jsp"/>
 <jsp:include page="../include/header.jsp"/>
 
-<table class="">
+<table class="table table-bordered">
 	<tr>
-		<th style="width: 10px">글번호</th>
+		<th style="width: 40px">글번호</th>
 		<th>제목</th>
 		<th>작성자</th>
 		<th>등록일</th>
@@ -29,7 +29,7 @@
 
 </table>
 
-<div class="">
+<div>
 	<button type="submit" id="newBtn">글쓰기</button>
 </div>
 
@@ -59,7 +59,7 @@
 	<input type="hidden" name="perPageNum" value="${pageMaker.cri.perPageNum }">
 </form>
 
-<div class="">
+<div class="box-body">
 
 	<select id="selectSearch" name="searchType">
 		<option value="t"

@@ -2,6 +2,8 @@ package com.kedu.board.dto;
 
 import java.util.Date;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class BoardDto {
 
 	private int bno;
@@ -12,8 +14,15 @@ public class BoardDto {
 	private int bboard;
 	private Date bupdatedt;
 	private String bwriter;
+	private MultipartFile filedata;
 	private int rcount;
 	
+	public MultipartFile getFiledata() {
+		return filedata;
+	}
+	public void setFiledata(MultipartFile filedata) {
+		this.filedata = filedata;
+	}
 	public int getRcount() {
 		return rcount;
 	}
@@ -73,7 +82,7 @@ public class BoardDto {
 	public String toString() {
 		return "BoardDto [bno=" + bno + ", btitle=" + btitle + ", bcontent=" + bcontent + ", bwritedt=" + bwritedt
 				+ ", bcount=" + bcount + ", bboard=" + bboard + ", bupdatedt=" + bupdatedt + ", bwriter=" + bwriter
-				+ ", rcount=" + rcount + ", toString()=" + super.toString() + "]";
+				+ ", filedata=" + filedata + ", rcount=" + rcount + ", toString()=" + super.toString() + "]";
 	}
-	
+
 }

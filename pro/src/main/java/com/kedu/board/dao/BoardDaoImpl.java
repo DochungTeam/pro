@@ -86,4 +86,9 @@ public class BoardDaoImpl implements BoardDao {
 		
 		session.update(namespace + ".updateRcount", paramMap);
 	}
+	
+	@Override
+	public void updateBcount(int bno) throws Exception {
+		session.update(namespace + ".updateBcount", bno);
+	}
 }
