@@ -17,9 +17,9 @@ public class MemberServiceImpl implements MemberService {
 	private MemberDao dao;
 
 	@Override
-	public MemberDto login(LoginDto dto) throws Exception {
+	public MemberDto login(MemberDto member) throws Exception {
 
-		return dao.login(dto);
+		return dao.login(member);
 	}
   
 
@@ -46,6 +46,11 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public int idcheck(MemberDto member) throws Exception {
 		return dao.idcheck(member);
+	}
+	
+	@Override
+	public int logincheck(MemberDto member) throws Exception {
+		return dao.logincheck(member);
 	}
 	
 }

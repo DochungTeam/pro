@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <html class="no-js">
-
 	<head>
 		<title>메인화면</title>
 		<jsp:include page="../include/script.jsp"/>
+		<script src="/resources/js/jquery-1.7.1.min.js"></script>
 	</head>
-	
 	
 	<body class="home">
 	
@@ -29,10 +29,10 @@
 			
 				<ul id="filter-buttons">
 					<li><a href="#" data-filter="*" class="selected">show all</a></li>
-					<li><a href="#" data-filter=".web">web</a></li>
-					<li><a href="#" data-filter=".print">print</a></li>
-					<li><a href="#" data-filter=".design">design</a></li>
-					<li><a href="#" data-filter=".photo">photo</a></li>
+					<li><a href="#" data-filter=".web">${loginMember.muuid }</a></li>
+					<li><a href="#" data-filter=".design">${loginMember.mid }</a></li>
+					<li><a href="#" data-filter=".print">${loginMember.mmanyn }</a></li>
+					<li><a href="#" data-filter=".photo">${loginMember.mnm }</a></li>
 				</ul>
 				
 				<!-- Filter container -->

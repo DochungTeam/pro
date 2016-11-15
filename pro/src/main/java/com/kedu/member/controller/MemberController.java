@@ -83,7 +83,7 @@ public class MemberController {
 		emailSender.SendEmail(email);
 		
 		
-		return "redirect:/member/main";
+		return "redirect:/house/list";
 				
 	}
 	
@@ -137,48 +137,97 @@ public class MemberController {
 	}
 
 
-	@RequestMapping(value = "/loginPost", method = RequestMethod.POST)
-	public void loginPOST(LoginDto dto, HttpSession session, Model model) throws Exception {
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	public String loginPOST(MemberDto member, HttpSession session, Model model) throws Exception {
 
-		MemberDto vo = service.login(dto);
+		String url = "";
+		String mail = "";
+		StringBuilder mid = null;
+				
+		System.out.println(member);
+				
+		if(member.getMmanyn() == 3){
+			
+			mid = new StringBuilder();
+			
+			mail = member.getMemail();
+			
+			System.out.println(mail.indexOf('@'));
+			System.out.println(mail.substring(0, mail.indexOf('@')));
+			
+			mid.append(mail.substring(0, mail.indexOf('@')));
+			mid.append("(facebook)");
+			
+			member.setMid(mid.toString());
+		
+			session.setAttribute("loginMember", member);
+			url = "redirect:/house/list";
+		} else if (member.getMmanyn() == 4){
+			
+			mid = new StringBuilder();
+			
+			mail = member.getMemail();
+			
+			mid.append(mail.substring(0, mail.indexOf('@')));
+			mid.append("(google)");
+			
+			member.setMid(mid.toString());
+			
+			session.setAttribute("loginMember", member);
 
-		if (vo == null) {
+			url = "redirect:/house/list";
+		} else{
+			
+			int check = service.logincheck(member);
+			
+			System.out.println(check);
+			
+			if(check == 1){
+				member = service.login(member);
+				
+				session.setAttribute("loginMember", member);
+								
+				url = "redirect:/house/list";
+			}else{
+				url = "redirect:/house/list";
+			}
+		}
+		
+		return url;
+		
+		/*
+		MemberDto memberDto = service.login(loginDto);
+
+		if (memberDto == null) {
 			return;
 		}
 
-		model.addAttribute("memberDto", vo);
-
-		if (dto.ismCookie()) {
+		model.addAttribute("memberDto", memberDto);
+		
+		if (loginDto.ismCookie()) {
 
 			int amount = 60 * 60 * 24 * 7;
 
 			Date sessionLimit = new Date(System.currentTimeMillis() + (1000 * amount));
 
 		}
+		*/
 
 	}
 
+
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
-	public void logout(HttpServletRequest request, 
+	public String logout(HttpServletRequest request, 
 		HttpServletResponse response, HttpSession session) throws Exception {
 
-		Object obj = session.getAttribute("login");
+		Object obj = session.getAttribute("loginMember");
 
 		if (obj != null) {
-			
-			MemberDto dto = (MemberDto) obj;
-
-			session.removeAttribute("login");
+			session.removeAttribute("loginMember");
 	  		session.invalidate();
-
-	  		Cookie loginCookie = WebUtils.getCookie(request, "loginCookie");
-
-	  		if (loginCookie != null) {
-	  			loginCookie.setPath("/");
-	  			loginCookie.setMaxAge(0);
-	  			response.addCookie(loginCookie);
-	  		}
 	  	}
+		
+		return "redirect:/house/list";
   	}
 
 }

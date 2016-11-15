@@ -22,7 +22,7 @@ public class MemberDaoImpl implements MemberDao {
 	private static String namespace ="com.kedu.mapper.MemberMapper";	
 
 	@Override
-	public MemberDto login(LoginDto dto) throws Exception {
+	public MemberDto login(MemberDto dto) throws Exception {
 		
 		return session.selectOne(namespace +".login", dto);
 	}
@@ -53,6 +53,11 @@ public class MemberDaoImpl implements MemberDao {
 	@Override
 	public int idcheck(MemberDto dto) throws Exception {
 		return session.selectOne(namespace + ".idcheck", dto);
+	}
+	
+	@Override
+	public int logincheck(MemberDto dto) throws Exception {
+		return session.selectOne(namespace + ".logincheck", dto);
 	}
 	
 }

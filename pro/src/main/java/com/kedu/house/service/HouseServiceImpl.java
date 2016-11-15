@@ -117,7 +117,18 @@ public class HouseServiceImpl implements HouseService{
 	    dao.delete(hno);
 	  } 
 
-	
+	  @Transactional
+	  @Override
+	  public void list(HouseDto house) throws Exception {
+	    dao.list(house);
+	    
+	    Integer hno = house.getHno();
+	    
+	    String[] files = house.getFiles();
+	    
+	    if(files == null) { return; } 
+	  
+	  }
 /*
 	@Override
 	public List<HouseDto> searchHouse(String keyword, int display, int start) throws Exception {

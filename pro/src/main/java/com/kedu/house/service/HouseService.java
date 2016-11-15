@@ -27,6 +27,8 @@ public interface HouseService {
 	  public void modify(HouseDto house) throws Exception;
 
 	  public void remove(Integer hno) throws Exception;
+	  
+	  public void list(HouseDto house) throws Exception;
 
 	}
 	

@@ -2,7 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ page session="false"%>
 
 <%@include file="../include/script.jsp"%>
 <%@include file="../include/header.jsp"%>
@@ -55,7 +54,7 @@
 			<div class="wrapper cf">
 			
 			
-			
+			<input type='hidden' name='hno' value="${houseDto.hno}">
 			
 				
 			<!-- featured -->
@@ -79,7 +78,7 @@
 				<c:forEach items="${list}" var="houseDto">
 					<figure class="${houseDto.hkind}">
 						<a href='/house/readHouse${pageMaker.makeSearch(pageMaker.cri.page) }&hno=${houseDto.hno}'class="thumb">
-						<img src="/resources/img/house/china2.jpg" alt="alt" /></a>
+						<ul class="mailbox-attachments clearfix uploadedList" ></ul></a>
 						<figcaption>
 							<a href='/house/readHouse${pageMaker.makeSearch(pageMaker.cri.page) }&hno=${houseDto.hno}'>
 							<h3 class="heading"> ${houseDto.hnm} </h3></a>
@@ -90,7 +89,6 @@
 					</div>
 					</div>
 				<!-- /.box-body -->
-
 
 				<div class="box-footer">
 
@@ -173,14 +171,38 @@
 </li>                
 </script>  
 
+ <!-- 파일업로드 ㅡㅡ 왜 안되는거지 -->
+<script type="text/javascript" src="/resources/js/upload.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
+
+<script id="template" type="text/x-handlebars-template">
+<li>
+  <span class="mailbox-attachment-icon has-img"><img src="{{imgsrc}}" alt="Attachment"></span>
+  <div class="mailbox-attachment-info">
+	<a href="{{getLink}}" class="mailbox-attachment-name">{{fileName}}</a>
+	<a href="{{fullName}}" 
+     class="btn btn-default btn-xs pull-right delbtn"><i class="fa fa-fw fa-remove"></i></a>
+	</span>
+  </div>
+</li>                
+</script>    
+
 <script>
 $(document).ready(function(){
-	
+		
 	var formObj = $("form[role='form']");
 	
+	formObj.submit(function(event){
+		event.preventDefault();
+		
+		var that = $(this);
+		
+		var str ="";
+		$(".uploadedList .delbtn").each(function(index){
+			 str += "<input type='hidden' name='files["+index+"]' value='"+$(this).attr("href") +"'> ";
 	console.log(formObj);
 
-var hno = ${houseDto.hno};
+	var hno = ${houseDto.hno};
 	var template = Handlebars.compile($("#templateAttach").html());
 	
 	$.getJSON("/house/getAttach/"+hno,function(list){
@@ -193,37 +215,119 @@ var hno = ${houseDto.hno};
 			 $(".uploadedList").append(html);
 			
 		});
+		
+		that.append(str);
+		console.log(str);
+		
+		that.get(0).submit();
 	});
-	
-
-
-	$(".uploadedList").on("click", ".mailbox-attachment-info a", function(event){
-		
-		var fileLink = $(this).attr("href");
-		
-		if(checkImageType(fileLink)){
-			
-			event.preventDefault();
-					
-			var imgTag = $("#popup_img");
-			imgTag.attr("src", fileLink);
-			
-			console.log(imgTag.attr("src"));
-					
-			$(".popup").show('slow');
-			imgTag.addClass("show");		
-		}	
-	});
-	
-	$("#popup_img").on("click", function(){
-		
-		$(".popup").hide('slow');
-		
 	});	
-	
-		
+});
+	$(".btn-warning").on("click", function(){
+	  self.location = "/house/list?page=${cri.page}&perPageNum=${cri.perPageNum}"+
+			  "&searchType=${cri.searchType}&keyword=${cri.keyword}";
+	});
 	
 });
+var template = Handlebars.compile($("#template").html());
+$(".fileDrop").on("dragenter dragover", function(event){
+	event.preventDefault();
+});
+$(".fileDrop").on("drop", function(event){
+	event.preventDefault();
+	
+	var files = event.originalEvent.dataTransfer.files;
+	
+	var file = files[0];
+	//console.log(file);
+	
+	var formData = new FormData();
+	
+	formData.append("file", file);	
+	
+	$.ajax({
+		  url: '/uploadAjax',
+		  data: formData,
+		  dataType:'text',
+		  processData: false,
+		  contentType: false,
+		  type: 'POST',
+		  success: function(data){
+			  
+			  var fileInfo = getFileInfo(data);
+			  
+			  var html = template(fileInfo);
+			  
+			  $(".uploadedList").append(html);
+		  }
+		});	
+});
+$(".uploadedList").on("click", ".delbtn", function(event){
+	
+	event.preventDefault();
+	
+	var that = $(this);
+	 
+	$.ajax({
+	   url:"/deleteFile",
+	   type:"post",
+	   data: {fileName:$(this).attr("href")},
+	   dataType:"text",
+	   success:function(result){
+		   if(result == 'deleted'){
+			   that.closest("li").remove();
+		   }
+	   }
+   });
+});
+var hno = ${houseDto.hno};
+var template = Handlebars.compile($("#template").html());
+$.getJSON("/house/getAttach/"+hno,function(list){
+	$(list).each(function(){
+		
+		var fileInfo = getFileInfo(this);
+		
+		var html = template(fileInfo);
+		
+		 $(".uploadedList").append(html);
+		
+	});
+});
+$(".uploadedList").on("click", ".mailbox-attachment-info a", function(event){
+	
+	var fileLink = $(this).attr("href");
+	
+	if(checkImageType(fileLink)){
+		
+		event.preventDefault();
+				
+		var imgTag = $("#popup_img");
+		imgTag.attr("src", fileLink);
+		
+		console.log(imgTag.attr("src"));
+				
+		$(".popup").show('slow');
+		imgTag.addClass("show");		
+	}	
+});
+$("#popup_img").on("click", function(){
+	
+	$(".popup").hide('slow');
+	
+});	
 </script>
+
+
+
+			</div>
+			<!-- /.box -->
+		</div>
+		<!--/.col (left) -->
+
+	</div>
+	<!-- /.row -->
+</section>
+<!-- /.content -->
+<!-- /.content-wrapper -->
 
 <%@include file="../include/footer.jsp"%>
