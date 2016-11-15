@@ -34,7 +34,7 @@ select fullname from house_attach where hno = #{hno} order by hregdate
 
 <select id="read" resultType="com.kedu.house.dto.HouseDto">
  select 
-   hno, hnm, hcontent, hkind, hregdate, hviewcnt 
+   hno, hnm, hphone, haddr, haddr2, hmenu, htime, hholiday, hurl, hcontent, hkind, hregdate, hviewcnt 
  from 
    house 
  where hno = #{hno}
