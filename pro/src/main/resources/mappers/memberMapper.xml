@@ -10,7 +10,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			  mid
 			, mpw
 			, mnm
-			, muuid 
+			, muuid
+			, mmanyn
 		from 
 			member 
 		where 
@@ -89,7 +90,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		and
 			mid = #{mid}
 	</select>
-
+	<select id="logincheck" resultType="int">
+		select 
+			count(mid)
+		from 
+			member 
+		where 
+			1=1
+		and
+			mid = #{mid} 
+		and 
+			mpw = #{mpw}
+	</select>
 </mapper>
 
 
