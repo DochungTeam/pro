@@ -41,5 +41,7 @@ public interface HouseDao {
 	  
 	  public void delete(Integer bno) throws Exception;
 	  
+	  public void list(HouseDto dto) throws Exception;
+	  
 	  
 }

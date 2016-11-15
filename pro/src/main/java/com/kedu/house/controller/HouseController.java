@@ -74,7 +74,6 @@ public class HouseController {
 
 	    model.addAttribute("pageMaker", pageMaker);
 	    
-	    
 	  }
 	  
 	  @RequestMapping(value = "/readHouse", method = RequestMethod.GET)
