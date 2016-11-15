@@ -30,6 +30,7 @@ public class HouseDto {
 	private int hreplycnt;
 	private int hviewcnt;
 	private String hlink;
+	private String fullName;
 	
 	
 	public int getHno() {
@@ -188,7 +189,12 @@ public class HouseDto {
 	public void setHlink(String hlink) {
 		this.hlink = hlink;
 	}
-	
+	public String getFullName() {
+		return fullName;
+	}
+	public void setFullName(String fullName) {
+		this.fullName = fullName;
+	}
 	@Override
 	public String toString() {
 		return "HouseDto [hno=" + hno + ", hnm=" + hnm + ", hcontent=" + hcontent + ", hkind=" + hkind + ", hphone="
@@ -197,8 +203,11 @@ public class HouseDto {
 				+ ", hvisit=" + hvisit + ", htime=" + htime + ", hholiday=" + hholiday + ", hwriterdt=" + hwriterdt
 				+ ", hlocation=" + hlocation + ", hregdate=" + hregdate + ", hmapx=" + hmapx + ", hmapy=" + hmapy
 				+ ", files=" + Arrays.toString(files) + ", hurl=" + hurl + ", hreplycnt=" + hreplycnt + ", hviewcnt="
-				+ hviewcnt + ", hlink=" + hlink + "]";
+				+ hviewcnt + ", hlink=" + hlink + ", fullName=" + fullName + "]";
 	}
+	
+	
+	
 	
 	
 	

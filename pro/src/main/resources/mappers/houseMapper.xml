@@ -114,12 +114,11 @@ select fullname from house_attach where hno = #{hno} order by hregdate
    </if>              
  </if>  
 </sql>
- 
+ <!-- 맛집리스트 -->
 <select id="listSearch" resultType="HouseDto">
 <![CDATA[  
-  select * 
-  from house 
-  where hno > 0 
+  select h.hno,hnm,hkind,hphone,h.hregdate,hviewcnt,ha.fullName from house h,house_attach ha
+where h.hno = ha.hno
 ]]>  
 
   <include refid="search"></include>
