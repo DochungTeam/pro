@@ -22,6 +22,8 @@
 <!-- 소셜로그인 장식용 -->
 <link rel="stylesheet" href="/resources/css/sociallogin.css" />
 
+<!-- 로그인 벨리데이션 -->
+<script src="/resources/js/insertlogin.js"></script>
 
 <style type="text/css">
 .a {
@@ -162,21 +164,6 @@
 		});
 	}
 	
-	
-	  
-	  function onSignIn(googleUser) {
-
-		  
-		    var profile = googleUser.getBasicProfile();
-
-		    /*
-		    jQuery("#id").html(profile.getId());
-		    jQuery("#name").html(profile.getName());
-		    jQuery("#email").html(profile.getEmail());
-		    jQuery("#image_url").attr('src', profile.getImageUrl());
-		    */
-		}
-	  
 	</script>
 </head>
 	
@@ -214,7 +201,7 @@
 							<input type="hidden" id="muuid" name="muuid" value="null"/>
 							<input type="hidden" id="mmanyn" name="mmanyn" value="2"/>
 						</div>
-						<input type="submit" class="link-button green" value=" 로그인 " /> 
+						<input type="submit" class="link-button green" onclick="return logincheck_ok();" value=" 로그인 " /> 
 						<input type="button" id="censle" class="link-button red" value=" 취소 " />
 					</form>
 					<div id="sns_facebook">
