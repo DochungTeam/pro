@@ -208,6 +208,7 @@
 							<h5>비밀번호</h5>
 							<input type="password" id="mpw" name="mpw" maxlength="20">
 							<p></p>
+							
 							<input type="hidden" id="mnm" name="mnm" value="null"/>
 							<input type="hidden" id="memail" name="memail" value="null"/>
 							<input type="hidden" id="muuid" name="muuid" value="null"/>
