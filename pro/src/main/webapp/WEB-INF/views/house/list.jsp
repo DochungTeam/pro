@@ -180,7 +180,7 @@ $(document).ready(function(){
 	
 	console.log(formObj);
 
-var hno = ${houseDto.hno};
+	var hno = $(houseDto.hno);
 	var template = Handlebars.compile($("#templateAttach").html());
 	
 	$.getJSON("/house/getAttach/"+hno,function(list){
