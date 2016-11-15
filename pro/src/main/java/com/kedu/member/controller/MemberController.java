@@ -224,22 +224,11 @@ public class MemberController {
 	public void logout(HttpServletRequest request, 
 		HttpServletResponse response, HttpSession session) throws Exception {
 
-		Object obj = session.getAttribute("login");
+		Object obj = session.getAttribute("loginMember");
 
 		if (obj != null) {
-			
-			MemberDto dto = (MemberDto) obj;
-
-			session.removeAttribute("login");
+			session.removeAttribute("loginMember");
 	  		session.invalidate();
-
-	  		Cookie loginCookie = WebUtils.getCookie(request, "loginCookie");
-
-	  		if (loginCookie != null) {
-	  			loginCookie.setPath("/");
-	  			loginCookie.setMaxAge(0);
-	  			response.addCookie(loginCookie);
-	  		}
 	  	}
   	}
 
