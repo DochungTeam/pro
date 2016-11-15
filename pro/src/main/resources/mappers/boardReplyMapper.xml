@@ -14,7 +14,7 @@
 	</insert>
 	
 	<update id="update">
-		update reply set rcontent = #{rcontent}, updatedate = now()
+		update reply set rcontent = #{rcontent}, rupdatedt = now()
 		where rno = #{rno}
 	</update>
 	

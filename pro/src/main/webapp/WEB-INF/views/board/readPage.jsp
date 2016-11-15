@@ -1,9 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<%@ page session="false" %>
 
-<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="/resources/plugins/jQuery/jQuery-2.1.4.min.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
 <jsp:include page="../include/script.jsp"/>
@@ -19,42 +18,41 @@
 	
 </form>
 
-<div class="">
-	<div class="">
-		<input type="text" name="bno" value="${boardDto.bno }" readonly="readonly">
-		<input type="text" name="btitle" value="${boardDto.btitle }" readonly="readonly">
-		<input type="text" name="bwriter" value="${boardDto.bwriter }" readonly="readonly">
-		<input type="text" name="bwritedt" value="${boardDto.bwritedt }" readonly="readonly">
+<div class="box-body">
+	<div class="form-group">
+		<input type="text" name="bno" class="form-control" value="${boardDto.bno }" readonly="readonly">
+		<input type="text" name="btitle" class="form-control" value="${boardDto.btitle }" readonly="readonly">
+		<input type="text" name="bwriter" class="form-control" value="${boardDto.bwriter }" readonly="readonly">
+		<input type="text" name="bwritedt" class="form-control" value="${boardDto.bwritedt }" readonly="readonly">
 	</div>
-	<div class="">
-		<textarea rows="3" name="bcontent" readonly="readonly">${boardDto.bcontent }</textarea>
+	<div class="form-group">
+		<textarea class="form-control" rows="3" name="bcontent" readonly="readonly">${boardDto.bcontent }</textarea>
 	</div>
 </div>
 
-<div class="">
+<div class="box-footer">
 	<button type="submit" class="btn btn-modify">수정</button>
 	<button type="submit" class="btn btn-remove">삭제</button>
 	<button type="submit" class="btn btn-list">목록</button>
 </div>
 
 <div class="row">
-	<div class="">
-		<div class="">
-			<div class="">
+	<div class="col-md-12">
+		<div class="box box-success">
+			<div class="box-header">
 				<h4 class="box-title">댓글</h4>
 			</div>
-			<div class="">
-				<input type="text" placeholder="${boardDto.bwriter }">
+			<div class="box-body">
 				<input type="text" class="" id="newReplyText" placeholder="댓글을 입력하세요">
 			</div>
 			
-			<div class="">
-				<button type="submit" class="btn btn-insert" id="replyAddBtn">등록</button>
+			<div class="box-footer">
+				<button type="submit" class="btn btn-primary" id="replyAddBtn">등록</button>
 			</div>
 		</div>
 		
 		<ul class="timeline">
-			<li class="time-label" id="repliesDiv"><span class="">댓글 목록</span></li>
+			<li class="time-label" id="repliesDiv"><span>댓글 목록<small id="replycntSmall">[${boardDto.rcount }]</small></span></li>
 		</ul>
 		
 		<div class="text-center">
@@ -67,15 +65,15 @@
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<h4 class="modal-title"></h4>
+				<h5 class="modal-title"></h5>
 			</div>
 			<div class="modal-body" data-rno>
 				<p><input type="text" id="replytext" class="form-control"></p>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-rewrite" id="replyMoBtn">수정</button>
-				<button type="button" class="btn btn-exterminate" id="replyDelBtn">삭제</button>
-				<button type="button" class="btn btn-close" data-dismiss="modal">닫기</button>
+				<button type="button" class="btn btn-info" id="replyModBtn">수정</button>
+				<button type="button" class="btn btn-remove" id="replyDelBtn">삭제</button>
+				<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
 			</div>
 		</div>
 	</div>
@@ -119,7 +117,7 @@ $(document).ready(function(){
 `		<h3 class="timeline-header"><strong>{{rno}}</strong> -{{rwriter}}<h3>
 		<div class="timeline-body">{{rcontent}} </div>
 			<div class="timeline-footer">
-				<a class="btn btn-insert btn-xs" data-toggle="modal" data-target="#modifyModal">수정</a>
+				<a class="btn btn-list btn-xs" data-toggle="modal" data-target="#modifyModal">수정</a>
 			</div>
 	</div>
 </li>
@@ -154,6 +152,9 @@ $(document).ready(function(){
 		$.getJSON(pageInfo,function(data){
 			printData(data.list, $("#repliesDiv"), $('#template'));
 			printPaging(data.pageMaker, $(".pagination"));
+			
+			$("#modifyModal").modal('hide');
+			$("#replycntSmall").html("[ " + data.pageMaker.totalCount + " ]");
 		});
 	}
 	
@@ -182,7 +183,7 @@ $(document).ready(function(){
 		if ($(".timeline li").size() > 1) {
 			return;
 		}
-		getPage("/replies/" + bno + "/1");
+		getPage("/reply/" + bno + "/1");
 		
 	});
 	
@@ -192,7 +193,7 @@ $(document).ready(function(){
 		
 		replyPage = $(this).attr("href");
 		
-		getPage("/replies/" + bno + "/" + replyPage);
+		getPage("/reply/" + bno + "/" + replyPage);
 		
 	});
 	
@@ -205,18 +206,18 @@ $(document).ready(function(){
 		
 			$.ajax({
 				type:'post',
-				url:'/replies/',
+				url:'/reply/',
 				header: {
 					"Content-Type": "application/json",
 					"X-HTTP-Method-Override": "POST" },
 				dataType: 'text',
-				data: JSON.stringify({bno:bno, replyer:replyer, replytext:replytext}),
+				data: JSON.stringify({bno:bno, mid:mid, rcontent:rcontent}),
 				success:function(result){
 					console.log("result: " + result);
 					if(result == 'SUCCESS'){
 						alert("등록 되었습니다.");
 						replyPage = 1;
-						getPage("/replies/" + bno + "/" + replyPage);
+						getPage("/reply/" + bno + "/" + replyPage);
 						replyerObj.val("");
 						replytextObj.val("");
 					}
@@ -240,7 +241,7 @@ $(document).ready(function(){
 		
 		$.ajax({
 			type:'put',
-			url:'/replies/' + rno,
+			url:'/reply/' + rno,
 			headers: {
 				"Content-Type": "application/json",
 				"X-HTTP-Method-Override": "PUT" },
@@ -250,7 +251,7 @@ $(document).ready(function(){
 				console.log("result: " + result);
 				if(result == 'SUCCESS'){
 					alert("수정 되었습니다.");
-					getPage("/replies/" + bno + "/" + replyPage);
+					getPage("/reply/" + bno + "/" + replyPage);
 				}
 			}
 		});
@@ -263,7 +264,7 @@ $(document).ready(function(){
 		
 		$.ajax({
 			type:'delete',
-			url:'/replies/' +rno,
+			url:'/reply/' +rno,
 			headers: {
 				"Content-Type": "application/json",
 				"X-HTTP-Method-Override": "DELETE"},
@@ -272,7 +273,7 @@ $(document).ready(function(){
 				console.log("result: " + result);
 				if(result == 'SUCCESS'){
 					alert("삭제 되었습니다.");
-					getPage("/replies/" + bno + "/" +replyPage);
+					getPage("/reply/" + bno + "/" +replyPage);
 				}
 			}
 		});
