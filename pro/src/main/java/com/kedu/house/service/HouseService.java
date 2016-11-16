@@ -15,7 +15,7 @@ public interface HouseService {
 
 	  public int listCountCriteria(Criteria cri) throws Exception;
 
-	  public List<HouseDto> listSearchCriteria(SearchCriteria cri) 
+	  public List<HouseDto> listSearchCriteria(SearchCriteria cri, String mid) 
 	      throws Exception;
 
 	  public int listSearchCount(SearchCriteria cri) throws Exception;

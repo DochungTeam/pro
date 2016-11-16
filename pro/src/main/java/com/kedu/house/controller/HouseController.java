@@ -1,8 +1,11 @@
 package com.kedu.house.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,6 +23,7 @@ import com.kedu.house.dto.SearchCriteria;
 import com.kedu.house.dto.HouseDto;
 import com.kedu.house.dto.PageMaker;
 import com.kedu.house.service.HouseService;
+import com.kedu.member.dto.MemberDto;
 
 @Controller
 @RequestMapping("/house/*")
@@ -61,11 +65,15 @@ public class HouseController {
 //		}
 	  
 	  @RequestMapping(value = "/list", method = RequestMethod.GET)
-	  public void listPage(@ModelAttribute("cri") SearchCriteria cri, Model model) throws Exception {
+	  public void listPage(@ModelAttribute("cri") SearchCriteria cri
+			  			 , Model model
+			  			 , HttpSession session) throws Exception {
 
 	    logger.info(cri.toString());
 
-	    model.addAttribute("list", service.listSearchCriteria(cri));
+	    String mid = ((MemberDto)session.getAttribute("loginMember")).getMid();
+	    
+	    model.addAttribute("list", service.listSearchCriteria(cri,mid));
 
 	    PageMaker pageMaker = new PageMaker();
 	    pageMaker.setCri(cri);
@@ -74,10 +82,6 @@ public class HouseController {
 
 	    model.addAttribute("pageMaker", pageMaker);
 	    
-<<<<<<< HEAD
-	    System.out.println("adofjhaweiufhjkdhvgjkashdjkshdfjkashdfkjh"+service.listSearchCriteria(cri).toString());
-=======
->>>>>>> 19457a23cc6f92f4090f62064aae9ac786820921
 	  }
 	  
 	  @RequestMapping(value = "/readHouse", method = RequestMethod.GET)

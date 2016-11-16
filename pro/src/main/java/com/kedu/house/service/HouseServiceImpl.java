@@ -69,9 +69,9 @@ public class HouseServiceImpl implements HouseService{
 	  }
 
 	  @Override
-	  public List<HouseDto> listSearchCriteria(SearchCriteria cri) throws Exception {
+	  public List<HouseDto> listSearchCriteria(SearchCriteria cri, String mid) throws Exception {
 
-	    return dao.listSearch(cri);
+	    return dao.listSearch(cri,mid);
 	  }
 
 	  @Override
@@ -117,10 +117,6 @@ public class HouseServiceImpl implements HouseService{
 	    dao.delete(hno);
 	  } 
 
-<<<<<<< HEAD
-	  
-	
-=======
 	  @Transactional
 	  @Override
 	  public void list(HouseDto house) throws Exception {
@@ -133,7 +129,6 @@ public class HouseServiceImpl implements HouseService{
 	    if(files == null) { return; } 
 	  
 	  }
->>>>>>> 19457a23cc6f92f4090f62064aae9ac786820921
 /*
 	@Override
 	public List<HouseDto> searchHouse(String keyword, int display, int start) throws Exception {

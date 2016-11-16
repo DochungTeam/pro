@@ -129,27 +129,26 @@ select fullname from house_attach where hno = #{hno} order by hregdate
  <!-- 맛집리스트 -->
 <select id="listSearch" resultType="HouseDto">
 <![CDATA[  
-<<<<<<< HEAD
   select h.hno
  	  , h.hnm
  	  , h.hcontent
  	  , h.hkind
+ 	  , h.hphone
  	  , h.hregdate
  	  , h.hviewcnt
  	  , h.hreplycnt 
+ 	  , ha.fullName
  	  , case when jjim.hno is null then 1 else 0 end jjimchk
-   from house h left outer join(
-								select hno
-								  from mypage
-								 where mid = 'asdasd' 
-   						   		) jjim
-   						   
+   from house_attach ha
+   	  , house h 
+   	  	left outer join(
+							select hno
+							  from mypage
+							 where mid = #{mid}
+   				    	) jjim
    						     on h.hno = jjim.hno
   where h.hno > 0 
-=======
-  select h.hno,hnm,hkind,hphone,h.hregdate,hviewcnt,ha.fullName from house h,house_attach ha
-where h.hno = ha.hno
->>>>>>> 19457a23cc6f92f4090f62064aae9ac786820921
+	and h.hno = ha.hno
 ]]>  
 
   <include refid="search"></include>

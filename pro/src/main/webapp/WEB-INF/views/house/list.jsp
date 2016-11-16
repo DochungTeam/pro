@@ -88,7 +88,6 @@ img {
 						<figcaption>
 							<a href='/house/readHouse${pageMaker.makeSearch(pageMaker.cri.page) }&hno=${houseDto.hno}'>
 							<h3 class="heading"> ${houseDto.hnm} </h3></a>
-<<<<<<< HEAD
 							주소 : ${houseDto.hzipcode} <br> TEL : ${houseDto.hphone}<br> 
 								<img onclick="jjimBtn(${houseDto.hno })" id='${houseDto.hno }' 
 									 <c:choose>
@@ -102,9 +101,7 @@ img {
 									 onmouseenter="jjim_mouse_enter($(this))" 
 									 onmouseout="jjim_mouse_out($(this))" title="찜하기" class="${houseDto.jjimchk}" >
 						</figcaption>
-=======
 							주소 : ${houseDto.haddr} <br> TEL : ${houseDto.hphone}<br>  </figcaption>
->>>>>>> 19457a23cc6f92f4090f62064aae9ac786820921
 					</figure>
 					</c:forEach>
 				</div>
@@ -341,7 +338,6 @@ $("#popup_img").on("click", function(){
 });	
 </script>
 
-<<<<<<< HEAD
 <script>
 
 
@@ -411,6 +407,5 @@ function jjimBtn(hno){
 </section>
 <!-- /.content -->
 <!-- /.content-wrapper -->
->>>>>>> 19457a23cc6f92f4090f62064aae9ac786820921
 
 <%@include file="../include/footer.jsp"%>

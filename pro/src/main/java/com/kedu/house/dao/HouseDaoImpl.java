@@ -67,9 +67,18 @@ public class HouseDaoImpl implements HouseDao{
 	  }
 
 	  @Override
-	  public List<HouseDto> listSearch(SearchCriteria cri) throws Exception {
+	  public List<HouseDto> listSearch(SearchCriteria cri, String mid) throws Exception {
 
-	    return session.selectList(namespace + ".listSearch", cri);
+		  Map<String, Object> paramMap = new HashMap<String, Object>();
+		  
+		  paramMap.put("keyword", cri.getKeyword());
+		  paramMap.put("page", cri.getPage());
+		  paramMap.put("pageStart", cri.getPageStart());
+		  paramMap.put("perPageNum", cri.getPerPageNum());
+		  paramMap.put("searchtype", cri.getSearchType());
+		  paramMap.put("mid", mid);
+		  
+	    return session.selectList(namespace + ".listSearch", paramMap);
 	  }
 
 	  @Override
@@ -133,14 +142,11 @@ public class HouseDaoImpl implements HouseDao{
 	  public void delete(Integer hno) throws Exception {
 	    session.delete(namespace + ".delete", hno);
 	  }
-<<<<<<< HEAD
 
 
-=======
 	  
 	  @Override
 	  public void list(HouseDto dto) throws Exception {
 	    session.update(namespace + ".list", dto);
 	  }
->>>>>>> 19457a23cc6f92f4090f62064aae9ac786820921
 }
