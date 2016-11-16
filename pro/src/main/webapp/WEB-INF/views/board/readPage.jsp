@@ -207,8 +207,13 @@ $(document).ready(function(){
 	<div class="col-md-12">
 		<div class="box box-success">
 			<div class="box-header">
+			<hr/>
 				<h4 class="box-title">댓글</h4>
 			</div>
+			<div>
+				<span>댓글 목록<small id="replycntSmall">[${boardDto.rcount }]</small></span>
+			</div>
+			
 			<div class="box-body">
 				<input type="hidden" name="mid" id="mid" value="${loginMember.mid}" >
 				<input type="text" id="rcontent" name="rcontent" placeholder="댓글을 입력하세요">
@@ -220,7 +225,6 @@ $(document).ready(function(){
 		</div>
 		
 		<ul class="timeline">
-			<li class="time-label" id="repliesDiv"><span>댓글 목록<small id="replycntSmall">[${boardDto.rcount }]</small></span></li>
 		</ul>
 		
 		<div class="text-center">
