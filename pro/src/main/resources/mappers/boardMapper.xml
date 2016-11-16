@@ -5,15 +5,15 @@
 <mapper namespace="com.kedu.mapper.BoardMapper">
 
 	<insert id="create">
-		insert into board (btitle, bcontent, bwriter, filedata, bboard) values(#{btitle}, #{bcontent}, #{bwriter}, #{filedata}, #{bboard})
+		insert into board (btitle, bcontent, bwriter, filedata, callback, callback_func, bboard) values(#{btitle}, #{bcontent}, #{bwriter}, #{filedata}, #{callback}, #{callback_func}, #{bboard})
 	</insert>
 
 	<select id="read" resultType="BoardDto">
-		select bno, btitle, bcontent, bwritedt, bcount, bwriter, filedata from board where bno = #{bno}
+		select bno, btitle, bcontent, bwritedt, bcount, bwriter, filedata, callback, callback_func from board where bno = #{bno}
 	</select>
 
 	<update id="update">
-		update board set btitle = #{btitle}, bcontent = #{bcontent}, bupdatedt = now() where bno = #{bno}
+		update board set btitle = #{btitle}, bcontent = #{bcontent}, filedata = #{filedata}, callback = #{callback}, callback_func = #{callback_func}, bupdatedt = now() where bno = #{bno}
 	</update>
 
 	<delete id="delete">

@@ -16,7 +16,21 @@ public class BoardDto {
 	private String bwriter;
 	private MultipartFile filedata;
 	private int rcount;
+	private String callback;
+	private String callback_func;
 	
+	public String getCallback() {
+		return callback;
+	}
+	public void setCallback(String callback) {
+		this.callback = callback;
+	}
+	public String getCallback_func() {
+		return callback_func;
+	}
+	public void setCallback_func(String callback_func) {
+		this.callback_func = callback_func;
+	}
 	public MultipartFile getFiledata() {
 		return filedata;
 	}
@@ -82,7 +96,8 @@ public class BoardDto {
 	public String toString() {
 		return "BoardDto [bno=" + bno + ", btitle=" + btitle + ", bcontent=" + bcontent + ", bwritedt=" + bwritedt
 				+ ", bcount=" + bcount + ", bboard=" + bboard + ", bupdatedt=" + bupdatedt + ", bwriter=" + bwriter
-				+ ", filedata=" + filedata + ", rcount=" + rcount + ", toString()=" + super.toString() + "]";
+				+ ", filedata=" + filedata + ", rcount=" + rcount + ", callback=" + callback + ", callback_func="
+				+ callback_func + ", toString()=" + super.toString() + "]";
 	}
 
 }

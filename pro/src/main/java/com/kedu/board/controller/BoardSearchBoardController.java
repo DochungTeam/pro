@@ -114,7 +114,7 @@ public class BoardSearchBoardController {
 		
 		return "redirect:/board/list";
 	}
-public void multipleUpload(HttpServletRequest request,HttpServletResponse response)throws Exception{
+	public void multipleUpload(HttpServletRequest request,HttpServletResponse response)throws Exception{
 		
 		try {
 			 //파일정보
@@ -177,7 +177,7 @@ public void multipleUpload(HttpServletRequest request,HttpServletResponse respon
 			 sFileInfo += "&bNewLine=true";
 			 // img 태그의 title 속성을 원본파일명으로 적용시켜주기 위함
 			 sFileInfo += "&sFileName="+ filename;;
-			 sFileInfo += "&sFileURL="+"/resources/editor/multiupload/"+realFileNm;
+			 sFileInfo += "&sFileURL="+"/resources/img/house"+realFileNm;
 			 PrintWriter print = response.getWriter();
 			 print.print(sFileInfo);
 			 print.flush();
