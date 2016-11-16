@@ -149,4 +149,9 @@ public class HouseDaoImpl implements HouseDao{
 	  public void list(HouseDto dto) throws Exception {
 	    session.update(namespace + ".list", dto);
 	  }
+
+	@Override
+	public List<HouseDto> nonMemberList(SearchCriteria cri) throws Exception {
+		return session.selectList(namespace+".nonMemberList", cri);
+	}
 }

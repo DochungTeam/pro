@@ -159,6 +159,31 @@ select fullname from house_attach where hno = #{hno} order by hregdate
 ]]>  
 </select>
   
+<select id="nonMemberList" resultType="HouseDto">
+<![CDATA[  
+  select h.hno
+ 	  , h.hnm
+ 	  , h.hcontent
+ 	  , h.hkind
+ 	  , h.hphone
+ 	  , h.hregdate
+ 	  , h.hviewcnt
+ 	  , h.hreplycnt 
+ 	  , ha.fullName
+   from house_attach ha
+   	  , house h 
+  where h.hno > 0 
+	and h.hno = ha.hno
+]]>  
+
+  <include refid="search"></include>
+  
+<![CDATA[    
+  order by hno desc
+  limit #{pageStart}, #{perPageNum}
+]]>  
+</select>  
+  
 <select id="listSearchCount" resultType="int">
 <![CDATA[  
   select count(hno) 

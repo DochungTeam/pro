@@ -239,4 +239,9 @@ public class HouseServiceImpl implements HouseService{
 	}
 	
 	*/
+
+	@Override
+	public List<HouseDto> nonMemberList(SearchCriteria cri) throws Exception {
+		return dao.nonMemberList(cri);
+	}
 }

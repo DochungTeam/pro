@@ -29,7 +29,8 @@ public interface HouseService {
 	  public void remove(Integer hno) throws Exception;
 	  
 	  public void list(HouseDto house) throws Exception;
-
+	  
+	  public List<HouseDto> nonMemberList(SearchCriteria cri)throws Exception;
 	}
 	
 //	public List<HouseDto> searchHouse(String keyword,int display,int start)throws Exception;
