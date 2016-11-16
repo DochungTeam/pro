@@ -26,6 +26,14 @@ public class HouseDto {
 	private int hreplycnt;
 	private int hviewcnt;
 	private String hlink;
+	private String jjimchk;
+	
+	public String getJjimchk() {
+		return jjimchk;
+	}
+	public void setJjimchk(String jjimchk) {
+		this.jjimchk = jjimchk;
+	}
 	private String fullName;
 	
 	public int getHno() {
@@ -175,6 +183,7 @@ public class HouseDto {
 				+ ", haddr=" + haddr + ", hlevel=" + hlevel + ", htime=" + htime + ", hholiday=" + hholiday
 				+ ", hwriterdt=" + hwriterdt + ", hregdate=" + hregdate + ", hmapx=" + hmapx + ", hmapy=" + hmapy
 				+ ", files=" + Arrays.toString(files) + ", hurl=" + hurl + ", hreplycnt=" + hreplycnt + ", hviewcnt="
+				+ hviewcnt + ", hlink=" + hlink + ", jjimchk=" + jjimchk + "]"
 				+ hviewcnt + ", hlink=" + hlink + ", fullName=" + fullName + "]";
 	}
 	

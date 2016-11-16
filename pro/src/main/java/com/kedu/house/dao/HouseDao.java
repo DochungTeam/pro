@@ -21,7 +21,7 @@ public interface HouseDao {
 
 	  public int countPaging(Criteria cri) throws Exception;
 	  
-	  public List<HouseDto> listSearch(SearchCriteria cri)throws Exception;
+	  public List<HouseDto> listSearch(SearchCriteria cri, String mid)throws Exception;
 	  
 	  public int listSearchCount(SearchCriteria cri)throws Exception;
 	  
@@ -39,7 +39,7 @@ public interface HouseDao {
 	  
 	  public void update(HouseDto dto) throws Exception;
 	  
-	  public void delete(Integer bno) throws Exception;
+	  public void delete(Integer hno) throws Exception;
 	  
 	  public void list(HouseDto dto) throws Exception;
 	  

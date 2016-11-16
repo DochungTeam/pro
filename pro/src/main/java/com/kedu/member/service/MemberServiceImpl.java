@@ -1,11 +1,16 @@
 package com.kedu.member.service;
 
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import com.kedu.house.dto.HouseDto;
 import com.kedu.member.dao.MemberDao;
 import com.kedu.member.dto.LoginDto;
 import com.kedu.member.dto.MemberDto;
@@ -52,5 +57,31 @@ public class MemberServiceImpl implements MemberService {
 	public int logincheck(MemberDto member) throws Exception {
 		return dao.logincheck(member);
 	}
+
+
+	@Override
+	public List<HouseDto> JjimList(String mid, int hno) throws Exception {
+		
+		return dao.JjimList(mid, hno);
+	}
+
+	@Transactional
+	@Override
+	public int Jjim(String mid, int hno) throws Exception {
+		int result = 0;
+		
+		result =  dao.Jjimchk(mid, hno);
+		
+		if(result ==0){
+			dao.regiJjim(hno, mid);
+		}else{
+			dao.delJjim(hno, mid);
+		}
+		
+		return result;
+	}
+	
+	
+	
 	
 }

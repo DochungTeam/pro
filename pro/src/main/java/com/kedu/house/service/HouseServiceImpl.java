@@ -69,9 +69,9 @@ public class HouseServiceImpl implements HouseService{
 	  }
 
 	  @Override
-	  public List<HouseDto> listSearchCriteria(SearchCriteria cri) throws Exception {
+	  public List<HouseDto> listSearchCriteria(SearchCriteria cri, String mid) throws Exception {
 
-	    return dao.listSearch(cri);
+	    return dao.listSearch(cri,mid);
 	  }
 
 	  @Override

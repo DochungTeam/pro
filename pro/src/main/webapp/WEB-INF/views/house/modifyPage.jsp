@@ -14,7 +14,24 @@
   margin: auto;
   
 }
-</style>
+ .popup {position: absolute;}
+    .back { background-color: gray; opacity:0.5; width: 100%; height: 300%; overflow:hidden;  z-index:1101;}
+    .front { 
+       z-index:1110; opacity:1; boarder:1px; margin: auto; 
+      }
+     .show{
+       position:relative;
+       max-width: 1200px; 
+       max-height: 800px; 
+       overflow: auto;       
+     } 
+  	
+    </style>
+
+    <div class='popup back' style="display:none;"></div>
+    <div id="popup_front" class='popup front' style="display:none;">
+     <img id="popup_img">
+    </div>
  
 
 <!-- Main content -->
@@ -199,6 +216,32 @@ $(".fileDrop").on("drop", function(event){
 		  }
 		});	
 });
+
+$(".uploadedList").on("click", ".mailbox-attachment-info a", function(event){
+	
+	var fileLink = $(this).attr("href");
+	
+	if(checkImageType(fileLink)){
+		
+		event.preventDefault();
+				
+		var imgTag = $("#popup_img");
+		imgTag.attr("src", fileLink);
+		
+		console.log(imgTag.attr("src"));
+				
+		$(".popup").show('slow');
+		imgTag.addClass("show");		
+	}	
+});
+
+$("#popup_img").on("click", function(){
+	
+	$(".popup").hide('slow');
+	
+});	
+
+
 $(".uploadedList").on("click", ".delbtn", function(event){
 	
 	event.preventDefault();
@@ -252,6 +295,41 @@ $("#popup_img").on("click", function(){
 	$(".popup").hide('slow');
 	
 });	
+
+/* 삭제처리..시작 */
+
+
+/* $(".uploadedList").on("click", ".mailbox-attachment-info a", function(event){
+	
+	var fileLink = $(this).attr("href");
+	 */
+	$.ajax({
+		  url: '/uploadAjax',
+		  data: formData,
+		  dataType:'text',
+		  processData: false,
+		  contentType: false,
+		  type: 'POST',
+		  success: function(data){
+			  
+			  var that = $(this);
+			  
+			  if(checkImageType(data)){
+				  str ="<div><a href=displayFile?fileName="+getImageLink(data)+">"
+						  +"<img src='displayFile?fileName="+data+"'/>"
+						  +"</a><small data-src="+data+">X</small></div>";
+			  }else{
+				  str = "<div><a href='displayFile?fileName="+data+"'>" 
+						  + getOriginalName(data)+"</a>"
+						  +"<small data-src="+data+">X</small></div></div>";
+			  }
+			  
+			  $(".uploadedList").append(that);
+		  }
+		});	
+//});
+
+/* 삭제처리 끝 */
 
 $("#modifyForm").submit(function(event){
 	event.preventDefault();

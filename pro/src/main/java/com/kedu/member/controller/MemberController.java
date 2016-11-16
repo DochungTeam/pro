@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.util.WebUtils;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kedu.member.dto.EmailDto;
 import com.kedu.member.dto.EmailSender;
 import com.kedu.member.dto.LoginDto;
@@ -230,4 +231,16 @@ public class MemberController {
 		return "redirect:/house/list";
   	}
 
+	@RequestMapping(value="/jjim", method = RequestMethod.GET)
+	public void Jjim(@RequestParam(value="mid")String mid
+				   , @RequestParam(value="hno")int hno
+				   , HttpServletResponse response)throws Exception{
+		int result;
+		
+		result = service.Jjim(mid, hno);
+		
+		ObjectMapper mapper = new ObjectMapper();
+		
+		response.getWriter().print(mapper.writeValueAsString(result));
+	}
 }

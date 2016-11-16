@@ -1,7 +1,7 @@
 package com.kedu.member.dao;
 
-import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
@@ -9,7 +9,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
-import com.kedu.member.dto.LoginDto;
+import com.kedu.house.dto.HouseDto;
 import com.kedu.member.dto.MemberDto;
 
 @Repository
@@ -60,4 +60,51 @@ public class MemberDaoImpl implements MemberDao {
 		return session.selectOne(namespace + ".logincheck", dto);
 	}
 	
+	@Override
+	public void regiJjim(int hno, String mid) throws Exception {
+		
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		
+		paramMap.put("hno", hno);
+		paramMap.put("mid", mid);
+		
+		session.insert(namespace+".regiJjim", paramMap);
+	}
+
+	@Override
+	public void delJjim(int hno, String mid) throws Exception {
+		
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		
+		paramMap.put("hno", hno);
+		paramMap.put("mid", mid);
+		
+		session.delete(namespace+".delJjim", paramMap);
+	}
+
+	@Override
+	public List<HouseDto> JjimList(String mid, int hno) throws Exception {
+		
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		
+		paramMap.put("mid", mid);
+		paramMap.put("hno", hno);
+		
+		List<HouseDto> list =session.selectList(namespace+".JjimList", paramMap);
+		
+		return list;
+	}
+
+	@Override
+	public int Jjimchk(String mid, int hno) throws Exception {
+		
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		
+		paramMap.put("mid", mid);
+		paramMap.put("hno", hno);
+		
+		int result = session.selectOne(namespace+".Jjimchk",paramMap );
+		
+		return result;
+	}
 }
