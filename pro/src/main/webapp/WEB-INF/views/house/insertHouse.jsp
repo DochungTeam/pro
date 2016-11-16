@@ -132,8 +132,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
 
 <script id="template" type="text/x-handlebars-template">
-<li>
-  <span class="mailbox-attachment-icon has-img"><img src="{{imgsrc}}" alt="Attachment"></span>
+<li id="houseimg">
+  <span class="mailbox-attachment-icon has-img"><img src="{{imgsrc}}" alt="Attachment"><small id="remove-btn">x</small></span>
   <div class="mailbox-attachment-info">
 	<a href="{{getLink}}" class="mailbox-attachment-name">{{fileName}}</a>
 	<a href="{{fullName}}" 
@@ -237,7 +237,15 @@ $("#goListBtn ").on("click", function(){
 		formObj.attr("action", "/house/list");
 		formObj.submit();
 	});
+	
+$(document).on("click","#remove-btn", function(){
+	$(this).prev().remove();
+	$(this).remove();
+	$("#houseimg").remove();
 });
+});
+
+
 </script>
 
 <script>

@@ -145,8 +145,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
 
 <script id="template" type="text/x-handlebars-template">
-<li>
-  <span class="mailbox-attachment-icon has-img"><img src="{{imgsrc}}" alt="Attachment"></span>
+<li id="houseimg">
+  <span class="mailbox-attachment-icon has-img"><img src="{{imgsrc}}" alt="Attachment"><small id="remove-btn">x</small></span>
   <div class="mailbox-attachment-info">
 	<a href="{{getLink}}" class="mailbox-attachment-name">{{fileName}}</a>
 	<a href="{{fullName}}" 
@@ -177,6 +177,11 @@ $(document).ready(function(){
 		that.get(0).submit();
 	});
 	
+	$(document).on("click","#remove-btn", function(){
+		$(this).prev().remove();
+		$(this).remove();
+		$("#houseimg").remove();
+	});
 	
 	$(".btn-warning").on("click", function(){
 	  self.location = "/house/list?page=${cri.page}&perPageNum=${cri.perPageNum}"+
@@ -296,40 +301,7 @@ $("#popup_img").on("click", function(){
 	
 });	
 
-/* 삭제처리..시작 */
 
-
-/* $(".uploadedList").on("click", ".mailbox-attachment-info a", function(event){
-	
-	var fileLink = $(this).attr("href");
-	 */
-	$.ajax({
-		  url: '/uploadAjax',
-		  data: formData,
-		  dataType:'text',
-		  processData: false,
-		  contentType: false,
-		  type: 'POST',
-		  success: function(data){
-			  
-			  var that = $(this);
-			  
-			  if(checkImageType(data)){
-				  str ="<div><a href=displayFile?fileName="+getImageLink(data)+">"
-						  +"<img src='displayFile?fileName="+data+"'/>"
-						  +"</a><small data-src="+data+">X</small></div>";
-			  }else{
-				  str = "<div><a href='displayFile?fileName="+data+"'>" 
-						  + getOriginalName(data)+"</a>"
-						  +"<small data-src="+data+">X</small></div></div>";
-			  }
-			  
-			  $(".uploadedList").append(that);
-		  }
-		});	
-//});
-
-/* 삭제처리 끝 */
 
 $("#modifyForm").submit(function(event){
 	event.preventDefault();
