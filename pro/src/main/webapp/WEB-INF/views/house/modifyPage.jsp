@@ -37,13 +37,50 @@
 	<input type='hidden' name='keyword' value="${cri.keyword}">
 
 					<div class="box-body">
-
-						<div class="form-group">
+						<table style="width : 750px">
+						<tr>
+							<th style="background-color : #B8B8B8; ">맛집이름</th>
+							<td><input type ="text" name="hnm" size="20" value="${houseDto.hnm}" ></td>
+						</tr>
+						<tr>
+							<th style="background-color : #B8B8B8; ">전화번호</th>
+							<td><input type ="text" name="hnm" size="20" value="${houseDto.hphone}" ></td>
+						</tr>
+						<tr>
+							<th style="background-color : #B8B8B8; ">주소</th>
+							<td><input type ="text" name="hnm" size="20" value="${houseDto.haddr}" ></td>
+						</tr>
+						<tr>
+							<th style="background-color : #B8B8B8; ">맛집테마</th>
+							<td><input type ="text" name="hnm" size="20" value="${houseDto.hkind}" ></td>
+						</tr>
+						<tr>
+							<th style="background-color : #B8B8B8; ">맛집메뉴</th>
+							<td><input type ="text" name="hnm" size="20" value="${houseDto.hmenu}" ></td>
+						</tr>
+						<tr>
+							<th style="background-color : #B8B8B8; ">영업시간</th>
+							<td><input type ="text" name="hnm" size="20" value="${houseDto.htime}" ></td>
+						</tr>
+						<tr>
+							<th style="background-color : #B8B8B8; ">휴무</th>
+							<td><input type ="text" name="hnm" size="20" value="${houseDto.hholiday}" ></td>
+						</tr>
+						<tr>
+							<th style="background-color : #B8B8B8; ">맛집설명</th>
+							<td><input type ="text" name="hnm" size="20" value="${houseDto.hcontent}" ></td>
+						</tr>
+						<tr>
+							<th style="background-color : #B8B8B8; ">블로그주소</th>
+							<td><input type ="text" name="hnm" size="20" value="${houseDto.hurl}" ></td>
+						</tr>
+						
+					</table>
+						<%-- <div class="form-group">
 							<label for="exampleInputEmail1">no</label> <input type="text"
 								name='hno' class="form-control" value="${houseDto.hno}"
 								readonly="readonly">
 						</div>
-
 						<div class="form-group">
 							<label for="exampleInputEmail1">맛집 이름</label> <input type="text"
 								name='hnm' class="form-control" value="${houseDto.hnm}">
@@ -56,7 +93,7 @@
 							<label for="exampleInputEmail1">맛집 테마</label> <input
 								type="text" name="hkind" class="form-control"
 								value="${houseDto.hkind}" readonly>
-						</div>
+						</div> --%>
 					
 						<div class="form-group">
 							<label for="exampleInputEmail1">맛집 사진 올리기(마우스로 드래그 해서 올려주세요.)</label>

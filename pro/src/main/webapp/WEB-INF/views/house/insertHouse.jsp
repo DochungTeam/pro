@@ -58,17 +58,9 @@
 						<td><input type ="text" name="hphone" size="20" maxlength="11">(전화번호는 - 없이 입력해주세요.)</td>
 					</tr>
 					<tr>
-						<th style="background-color : #B8B8B8; "> 우편번호 *</th>
-						<td><input type ="text" name="hzipcode" readonly><input type ="button" value="주소검색"></td>
-					</tr>
-					<tr>
-						<th style="background-color : #B8B8B8; "> 주소1 *</th>
+						<th style="background-color : #B8B8B8; "> 주소 *</th>
 						<td><input type ="text" name="haddr" readonly></td>
 					</tr> 
-					<tr>
-						<th style="background-color : #B8B8B8; "> 주소2 *</th>
-						<td><input type ="text" name="haddr2" >(나머지 주소)</td>
-					</tr>
 					<tr>
 						<th style="background-color : #B8B8B8; "> 맛집테마 *</th>
 						<td><select class="select" name="hkind">

@@ -65,10 +65,6 @@
 							<td>${houseDto.haddr}</td>
 						</tr>
 						<tr>
-							<th>나머지주소</th>
-							<td>${houseDto.haddr2}</td>
-						</tr>
-						<tr>
 							<th>맛집테마</th>
 							<td>${houseDto.hkind}</td>
 						</tr>

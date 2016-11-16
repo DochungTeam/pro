@@ -16,9 +16,9 @@ select now()
 </select>
 
 <insert id="insertHouse">
-insert into house (hno, hnm, hcontent, hkind, hphone, hmenu, hdetail, himg, hspecial, hzipcode, haddr, haddr2, hlevel, hvisit, 
+insert into house (hno, hnm, hcontent, hkind, hphone, hmenu, hdetail, himg, hspecial, haddr, hlevel, hvisit, 
 					htime, hholiday, hwriterdt, hlocation, hmapx, hmapy, hurl, hlink) values
-(#{hno}, #{hnm}, #{hcontent}, #{hkind}, #{hphone}, #{hmenu}, #{hdetail}, #{himg}, #{hspecial}, #{hzipcode}, #{haddr}, #{haddr2}, #{hlevel}, #{hvisit}, 
+(#{hno}, #{hnm}, #{hcontent}, #{hkind}, #{hphone}, #{hmenu}, #{hdetail}, #{himg}, #{hspecial}, #{haddr}, #{hlevel}, #{hvisit}, 
 					#{htime}, #{hholiday}, #{hwriterdt}, #{hlocation}, #{hmapx}, #{hmapy}, #{hurl}, #{hlink})
 </insert>
 
@@ -34,7 +34,7 @@ select fullname from house_attach where hno = #{hno} order by hregdate
 
 <select id="read" resultType="com.kedu.house.dto.HouseDto">
  select 
-   hno, hnm, hphone, haddr, haddr2, hmenu, htime, hholiday, hurl, hcontent, hkind, hregdate, hviewcnt 
+   hno, hnm, hphone, haddr, hmenu, htime, hholiday, hurl, hcontent, hkind, hregdate, hviewcnt 
  from 
    house 
  where hno = #{hno}
