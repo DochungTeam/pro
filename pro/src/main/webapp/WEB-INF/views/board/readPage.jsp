@@ -39,8 +39,12 @@
 </div>
 
 <div class="box-footer">
-	<button type="submit" class="btn btn-modify">수정</button>
-	<button type="submit" class="btn btn-remove">삭제</button>
+	<c:if test="${loginMember.mid == boardDto.bwriter }">
+		<button type="submit" class="btn btn-modify">수정</button>
+	</c:if>
+	<c:if test="${(loginMember.mid == boardDto.bwriter) || loginMember.mmanyn == 0 }">
+		<button type="submit" class="btn btn-remove">삭제</button>
+	</c:if>
 	<button type="submit" class="btn btn-list">목록</button>
 </div>
 
@@ -95,20 +99,9 @@ $(document).ready(function(){
 	console.log(formObj);
 	
 	$(".btn-modify").on("click", function(){
-		
-		alert("ㅋㅋ");
-		var loginM = "${loginMember.mid}";
-		alert(loginM);
-		var writer = "${boardDto.bwriter}";
-		alert(writer);
-		alert("ㅎㅎ");
-		if(loginM == writer){
-			formObj.attr("action", "/board/modifyPage");
-			formObj.attr("method", "get");
-			formObj.submit();
-		}else{
-			alert("작성자만 수정 가능합니다.");
-		}
+		formObj.attr("action", "/board/modifyPage");
+		formObj.attr("method", "get");
+		formObj.submit();
 	});
 	
 	$(".btn-remove").on("click", function(){
