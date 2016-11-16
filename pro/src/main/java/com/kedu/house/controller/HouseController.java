@@ -71,10 +71,17 @@ public class HouseController {
 
 	    logger.info(cri.toString());
 
-	    String mid = ((MemberDto)session.getAttribute("loginMember")).getMid();
+	    String mid =null;
 	    
-	    model.addAttribute("list", service.listSearchCriteria(cri,mid));
-
+	    if(((MemberDto)session.getAttribute("loginMember"))!=null){
+	    	mid = ((MemberDto)session.getAttribute("loginMember")).getMid();
+	    
+	    	model.addAttribute("list", service.listSearchCriteria(cri,mid));
+	    }else{
+	    	model.addAttribute("list", service.nonMemberList(cri));
+	    }
+	    
+	    
 	    PageMaker pageMaker = new PageMaker();
 	    pageMaker.setCri(cri);
 
