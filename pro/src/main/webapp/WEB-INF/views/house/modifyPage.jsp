@@ -299,10 +299,10 @@ $("#popup_img").on("click", function(){
 /* 삭제처리..시작 */
 
 
-$(".uploadedList").on("click", ".mailbox-attachment-info a", function(event){
+/* $(".uploadedList").on("click", ".mailbox-attachment-info a", function(event){
 	
 	var fileLink = $(this).attr("href");
-	
+	 */
 	$.ajax({
 		  url: '/uploadAjax',
 		  data: formData,
@@ -327,7 +327,7 @@ $(".uploadedList").on("click", ".mailbox-attachment-info a", function(event){
 			  $(".uploadedList").append(that);
 		  }
 		});	
-});
+//});
 
 /* 삭제처리 끝 */
 
