@@ -223,7 +223,7 @@ $(document).ready(function(){
 			 str += "<input type='hidden' name='files["+index+"]' value='"+$(this).attr("href") +"'> ";
 	console.log(formObj);
 
-	var hno = ${houseDto.hno};
+	var hno = "${houseDto.hno}";
 	var template = Handlebars.compile($("#templateAttach").html());
 	
 	$.getJSON("/house/getAttach/"+hno,function(list){
@@ -301,7 +301,7 @@ $(".uploadedList").on("click", ".delbtn", function(event){
 	   }
    });
 });
-var hno = ${houseDto.hno};
+var hno = "${houseDto.hno}";
 var template = Handlebars.compile($("#template").html());
 $.getJSON("/house/getAttach/"+hno,function(list){
 	$(list).each(function(){
