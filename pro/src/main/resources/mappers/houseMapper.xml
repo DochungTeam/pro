@@ -16,10 +16,10 @@ select now()
 </select>
 
 <insert id="insertHouse">
-insert into house (hno, hnm, hcontent, hkind, hphone, hmenu, hdetail, himg, hspecial, haddr, hlevel, hvisit, 
-					htime, hholiday, hwriterdt, hlocation, hmapx, hmapy, hurl, hlink) values
-(#{hno}, #{hnm}, #{hcontent}, #{hkind}, #{hphone}, #{hmenu}, #{hdetail}, #{himg}, #{hspecial}, #{haddr}, #{hlevel}, #{hvisit}, 
-					#{htime}, #{hholiday}, #{hwriterdt}, #{hlocation}, #{hmapx}, #{hmapy}, #{hurl}, #{hlink})
+insert into house (hno, hnm, hcontent, hkind, hphone, hmenu, hdetail, himg, hspecial, haddr, hlevel, 
+					htime, hholiday, hwriterdt, hregdate, hmapx, hmapy, hurl, hreplycnt, hviewcnt, hlink) values
+(#{hno}, #{hnm}, #{hcontent}, #{hkind}, #{hphone}, #{hmenu}, #{hdetail}, #{himg}, #{hspecial}, #{haddr}, #{hlevel}, 
+					#{htime}, #{hholiday}, #{hwriterdt}, #{hregdate}, #{hmapx}, #{hmapy}, #{hurl}, #{hreplycnt}, #{hviewcnt}, #{hlink})
 </insert>
 
 <insert id="addAttach">
@@ -41,7 +41,8 @@ select fullname from house_attach where hno = #{hno} order by hregdate
  </select>
 
  <update id="update">
- update house set hnm =#{hnm}, hcontent =#{hcontent} 
+ update house set hnm =#{hnm}, hphone =#{hphone}, haddr =#{haddr}, hkind =#{hkind}, hmenu =#{hmenu}, htime =#{htime}, hholiday =#{hholiday},
+ 					 hcontent =#{hcontent}, hurl =#{hurl} 
  where hno = #{hno}
  </update>
 

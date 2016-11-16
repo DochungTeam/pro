@@ -2,9 +2,18 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
-<script src="/resources/plugins/jQuery/jQuery-2.1.4.min.js"></script>
-<jsp:include page="../include/script.jsp"/>
-<jsp:include page="../include/header.jsp"/>
+<head>
+	<script src="/resources/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+	
+	
+	<jsp:include page="../include/script.jsp"/>
+</head>
+
+<body>
+<div id="page">
+	<jsp:include page="../include/header.jsp"/>
+	<div id="main">
+		<div class="wrapper cf">
 
 <table class="table table-bordered">
 	<tr>
@@ -102,4 +111,8 @@ $(document).ready(function(){
 });
 </script>
 
+		</div>
+	</div>
+</div>
 <jsp:include page="../include/footer.jsp"/>
+</body>

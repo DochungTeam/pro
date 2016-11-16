@@ -82,7 +82,7 @@
 						<figcaption>
 							<a href='/house/readHouse${pageMaker.makeSearch(pageMaker.cri.page) }&hno=${houseDto.hno}'>
 							<h3 class="heading"> ${houseDto.hnm} </h3></a>
-							주소 : ${houseDto.hzipcode} <br> TEL : ${houseDto.hphone}<br>  </figcaption>
+							주소 : ${houseDto.haddr} <br> TEL : ${houseDto.hphone}<br>  </figcaption>
 					</figure>
 					</c:forEach>
 					</div>
