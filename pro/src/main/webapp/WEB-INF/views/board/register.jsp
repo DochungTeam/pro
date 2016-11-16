@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<head>
 
 <script src="/resources/plugins/jQuery/jQuery-2.1.4.min.js"></script>
 <script type="text/javascript" src="/resources/editor/js/HuskyEZCreator.js" charset="utf-8"></script>
@@ -35,23 +36,48 @@ $(document).ready(function(){
 </script>
 
 <jsp:include page="../include/script.jsp"/>
-<jsp:include page="../include/header.jsp"/>
 
-<form role="form" method="post" id="frm">
-	<div class="box-body">
-		<div class="form-group">
-			<input type="text" name="btitle" class="form-control" placeholder="제목을 입력하세요...">
-			<input type="hidden" name="bwriter" value="${boardDto.bwriter }" readonly="readonly">
-		</div>
-		<div class="form-group">
-			<textarea class="form-control" rows="3" name="bcontent" placeholder="내용을 입력하세요..."></textarea>
+<c:if test="${empty loginMember.mid }">
+	<script>
+		alert("바르지 않은 접근입니다.");
+		location.replace("/member/login");
+	</script>
+</c:if>
+
+</head>
+
+<body>
+<div id="page">
+	<jsp:include page="../include/header.jsp"/>
+	<div id="main">
+		<div class="wrapper cf">
+		
+		
+
+		<form role="form" method="post" id="frm">
+			<div class="box-body">
+				<div class="form-group">
+					<input type="text" name="btitle" class="form-control" placeholder="제목을 입력하세요...">
+					<input type="hidden" name="bwriter" value="${loginMember.mid }" readonly="readonly">
+					<c:if test="${loginMember.mmanyn == 0}">
+						<input type="checkbox" name="bboard" id="bboard" value="1"/>
+						<label for="bboard">공지사항</label>
+					</c:if>
+				</div>
+				<div class="form-group">
+					<textarea class="form-control" rows="3" name="bcontent" placeholder="내용을 입력하세요..."></textarea>
+				</div>
+			</div>
+			
+			<div class="box-footer">
+				<button type="submit" id="savebutton">등록</button>
+				<input type="button" class="censle" value="취소"/>
+			</div>
+		</form>
+
 		</div>
 	</div>
-	
-	<div class="box-footer">
-		<button type="submit" id="savebutton">등록</button>
-		<button type="submit" >취소</button>
-	</div>
-</form>
-
+</div>
 <jsp:include page="../include/footer.jsp"/>
+
+</body>
