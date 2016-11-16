@@ -51,7 +51,7 @@
 				</form>
 
 				<div class="box-body">
-					<table style="width : 750px">
+					<table style="width : 500px">
 						<tr>
 							<th>맛집이름</th>
 							<td>${houseDto.hnm}</td>

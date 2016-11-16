@@ -68,7 +68,7 @@ function housecheck_ok() {
 
 
 
-function readURL(input) {
+/*function readURL(input) {
 	if(input.files && input.files[0]){
 		var reader = new FileReader();
 		reader.onload = function(e){
@@ -126,6 +126,6 @@ window.onload = function() {
 	$("#myModal").center();
 	$("#modalTitle").html("<b>우편번호 검색</b>");
 	
-}
+}*/
 
 
