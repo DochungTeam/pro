@@ -72,7 +72,6 @@
 							</c:if>
 						</div>
 						<div>
-							<label>내용</label>
 							<div>
 								<textarea id="bcontent" rows="3" name="bcontent"
 									placeholder="내용을 입력하세요..."></textarea>
