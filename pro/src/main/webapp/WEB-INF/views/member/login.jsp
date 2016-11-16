@@ -10,12 +10,10 @@
 <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
 <script src="https://apis.google.com/js/api:client.js"></script>
 
-<link rel="stylesheet" media="all" href="/resources/css/style.css" />
-<link rel="stylesheet" media="all" href="/resources/css/skin.css" />
-<script src="/resources/js/jquery-1.7.1.min.js"></script>
+<jsp:include page="../include/script.jsp"/>
+
+
 	
-<!-- 버튼 장식용  -->
-<link rel="stylesheet" href="/resources/css/elements.css" />
 <!-- 로그인 from 장식용 -->
 <link rel="stylesheet" href="/resources/css/formlogin.css" />
 
@@ -170,8 +168,8 @@
 	
 <body class="page">
 
-	<header> </header>
-
+	<jsp:include page="../include/header.jsp"/>
+	
 	<!-- MAIN -->
 	<div id="main">
 		<div class="wrapper cf">
@@ -204,6 +202,9 @@
 						<input type="submit" class="link-button green" onclick="return logincheck_ok();" value=" 로그인 " /> 
 						<input type="button" id="censle" class="link-button red" value=" 취소 " />
 					</form>
+					<div>
+						<p><a href="/member/input">아이디가 없으십니까?</a></p>
+					</div>
 					<div id="sns_facebook">
 						<button class="loginBtn" onclick="faceLogin();">
 							<span class="icon"></span>
@@ -228,6 +229,8 @@
 
 		</div>
 	</div>
+	
+	<jsp:include page="../include/footer.jsp"/>
 
 </body>
 

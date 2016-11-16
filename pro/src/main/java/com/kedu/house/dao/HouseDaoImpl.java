@@ -133,6 +133,14 @@ public class HouseDaoImpl implements HouseDao{
 	  public void delete(Integer hno) throws Exception {
 	    session.delete(namespace + ".delete", hno);
 	  }
+<<<<<<< HEAD
 
 
+=======
+	  
+	  @Override
+	  public void list(HouseDto dto) throws Exception {
+	    session.update(namespace + ".list", dto);
+	  }
+>>>>>>> 19457a23cc6f92f4090f62064aae9ac786820921
 }

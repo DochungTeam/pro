@@ -51,7 +51,46 @@
 				</form>
 
 				<div class="box-body">
-					<div class="form-group">
+					<table style="width : 750px">
+						<tr>
+							<th>맛집이름</th>
+							<td>${houseDto.hnm}</td>
+						</tr>
+						<tr>
+							<th>전화번호</th>
+							<td>${houseDto.hphone}</td>
+						</tr>
+						<tr>
+							<th>주소</th>
+							<td>${houseDto.haddr}</td>
+						</tr>
+						<tr>
+							<th>맛집테마</th>
+							<td>${houseDto.hkind}</td>
+						</tr>
+						<tr>
+							<th>맛집메뉴</th>
+							<td>${houseDto.hmenu}</td>
+						</tr>
+						<tr>
+							<th>영업시간</th>
+							<td>${houseDto.htime}</td>
+						</tr>
+						<tr>
+							<th>휴무</th>
+							<td>${houseDto.hholiday}</td>
+						</tr>
+						<tr>
+							<th>맛집설명</th>
+							<td>${houseDto.hcontent}</td>
+						</tr>
+						<tr>
+							<th>블로그주소</th>
+							<td>${houseDto.hurl}</td>
+						</tr>
+						
+					</table>
+					<%-- <div class="form-group">
 						<label for="exampleInputEmail1">맛집 이름</label> <input type="text"
 							name='hnm' class="form-control" value="${houseDto.hnm}"
 							readonly="readonly">
@@ -65,7 +104,7 @@
 						<label for="exampleInputEmail1">hkind</label> <input type="text"
 							name="hkind" class="form-control" value="${houseDto.hkind}"
 							readonly="readonly">
-					</div>
+					</div> --%>
 				</div>
 				<!-- /.box-body -->
 				

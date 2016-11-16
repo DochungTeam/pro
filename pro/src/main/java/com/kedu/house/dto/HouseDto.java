@@ -13,15 +13,11 @@ public class HouseDto {
 	private String hdetail;
 	private String himg;
 	private String hspecial;
-	private String hzipcode;
 	private String haddr;
-	private String haddr2;
 	private String hlevel;
-	private String hvisit;
 	private String htime;
 	private String hholiday;
 	private Date hwriterdt;
-	private String hlocation;
 	private Date hregdate;
 	private String hmapx;
 	private String hmapy;
@@ -30,6 +26,7 @@ public class HouseDto {
 	private int hreplycnt;
 	private int hviewcnt;
 	private String hlink;
+<<<<<<< HEAD
 	private String jjimchk;
 	
 	public String getJjimchk() {
@@ -38,6 +35,10 @@ public class HouseDto {
 	public void setJjimchk(String jjimchk) {
 		this.jjimchk = jjimchk;
 	}
+=======
+	private String fullName;
+	
+>>>>>>> 19457a23cc6f92f4090f62064aae9ac786820921
 	public int getHno() {
 		return hno;
 	}
@@ -92,35 +93,17 @@ public class HouseDto {
 	public void setHspecial(String hspecial) {
 		this.hspecial = hspecial;
 	}
-	public String getHzipcode() {
-		return hzipcode;
-	}
-	public void setHzipcode(String hzipcode) {
-		this.hzipcode = hzipcode;
-	}
 	public String getHaddr() {
 		return haddr;
 	}
 	public void setHaddr(String haddr) {
 		this.haddr = haddr;
 	}
-	public String getHaddr2() {
-		return haddr2;
-	}
-	public void setHaddr2(String haddr2) {
-		this.haddr2 = haddr2;
-	}
 	public String getHlevel() {
 		return hlevel;
 	}
 	public void setHlevel(String hlevel) {
 		this.hlevel = hlevel;
-	}
-	public String getHvisit() {
-		return hvisit;
-	}
-	public void setHvisit(String hvisit) {
-		this.hvisit = hvisit;
 	}
 	public String getHtime() {
 		return htime;
@@ -139,12 +122,6 @@ public class HouseDto {
 	}
 	public void setHwriterdt(Date hwriterdt) {
 		this.hwriterdt = hwriterdt;
-	}
-	public String getHlocation() {
-		return hlocation;
-	}
-	public void setHlocation(String hlocation) {
-		this.hlocation = hlocation;
 	}
 	public Date getHregdate() {
 		return hregdate;
@@ -194,15 +171,33 @@ public class HouseDto {
 	public void setHlink(String hlink) {
 		this.hlink = hlink;
 	}
+	public String getFullName() {
+		return fullName;
+	}
+	public void setFullName(String fullName) {
+		this.fullName = fullName;
+	}
+	
 	
 	@Override
 	public String toString() {
 		return "HouseDto [hno=" + hno + ", hnm=" + hnm + ", hcontent=" + hcontent + ", hkind=" + hkind + ", hphone="
 				+ hphone + ", hmenu=" + hmenu + ", hdetail=" + hdetail + ", himg=" + himg + ", hspecial=" + hspecial
-				+ ", hzipcode=" + hzipcode + ", haddr=" + haddr + ", haddr2=" + haddr2 + ", hlevel=" + hlevel
-				+ ", hvisit=" + hvisit + ", htime=" + htime + ", hholiday=" + hholiday + ", hwriterdt=" + hwriterdt
-				+ ", hlocation=" + hlocation + ", hregdate=" + hregdate + ", hmapx=" + hmapx + ", hmapy=" + hmapy
+				+ ", haddr=" + haddr + ", hlevel=" + hlevel + ", htime=" + htime + ", hholiday=" + hholiday
+				+ ", hwriterdt=" + hwriterdt + ", hregdate=" + hregdate + ", hmapx=" + hmapx + ", hmapy=" + hmapy
 				+ ", files=" + Arrays.toString(files) + ", hurl=" + hurl + ", hreplycnt=" + hreplycnt + ", hviewcnt="
+<<<<<<< HEAD
 				+ hviewcnt + ", hlink=" + hlink + ", jjimchk=" + jjimchk + "]";
 	}
+=======
+				+ hviewcnt + ", hlink=" + hlink + ", fullName=" + fullName + "]";
+	}
+	
+	
+	
+	
+	
+	
+	
+>>>>>>> 19457a23cc6f92f4090f62064aae9ac786820921
 }

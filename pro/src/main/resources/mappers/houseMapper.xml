@@ -16,10 +16,10 @@ select now()
 </select>
 
 <insert id="insertHouse">
-insert into house (hno, hnm, hcontent, hkind, hphone, hmenu, hdetail, himg, hspecial, hzipcode, haddr, haddr2, hlevel, hvisit, 
-					htime, hholiday, hwriterdt, hlocation, hmapx, hmapy, hurl, hlink) values
-(#{hno}, #{hnm}, #{hcontent}, #{hkind}, #{hphone}, #{hmenu}, #{hdetail}, #{himg}, #{hspecial}, #{hzipcode}, #{haddr}, #{haddr2}, #{hlevel}, #{hvisit}, 
-					#{htime}, #{hholiday}, #{hwriterdt}, #{hlocation}, #{hmapx}, #{hmapy}, #{hurl}, #{hlink})
+insert into house (hno, hnm, hcontent, hkind, hphone, hmenu, hdetail, himg, hspecial, haddr, hlevel, 
+					htime, hholiday, hwriterdt, hregdate, hmapx, hmapy, hurl, hreplycnt, hviewcnt, hlink) values
+(#{hno}, #{hnm}, #{hcontent}, #{hkind}, #{hphone}, #{hmenu}, #{hdetail}, #{himg}, #{hspecial}, #{haddr}, #{hlevel}, 
+					#{htime}, #{hholiday}, #{hwriterdt}, #{hregdate}, #{hmapx}, #{hmapy}, #{hurl}, #{hreplycnt}, #{hviewcnt}, #{hlink})
 </insert>
 
 <insert id="addAttach">
@@ -34,14 +34,15 @@ select fullname from house_attach where hno = #{hno} order by hregdate
 
 <select id="read" resultType="com.kedu.house.dto.HouseDto">
  select 
-   hno, hnm, hcontent, hkind, hregdate, hviewcnt 
+   hno, hnm, hphone, haddr, hmenu, htime, hholiday, hurl, hcontent, hkind, hregdate, hviewcnt 
  from 
    house 
  where hno = #{hno}
  </select>
 
  <update id="update">
- update house set hnm =#{hnm}, hcontent =#{hcontent} 
+ update house set hnm =#{hnm}, hphone =#{hphone}, haddr =#{haddr}, hkind =#{hkind}, hmenu =#{hmenu}, htime =#{htime}, hholiday =#{hholiday},
+ 					 hcontent =#{hcontent}, hurl =#{hurl} 
  where hno = #{hno}
  </update>
 
@@ -125,9 +126,10 @@ select fullname from house_attach where hno = #{hno} order by hregdate
    </if>              
  </if>  
 </sql>
- 
+ <!-- 맛집리스트 -->
 <select id="listSearch" resultType="HouseDto">
 <![CDATA[  
+<<<<<<< HEAD
   select h.hno
  	  , h.hnm
  	  , h.hcontent
@@ -144,6 +146,10 @@ select fullname from house_attach where hno = #{hno} order by hregdate
    						   
    						     on h.hno = jjim.hno
   where h.hno > 0 
+=======
+  select h.hno,hnm,hkind,hphone,h.hregdate,hviewcnt,ha.fullName from house h,house_attach ha
+where h.hno = ha.hno
+>>>>>>> 19457a23cc6f92f4090f62064aae9ac786820921
 ]]>  
 
   <include refid="search"></include>

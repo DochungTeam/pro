@@ -5,15 +5,15 @@
 <mapper namespace="com.kedu.mapper.BoardMapper">
 
 	<insert id="create">
-		insert into board (btitle, bcontent, bwriter) values(#{btitle}, #{bcontent}, #{bwriter})
+		insert into board (btitle, bcontent, bwriter, filedata, bboard) values(#{btitle}, #{bcontent}, #{bwriter}, #{filedata}, #{bboard})
 	</insert>
 
 	<select id="read" resultType="BoardDto">
-		select bno, btitle, bcontent, bwritedt, bcount, bwriter from board where bno = #{bno}
+		select bno, btitle, bcontent, bwritedt, bcount, bwriter, filedata, bboard from board where bno = #{bno}
 	</select>
 
 	<update id="update">
-		update board set btitle = #{btitle}, bcontent = #{bcontent}, bupdatedt = #{bupdatedt} where bno = #{bno}
+		update board set btitle = #{btitle}, bcontent = #{bcontent}, bupdatedt = now() where bno = #{bno}
 	</update>
 
 	<delete id="delete">
@@ -37,7 +37,7 @@
 	<select id="listCriteria" resultType="BoardDto">
 	<![CDATA[
 		select bno, btitle, bcontent, bwritedt, bcount, bwriter, rcount from board
-		where bno > 0 order by bno desc limit #{pageStart}, #{perPageNum}
+		where bno > 0 order by bno desc, bwritedt desc limit #{pageStart}, #{perPageNum}
 	]]>
 	</select>
 	
@@ -71,10 +71,22 @@
 		
 	</select>
 
-	<update id="updateReplyCnt">
+	<update id="updateRcount">
 		update board set rcount = (select count(rno) from reply where bno = board.bno)
 		where bno > 0
 	</update>
+	
+	<update id="updateBcount">
+		update board set bcount = bcount + 1 where bno = #{bno}
+	</update>
+	
+	<select id="listNotice" resultType="BoardDto">
+	<![CDATA[
+		select bno, btitle, bcontent, bwritedt, bcount, bwriter, rcount from board
+		where 1=1 and bno > 0 and bboard = 1 order by bno desc, bwritedt desc
+	]]>
+	</select>
+	
 	
 <sql id="search">
 		<if test="searchType != null">
