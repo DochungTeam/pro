@@ -15,11 +15,9 @@ public class HouseDto {
 	private String hspecial;
 	private String haddr;
 	private String hlevel;
-	private String hvisit;
 	private String htime;
 	private String hholiday;
 	private Date hwriterdt;
-	private String hlocation;
 	private Date hregdate;
 	private String hmapx;
 	private String hmapy;
@@ -29,7 +27,6 @@ public class HouseDto {
 	private int hviewcnt;
 	private String hlink;
 	private String fullName;
-	
 	
 	public int getHno() {
 		return hno;
@@ -97,12 +94,6 @@ public class HouseDto {
 	public void setHlevel(String hlevel) {
 		this.hlevel = hlevel;
 	}
-	public String getHvisit() {
-		return hvisit;
-	}
-	public void setHvisit(String hvisit) {
-		this.hvisit = hvisit;
-	}
 	public String getHtime() {
 		return htime;
 	}
@@ -120,12 +111,6 @@ public class HouseDto {
 	}
 	public void setHwriterdt(Date hwriterdt) {
 		this.hwriterdt = hwriterdt;
-	}
-	public String getHlocation() {
-		return hlocation;
-	}
-	public void setHlocation(String hlocation) {
-		this.hlocation = hlocation;
 	}
 	public Date getHregdate() {
 		return hregdate;
@@ -181,16 +166,18 @@ public class HouseDto {
 	public void setFullName(String fullName) {
 		this.fullName = fullName;
 	}
+	
+	
 	@Override
 	public String toString() {
 		return "HouseDto [hno=" + hno + ", hnm=" + hnm + ", hcontent=" + hcontent + ", hkind=" + hkind + ", hphone="
 				+ hphone + ", hmenu=" + hmenu + ", hdetail=" + hdetail + ", himg=" + himg + ", hspecial=" + hspecial
-				+ ", haddr=" + haddr + ", hlevel=" + hlevel + ", hvisit=" + hvisit + ", htime=" + htime + ", hholiday="
-				+ hholiday + ", hwriterdt=" + hwriterdt + ", hlocation=" + hlocation + ", hregdate=" + hregdate
-				+ ", hmapx=" + hmapx + ", hmapy=" + hmapy + ", files=" + Arrays.toString(files) + ", hurl=" + hurl
-				+ ", hreplycnt=" + hreplycnt + ", hviewcnt=" + hviewcnt + ", hlink=" + hlink + ", fullName=" + fullName
-				+ "]";
+				+ ", haddr=" + haddr + ", hlevel=" + hlevel + ", htime=" + htime + ", hholiday=" + hholiday
+				+ ", hwriterdt=" + hwriterdt + ", hregdate=" + hregdate + ", hmapx=" + hmapx + ", hmapy=" + hmapy
+				+ ", files=" + Arrays.toString(files) + ", hurl=" + hurl + ", hreplycnt=" + hreplycnt + ", hviewcnt="
+				+ hviewcnt + ", hlink=" + hlink + ", fullName=" + fullName + "]";
 	}
+	
 	
 	
 	
