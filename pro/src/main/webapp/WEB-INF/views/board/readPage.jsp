@@ -95,9 +95,20 @@ $(document).ready(function(){
 	console.log(formObj);
 	
 	$(".btn-modify").on("click", function(){
-		formObj.attr("action", "/board/modifyPage");
-		formObj.attr("method", "get");
-		formObj.submit();
+		
+		alert("ㅋㅋ");
+		var loginM = "${loginMember.mid}";
+		alert(loginM);
+		var writer = "${boardDto.bwriter}";
+		alert(writer);
+		alert("ㅎㅎ");
+		if(loginM == writer){
+			formObj.attr("action", "/board/modifyPage");
+			formObj.attr("method", "get");
+			formObj.submit();
+		}else{
+			alert("작성자만 수정 가능합니다.");
+		}
 	});
 	
 	$(".btn-remove").on("click", function(){
