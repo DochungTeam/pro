@@ -18,7 +18,7 @@
 					}else{
 						alert("비 정상적인 접근입니다.");
 					}
-					location.replace("/member/main");
+					location.replace("/house/list");
 			});
 		</script>
 		

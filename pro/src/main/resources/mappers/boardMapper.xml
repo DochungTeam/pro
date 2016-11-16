@@ -5,7 +5,7 @@
 <mapper namespace="com.kedu.mapper.BoardMapper">
 
 	<insert id="create">
-		insert into board (btitle, bcontent, bwriter, filedata) values(#{btitle}, #{bcontent}, #{bwriter}, #{filedata})
+		insert into board (btitle, bcontent, bwriter, filedata, bboard) values(#{btitle}, #{bcontent}, #{bwriter}, #{filedata}, #{bboard})
 	</insert>
 
 	<select id="read" resultType="BoardDto">
