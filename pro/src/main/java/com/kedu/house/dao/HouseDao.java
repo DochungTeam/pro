@@ -39,7 +39,7 @@ public interface HouseDao {
 	  
 	  public void update(HouseDto dto) throws Exception;
 	  
-	  public void delete(Integer bno) throws Exception;
+	  public void delete(Integer hno) throws Exception;
 	  
 	  
 }

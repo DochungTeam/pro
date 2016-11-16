@@ -63,13 +63,24 @@ select fullname from house_attach where hno = #{hno} order by hregdate
 
   <select id="listCriteria" resultType="HouseDto">
  <![CDATA[
- select 
-   hno, hnm, hcontent, hkind, hregdate, hviewcnt, hreplycnt 
- from 
-   house
- where hno > 0 
- order by hno desc, hregdate desc
- limit #{pageStart}, #{perPageNum}
+ select h.hno
+ 	  , h.hnm
+ 	  , h.hcontent
+ 	  , h.hkind
+ 	  , h.hregdate
+ 	  , h.hviewcnt
+ 	  , h.hreplycnt 
+ 	  , case when jjim.hno is null then 'n' else 'y' end jjimchk
+   from house h left outer join(
+								select hno
+								  from mypage
+								 where mid = 'asdasd' 
+   						   		) jjim
+   						   
+   						     on h.hno = jjim.hno
+  where h.hno > 0 
+  order by hno desc, hregdate desc
+  limit #{pageStart}, #{perPageNum}
  ]]>  
  </select>
 
@@ -117,9 +128,22 @@ select fullname from house_attach where hno = #{hno} order by hregdate
  
 <select id="listSearch" resultType="HouseDto">
 <![CDATA[  
-  select * 
-  from house 
-  where hno > 0 
+  select h.hno
+ 	  , h.hnm
+ 	  , h.hcontent
+ 	  , h.hkind
+ 	  , h.hregdate
+ 	  , h.hviewcnt
+ 	  , h.hreplycnt 
+ 	  , case when jjim.hno is null then 1 else 0 end jjimchk
+   from house h left outer join(
+								select hno
+								  from mypage
+								 where mid = 'asdasd' 
+   						   		) jjim
+   						   
+   						     on h.hno = jjim.hno
+  where h.hno > 0 
 ]]>  
 
   <include refid="search"></include>
@@ -157,6 +181,8 @@ delete from house where hno = #{hno}
 <insert id="replaceAttach">
 insert into house_attach(fullname, hno) values (#{fullName}, #{hno})
 </insert>
+
+
 </mapper>
 
     

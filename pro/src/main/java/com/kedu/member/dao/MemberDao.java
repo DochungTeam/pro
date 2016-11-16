@@ -1,8 +1,8 @@
 package com.kedu.member.dao;
 
-import java.util.Date;
+import java.util.List;
 
-import com.kedu.member.dto.LoginDto;
+import com.kedu.house.dto.HouseDto;
 import com.kedu.member.dto.MemberDto;
 
 public interface MemberDao {
@@ -20,6 +20,14 @@ public interface MemberDao {
 	public int idcheck(MemberDto dto) throws Exception;
 	
 	public int logincheck(MemberDto dto) throws Exception;
+	
+	public void regiJjim(int hno, String mid)throws Exception;
+	  
+	public void delJjim(int hno, String mid)throws Exception;
+	
+	public List<HouseDto> JjimList(String mid , int hno)throws Exception;
+	
+	public int Jjimchk(String mid, int hno)throws Exception;
 }
 
 

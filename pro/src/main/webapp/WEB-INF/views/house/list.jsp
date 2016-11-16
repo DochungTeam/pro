@@ -2,11 +2,16 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ page session="false"%>
 
 <%@include file="../include/script.jsp"%>
 <%@include file="../include/header.jsp"%>
 
+
+<style>
+img {
+	cursor:pointer
+}
+</style>
 <!-- Main content -->
 <section class="content">
 	<div class="row">
@@ -83,12 +88,24 @@
 						<figcaption>
 							<a href='/house/readHouse${pageMaker.makeSearch(pageMaker.cri.page) }&hno=${houseDto.hno}'>
 							<h3 class="heading"> ${houseDto.hnm} </h3></a>
-							주소 : ${houseDto.hzipcode} <br> TEL : ${houseDto.hphone}<br>  </figcaption>
+							주소 : ${houseDto.hzipcode} <br> TEL : ${houseDto.hphone}<br> 
+								<img onclick="jjimBtn(${houseDto.hno })" id='${houseDto.hno }' 
+									 <c:choose>
+									 	<c:when test="${houseDto.jjimchk == 0 }">
+									 		src="/resources/img/love.png"
+									 	</c:when>
+									 	<c:otherwise>
+									 		src="/resources/img/soso.png"
+									 	</c:otherwise>
+									 </c:choose> 
+									 onmouseenter="jjim_mouse_enter($(this))" 
+									 onmouseout="jjim_mouse_out($(this))" title="찜하기" class="${houseDto.jjimchk}" >
+						</figcaption>
 					</figure>
 					</c:forEach>
-					</div>
-					</div>
-					</div>
+				</div>
+			</div>
+			</div>
 				<!-- /.box-body -->
 
 
@@ -159,6 +176,8 @@
 					self.location = "register";
 
 				});
+				
+			
 
 			});
 </script>
@@ -180,7 +199,7 @@ $(document).ready(function(){
 	
 	console.log(formObj);
 
-var hno = ${houseDto.hno};
+	var hno = ${houseDto.hno};
 	var template = Handlebars.compile($("#templateAttach").html());
 	
 	$.getJSON("/house/getAttach/"+hno,function(list){
@@ -224,6 +243,63 @@ var hno = ${houseDto.hno};
 		
 	
 });
+</script>
+
+<script>
+
+
+
+
+function jjim_mouse_enter(img){
+	
+	if(img.attr("class")==1){
+		img.attr("src","/resources/img/XD.png");
+	}else{
+		
+	}
+}
+
+
+function jjim_mouse_out(img){
+	
+	if(img.attr("class")==1){
+		img.attr("src","/resources/img/soso.png");
+	}else{
+	}
+}
+
+
+function jjimBtn(hno){
+	
+		var mid = '${loginMember.mid}';
+		
+		if(mid !=""){
+			$.ajax({
+				url : "/member/jjim",
+				type : "get",
+				data : {"mid" : mid, "hno" : hno},
+				success : function(responseData){
+					console.log(responseData);
+					
+					if(responseData==0){
+						console.log('success!');
+						console.log($("#"+hno).attr("src"));
+						$("#"+hno).attr("class",0);
+						$("#"+hno).attr("src","/resources/img/love.png");
+					}else{
+						$("#"+hno).attr("class",1);
+					 	$("#"+hno).attr("src","/resources/img/soso.png");
+					 
+					}
+					
+					console.log("class : "+$("#"+hno).attr("class"));
+				}
+			})
+		}else{
+			alert("로그인해주세요");
+		}
+}
+
 </script>
 
 <%@include file="../include/footer.jsp"%>

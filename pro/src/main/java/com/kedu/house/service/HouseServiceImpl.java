@@ -117,6 +117,7 @@ public class HouseServiceImpl implements HouseService{
 	    dao.delete(hno);
 	  } 
 
+	  
 	
 /*
 	@Override

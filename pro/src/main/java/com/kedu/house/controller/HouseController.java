@@ -74,7 +74,7 @@ public class HouseController {
 
 	    model.addAttribute("pageMaker", pageMaker);
 	    
-	    
+	    System.out.println("adofjhaweiufhjkdhvgjkashdjkshdfjkashdfkjh"+service.listSearchCriteria(cri).toString());
 	  }
 	  
 	  @RequestMapping(value = "/readHouse", method = RequestMethod.GET)

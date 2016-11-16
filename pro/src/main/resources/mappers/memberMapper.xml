@@ -102,6 +102,34 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		and 
 			mpw = #{mpw}
 	</select>
+	
+	<insert id="regiJjim">
+		insert into mypage
+		values(#{mid}, #{hno})
+	</insert>
+
+	<delete id="delJjim">
+		delete
+		  from mypage
+		 where mid = #{mid}
+		   and hno = #{hno}
+	</delete>
+	
+	<select id="JjimList" resultType="HouseDto">
+		select h.*
+		  from member m
+		  join mypage p
+		    on m.#{mid} = p.mid
+		  join house h
+		    on h.#{hno} = p.hno
+	</select>
+	
+	<select id="Jjimchk" resultType="int">
+		select count(*)
+		  from mypage
+		 where mid = #{mid}
+		   and hno = #{hno};
+	</select>
 </mapper>
 
 

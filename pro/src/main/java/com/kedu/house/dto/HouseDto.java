@@ -30,8 +30,14 @@ public class HouseDto {
 	private int hreplycnt;
 	private int hviewcnt;
 	private String hlink;
+	private String jjimchk;
 	
-	
+	public String getJjimchk() {
+		return jjimchk;
+	}
+	public void setJjimchk(String jjimchk) {
+		this.jjimchk = jjimchk;
+	}
 	public int getHno() {
 		return hno;
 	}
@@ -197,11 +203,6 @@ public class HouseDto {
 				+ ", hvisit=" + hvisit + ", htime=" + htime + ", hholiday=" + hholiday + ", hwriterdt=" + hwriterdt
 				+ ", hlocation=" + hlocation + ", hregdate=" + hregdate + ", hmapx=" + hmapx + ", hmapy=" + hmapy
 				+ ", files=" + Arrays.toString(files) + ", hurl=" + hurl + ", hreplycnt=" + hreplycnt + ", hviewcnt="
-				+ hviewcnt + ", hlink=" + hlink + "]";
+				+ hviewcnt + ", hlink=" + hlink + ", jjimchk=" + jjimchk + "]";
 	}
-	
-	
-	
-	
-	
 }
