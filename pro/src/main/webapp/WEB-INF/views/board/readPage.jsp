@@ -2,12 +2,20 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
+<head>
+
 <script src="/resources/plugins/jQuery/jQuery-2.1.4.min.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
 <jsp:include page="../include/script.jsp"/>
-<jsp:include page="../include/header.jsp"/>
+</head>
 
+
+<body>
+	<div id="page">
+		<jsp:include page="../include/header.jsp" />
+		<div id="main">
+			<div class="wrapper cf">
 <form role="form" action="modifyPage" method="post">
 	
 	<input type="hidden" name="bno" value="${boardDto.bno }">
@@ -26,7 +34,7 @@
 		<input type="text" name="bwritedt" class="form-control" value="${boardDto.bwritedt }" readonly="readonly">
 	</div>
 	<div class="form-group">
-		<textarea class="form-control" rows="3" name="bcontent" readonly="readonly">${boardDto.bcontent }</textarea>
+		<div>${boardDto.bcontent }</div>
 	</div>
 </div>
 
@@ -280,4 +288,8 @@ $(document).ready(function(){
 	});
 });
 </script>
+			</div>
+		</div>
+	</div>
 <jsp:include page="../include/footer.jsp"/>
+</body>
