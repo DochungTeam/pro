@@ -29,7 +29,7 @@
 				</div>
 				<!-- /.box-header -->
 
-<form role="form" action="modifyPage" method="post">
+<form role="form" method="post" name="frm" id="modifyForm">
 
 	<input type='hidden' name='page' value="${cri.page}"> 
 	<input type='hidden' name='perPageNum' value="${cri.perPageNum}">
@@ -44,35 +44,43 @@
 						</tr>
 						<tr>
 							<th style="background-color : #B8B8B8; ">전화번호</th>
-							<td><input type ="text" name="hnm" size="20" value="${houseDto.hphone}" ></td>
+							<td><input type ="text" name="hphone" size="20" value="${houseDto.hphone}" maxlength="11">(전화번호는 - 없이 입력해주세요.)</td>
 						</tr>
 						<tr>
 							<th style="background-color : #B8B8B8; ">주소</th>
-							<td><input type ="text" name="hnm" size="20" value="${houseDto.haddr}" ></td>
+							<td><input type ="text" name="haddr" size="20" value="${houseDto.haddr}" ></td>
 						</tr>
 						<tr>
-							<th style="background-color : #B8B8B8; ">맛집테마</th>
-							<td><input type ="text" name="hnm" size="20" value="${houseDto.hkind}" ></td>
-						</tr>
+						<th style="background-color : #B8B8B8; "> 맛집테마 *</th>
+						<td><select class="select" name="hkind" value="${houseDto.hkind}">
+								<option value="">선택하세요</option>
+								<option value="00">한식</option>
+								<option value="01">양식</option>
+								<option value="02">중식</option>
+								<option value="03">일식</option>
+								<option value="04">퓨전</option>
+								<option value="05">디저트</option>
+						</select></td>
+					</tr>
 						<tr>
 							<th style="background-color : #B8B8B8; ">맛집메뉴</th>
-							<td><input type ="text" name="hnm" size="20" value="${houseDto.hmenu}" ></td>
+							<td><input type ="text" name="hmenu" size="20" value="${houseDto.hmenu}" ></td>
 						</tr>
 						<tr>
 							<th style="background-color : #B8B8B8; ">영업시간</th>
-							<td><input type ="text" name="hnm" size="20" value="${houseDto.htime}" ></td>
+							<td><input type ="text" name="htime" size="20" value="${houseDto.htime}" ></td>
 						</tr>
 						<tr>
 							<th style="background-color : #B8B8B8; ">휴무</th>
-							<td><input type ="text" name="hnm" size="20" value="${houseDto.hholiday}" ></td>
+							<td><input type ="text" name="hholiday" size="20" value="${houseDto.hholiday}" ></td>
 						</tr>
 						<tr>
 							<th style="background-color : #B8B8B8; ">맛집설명</th>
-							<td><input type ="text" name="hnm" size="20" value="${houseDto.hcontent}" ></td>
+							<td><input type ="text" name="hcontent" size="20" value="${houseDto.hcontent}" ></td>
 						</tr>
 						<tr>
 							<th style="background-color : #B8B8B8; ">블로그주소</th>
-							<td><input type ="text" name="hnm" size="20" value="${houseDto.hurl}" ></td>
+							<td><input type ="text" name="hurl" size="20" value="${houseDto.hurl}" ></td>
 						</tr>
 						
 					</table>
@@ -110,7 +118,7 @@
 
 		<ul class="mailbox-attachments clearfix uploadedList"></ul>
 
-    <button type="submit" class="btn btn-primary">수정</button> 
+    <button type="submit" class="btn btn-primary" onclick="return housecheck_ok()">수정</button> 
     <button type="submit" class="btn btn-primary" id="goListBtn">취소 </button>
 
 	</div>
@@ -169,7 +177,6 @@ $(".fileDrop").on("drop", function(event){
 	var files = event.originalEvent.dataTransfer.files;
 	
 	var file = files[0];
-	//console.log(file);
 	
 	var formData = new FormData();
 	
@@ -245,6 +252,21 @@ $("#popup_img").on("click", function(){
 	$(".popup").hide('slow');
 	
 });	
+
+$("#modifyForm").submit(function(event){
+	event.preventDefault();
+	
+	var that = $(this);
+	
+	var str ="";
+	$(".uploadedList .delbtn").each(function(index){
+		 str += "<input type='hidden' name='files["+index+"]' value='"+$(this).attr("href") +"'> ";
+	});
+	
+	that.append(str);
+
+	that.get(0).submit();
+});
 </script>
 
 <script>
