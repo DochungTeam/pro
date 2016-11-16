@@ -25,6 +25,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.kedu.board.dto.BoardDto;
 import com.kedu.board.dto.BoardPageMaker;
 import com.kedu.board.dto.BoardSearchCriteria;
+import com.kedu.board.service.BoardReplyService;
 import com.kedu.board.service.BoardService;
 
 @Controller
@@ -35,6 +36,9 @@ public class BoardSearchBoardController {
 	
 	@Inject
 	private BoardService service;
+	
+	@Inject
+	private BoardReplyService replyService;
 	
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public void listPage(@ModelAttribute("cri") BoardSearchCriteria cri, Model model) throws Exception {
@@ -55,6 +59,8 @@ public class BoardSearchBoardController {
 	public void read(@RequestParam("bno") int bno, @ModelAttribute("cri") BoardSearchCriteria cri, Model model) throws Exception {
 		
 		model.addAttribute(service.read(bno));
+		model.addAttribute("replyList",replyService.listReply(bno));
+		
 	}
 	
 	@RequestMapping(value = "/removePage", method = RequestMethod.POST)
