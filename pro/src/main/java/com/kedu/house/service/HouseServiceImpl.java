@@ -105,9 +105,9 @@ public class HouseServiceImpl implements HouseService{
 	    
 	    if(files == null) { return; } 
 	    
-/*	    for (String fileName : files) {
+	    for (String fileName : files) {
 	      dao.replaceAttach(fileName, hno);
-	    }*/
+	    }
 	  }
 	  
 	  @Transactional
