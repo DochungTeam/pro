@@ -79,7 +79,7 @@ img {
 				
 				<!-- Filter container -->
 				
-				
+				 
 				<div id="filter-container" class="cf">
 				<c:forEach items="${list}" var="houseDto">
 					<figure class="${houseDto.hkind}">
@@ -88,7 +88,7 @@ img {
 						<figcaption>
 							<a href='/house/readHouse${pageMaker.makeSearch(pageMaker.cri.page) }&hno=${houseDto.hno}'>
 							<h3 class="heading"> ${houseDto.hnm} </h3></a>
-							주소 : ${houseDto.hzipcode} <br> TEL : ${houseDto.hphone}<br> 
+							주소 : ${houseDto.haddr} <br> TEL : ${houseDto.hphone}<br> 
 								<img onclick="jjimBtn(${houseDto.hno })" id='${houseDto.hno }' 
 									 <c:choose>
 									 	<c:when test="${houseDto.jjimchk == 0 }">
