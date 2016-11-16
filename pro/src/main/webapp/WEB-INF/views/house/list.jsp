@@ -101,7 +101,6 @@ img {
 									 onmouseenter="jjim_mouse_enter($(this))" 
 									 onmouseout="jjim_mouse_out($(this))" title="찜하기" class="${houseDto.jjimchk}" >
 						</figcaption>
-							주소 : ${houseDto.haddr} <br> TEL : ${houseDto.hphone}<br>  </figcaption>
 					</figure>
 					</c:forEach>
 				</div>
@@ -394,7 +393,6 @@ function jjimBtn(hno){
 }
 
 </script>
-=======
 
 
 			</div>
