@@ -146,6 +146,23 @@ $(document).ready(function(){
 	});
 });
 </script>
+<script id="template" type="text/x-handlebars-template">
+{{#each .}}
+<li class="relplyLi" data-rno={{rno}}>
+<i class="fa fa-comments"></i>
+	<div class="timeline-item">
+		<span class="time">
+			<i class="fa fa-clock-o"></i>{{prettifyDate rwritedt}}
+		</span>
+`		<h3 class="timeline-header"><strong>{{rno}}</strong> -{{rwriter}}<h3>
+		<div class="timeline-body">{{rcontent}} </div>
+			<div class="timeline-footer">
+				<a class="btn btn-list btn-xs" data-toggle="modal" data-target="#modifyModal">수정</a>
+			</div>
+	</div>
+</li>
+{{/each}}
+</script>
 </head>
 
 
@@ -256,23 +273,6 @@ $(document).ready(function(){
 	
 });
 
-</script>
-<script id="template" type="text/x-handlebars-template">
-{{#each .}}
-<li class="relplyLi" data-rno={{rno}}>
-<i class="fa fa-comments"></i>
-	<div class="timeline-item">
-		<span class="time">
-			<i class="fa fa-clock-o"></i>{{prettifyDate rwritedt}}
-		</span>
-`		<h3 class="timeline-header"><strong>{{rno}}</strong> -{{rwriter}}<h3>
-		<div class="timeline-body">{{rcontent}} </div>
-			<div class="timeline-footer">
-				<a class="btn btn-list btn-xs" data-toggle="modal" data-target="#modifyModal">수정</a>
-			</div>
-	</div>
-</li>
-{{/each}}
 </script>
 <script>
 $(document).ready(function(){
