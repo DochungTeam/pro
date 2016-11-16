@@ -65,4 +65,9 @@ public class BoardServiceImpl implements BoardService {
 	public int listSearchCount(BoardSearchCriteria cri) throws Exception {
 		return dao.listSearchCount(cri);
 	}
+	
+	@Override
+	public List<BoardDto> listNotice() throws Exception {
+		return dao.listNotice();
+	}
 }

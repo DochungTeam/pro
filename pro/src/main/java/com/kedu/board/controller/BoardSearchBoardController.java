@@ -41,6 +41,7 @@ public class BoardSearchBoardController {
 		logger.info(cri.toString());
 		
 		model.addAttribute("list", service.listCriteria(cri));
+		model.addAttribute("notice", service.listNotice());
 		
 		BoardPageMaker pageMaker = new BoardPageMaker();
 		pageMaker.setCri(cri);

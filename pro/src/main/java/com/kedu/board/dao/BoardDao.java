@@ -31,4 +31,6 @@ public interface BoardDao {
 	public void updateRcount(int bno, int amount) throws Exception;
 	
 	public void updateBcount(int bno) throws Exception;
+	
+	public List<BoardDto> listNotice() throws Exception;
 }

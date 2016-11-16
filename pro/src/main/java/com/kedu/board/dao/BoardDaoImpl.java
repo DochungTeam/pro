@@ -91,4 +91,9 @@ public class BoardDaoImpl implements BoardDao {
 	public void updateBcount(int bno) throws Exception {
 		session.update(namespace + ".updateBcount", bno);
 	}
+	
+	@Override
+	public List<BoardDto> listNotice() throws Exception {
+		return session.selectList(namespace + ".listNotice");
+	}
 }
