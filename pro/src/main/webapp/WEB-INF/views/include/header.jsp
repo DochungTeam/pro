@@ -1,6 +1,27 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<script type="text/javascript">
+
+	var logout = function(){
+		$.ajax({
+			type : 'get',
+			url : '/member/logout/',
+			headers : {
+				"Content-Type" : "application/json",
+				"X-HTTP-Method-Override" : "PUT"
+			},
+			dataType : "text",
+			success : function(){
+				history.go(0);
+			}
+			
+		});
+	}
+
+</script>
+
 <header>
 	<div class="wrapper cf">
 		<div id="logo">
@@ -27,7 +48,7 @@
 						<a href="/member/login">로그인</a>
 					</c:when>
 					<c:otherwise>
-						<a href="/member/logout">로그아웃</a>
+						<a href="" onclick="logout();">로그아웃</a>
 					</c:otherwise>
 				</c:choose>
 			</li>

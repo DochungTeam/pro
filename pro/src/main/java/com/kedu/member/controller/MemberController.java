@@ -218,7 +218,8 @@ public class MemberController {
 
 
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
-	public String logout(HttpServletRequest request, 
+	@ResponseBody
+	public void logout(HttpServletRequest request, 
 		HttpServletResponse response, HttpSession session) throws Exception {
 
 		Object obj = session.getAttribute("loginMember");
@@ -228,7 +229,6 @@ public class MemberController {
 	  		session.invalidate();
 	  	}
 		
-		return "redirect:/house/list";
   	}
 
 	@RequestMapping(value="/jjim", method = RequestMethod.GET)

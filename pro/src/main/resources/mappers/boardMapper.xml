@@ -10,7 +10,10 @@
 
 	<select id="read" resultType="BoardDto">
 		select bno, btitle, bcontent, bwritedt, bcount, bwriter, filedata, callback, callback_func from board where bno = #{bno}
+<<<<<<< HEAD
+=======
 		select bno, btitle, bcontent, bwritedt, bcount, bwriter, filedata, bboard from board where bno = #{bno}
+>>>>>>> dd8a04847d0475c47d67b6eb402ce854a1228a17
 	</select>
 
 	<update id="update">
