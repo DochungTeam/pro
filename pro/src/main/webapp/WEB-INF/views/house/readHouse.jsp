@@ -10,6 +10,7 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <script type="text/javascript" src="/resources/jqueryui/jquery-ui.min.js"></script>
 <script type="text/javascript" src="/resources/js/upload.js"></script>
+<script type="text/javascript" src="/resources/js/housereply.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
 <!-- Main content -->
     <style type="text/css">
@@ -140,8 +141,35 @@
 	<!-- /.row -->
 
 
+<!-- 리플시작 -->
+<div style="margin-top: 20px;text-align: center;">
+		<form id="frm">
+		<input type="hidden" name="mid" value="${memberDto.mid}">
+		<input type="hidden" name="hno" value="${houseDto.hno}">
+		<textarea id="replyin" name="content" style="width: 800px;height: 40px;border: 1px solid #ccc;"></textarea> 
+		<input type="button" id="button1" value="등록" style="width: 100px;height: 46px;float: right;cursor: pointer;">
+		</form>
+	</div>
+	<c:forEach var="reply" items="${replyDto}">
+	<div style="position: relative;width: 1000px;float: left;">
+	<form id="re_del">
+	<input type="hidden" name="house_hno" value="${houseDto.hno}">
+	<input type="hidden" name="hno" value="${reply.hno}">
+		<div style="float: left;margin-right: 20px;">${reply.mnm }</div>
+		<div style="float: left;">${reply.content }
+			<c:if test="${loginUser.sid eq reply.sid}">
+				<a id="reply_update" data-hno="${reply.hno}" data-content="${reply.content}">수정</a>
+				<a id="reply_delete">삭제</a>
+			</c:if>
+		</div>
+		<div style="float: right;">${reply.regdt}</div>
+	</form>
+	</div>
+	</c:forEach>
+<!-- 리플끝 -->
 
-	<div class="row">
+
+	<%-- <div class="row">
 		<div class="col-md-12">
 
 
@@ -181,7 +209,7 @@
 		  <!-- timeline time label -->
 		<li class="time-label" id="repliesDiv">
 		  <span class="bg-green">
-		  <%--   댓글 목록 <small id='replycntSmall'> [ ${houseDto.replycnt} ] </small> --%>
+		    댓글 목록 <small id='replycntSmall'> [ ${houseDto.replycnt} ] </small>
 		    </span>
 		  </li>
 		</ul>
@@ -219,7 +247,8 @@
     </div>
   </div>
 </div>      
-	
+
+ --%>	
 	
 </section>
 <!-- /.content -->
@@ -581,6 +610,8 @@ $(document).ready(function(){
 	 });
 })
 </script>
+
+
 
 
 
