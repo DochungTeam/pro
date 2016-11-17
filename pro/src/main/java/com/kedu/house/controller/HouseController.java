@@ -123,13 +123,13 @@ public class HouseController {
 	      throws Exception {
 
 	    model.addAttribute(service.read(hno));
-	    /*model.addAttribute("replyList", replyService.listReplyPage(hno, cri));
+	    model.addAttribute("replyList", replyService.listReplyPage(hno, cri));
 	    
 	    PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(cri);
 		
 		pageMaker.setTotalCount(service.listCountReply(hno));
-		model.addAttribute("pageMaker", pageMaker);*/
+		model.addAttribute("pageMaker", pageMaker);
 	  }
 	  
 	  @RequestMapping(value = "/removePage", method = RequestMethod.POST)

@@ -173,4 +173,9 @@ public class HouseDaoImpl implements HouseDao{
 		
 		session.update(namespace + ".updateRcount", paramMap);
 	}
+
+	@Override
+	public int countReplyPaging(int hno) throws Exception {
+		return session.selectOne(namespace + ".countReplyPaging", hno);
+	}
 }

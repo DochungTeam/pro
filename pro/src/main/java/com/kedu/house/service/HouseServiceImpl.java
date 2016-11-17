@@ -246,5 +246,13 @@ public class HouseServiceImpl implements HouseService{
 	public void imageUpdate(String fullName, Integer hno) {
 		dao.imageUpdate(fullName, hno);
 		
+	
+	
+		
+	}
+
+	@Override
+	public int listCountReply(int hno) throws Exception {
+		return dao.countReplyPaging(hno);
 	}
 }
