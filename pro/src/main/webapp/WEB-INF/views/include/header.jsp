@@ -30,16 +30,32 @@
 		</div>
 		<!-- nav -->
 		<ul id="nav" class="sf-menu">
-			<li><c:choose>
+			<li>
+				<c:choose>
 					<c:when test="${empty loginMember.mid}">
 						<a href="/member/login">로그인</a>
 					</c:when>
 					<c:otherwise>
+						<li class="current-menu-item"><a>${loginMember.mnm }님 환영합니다!</a> 
+							<ul>
+								<li><a href="/member/myjjim">나의 찜 목록</a></li>
+								<li><a href="/member/modify">회원 정보 수정</a></li>
+							</ul>
+						</li>
+					</c:otherwise>
+				</c:choose>
+			</li>
+			<li>|</li>
+			<li>
+				<c:choose>
+					<c:when test="${empty loginMember.mid}">
+						<a href="/member/input">회원가입</a>
+					</c:when>
+					<c:otherwise>
 						<a href="" onclick="logout();">로그아웃</a>
 					</c:otherwise>
-				</c:choose></li>
-				<li>|</li>
-			<li><a href="#">회원가입</a></li>
+				</c:choose>
+			</li>
 		</ul>
 		<!-- ends nav -->
 	</div>
