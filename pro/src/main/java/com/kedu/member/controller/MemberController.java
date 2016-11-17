@@ -90,18 +90,22 @@ public class MemberController {
 	
 //	회원정보 수정 페이지 이동
 	@RequestMapping(value="/modify",method=RequestMethod.GET)
-	public String memberModifyGET(HttpSession session,Model model)throws Exception{
-		MemberDto memberDto = (MemberDto)session.getAttribute("loginMember");
-		
-		if(memberDto.getMmanyn() == 0 || memberDto.getMmanyn() == 1){
+	public void memberModifyGET(HttpSession session, Model model)throws Exception{
+		if(session.getAttribute("loginMember") != null){
+			MemberDto memberDto = (MemberDto)session.getAttribute("loginMember");
+			
+			if(memberDto.getMmanyn() == 0 || memberDto.getMmanyn() == 1){
 //			회원정보 select
-			
-			
-		}else{
-			return "redirect:/house/list";
-		}
+				memberDto = service.selectMember(memberDto);
+				String email = memberDto.getMemail();
+				int index = email.indexOf('@');
+				memberDto.setFirstmemail(email.substring(0, index));
+				memberDto.setSecondmemail(email.substring(index));
 				
-		return "redirect:/member/modify";
+				model.addAttribute("memberDto", memberDto);			
+			}
+		}
+		
 	}
 //	회원정보수정
 	@RequestMapping(value="/modify",method=RequestMethod.POST)
@@ -109,8 +113,10 @@ public class MemberController {
 		
 		member.setMemail(member.getFirstmemail() + member.getSecondmemail());
 		
-//		회원정보 insert
-		service.insert(member);
+		System.out.println(member);
+		
+//		회원정보 update
+		service.update(member);
 		
 		return "redirect:/house/list";
 	}
@@ -207,6 +213,9 @@ public class MemberController {
 			
 			if(check == 1){
 				member = service.login(member);
+				
+//				보안을 위해 세션에 암호값 제거
+				member.setMpw("");
 				
 				session.setAttribute("loginMember", member);
 								

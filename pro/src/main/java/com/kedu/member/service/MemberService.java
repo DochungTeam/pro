@@ -13,6 +13,8 @@ public interface MemberService {
   
   public void insert(MemberDto member) throws Exception;
   
+  public void update(MemberDto member) throws Exception;
+  
   public int confrim(MemberDto member) throws Exception;
   
   public void mailConfrim(MemberDto member) throws Exception;
@@ -24,4 +26,6 @@ public interface MemberService {
   public List<HouseDto> JjimList(String mid , int hno)throws Exception; 
   
   public int Jjim(String mid, int hno)throws Exception;
+  
+  public MemberDto selectMember(MemberDto member)throws Exception;
 }

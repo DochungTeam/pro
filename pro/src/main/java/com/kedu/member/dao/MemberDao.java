@@ -13,6 +13,8 @@ public interface MemberDao {
 	
 	public void insert(MemberDto dto) throws Exception;
 	
+	public void update(MemberDto dto) throws Exception;
+	
 	public int confrim(MemberDto dto) throws Exception;
 	
 	public void mailConfrim(MemberDto dto) throws Exception;
@@ -28,6 +30,8 @@ public interface MemberDao {
 	public List<HouseDto> JjimList(String mid , int hno)throws Exception;
 	
 	public int Jjimchk(String mid, int hno)throws Exception;
+	
+	public MemberDto selectMember(MemberDto dto);
 }
 
 

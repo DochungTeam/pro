@@ -40,6 +40,12 @@ public class MemberDaoImpl implements MemberDao {
 	}
 	
 	@Override
+	public void update(MemberDto dto) throws Exception {
+		
+		session.update(namespace + ".memberUpdate", dto);		
+	}
+	
+	@Override
 	public int confrim(MemberDto dto) throws Exception {
 		return session.selectOne(namespace + ".confirm", dto);
 	}
@@ -106,5 +112,10 @@ public class MemberDaoImpl implements MemberDao {
 		int result = session.selectOne(namespace+".Jjimchk",paramMap );
 		
 		return result;
+	}
+	
+	@Override
+	public MemberDto selectMember(MemberDto dto) {
+		return session.selectOne(namespace+".selectMember", dto);
 	}
 }

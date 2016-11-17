@@ -33,9 +33,9 @@
 			}
 		</style>
 		
-		<c:if test="${empty loginMember.mid }">
+		<c:if test="${empty loginMember }">
 			<script>
-				alert("비정상적인 접근입니다.");
+				alert("로그인을 해주세용~");
 				location.replace("/member/login");
 			</script>
 		</c:if>
@@ -45,7 +45,7 @@
 				location.replace("/member/login");
 			</script>
 		</c:if>
-		<c:if test="${loginMember.mmanyn == 2">
+		<c:if test="${loginMember.mmanyn == 2}">
 			<script>
 				alert("회원 인증을 먼저 받아주세요.");
 				location.replace("/member/login");
@@ -80,7 +80,7 @@
 						<h4>아이디</h4>
 						<input type="text" id="mid" name="mid" maxlength="10" value="${loginMember.mid }" readonly="readonly">
 						<input type="hidden" id="cid" name="cid" value="${loginMember.mid }" readonly="readonly">
-						<input type="button" class="checkId" value="중복검사">
+						<input type="hidden" id="muuid" name="muuid" value="${loginMember.muuid }" readonly="readonly">
 						<p></p>
 					</div>
 					<div class="last">
@@ -160,8 +160,6 @@
 					<input type="submit" class="link-button green" onclick="return membercheck_ok();" value="&nbsp;등록&nbsp;"/>
 					<input type="button" id="cencle" class="link-button red" value="&nbsp;취소&nbsp;"/>
 					</form>
-	        		
-	        		
 										
 				</div>
 				<!-- ENDS entry-content -->	

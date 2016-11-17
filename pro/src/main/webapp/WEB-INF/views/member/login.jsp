@@ -212,7 +212,7 @@
 						</button>
 					</div>
 					<div id="sns_google">
-						<button class="loginBtn" onclick="onSignIn">
+						<button class="loginBtn">
 							<span class="icon"></span>
 							<span class="buttonText">구글 로그인</span>	
 						</button>

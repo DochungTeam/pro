@@ -21,6 +21,24 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		and 
 			mpw = #{mpw}
 	</select>
+	<select id="selectMember" resultType="MemberDto">
+		select 
+			  mid
+			, mnm
+			, muuid
+			, mgender
+			, mmanyn
+			, mphone
+			, memail
+		from 
+			member 
+		where 
+			1=1
+		and
+			mid = #{mid} 
+		and 
+			muuid = #{muuid}
+	</select>
 	<select id="confirm" resultType="int">
 		select 
 			  count(mid)
@@ -68,6 +86,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			, #{memail}
 		)
 	</insert>
+	<update id="memberUpdate">
+		update
+			member
+		set
+			  mpw = #{mpw}
+			, mnm = #{mnm}
+			, mgender = #{mgender}
+			, mphone = #{mphone}
+			, memail = #{memail}
+		where
+			1 = 1
+		and
+			mid = #{mid}
+		and
+			muuid = #{muuid}
+	</update>
 	<update id="mailConfrim">
 		update
 			member
