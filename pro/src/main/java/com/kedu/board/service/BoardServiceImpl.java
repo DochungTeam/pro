@@ -57,6 +57,11 @@ public class BoardServiceImpl implements BoardService {
 	}
 	
 	@Override
+	public int listCountReply(int bno) throws Exception {
+		return dao.countReplyPaging(bno);
+	}
+	
+	@Override
 	public List<BoardDto> listSearchCriteria(BoardSearchCriteria cri) throws Exception {
 		return dao.listSearch(cri);
 	}

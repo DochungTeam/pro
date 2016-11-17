@@ -285,6 +285,7 @@ $(document).ready(function(){
 							댓글 수정일
 						</td>
 					</tr>
+					
 					<c:forEach items="${replyList }" var="replyDto">
 					<tr>
 						<td>
@@ -316,6 +317,15 @@ $(document).ready(function(){
 					</tr>
 					</c:forEach>
 				</table>
+				<c:if test="${pageMaker.prev }">
+					<a href="readPage${pageMaker.makeSearch(pageMaker.startPage - 1) }&bno=${boardDto.bno}">&laquo;</a>
+				</c:if>
+				<c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }" var="idx">
+					<a href="readPage${pageMaker.makeSearch(idx) }&bno=${boardDto.bno}">${idx }</a>
+				</c:forEach>
+				<c:if test="${pageMaker.next && pageMaker.endPage > 0 }">
+					<a href="readPage${pageMaker.makeSearch(pageMaker.endPage + 1) }&bno=${boardDto.bno}">&raquo;</a>
+				</c:if>
 			</div>
 			
 			<div class="box-body">

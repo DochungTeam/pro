@@ -23,6 +23,8 @@ public interface BoardDao {
 	public List<BoardDto> listCriteria(BoardCriteria cri) throws Exception;
 	
 	public int countPaging(BoardCriteria cri) throws Exception;
+
+	public int countReplyPaging(int bno) throws Exception;
 	
 	public List<BoardDto> listSearch(BoardSearchCriteria cri) throws Exception;
 	
