@@ -10,7 +10,6 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <script type="text/javascript" src="/resources/jqueryui/jquery-ui.min.js"></script>
 <script type="text/javascript" src="/resources/js/upload.js"></script>
-<script type="text/javascript" src="/resources/js/housereply.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
 <!-- Main content -->
     <style type="text/css">

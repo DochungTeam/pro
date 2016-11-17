@@ -24,6 +24,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.kedu.house.dto.SearchCriteria;
 import com.kedu.house.dto.HouseDto;
 import com.kedu.house.dto.PageMaker;
+import com.kedu.house.service.HouseReplyService;
 import com.kedu.house.service.HouseService;
 import com.kedu.member.dto.MemberDto;
 
@@ -35,7 +36,8 @@ public class HouseController {
 	@Inject
 	private HouseService service;
 	
-	
+	@Inject
+	private HouseReplyService replyService;
 	
 	@RequestMapping(value="/houseList",method=RequestMethod.GET)
 	public void houseList(@RequestParam(required=false)String keyword,Model model) throws Exception{
@@ -121,6 +123,13 @@ public class HouseController {
 	      throws Exception {
 
 	    model.addAttribute(service.read(hno));
+	    /*model.addAttribute("replyList", replyService.listReplyPage(hno, cri));
+	    
+	    PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+		
+		pageMaker.setTotalCount(service.listCountReply(hno));
+		model.addAttribute("pageMaker", pageMaker);*/
 	  }
 	  
 	  @RequestMapping(value = "/removePage", method = RequestMethod.POST)

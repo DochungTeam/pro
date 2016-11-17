@@ -163,4 +163,14 @@ public class HouseDaoImpl implements HouseDao{
 		
 		session.update(namespace+".imageUpdate",map);		
 	}
+
+	@Override
+	public void updateRcount(int hno, int amount) throws Exception {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		
+		paramMap.put("hno", hno);
+		paramMap.put("amount", amount);
+		
+		session.update(namespace + ".updateRcount", paramMap);
+	}
 }
