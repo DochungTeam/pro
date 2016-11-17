@@ -538,8 +538,8 @@ $(document).ready(function(){
 	var x= $(".xxx").val();
 	var y= $(".yyy").val();
 	
-	alert($(".xxx").val());
-	alert($(".yyy").val());
+	/* alert($(".xxx").val());
+	alert($(".yyy").val()); */
 	
 	 var map = new naver.maps.Map('map',{
 	      center : new naver.maps.Point(x,y),

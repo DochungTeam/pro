@@ -337,7 +337,6 @@ $(document).ready(function(){
 						);
 						
 					});	
-					alert("성공");
 				
 			},
 			error:function(request,status,error){
