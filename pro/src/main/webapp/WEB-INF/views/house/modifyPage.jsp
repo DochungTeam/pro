@@ -181,10 +181,10 @@ $(document).ready(function(){
 		var that = $(this);
 		
 		var str ="";
-		$(".uploadedList .delbtn").each(function(index){
+ 		$(".uploadedList .delbtn").each(function(index){
 			 str += "<input type='hidden' name='files["+index+"]' value='"+$(this).attr("href") +"'> ";
 		});
-		
+		 
 		that.append(str);
 		console.log(str);
 		
@@ -323,9 +323,9 @@ $("#modifyForm").submit(function(event){
 	var that = $(this);
 	
 	var str ="";
-	$(".uploadedList .delbtn").each(function(index){
+/* 	$(".uploadedList .delbtn").each(function(index){
 		 str += "<input type='hidden' name='files["+index+"]' value='"+$(this).attr("href") +"'> ";
-	});
+	});<<<<<<<이것때문에 업로드 수정이 안된거임 절대 다신 쓰지말것 */
 	
 	that.append(str);
 

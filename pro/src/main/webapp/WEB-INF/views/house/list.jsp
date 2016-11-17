@@ -75,7 +75,7 @@ img {
 					<li><a href="#" data-filter=".02">중식</a></li>
 					<li><a href="#" data-filter=".03">일식</a></li>
 					<li><a href="#" data-filter=".04">퓨전</a></li>
-					<li><a href="#" data-filter=".05">기타</a></li>
+					<li><a href="#" data-filter=".05">디저트</a></li>
 				</ul>
 				
 				<!-- Filter container -->

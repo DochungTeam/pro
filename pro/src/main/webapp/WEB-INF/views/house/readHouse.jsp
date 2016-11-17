@@ -96,8 +96,8 @@
 						</tr>
 						<tr>
 						 
-							<td><input type="hidden" class="xxx" name="hmapx" value='${houseDto.hmapx }'>${houseDto.hmapx }</td>
-							<td><input type="hidden" class="yyy" name="hmapy" value='${houseDto.hmapy }'>${houseDto.hmapy }</td> 
+							<td><input type="hidden" class="xxx" name="hmapx" value='${houseDto.hmapx }'></td>
+							<td><input type="hidden" class="yyy" name="hmapy" value='${houseDto.hmapy }'></td> 
 						</tr>
 					</table>
 					<%-- <div class="form-group">
@@ -121,7 +121,7 @@
   <div class="box-footer">
     
     <div><hr></div>
-
+	맛집 사진
     <ul class="mailbox-attachments clearfix uploadedList">
     </ul>
  <%-- <c:if test="${login.uid == houseDto.writer}"> --%>

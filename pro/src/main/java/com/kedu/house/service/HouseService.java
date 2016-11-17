@@ -33,6 +33,8 @@ public interface HouseService {
 	  public void list(HouseDto house) throws Exception;
 	  
 	  public List<HouseDto> nonMemberList(SearchCriteria cri)throws Exception;
+	  
+	  public void imageUpdate(String fullName, Integer hno);
 	}
 	
 //	public List<HouseDto> searchHouse(String keyword,int display,int start)throws Exception;

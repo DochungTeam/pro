@@ -154,4 +154,13 @@ public class HouseDaoImpl implements HouseDao{
 	public List<HouseDto> nonMemberList(SearchCriteria cri) throws Exception {
 		return session.selectList(namespace+".nonMemberList", cri);
 	}
+
+	@Override
+	public void imageUpdate(String fullName, Integer hno) {
+		Map<String,Object> map = new HashMap<>();
+		map.put("fullName", fullName);
+		map.put("hno", hno);
+		
+		session.update(namespace+".imageUpdate",map);		
+	}
 }
