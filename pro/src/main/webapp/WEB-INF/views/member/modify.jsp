@@ -33,6 +33,9 @@
 			}
 		</style>
 		
+		<c:if test="${empty loginMember.mid }">
+			<script></script>
+		</c:if>
 	</head>
 
 	<body class="page">
@@ -53,14 +56,14 @@
 	        	<div class="entry-content cf">
 	        	
 	        		<div class="one-one last">
-						<h2 class="heading">회원가입</h2>
+						<h2 class="heading">회원정보 수정</h2>
 						우리 사이트에 회원가입 하실 큰 결심을 하신 것을 환영합니다. 고객님. 회원가입시 다양하지 않은 정보와 아무 의미도 없는 평점 시스템, 별 내용없는 게시판을 즐길 수 있습니다. 회원가입시 고객님의 개인정보는 저희 사이트에 귀속되며, 후일 고객님의 개인정보는 타 음식점의 정보 공제를 위해 팔려나갈 수 있다는 점을 유의해주시길 바랍니다. 가입시 고객님의  핸드폰번호를 이용해 다양한 소액결제가 이루어질 수 있으며, 이에 대해서 본 사이트는 어떠한 책임도 지지않음을 미리 알립니다. 
 					</div>
 					<div class="clearfix"><p></p></div>
 					<form role="form" method="post" name="frm" id="inputform">
 					<div class="last">
 						<h4>아이디</h4>
-						<input type="text" id="mid" name="mid" maxlength="10">
+						<input type="text" id="mid" name="mid" maxlength="10" value="${loginMember.mid }">
 						<input type="hidden" id="cid" name="cid" value="">
 						<input type="button" class="checkId" value="중복검사">
 						<p></p>
