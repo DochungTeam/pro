@@ -95,9 +95,9 @@
 							<td>${houseDto.hurl}</td>
 						</tr>
 						<tr>
-						
-							<td><input type="hidden" class="xxx" value='${houseDto.hmapx }'>${houseDto.hmapx }</td>
-							<td><input type="hidden" class="yyy" value='${houseDto.hmapy }'>${houseDto.hmapy }</td> 
+						 
+							<td><input type="hidden" class="xxx" name="hmapx" value='${houseDto.hmapx }'>${houseDto.hmapx }</td>
+							<td><input type="hidden" class="yyy" name="hmapy" value='${houseDto.hmapy }'>${houseDto.hmapy }</td> 
 						</tr>
 					</table>
 					<%-- <div class="form-group">

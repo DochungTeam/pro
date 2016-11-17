@@ -48,7 +48,7 @@
 				</div>
 				<!-- /.box-header -->
 
-<form role="form" method="post" name="frm" id="modifyForm">
+<form role="form" method="post" name="frm" id="modifyForm" >
 
 	<input type='hidden' name='page' value="${cri.page}"> 
 	<input type='hidden' name='perPageNum' value="${cri.perPageNum}">
@@ -67,11 +67,15 @@
 						</tr>
 						<tr>
 							<th style="background-color : #B8B8B8; ">주소</th>
-							<td><input type ="text" name="haddr" size="20" value="${houseDto.haddr}" readonly="readonly">
+							<td><input type ="text" name="haddr" id="hhaddr" size="20" value="${houseDto.haddr}" readonly="readonly">
 							<input type="button" value="주소 검색" class="haddr">
-							<input type="hidden" name="hmapx" id="hhmapx">
-							<input type="hidden" name="hmapy" id="hhmapy">
+							<input type="hidden" name="hmapx" id="hhmapx" value="${houseDto.hmapx}">
+							<input type="hidden" name="hmapy" id="hhmapy"value="${houseDto.hmapy}">
 							</td>
+							
+							
+					
+							
 						</tr>
 						<tr>
 						<th style="background-color : #B8B8B8; "> 맛집테마 *</th>
@@ -139,18 +143,13 @@
 						<table class="modaladdr">
 						</table>
 						</div>
+		<ul class="mailbox-attachments clearfix uploadedList"></ul>
+    <input type="submit"class="btn btn-primary" onclick="return housecheck_ok()" value="수정">
+    <input type="button" value="취소"id="goListBtn">
 					</div>
 					<!-- /.box-body -->
 
 	<div class="box-footer">
-		<div>
-			<hr>
-		</div>
-
-		<ul class="mailbox-attachments clearfix uploadedList"></ul>
-
-    <button type="submit" class="btn btn-primary" onclick="return housecheck_ok()">수정</button> 
-    <button type="submit" class="btn btn-primary" id="goListBtn">취소 </button>
 
 	</div>
 </form>
@@ -385,14 +384,14 @@ $(document).ready(function(){
 		$("#hhaddr").val(haddr);
 	}; */
 	
-	$(document).on("click","#ddd", function(){
-		$("#hhaddr").val($("#ddd1").data("haddr"));
-		$("#hhmapx").val($("#ddd1").data("hmapx"));
-		$("#hhmapy").val($("#ddd1").data("hmapy"));
-		
-		dialog.dialog("close");
-	});
-	
+	 $(document).on("click","#ddd", function(){
+	      $("#hhaddr").val("");
+	      $("#hhaddr").val($("#ddd1").data("haddr"));
+	      $("#hhmapx").val($("#ddd1").data("hmapx"));
+	      $("#hhmapy").val($("#ddd1").data("hmapy"));
+	      
+	      dialog.dialog("close");
+	   });
 	$("#search").on("click",function(e){
 		e.preventDefault();
 		/* alert($(this).parents("tr").find("td").eq(0).find("input").val());
@@ -423,8 +422,6 @@ $(document).ready(function(){
 						);
 						
 					});	
-					alert("성공");
-				
 			},
 			error:function(request,status,error){
 				alert("code:"+request.status+"\n"+"message:"+request.responseText +"\n"+"error:"+error)
