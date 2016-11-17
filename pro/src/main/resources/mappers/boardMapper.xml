@@ -9,8 +9,7 @@
 	</insert>
 
 	<select id="read" resultType="BoardDto">
-		select bno, btitle, bcontent, bwritedt, bcount, bwriter, filedata, callback, callback_func from board where bno = #{bno}
-		select bno, btitle, bcontent, bwritedt, bcount, bwriter, filedata, bboard from board where bno = #{bno}
+		select bno, btitle, bcontent, bwritedt, bcount, bwriter, rcount, filedata, callback, callback_func from board where bno = #{bno}
 	</select>
 
 	<update id="update">

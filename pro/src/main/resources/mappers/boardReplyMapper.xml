@@ -9,8 +9,8 @@
 	</select>
 	
 	<insert id="create">
-		insert int reply (bno, rcontent, mid)
-		values (#{bno},#{rcontent},#{mid})
+		insert into reply(bno, rcontent, mid)
+		values(#{bno},#{rcontent},#{mid})
 	</insert>
 	
 	<update id="update">
