@@ -2,6 +2,9 @@
 	pageEncoding="UTF-8"%>
 
 <%@include file="../include/script.jsp"%>
+<link href="/resources/jqueryui/jquery-ui.min.css" rel="stylesheet">
+<script type="text/javascript" src="/resources/jqueryui/jquery-ui.min.js"></script>
+
 
 <style type="text/css">
 .fileDrop {
@@ -75,7 +78,11 @@
 					</tr>
 					<tr>
 						<th style="background-color : #B8B8B8; "> 주소 *</th>
-						<td><input type ="text" name="haddr" readonly></td>
+						<td><input type ="text" name="haddr" id="hhaddr" readonly>
+						<input type ="button" value="주소 검색" class="haddr" >
+						<input type ="hidden" name="hmapx" id="hhmapx">
+						<input type="hidden" name="hmapy" id="hhmapy">
+						</td>
 					</tr> 
 					<tr>
 						<th style="background-color : #B8B8B8; "> 맛집테마 *</th>
@@ -121,6 +128,26 @@
 	</div>
 		<!--/.col (left) -->
 
+	</div>
+<!-- <input type="button" value="중복 체크" onclick="idCheck()">
+ -->	
+	<div class="dialogLayout" title="주소 검색">
+	 <form >
+			<input type="text" name="keyword" id="keyword">
+			<input type="button" value="주소 검색" id="search">			
+	</form>
+		
+	<table class="modaladdr">
+		
+		<%-- <c:forEach items="${list}" var="houseDto">
+		<tr>
+			<td><input type="hidden" value='${houseDto.haddr }' id="modaladdr">${houseDto.haddr }
+			</td>
+			<td><button id="choice">선택</button>
+			</td>
+		</tr>
+		</c:forEach> --%>
+	</table>
 	</div>
 	<!-- /.row -->
 </section>
@@ -248,7 +275,95 @@ $(document).on("click","#remove-btn", function(){
 
 </script>
 
-<script>
+
+<!-- 대일스크립트 -->
+<script type="text/javascript">
+$(document).ready(function(){
+
+	/*  $("#choice").on("click",function(e){
+		e.preventDefault();
+		$(".haddr").text($("#modaladdr").val());
+	}); */
+	 
+	
+	$(".haddr").on("click",function(e){
+	 
+		e.preventDefault();
+	
+		dialog.dialog("open");
+
+	});
+	
+/* 	var addrinput = function(haddr){
+	 	alert("asdsad");
+		$("#hhaddr").val(haddr);
+	}; */
+	
+	$(document).on("click","#ddd", function(){
+		$("#hhaddr").val($("#ddd1").data("haddr"));
+		$("#hhmapx").val($("#ddd1").data("hmapx"));
+		$("#hhmapy").val($("#ddd1").data("hmapy"));
+		
+		dialog.dialog("close");
+	});
+	
+	$("#search").on("click",function(e){
+		e.preventDefault();
+		/* alert($(this).parents("tr").find("td").eq(0).find("input").val());
+		 */
+		var keyword=$("#keyword").val();
+		var values=[];
+		
+		$.ajax({
+			type:'post',
+			url:'/house/insertAjax',
+			headers:{
+				"Content-Type":"application/json",
+				"X-HTTP-Method-Override":"POST"
+			},
+			
+			data: JSON.stringify(keyword),
+			dataType:'json',
+			
+			success:function(result){
+					$(".modaladdr tr").remove();
+					$(result).each(function(i,aaa){
+					
+						$(".modaladdr").append(
+							"<tr id='"+aaa.hno+"'>'"+
+							"<td> "+aaa.haddr+"</td>"+
+							"<td><input type='hidden' id='ddd1' data-hmapx='"+aaa.hmapx+"' data-hmapy='"+aaa.hmapy+"' data-haddr='"+aaa.haddr+"'> </td>"+
+							"<td><button id='ddd'>선택</button></td></tr>"
+						);
+						
+					});	
+					alert("성공");
+				
+			},
+			error:function(request,status,error){
+				alert("code:"+request.status+"\n"+"message:"+request.responseText +"\n"+"error:"+error)
+			}
+		});
+		
+	});
+	
+	$(".dialogLayout").submit(function(event){
+		event.preventDefault();
+	});
+	
+	var dialog=$(".dialogLayout").dialog({
+		
+		autoOpen:false,
+		open:function(a){
+			
+		},
+		
+		width:500,
+	});	
+	
+	$(".haddr").button();	
+	
+});
 
 </script>
  

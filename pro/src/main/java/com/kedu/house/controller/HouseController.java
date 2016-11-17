@@ -1,5 +1,6 @@
 package com.kedu.house.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -33,12 +35,35 @@ public class HouseController {
 	@Inject
 	private HouseService service;
 	
+	
+	
 	@RequestMapping(value="/houseList",method=RequestMethod.GET)
-	public void listAll(Model model)throws Exception{
-		logger.info("listAll!!");
-		
-		model.addAttribute("list",service.listAll());
+	public void houseList(@RequestParam(required=false)String keyword,Model model) throws Exception{
+		logger.info(keyword);
+		if(keyword!=null){
+			model.addAttribute("list",service.searchHouse(keyword, 10, 1));
+			System.out.println(keyword);
+
+		/*	model.addAttribute("list1",service.searchImage(keyword, 3, 1));
+			System.out.println(keyword);*/
+
+			logger.info(keyword);
+		}
 	}
+	
+	@RequestMapping(value="/insertAjax",method=RequestMethod.POST)
+	 @ResponseBody
+	 public List<HouseDto> insertAjax(@RequestBody String keyword)throws Exception{
+		List<HouseDto> entity=null;
+		 
+		 try {
+			entity=new ArrayList<>(service.searchHouse(keyword, 10, 1));
+			logger.info(entity.toString());
+		} catch (Exception e) {
+		}
+		System.out.println(entity.toString());
+		return entity;
+	 }
 	
 	@RequestMapping(value = "/insertHouse", method = RequestMethod.GET)
 	  public void insertHouseGET() throws Exception {
