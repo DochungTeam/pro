@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fmt"  uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ page session="false" %>
 <%@include file="../include/header.jsp"%>
 <%@include file="../include/script.jsp"%>
 
@@ -117,7 +118,6 @@ $(".modalbutton").button();
               projection: naver.maps.TM128Coord
           })
       }),
-      
       mapTypeControl: true,
       zoom : 10,
       enableWheelZoom : true, 
@@ -141,7 +141,7 @@ $(".modalbutton").button();
 //	 alert($("#table_loc").find("td").length);
 		/* alert($("#table_loc").find("td input[class='xxx']").eq(0).val()); */
 	
-	var markers=[];
+ 	var markers=[];
 	var infoWindows=[];
 	
 	$("#table_loc").find("td input[class='xxx']").each(function(i){
@@ -186,14 +186,11 @@ $(".modalbutton").button();
 
 			pixelOffset : new naver.maps.Point(20, -20)
 	});
-	infoWindows.push(infoWindow); 
-	
-	 
-	 
-		
+/* 	infoWindows.push(infoWindow); 
+	 markers.push(marker); */
 	
 		naver.maps.Event.addListener(marker, "click", function(e) {
-			alert(this.getOptions(aa));
+		/* 	alert(this.getOptions(aa)); */
 			if (infowindow.getMap()) {
 					infowindow.close();
 			} else {
@@ -201,6 +198,7 @@ $(".modalbutton").button();
 					}
 				});
 		 infowindow.open(map, marker); 
+		
 	});
 	
 	var trafficLayer = new naver.maps.TrafficLayer({

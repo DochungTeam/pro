@@ -11,19 +11,24 @@ import java.util.UUID;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.tags.EditorAwareTag;
 
 import com.kedu.board.dto.BoardDto;
 import com.kedu.board.dto.BoardPageMaker;
+import com.kedu.board.dto.BoardReplyDto;
 import com.kedu.board.dto.BoardSearchCriteria;
 import com.kedu.board.dto.Editor;
 import com.kedu.board.service.BoardReplyService;
@@ -60,7 +65,15 @@ public class BoardSearchBoardController {
 	public void read(@RequestParam("bno") int bno, @ModelAttribute("cri") BoardSearchCriteria cri, Model model) throws Exception {
 		
 		model.addAttribute(service.read(bno));
-		model.addAttribute("replyList",replyService.listReply(bno));
+		model.addAttribute("replyList", replyService.listReplyPage(bno, cri));
+		
+		
+		BoardPageMaker pageMaker = new BoardPageMaker();
+		pageMaker.setCri(cri);
+		
+		pageMaker.setTotalCount(service.listCountReply(bno));
+		model.addAttribute("pageMaker", pageMaker);
+		
 		
 	}
 	
@@ -122,8 +135,14 @@ public class BoardSearchBoardController {
 		return "redirect:/board/list";
 	}
 	
+<<<<<<< HEAD
 	@RequestMapping(value="/file_uploader", method = RequestMethod.POST)
 	 public String file_uploader(HttpServletRequest request, HttpServletResponse response, Editor editor){
+=======
+	@ResponseBody
+	 @RequestMapping("/file_uploader")
+	 public String file_uploader(HttpServletRequest request, HttpServletResponse response, BoardDto editor){
+>>>>>>> 3c35cb8b3d1b6d76c8865ebd598e99cb271ab647
 		 String return1=request.getParameter("callback");
 		 String return2="?callback_func=" + request.getParameter("callback_func");
 		 String return3="";
@@ -171,11 +190,19 @@ public class BoardSearchBoardController {
 			e.printStackTrace();
 		}
 		 return "redirect:"+return1+return2+return3;
+<<<<<<< HEAD
 }
 	
 	 @RequestMapping(value="/file_uploader_html5", method=RequestMethod.POST)
 	 public void file_uploader_html5(HttpServletRequest request, HttpServletResponse response){
 		 logger.info("TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT");
+=======
+ }
+	
+	@ResponseBody
+	 @RequestMapping(value="/file", method=RequestMethod.POST)
+	 public void file_uploader_html5(HttpServletRequest request, HttpServletResponse response){
+>>>>>>> 3c35cb8b3d1b6d76c8865ebd598e99cb271ab647
 		try {
 			 //파일정보
 			 String sFileInfo = "";
@@ -246,6 +273,12 @@ public class BoardSearchBoardController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+<<<<<<< HEAD
  }
 }
+=======
+>>>>>>> 3c35cb8b3d1b6d76c8865ebd598e99cb271ab647
 
+	 }
+	 
+}

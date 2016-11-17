@@ -48,6 +48,11 @@
 	]]>
 	</select>
 	
+	<select id="countReplyPaging" resultType="int">
+		select count(rno) from reply
+		where bno = #{bno}
+	</select>
+	
 	<select id="listSearch" resultType="BoardDto">
 	<![CDATA[
 		select bno, btitle, bcontent, bwritedt, bcount, bwriter from board
