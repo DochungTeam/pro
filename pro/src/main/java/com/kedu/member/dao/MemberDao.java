@@ -32,6 +32,8 @@ public interface MemberDao {
 	public int Jjimchk(String mid, int hno)throws Exception;
 	
 	public MemberDto selectMember(MemberDto dto);
+	
+	public List<HouseDto> JjimList(String mid) throws Exception;
 }
 
 

@@ -27,7 +27,7 @@
 <c:forEach items="${notice }" var="boardDto">
 	<tr class="noticeTr">
 		<td class="noticeTd">${boardDto.bno }</td>
-		<td class="noticeTd"><a href="/board/readPage${pageMaker.makeSearch(pageMaker.cri.page) }&bno=${boardDto.bno}">${boardDto.btitle } <strong>[ ${boardDto.rcount }]</strong></a></td>
+		<td class="noticeTd"><a href="/board/readPage${pageMaker.makeSearch(pageMaker.cri.page) }&bno=${boardDto.bno}">${boardDto.btitle } <strong>[ ${boardDto.rcount } ]</strong></a></td>
 		<td class="noticeTd">${boardDto.bwriter }</td>
 		<td class="noticeTd"><fmt:formatDate pattern="yyyy-MM-dd" value="${boardDto.bwritedt }" /></td>
 		<td class="noticeTd"><span>${boardDto.bcount }</span></td>
@@ -40,7 +40,7 @@
 
 	<tr>
 		<td>${boardDto.bno }</td>
-		<td><a href="/board/readPage${pageMaker.makeSearch(pageMaker.cri.page) }&bno=${boardDto.bno}">${boardDto.btitle } <strong>[ ${boardDto.rcount }]</strong></a></td>
+		<td><a href="/board/readPage${pageMaker.makeSearch(pageMaker.cri.page) }&bno=${boardDto.bno}">${boardDto.btitle } <strong>[ ${boardDto.rcount } ]</strong></a></td>
 		<td>${boardDto.bwriter }</td>
 		<td><fmt:formatDate pattern="yyyy-MM-dd" value="${boardDto.bwritedt }" /></td>
 		<td><span>${boardDto.bcount }</span></td>

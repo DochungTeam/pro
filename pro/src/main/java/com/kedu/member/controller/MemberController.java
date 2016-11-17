@@ -25,6 +25,8 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.util.WebUtils;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.kedu.house.dto.PageMaker;
+import com.kedu.house.dto.SearchCriteria;
 import com.kedu.member.dto.EmailDto;
 import com.kedu.member.dto.EmailSender;
 import com.kedu.member.dto.LoginDto;
@@ -273,5 +275,25 @@ public class MemberController {
 		ObjectMapper mapper = new ObjectMapper();
 		
 		response.getWriter().print(mapper.writeValueAsString(result));
+	}
+	@RequestMapping(value="/myjjim", method = RequestMethod.GET)
+	public void myJjim(@ModelAttribute("cri") SearchCriteria cri
+ 			 , Model model
+ 			 , HttpSession session) throws Exception{
+
+	    
+		MemberDto memberDto = (MemberDto)session.getAttribute("loginMember");
+	    
+	   	model.addAttribute("list", service.JjimList(memberDto.getMid()));
+	    
+	   /* 
+	    PageMaker pageMaker = new PageMaker();
+	    pageMaker.setCri(cri);
+
+	    pageMaker.setTotalCount(service.listSearchCount(cri));
+
+	    model.addAttribute("pageMaker", pageMaker);
+	   */				
+		
 	}
 }
