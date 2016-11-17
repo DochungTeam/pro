@@ -135,14 +135,8 @@ public class BoardSearchBoardController {
 		return "redirect:/board/list";
 	}
 	
-<<<<<<< HEAD
-	@RequestMapping(value="/file_uploader", method = RequestMethod.POST)
+	@RequestMapping("/file_uploader")
 	 public String file_uploader(HttpServletRequest request, HttpServletResponse response, Editor editor){
-=======
-	@ResponseBody
-	 @RequestMapping("/file_uploader")
-	 public String file_uploader(HttpServletRequest request, HttpServletResponse response, BoardDto editor){
->>>>>>> 3c35cb8b3d1b6d76c8865ebd598e99cb271ab647
 		 String return1=request.getParameter("callback");
 		 String return2="?callback_func=" + request.getParameter("callback_func");
 		 String return3="";
@@ -190,19 +184,10 @@ public class BoardSearchBoardController {
 			e.printStackTrace();
 		}
 		 return "redirect:"+return1+return2+return3;
-<<<<<<< HEAD
 }
-	
-	 @RequestMapping(value="/file_uploader_html5", method=RequestMethod.POST)
+
+	@RequestMapping("/file_uploader_html5")
 	 public void file_uploader_html5(HttpServletRequest request, HttpServletResponse response){
-		 logger.info("TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT");
-=======
- }
-	
-	@ResponseBody
-	 @RequestMapping(value="/file", method=RequestMethod.POST)
-	 public void file_uploader_html5(HttpServletRequest request, HttpServletResponse response){
->>>>>>> 3c35cb8b3d1b6d76c8865ebd598e99cb271ab647
 		try {
 			 //파일정보
 			 String sFileInfo = "";
@@ -273,12 +258,8 @@ public class BoardSearchBoardController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-<<<<<<< HEAD
- }
 }
-=======
->>>>>>> 3c35cb8b3d1b6d76c8865ebd598e99cb271ab647
+
 
 	 }
 	 
-}
