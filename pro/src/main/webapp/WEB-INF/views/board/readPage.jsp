@@ -206,7 +206,7 @@ $(document).ready(function(){
 <form role="form" action="modifyPage" method="post">
 	
 	<input type="hidden" name="bno" id="bno" value="${boardDto.bno }">
-	<input type="hidden" name="page" value="${cri.page }">
+	<input type="hidden" name="page" value="1">
 	<input type="hidden" name="perPageNum" value="${cri.perPageNum }">
 	<input type="hidden" name="searchType" value="${cri.searchType }">
 	<input type="hidden" name="keyword" value="${cri.keyword }">
