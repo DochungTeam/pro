@@ -25,6 +25,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.util.WebUtils;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.kedu.house.dto.SearchCriteria;
 import com.kedu.member.dto.EmailDto;
 import com.kedu.member.dto.EmailSender;
 import com.kedu.member.dto.LoginDto;
@@ -242,5 +243,16 @@ public class MemberController {
 		ObjectMapper mapper = new ObjectMapper();
 		
 		response.getWriter().print(mapper.writeValueAsString(result));
+	}
+	
+	@RequestMapping(value="/myPage", method = RequestMethod.GET)
+	public void myPage(@ModelAttribute("cri") SearchCriteria cri
+					 , Model model
+					 , HttpSession session)throws Exception{
+		String mid = null;
+		
+		mid = ((MemberDto)session.getAttribute("loginMember")).getMid();
+		
+		model.addAttribute("list", service.JjimList(mid));
 	}
 }

@@ -25,7 +25,7 @@ public interface MemberDao {
 	  
 	public void delJjim(int hno, String mid)throws Exception;
 	
-	public List<HouseDto> JjimList(String mid , int hno)throws Exception;
+	public List<HouseDto> JjimList(String mid)throws Exception;
 	
 	public int Jjimchk(String mid, int hno)throws Exception;
 }

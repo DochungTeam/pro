@@ -22,9 +22,8 @@ img {
 			<!-- general form elements -->
 
 			<div class="box">
-			<button><a href='/house/insertHouse'>맛집 등록</a></button>
 				<div class="box-header with-border">
-					<h3 class="box-title">맛집 리스트</h3>
+					<h3 class="box-title">마이 페이지</h3>
 				</div>
 				<%-- <div class="box-body">
 					<table class="table table-bordered">
@@ -84,7 +83,7 @@ img {
 				<c:forEach items="${list}" var="houseDto">
 					<figure class="${houseDto.hkind}">
 						<a href='/house/readHouse${pageMaker.makeSearch(pageMaker.cri.page) }&hno=${houseDto.hno}'class="thumb">
-						<img src="/resources/img/house${houseDto.fullName}" alt="alt" height="450" width="300"/></a>
+						<img src="/resources/img/house${houseDto.fullName}" alt="alt" height="350" width="300"/></a>
 						<figcaption>
 							<a href='/house/readHouse${pageMaker.makeSearch(pageMaker.cri.page) }&hno=${houseDto.hno}'>
 							<h3 class="heading"> ${houseDto.hnm} </h3></a>
@@ -374,17 +373,12 @@ function jjimBtn(hno){
 					console.log(responseData);
 					
 					if(responseData==0){
-						console.log('success!');
-						console.log($("#"+hno).attr("src"));
 						$("#"+hno).attr("class",0);
 						$("#"+hno).attr("src","/resources/img/love.png");
 					}else{
 						$("#"+hno).attr("class",1);
 					 	$("#"+hno).attr("src","/resources/img/soso.png");
-					 
 					}
-					
-					console.log("class : "+$("#"+hno).attr("class"));
 				}
 			})
 		}else{

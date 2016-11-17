@@ -83,14 +83,9 @@ public class MemberDaoImpl implements MemberDao {
 	}
 
 	@Override
-	public List<HouseDto> JjimList(String mid, int hno) throws Exception {
+	public List<HouseDto> JjimList(String mid) throws Exception {
 		
-		Map<String, Object> paramMap = new HashMap<String, Object>();
-		
-		paramMap.put("mid", mid);
-		paramMap.put("hno", hno);
-		
-		List<HouseDto> list =session.selectList(namespace+".JjimList", paramMap);
+		List<HouseDto> list =session.selectList(namespace+".JjimList", mid);
 		
 		return list;
 	}

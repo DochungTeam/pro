@@ -116,12 +116,26 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</delete>
 	
 	<select id="JjimList" resultType="HouseDto">
-		select h.*
-		  from member m
-		  join mypage p
-		    on m.#{mid} = p.mid
-		  join house h
-		    on h.#{hno} = p.hno
+		select  h.hno
+		 	  , h.hnm
+		 	  , h.hcontent
+		 	  , h.hkind
+		 	  , h.hphone
+		 	  , h.hregdate
+		 	  , h.hviewcnt
+		 	  , h.hreplycnt 
+		 	  , ha.fullName
+		 	  , case when jjim.hno is null then 1 else 0 end jjimchk
+		   from house_attach ha
+		   	  , house h 
+		   join(
+				select hno
+				  from mypage
+				 where mid = #{mid}
+		   		) jjim
+		  	 on h.hno = jjim.hno
+		  where h.hno > 0 
+			and h.hno = ha.hno
 	</select>
 	
 	<select id="Jjimchk" resultType="int">
