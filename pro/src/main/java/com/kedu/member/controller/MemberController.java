@@ -88,6 +88,32 @@ public class MemberController {
 				
 	}
 	
+//	회원정보 수정 페이지 이동
+	@RequestMapping(value="/modify",method=RequestMethod.GET)
+	public String memberModifyGET(HttpSession session,Model model)throws Exception{
+		MemberDto memberDto = (MemberDto)session.getAttribute("loginMember");
+		
+		if(memberDto.getMmanyn() == 0 || memberDto.getMmanyn() == 1){
+//			회원정보 select
+			
+			
+		}else{
+			return "redirect:/house/list";
+		}
+				
+		return "redirect:/member/modify";
+	}
+//	회원정보수정
+	@RequestMapping(value="/modify",method=RequestMethod.POST)
+	public String memberModifyPOST(MemberDto member,Model model)throws Exception{
+		
+		member.setMemail(member.getFirstmemail() + member.getSecondmemail());
+		
+//		회원정보 insert
+		service.insert(member);
+		
+		return "redirect:/house/list";
+	}
 
 //	메일 인증 처리
 	@RequestMapping(value="/confirm",method=RequestMethod.GET)
@@ -114,10 +140,6 @@ public class MemberController {
 	
 	}
 	
-	@RequestMapping(value="/face",method=RequestMethod.GET)
-	public void memberF(Model model)throws Exception{
-	}
-  
 	
 	@RequestMapping(value="/idcheck", method=RequestMethod.POST)
 	@ResponseBody

@@ -13,12 +13,12 @@
 				},
 				dataType : "text",
 				success : function() {
-					alert("???");
 					history.go(0);
 				}
 
 			});
 		}
+		
 </script>
 
 <header>
@@ -38,7 +38,7 @@
 						<li class="current-menu-item"><a>${loginMember.mnm }님 환영합니다!</a> 
 							<ul>
 								<li><a href="/member/myjjim">나의 찜 목록</a></li>
-								<c:if test="${!(loginMember.mmanyn == 3 || loginMember.mmanyn == 4)}">
+								<c:if test="${(loginMember.mmanyn == 0 || loginMember.mmanyn == 1)}">
 									<li><a href="/member/modify">회원 정보 수정</a></li>
 								</c:if>
 							</ul>

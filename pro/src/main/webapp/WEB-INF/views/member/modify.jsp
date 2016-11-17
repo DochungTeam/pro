@@ -34,7 +34,22 @@
 		</style>
 		
 		<c:if test="${empty loginMember.mid }">
-			<script></script>
+			<script>
+				alert("비정상적인 접근입니다.");
+				location.replace("/member/login");
+			</script>
+		</c:if>
+		<c:if test="${loginMember.mmanyn == 3 || loginMember.mmanyn == 4}">
+			<script>
+				alert("소셜로그인 사용자는 해당 홈페이지에서 직접 정보를 수정해주세요~");
+				location.replace("/member/login");
+			</script>
+		</c:if>
+		<c:if test="${loginMember.mmanyn == 2">
+			<script>
+				alert("회원 인증을 먼저 받아주세요.");
+				location.replace("/member/login");
+			</script>
 		</c:if>
 	</head>
 
@@ -63,8 +78,8 @@
 					<form role="form" method="post" name="frm" id="inputform">
 					<div class="last">
 						<h4>아이디</h4>
-						<input type="text" id="mid" name="mid" maxlength="10" value="${loginMember.mid }">
-						<input type="hidden" id="cid" name="cid" value="">
+						<input type="text" id="mid" name="mid" maxlength="10" value="${loginMember.mid }" readonly="readonly">
+						<input type="hidden" id="cid" name="cid" value="${loginMember.mid }" readonly="readonly">
 						<input type="button" class="checkId" value="중복검사">
 						<p></p>
 					</div>
@@ -80,30 +95,66 @@
 					</div>
 					<div class="last">
 						<h4>성명</h4>
-						<input type="text" id="mnm" name="mnm" maxlength="5">
+						<input type="text" id="mnm" name="mnm" maxlength="5" value="${loginMember.mnm }">
 						<p></p>
 					</div>
 					<div>
 						<h4>성별</h4>
 						<p></p>
-						<label for="mmgender" class="bigfont">남</label><input type="radio" id="mmgender" name="mgender" value="0" checked="checked">&nbsp;
-						<label for="mwgender" class="bigfont">여</label><input type="radio" id="mwgender" name="mgender" value="1">
+						<c:choose>
+							<c:when test="${memberDto.mgender == 0 }">
+								<label for="mmgender" class="bigfont">남</label><input type="radio" id="mmgender" name="mgender" value="0" checked="checked">&nbsp;
+								<label for="mwgender" class="bigfont">여</label><input type="radio" id="mwgender" name="mgender" value="1">
+							</c:when>
+							<c:otherwise>
+								<label for="mmgender" class="bigfont">남</label><input type="radio" id="mmgender" name="mgender" value="0">&nbsp;
+								<label for="mwgender" class="bigfont">여</label><input type="radio" id="mwgender" name="mgender" value="1" checked="checked">
+							</c:otherwise>
+						</c:choose>
 						<p></p>
 						<p></p>
 					</div>
 					<div>
 						<h4>핸드폰 번호</h4>
-						<input type="text" id="fmphone" name="mphone" maxlength="11" placeholder="-없이 입력해주세요">
+						<input type="text" id="fmphone" name="mphone" maxlength="11" value=${memberDto.mphone } placeholder="-없이 입력해주세요">
 						<p></p>
 					</div>
 					<div>
 						<h4>이메일</h4>
-						<input type="text" id="firstmemail" name="firstmemail"><span class="bigfont"> @ </span>
+						<input type="text" id="firstmemail" name="firstmemail" value="${memberDto.firstmemail }"><span class="bigfont"> @ </span>
 						<select id="secondmemail" name="secondmemail" class="selectbox">
-							<option value="@gmail.com">gmail.com</option>							
-							<option value="@naver.com">naver.com</option>							
-							<option value="@nate.com">nate.com</option>							
-							<option value="@daum.net">daum.net</option>							
+						<c:choose>
+							<c:when test="${memberDto.secondmemail == '@gmail.com' }">
+								<option value="@gmail.com" selected="selected">gmail.com</option>							
+							</c:when>
+							<c:otherwise>
+								<option value="@gmail.com">gmail.com</option>							
+							</c:otherwise>
+						</c:choose>
+						<c:choose>
+							<c:when test="${memberDto.secondmemail == '@naver.com' }">
+								<option value="@naver.com" selected="selected">naver.com</option>							
+							</c:when>
+							<c:otherwise>
+								<option value="@naver.com">naver.com</option>							
+							</c:otherwise>
+						</c:choose>
+						<c:choose>
+							<c:when test="${memberDto.secondmemail == '@nate.com' }">
+								<option value="@nate.com" selected="selected">nate.com</option>							
+							</c:when>
+							<c:otherwise>
+								<option value="@nate.com">nate.com</option>							
+							</c:otherwise>
+						</c:choose>
+						<c:choose>
+							<c:when test="${memberDto.secondmemail == '@daum.net' }">
+								<option value="@daum.net" selected="selected">daum.net</option>						
+							</c:when>
+							<c:otherwise>
+								<option value="@daum.net">daum.net</option>						
+							</c:otherwise>
+						</c:choose>
 						</select>
 					</div>
 					<input type="submit" class="link-button green" onclick="return membercheck_ok();" value="&nbsp;등록&nbsp;"/>
