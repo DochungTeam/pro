@@ -104,10 +104,7 @@ public class HouseServiceImpl implements HouseService{
 	    String[] files = house.getFiles();
 	    
 	    if(files == null) { return; } 
-	    
-	    /*for (String fileName : files) {
-	      dao.replaceAttach(fileName, hno);
-	    }*/
+        dao.imageUpdate(files[0], hno);
 	  }
 	  
 	  @Transactional
@@ -243,5 +240,11 @@ public class HouseServiceImpl implements HouseService{
 	@Override
 	public List<HouseDto> nonMemberList(SearchCriteria cri) throws Exception {
 		return dao.nonMemberList(cri);
+	}
+
+	@Override
+	public void imageUpdate(String fullName, Integer hno) {
+		dao.imageUpdate(fullName, hno);
+		
 	}
 }

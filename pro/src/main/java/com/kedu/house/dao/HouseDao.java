@@ -44,4 +44,6 @@ public interface HouseDao {
 	  public void list(HouseDto dto) throws Exception;
 	  
 	  public List<HouseDto> nonMemberList(SearchCriteria cri)throws Exception;
+	  
+	  public void imageUpdate(String fullName, Integer hno);
 }

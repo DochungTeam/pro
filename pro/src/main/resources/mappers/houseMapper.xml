@@ -42,7 +42,7 @@ select fullname from house_attach where hno = #{hno} order by hregdate
 
  <update id="update">
  update house set hnm =#{hnm}, hphone =#{hphone}, haddr =#{haddr}, hkind =#{hkind}, hmenu =#{hmenu}, htime =#{htime}, hholiday =#{hholiday},
- 					 hmapx =#{hmapx}, hmapy =#{hmapy}, hcontent =#{hcontent}, hurl =#{hurl} 
+ 					 hmapx =#{hmapx}, hmapy =#{hmapy}, hcontent =#{hcontent}, hurl =#{hurl}
  where hno = #{hno}
  </update>
 
@@ -212,6 +212,10 @@ delete from house where hno = #{hno}
 insert into house_attach(fullname, hno) values (#{fullName}, #{hno})
 </insert>
 
+<update id="imageUpdate">
+update house_attach set fullname = #{fullName}
+where hno = #{hno}
+</update>
 
 </mapper>
 
