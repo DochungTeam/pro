@@ -4,6 +4,8 @@
 <%@include file="../include/script.jsp"%>
 <%@include file="../include/header.jsp"%>
 
+<link href="/resources/jqueryui/jquery-ui.min.css" rel="stylesheet">
+<script type="text/javascript" src="/resources/jqueryui/jquery-ui.min.js"></script>
 
 <style>
 .fileDrop {
@@ -46,7 +48,7 @@
 				</div>
 				<!-- /.box-header -->
 
-<form role="form" method="post" name="frm" id="modifyForm">
+<form role="form" method="post" name="frm" id="modifyForm" >
 
 	<input type='hidden' name='page' value="${cri.page}"> 
 	<input type='hidden' name='perPageNum' value="${cri.perPageNum}">
@@ -65,7 +67,15 @@
 						</tr>
 						<tr>
 							<th style="background-color : #B8B8B8; ">주소</th>
-							<td><input type ="text" name="haddr" size="20" value="${houseDto.haddr}" ></td>
+							<td><input type ="text" name="haddr" id="hhaddr" size="20" value="${houseDto.haddr}" readonly="readonly">
+							<input type="button" value="주소 검색" class="haddr">
+							<input type="hidden" name="hmapx" id="hhmapx" value="${houseDto.hmapx}">
+							<input type="hidden" name="hmapy" id="hhmapy"value="${houseDto.hmapy}">
+							</td>
+							
+							
+					
+							
 						</tr>
 						<tr>
 						<th style="background-color : #B8B8B8; "> 맛집테마 *</th>
@@ -120,26 +130,30 @@
 								value="${houseDto.hkind}" readonly>
 						</div> --%>
 					
-						<div class="form-group">
-							<label for="exampleInputEmail1">맛집 사진 올리기(마우스로 드래그 해서 올려주세요.)</label>
+						<div class="form-group" style=" text-align : center">
+							<label for="exampleInputEmail1">맛집 사진 등록(사진 파일을 드래그 해서 올려주세요.)</label>
 							<div class="fileDrop"></div>
 						</div>	
-						
+						<div class="dialogLayout" title="주소검색">
+							<form>
+								<input type="text" name="keyword" id="keyword">
+								<input type="button" value="주소 검색" id="search">
+							</form>
+							
+						<table class="modaladdr">
+						</table>
+						</div>
+		<ul class="mailbox-attachments clearfix uploadedList"></ul>
+    <input type="submit"class="btn btn-primary" onclick="return housecheck_ok()" value="수정">
+    <input type="button" value="취소"id="goListBtn">
 					</div>
 					<!-- /.box-body -->
 
 	<div class="box-footer">
-		<div>
-			<hr>
-		</div>
-
-		<ul class="mailbox-attachments clearfix uploadedList"></ul>
-
-    <button type="submit" class="btn btn-primary" onclick="return housecheck_ok()">수정</button> 
-    <button type="submit" class="btn btn-primary" id="goListBtn">취소 </button>
 
 	</div>
 </form>
+
 
 <script type="text/javascript" src="/resources/js/upload.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
@@ -344,5 +358,95 @@ $("#goListBtn ").on("click", function(){
 </section>
 <!-- /.content -->
 <!-- /.content-wrapper -->
+
+
+<!-- 대일 스크립트 -->
+
+<script type="text/javascript">
+$(document).ready(function(){
+
+	/*  $("#choice").on("click",function(e){
+		e.preventDefault();
+		$(".haddr").text($("#modaladdr").val());
+	}); */
+	 
+	
+	$(".haddr").on("click",function(e){
+	 
+		e.preventDefault();
+	
+		dialog.dialog("open");
+
+	});
+	
+/* 	var addrinput = function(haddr){
+	 	alert("asdsad");
+		$("#hhaddr").val(haddr);
+	}; */
+	
+	 $(document).on("click","#ddd", function(){
+	      $("#hhaddr").val("");
+	      $("#hhaddr").val($("#ddd1").data("haddr"));
+	      $("#hhmapx").val($("#ddd1").data("hmapx"));
+	      $("#hhmapy").val($("#ddd1").data("hmapy"));
+	      
+	      dialog.dialog("close");
+	   });
+	$("#search").on("click",function(e){
+		e.preventDefault();
+		/* alert($(this).parents("tr").find("td").eq(0).find("input").val());
+		 */
+		var keyword=$("#keyword").val();
+		var values=[];
+		
+		$.ajax({
+			type:'post',
+			url:'/house/insertAjax',
+			headers:{
+				"Content-Type":"application/json",
+				"X-HTTP-Method-Override":"POST"
+			},
+			
+			data: JSON.stringify(keyword),
+			dataType:'json',
+			
+			success:function(result){
+					$(".modaladdr tr").remove();
+					$(result).each(function(i,aaa){
+					
+						$(".modaladdr").append(
+							"<tr id='"+aaa.hno+"'>'"+
+							"<td> "+aaa.haddr+"</td>"+
+							"<td><input type='hidden' id='ddd1' data-hmapx='"+aaa.hmapx+"' data-hmapy='"+aaa.hmapy+"' data-haddr='"+aaa.haddr+"'> </td>"+
+							"<td><button id='ddd'>선택</button></td></tr>"
+						);
+						
+					});	
+			},
+			error:function(request,status,error){
+				alert("code:"+request.status+"\n"+"message:"+request.responseText +"\n"+"error:"+error)
+			}
+		});
+		
+	});
+	
+	$(".dialogLayout").submit(function(event){
+		event.preventDefault();
+	});
+	
+	var dialog=$(".dialogLayout").dialog({
+		
+		autoOpen:false,
+		open:function(a){
+			
+		},
+		
+		width:500,
+	});	
+	
+	$(".haddr").button();	
+	
+});
+</script>
 
 <%@include file="../include/footer.jsp"%>

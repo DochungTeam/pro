@@ -188,23 +188,6 @@ $(document).ready(function(){
 		});
 	}
 </script>
-<script id="template" type="text/x-handlebars-template">
-{{#each .}}
-<li class="relplyLi" data-rno={{rno}}>
-<i class="fa fa-comments"></i>
-	<div class="timeline-item">
-		<span class="time">
-			<i class="fa fa-clock-o"></i>{{prettifyDate rwritedt}}
-		</span>
-`		<h3 class="timeline-header"><strong>{{rno}}</strong> -{{rwriter}}<h3>
-		<div class="timeline-body">{{rcontent}} </div>
-			<div class="timeline-footer">
-				<a class="btn btn-list btn-xs" data-toggle="modal" data-target="#modifyModal">수정</a>
-			</div>
-	</div>
-</li>
-{{/each}}
-</script>
 
 <style type="text/css">
 	.boardTd{
@@ -223,7 +206,7 @@ $(document).ready(function(){
 <form role="form" action="modifyPage" method="post">
 	
 	<input type="hidden" name="bno" id="bno" value="${boardDto.bno }">
-	<input type="hidden" name="page" value="${cri.page }">
+	<input type="hidden" name="page" value="1">
 	<input type="hidden" name="perPageNum" value="${cri.perPageNum }">
 	<input type="hidden" name="searchType" value="${cri.searchType }">
 	<input type="hidden" name="keyword" value="${cri.keyword }">
@@ -285,6 +268,7 @@ $(document).ready(function(){
 							댓글 수정일
 						</td>
 					</tr>
+					
 					<c:forEach items="${replyList }" var="replyDto">
 					<tr>
 						<td>
@@ -316,6 +300,15 @@ $(document).ready(function(){
 					</tr>
 					</c:forEach>
 				</table>
+				<c:if test="${pageMaker.prev }">
+					<a href="readPage${pageMaker.makeSearch(pageMaker.startPage - 1) }&bno=${boardDto.bno}">&laquo;</a>
+				</c:if>
+				<c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }" var="idx">
+					<a href="readPage${pageMaker.makeSearch(idx) }&bno=${boardDto.bno}">${idx }</a>
+				</c:forEach>
+				<c:if test="${pageMaker.next && pageMaker.endPage > 0 }">
+					<a href="readPage${pageMaker.makeSearch(pageMaker.endPage + 1) }&bno=${boardDto.bno}">&raquo;</a>
+				</c:if>
 			</div>
 			
 			<div class="box-body">

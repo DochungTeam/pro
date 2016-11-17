@@ -9,6 +9,8 @@ import com.kedu.house.dto.Criteria;
 public interface HouseService {
 	public List<HouseDto> listAll()throws Exception;
 	
+	public List<HouseDto> searchHouse(String keyword,int display,int start)throws Exception;
+	
 	public void insertHouse(HouseDto house)throws Exception;
 	
 	  public List<HouseDto> listCriteria(Criteria cri) throws Exception;

@@ -26,8 +26,8 @@ import com.kedu.house.dao.HouseDao;
 
 @Service
 public class HouseServiceImpl implements HouseService{
-	private static String clientID="";
-	private static String clientSecret="";
+	private static String clientID="0GNzYEuHHTbQ5Q4gsSLY";
+	private static String clientSecret="mxGth1kV6a";
 	@Inject
 	private HouseDao dao;
 
@@ -129,7 +129,7 @@ public class HouseServiceImpl implements HouseService{
 	    if(files == null) { return; } 
 	  
 	  }
-/*
+
 	@Override
 	public List<HouseDto> searchHouse(String keyword, int display, int start) throws Exception {
 		List<HouseDto> list=null;
@@ -200,17 +200,17 @@ public class HouseServiceImpl implements HouseService{
 						break;
 					case "address":
 						if(houseDto!=null){
-							houseDto.sethaddr(parser.nextText());
+							houseDto.setHaddr(parser.nextText());
 						}
 						break;
 					case "mapx":
 						if(houseDto!=null){
-							houseDto.setHmapx(parser.next());
+							houseDto.setHmapx(parser.nextText());
 						}
 						break;
 					case "mapy":
 						if(houseDto!=null){
-							houseDto.setHmapy(parser.next());
+							houseDto.setHmapy(parser.nextText());
 						}
 						break;
 					
@@ -238,7 +238,7 @@ public class HouseServiceImpl implements HouseService{
 		return list;
 	}
 	
-	*/
+	
 
 	@Override
 	public List<HouseDto> nonMemberList(SearchCriteria cri) throws Exception {

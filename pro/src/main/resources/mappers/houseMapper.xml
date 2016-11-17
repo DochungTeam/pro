@@ -34,7 +34,7 @@ select fullname from house_attach where hno = #{hno} order by hregdate
 
 <select id="read" resultType="com.kedu.house.dto.HouseDto">
  select 
-   hno, hnm, hphone, haddr, hmenu, htime, hholiday, hurl, hcontent, hkind, hregdate, hviewcnt 
+   hno, hnm, hphone, haddr, hmenu, htime, hholiday, hurl, hcontent, hkind, hregdate, hviewcnt, haddr, hmapx, hmapy
  from 
    house 
  where hno = #{hno}
@@ -42,7 +42,7 @@ select fullname from house_attach where hno = #{hno} order by hregdate
 
  <update id="update">
  update house set hnm =#{hnm}, hphone =#{hphone}, haddr =#{haddr}, hkind =#{hkind}, hmenu =#{hmenu}, htime =#{htime}, hholiday =#{hholiday},
- 					 hcontent =#{hcontent}, hurl =#{hurl} 
+ 					 hmapx =#{hmapx}, hmapy =#{hmapy}, hcontent =#{hcontent}, hurl =#{hurl} 
  where hno = #{hno}
  </update>
 
@@ -53,7 +53,7 @@ select fullname from house_attach where hno = #{hno} order by hregdate
  <select id="listPage" resultType="HouseDto">
  <![CDATA[
  select 
-   hno, hnm, hcontent, hkind, hregdate, hviewcnt 
+   hno, hnm, hcontent, hkind, hregdate, hviewcnt, haddr, hmapx, hmapy 
  from 
    house 
  where hno > 0 
@@ -75,7 +75,7 @@ select fullname from house_attach where hno = #{hno} order by hregdate
    from house h left outer join(
 								select hno
 								  from mypage
-								 where mid = 'asdasd' 
+								 where mid = #{mid} 
    						   		) jjim
    						   
    						     on h.hno = jjim.hno

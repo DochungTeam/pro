@@ -68,6 +68,11 @@ public class BoardDaoImpl implements BoardDao {
 	}
 	
 	@Override
+	public int countReplyPaging(int bno) throws Exception {
+		return session.selectOne(namespace + ".countReplyPaging", bno);
+	}
+	
+	@Override
 	public List<BoardDto> listSearch(BoardSearchCriteria cri) throws Exception {
 		return session.selectList(namespace + ".listSearch", cri);
 	}

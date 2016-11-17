@@ -28,6 +28,7 @@ import org.springframework.web.servlet.tags.EditorAwareTag;
 
 import com.kedu.board.dto.BoardDto;
 import com.kedu.board.dto.BoardPageMaker;
+import com.kedu.board.dto.BoardReplyDto;
 import com.kedu.board.dto.BoardSearchCriteria;
 import com.kedu.board.service.BoardReplyService;
 import com.kedu.board.service.BoardService;
@@ -63,7 +64,15 @@ public class BoardSearchBoardController {
 	public void read(@RequestParam("bno") int bno, @ModelAttribute("cri") BoardSearchCriteria cri, Model model) throws Exception {
 		
 		model.addAttribute(service.read(bno));
-		model.addAttribute("replyList",replyService.listReply(bno));
+		model.addAttribute("replyList", replyService.listReplyPage(bno, cri));
+		
+		
+		BoardPageMaker pageMaker = new BoardPageMaker();
+		pageMaker.setCri(cri);
+		
+		pageMaker.setTotalCount(service.listCountReply(bno));
+		model.addAttribute("pageMaker", pageMaker);
+		
 		
 	}
 	

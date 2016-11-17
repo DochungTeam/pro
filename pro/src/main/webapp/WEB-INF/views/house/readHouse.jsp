@@ -6,6 +6,9 @@
 
 <%@include file="../include/script.jsp"%>
 <%@include file="../include/header.jsp"%>
+<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?clientId=qloX_gYvM6K9W0RyObTM&submodules=geocoder"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript" src="/resources/jqueryui/jquery-ui.min.js"></script>
 <script type="text/javascript" src="/resources/js/upload.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
 <!-- Main content -->
@@ -22,6 +25,9 @@
        overflow: auto;       
      } 
   	
+  	#map{
+	height: 250px;
+	width: 350px;
     </style>
 
     <div class='popup back' style="display:none;"></div>
@@ -88,7 +94,11 @@
 							<th>블로그주소</th>
 							<td>${houseDto.hurl}</td>
 						</tr>
-						
+						<tr>
+						 
+							<td><input type="hidden" class="xxx" name="hmapx" value='${houseDto.hmapx }'>${houseDto.hmapx }</td>
+							<td><input type="hidden" class="yyy" name="hmapy" value='${houseDto.hmapy }'>${houseDto.hmapy }</td> 
+						</tr>
 					</table>
 					<%-- <div class="form-group">
 						<label for="exampleInputEmail1">맛집 이름</label> <input type="text"
@@ -107,7 +117,7 @@
 					</div> --%>
 				</div>
 				<!-- /.box-body -->
-				
+				<div id="map"  style="border:1px solid #000;"></div>
   <div class="box-footer">
     
     <div><hr></div>
@@ -520,7 +530,57 @@ $(document).ready(function(){
 });
 </script>
 
+<!-- 대일 스크립트 -->
 
+<script type="text/javascript">
+
+$(document).ready(function(){
+	var x= $(".xxx").val();
+	var y= $(".yyy").val();
+	
+	/* alert($(".xxx").val());
+	alert($(".yyy").val()); */
+	
+	 var map = new naver.maps.Map('map',{
+	      center : new naver.maps.Point(x,y),
+	      mapTypeControl: true,
+	      mapTypeControlOptions:{
+	    	  style: naver.maps.MapTypeControlStyle.DROPDOWN
+	      },
+	      
+	      mapTypes: new naver.maps.MapTypeRegistry({
+	          'normal': naver.maps.NaverMapTypeOption.getNormalMap({
+	              projection: naver.maps.TM128Coord
+	          }),
+	          'terrain': naver.maps.NaverMapTypeOption.getTerrainMap({
+	              projection: naver.maps.TM128Coord
+	          }),
+	          'satellite': naver.maps.NaverMapTypeOption.getSatelliteMap({
+	              projection: naver.maps.TM128Coord
+	          }),
+	          'hybrid': naver.maps.NaverMapTypeOption.getHybridMap({
+	              projection: naver.maps.TM128Coord
+	          })
+	      }),
+	      
+	      mapTypeControl: true,
+	      zoom : 10,
+	      enableWheelZoom : true, 
+	      enableDragPan : true, 
+	      enableDblClickZoom : false, 
+	      mapMode : 0, 
+	      activateTrafficMap : false, 
+	      activateBicycleMap : false, 
+	      minMaxLevel : [ 1, 14 ],  
+
+		  });
+	 
+		 var marker = new naver.maps.Marker({
+			 map: map, 
+			 position: new naver.maps.Point(map.getCenter()),
+	 });
+})
+</script>
 
 
 
