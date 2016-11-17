@@ -48,7 +48,7 @@
 
 				<form role="form" action="modifyPage" method="post">
 
-					<input type='hidden' name='hno' value="${houseDto.hno}"> <input
+					<input type='hidden' id="hno" name='hno' value="${houseDto.hno}"> <input
 						type='hidden' name='page' value="${cri.page}"> <input
 						type='hidden' name='perPageNum' value="${cri.perPageNum}">
 					<input type='hidden' name='searchType' value="${cri.searchType}">
@@ -499,7 +499,7 @@ $(document).ready(function(){
 		if ($(".timeline li").size() > 1) {
 			return;
 		}
-		getPage("/reply/" + hno + "/1");
+		getPage("/hreply/" + hno + "/1");
 		
 	});
 	
@@ -509,7 +509,7 @@ $(document).ready(function(){
 		
 		replyPage = $(this).attr("href");
 		
-		getPage("/reply/" + hno + "/" + replyPage);
+		getPage("/hreply/" + hno + "/" + replyPage);
 		
 	});
 	
@@ -526,7 +526,7 @@ $(document).ready(function(){
 			
 		$.ajax({
 			type : 'post',
-			url : '/reply/',
+			url : '/hreply/',
 			headers : {
 				"Content-Type" : "application/json",
 				"X-HTTP-Method-Override" : "PUT"
@@ -585,7 +585,7 @@ $(document).ready(function(){
 		
 		$.ajax({
 			type:'put',
-			url:'/reply/' + hrno,
+			url:'/hreply/' + hrno,
 			headers: {
 				"Content-Type": "application/json",
 				"X-HTTP-Method-Override": "PUT" },
@@ -621,7 +621,7 @@ $(document).ready(function(){
 		
 		$.ajax({
 			type:'delete',
-			url:'/reply/'+hrno,
+			url:'/hreply/'+hrno,
 			headers: {
 				"Content-Type": "application/json",
 				"X-HTTP-Method-Override": "DELETE"},
