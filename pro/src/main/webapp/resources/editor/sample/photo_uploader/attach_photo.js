@@ -330,12 +330,10 @@
      * HTML5 DragAndDrop으로 사진을 추가하고, 확인버튼을 누른 경우에 동작한다.
      * @return
      */
-    function html5Upload() {	
+    function html5Upload() {
     	var tempFile,
     		sUploadURL;
-    	
-    	sUploadURL= 'resources/editor/php/file_uploader_html5.php'; 	//upload URL
-    	
+    	sUploadURL= '/board/file'; 	//upload URL
     	//파일을 하나씩 보내고, 결과를 받음.
     	for(var j=0, k=0; j < nImageInfoCnt; j++) {
     		tempFile = htImageInfo['img'+j];
@@ -351,6 +349,36 @@
 	}
     
     function callAjaxForHTML5 (tempFile, sUploadURL){
+//    	$.ajax({
+//    		url: sUploadURL,
+//    		headers: {
+//    			"Content-Type":"multipart/form-data",
+//    			"file-name":encodeURIComponent(tempFile.name),
+//    			"file-size":tempFile.size,
+//    			"file-Type":tempFile.type
+//    		},
+//    		beforeSend: function (request)
+//            {
+//                request.setRequestHeader(tempFile);
+//            },
+//    		data: tempFile,
+//    		dataType: 'text',
+//    		processData: false,
+//    		contentType: false,
+//    		type: 'post',
+//    		success: function(res){
+//    			var sResString = res._response.responseText;
+//				if (res.readyState() == 4) {
+//					if(sResString.indexOf("NOTALLOW_") > -1){
+//						var sFileName = sResString.replace("NOTALLOW_", "");
+//						alert("이미지 파일(jpg,gif,png,bmp)만 업로드 하실 수 있습니다. ("+sFileName+")");
+//					}else{
+//						//성공 시에  responseText를 가지고 array로 만드는 부분.
+//						makeArrayFromString(res._response.responseText);
+//					}
+//				}
+//    		}
+//    	});
     	var oAjax = jindo.$Ajax(sUploadURL, {
 			type: 'xhr',
 			method : "post",
@@ -369,7 +397,7 @@
 			timeout : 3,
 			onerror :  jindo.$Fn(onAjaxError, this).bind()
 		});
-		oAjax.header("contentType","multipart/form-data");
+		oAjax.header("Content-Type","multipart/form-data");
 		oAjax.header("file-name",encodeURIComponent(tempFile.name));
 		oAjax.header("file-size",tempFile.size);
 		oAjax.header("file-Type",tempFile.type);
@@ -470,8 +498,9 @@
  	 * jindo에 파일 업로드 사용.(iframe에 Form을 Submit하여 리프레시없이 파일을 업로드하는 컴포넌트)
  	 */
  	function callFileUploader (){
+ 		alert("업로드한다");
  		oFileUploader = new jindo.FileUploader(jindo.$("uploadInputBox"),{
- 			sUrl  : '/board/register',	//샘플 URL입니다.
+ 			sUrl  : '/board/file_uploader',	//샘플 URL입니다.
  	        sCallback : '/resources/editor/sample/photo_uploader/callback.html',	//업로드 이후에 iframe이 redirect될 콜백페이지의 주소
  	    	sFiletype : "*.jpg;*.png;*.bmp;*.gif",						//허용할 파일의 형식. ex) "*", "*.*", "*.jpg", 구분자(;)	
  	    	sMsgNotAllowedExt : 'JPG, GIF, PNG, BMP 확장자만 가능합니다',	//허용할 파일의 형식이 아닌경우에 띄워주는 경고창의 문구
