@@ -65,30 +65,38 @@ $(document).ready(function(){
 	
 	$("#replyAddBtn").on("click", function() {
 		
-		var replyerObj = $("#newReplyWriter");
-		var replytextObj = $("#newReplyText");
-		var replyer = replyerObj.val();
-		var replytext = replytextObj.val();
+		var mid = $("#mid").val();
+		var rcontent = $("#rcontent").val();
+		var bno = $("#bno").val();
 		
-			$.ajax({
-				type:'post',
-				url:'/reply/',
-				header: {
-					"Content-Type": "application/json",
-					"X-HTTP-Method-Override": "POST" },
-				dataType: 'text',
-				data: JSON.stringify({bno:bno, mid:mid, rcontent:rcontent}),
-				success:function(result){
-					console.log("result: " + result);
-					if(result == 'SUCCESS'){
-						alert("등록 되었습니다.");
-						replyPage = 1;
-						getPage("/reply/" + bno + "/" + replyPage);
-						replyerObj.val("");
-						replytextObj.val("");
-					}
+		alert(mid + " : " + rcontent +" : " + bno);
+		if(mid==""){
+			alert("먼저 로그인을 해주세요.");
+			history.go(0);
+		}else{
+			
+		$.ajax({
+			type : 'post',
+			url : '/reply/',
+			headers : {
+				"Content-Type" : "application/json",
+				"X-HTTP-Method-Override" : "PUT"
+			},
+			data : JSON.stringify({mid:mid, bno:bno, rcontent:rcontent}),
+			dataType : "text",
+			success : function(result){
+				console.log("result: " + result);
+				if(result == 'SUCCESS'){
+					alert("등록 되었습니다.");
+					history.go(0);
 				}
-				});
+				
+			}
+			
+		});
+		}
+		
+		
 	});
 	
 	$(".timeline").on("click", ".replyLi", function(event) {
@@ -100,10 +108,31 @@ $(document).ready(function(){
 		
 	});
 	
-	$("#replyModBtn").on("click", function() {
+	
+});
+</script>
+<script type="text/javascript">
+	var replyModify = function(rno) {
 		
-		var rno = $(".modal-title").html();
-		var replytext = $("#replytext").val();
+		var rcontent = $(".hidden"+rno).val();
+		
+		$(".d"+rno).remove();
+		$(".modiv"+rno+" button").remove();
+
+		$(".td"+rno).append(
+			"<span class='span"+rno+"'><input type='text' class='text"+rno+"' value='"+rcontent+"'/></span>"		
+		);
+		$(".modiv"+rno).append(
+			"<button onclick='replyModifyOk("+rno+");'>확인</button>"+	
+			"<button onclick='replyModifyCancel("+rno+");'>취소</button>"	
+		);
+		
+	}
+	
+	var replyModifyOk = function(rno){
+		
+		var mid = $("#mid").val();
+		var rcontent = $(".text"+rno).val();
 		
 		$.ajax({
 			type:'put',
@@ -111,26 +140,40 @@ $(document).ready(function(){
 			headers: {
 				"Content-Type": "application/json",
 				"X-HTTP-Method-Override": "PUT" },
-			data: JSON.stringify({replytext:replytext}),
+			data: JSON.stringify({mid:mid,rcontent:rcontent}),
 			dataType:'text',
 			success:function(result){
 				console.log("result: " + result);
 				if(result == 'SUCCESS'){
 					alert("수정 되었습니다.");
-					getPage("/reply/" + bno + "/" + replyPage);
+					history.go(0);
 				}
 			}
 		});
-	});
-	
-	$("#replyDelBtn").on("click", function() {
+	}
+	var replyModifyCancel = function(rno){
 		
-		var rno = $(".modal-title").html();
-		var replytext = $("#replytext").val();
+		var rid = "."+rno;
+		var rcontent = $(".hidden"+rno).val();
+		
+		
+		$(".span"+rno).remove();
+		$(".modiv"+rno+" button").remove();
+
+		$(".td"+rno).append(
+			"<div class='d"+rno+"'>"+rcontent+"</div>"
+		);
+		$(".modiv"+rno).append(
+			"<button class='ok"+rno+"' onclick='replyModify("+rno+");'>수정</button>"
+		);
+		
+	}
+	
+	var replyDelete = function(rno) {
 		
 		$.ajax({
 			type:'delete',
-			url:'/reply/' +rno,
+			url:'/reply/'+rno,
 			headers: {
 				"Content-Type": "application/json",
 				"X-HTTP-Method-Override": "DELETE"},
@@ -139,12 +182,11 @@ $(document).ready(function(){
 				console.log("result: " + result);
 				if(result == 'SUCCESS'){
 					alert("삭제 되었습니다.");
-					getPage("/reply/" + bno + "/" +replyPage);
+					history.go(0);
 				}
 			}
 		});
-	});
-});
+	}
 </script>
 <script id="template" type="text/x-handlebars-template">
 {{#each .}}
@@ -163,6 +205,13 @@ $(document).ready(function(){
 </li>
 {{/each}}
 </script>
+
+<style type="text/css">
+	.boardTd{
+		padding: 10px;
+	}
+</style>
+
 </head>
 
 
@@ -173,7 +222,7 @@ $(document).ready(function(){
 			<div class="wrapper cf">
 <form role="form" action="modifyPage" method="post">
 	
-	<input type="hidden" name="bno" value="${boardDto.bno }">
+	<input type="hidden" name="bno" id="bno" value="${boardDto.bno }">
 	<input type="hidden" name="page" value="${cri.page }">
 	<input type="hidden" name="perPageNum" value="${cri.perPageNum }">
 	<input type="hidden" name="searchType" value="${cri.searchType }">
@@ -182,15 +231,23 @@ $(document).ready(function(){
 </form>
 
 <div class="box-body">
-	<div class="form-group">
-		<input type="text" name="bno" class="form-control" value="${boardDto.bno }" readonly="readonly">
-		<input type="text" name="btitle" class="form-control" value="${boardDto.btitle }" readonly="readonly">
-		<input type="text" name="bwriter" class="form-control" value="${boardDto.bwriter }" readonly="readonly">
-		<input type="text" name="bwritedt" class="form-control" value="${boardDto.bwritedt }" readonly="readonly">
-	</div>
-	<div class="form-group">
+	<table>
+		<tr>
+			<td class="boardTd">
+				${boardDto.bno }
+			</td>
+			<td class="boardTd">
+				${boardDto.btitle }
+			</td>
+			<td class="boardTd">
+				${boardDto.bwriter }
+			</td>
+			<td class="boardTd">
+				<fmt:formatDate pattern="yyyy-MM-dd" value="${boardDto.bwritedt }" />
+			</td>
+		</tr>
+	</table>
 		<div>${boardDto.bcontent }</div>
-	</div>
 </div>
 
 <div class="box-footer">
@@ -206,48 +263,70 @@ $(document).ready(function(){
 <div class="row">
 	<div class="col-md-12">
 		<div class="box box-success">
-			<div class="box-header">
-			<hr/>
-				<h4 class="box-title">댓글</h4>
-			</div>
 			<div>
-				<span>댓글 목록<small id="replycntSmall">[${boardDto.rcount }]</small></span>
+				<hr/>
+				<h4>댓글 목록[${boardDto.rcount }]</h4>
+				<hr/>
+				<table id="replyTable">
+					<tr>
+						<td>
+							댓글 번호
+						</td>
+						<td>
+							댓글 내용
+						</td>
+						<td>
+							댓글 작성자
+						</td>
+						<td>
+							댓글 작성일
+						</td>
+						<td>
+							댓글 수정일
+						</td>
+					</tr>
+					<c:forEach items="${replyList }" var="replyDto">
+					<tr>
+						<td>
+							${replyDto.rno }
+						</td>
+						<td class="td${replyDto.rno }">
+							<input type="hidden" class="hidden${replyDto.rno }" value="${replyDto.rcontent }"/>
+							<div class="d${replyDto.rno }">${replyDto.rcontent }</div>
+						</td>
+						<td>
+							${replyDto.mid }
+						</td>
+						<td>
+							<fmt:formatDate pattern="yyyy-MM-dd" value="${replyDto.rwritedt }" />
+						</td>
+						<td>
+							<fmt:formatDate pattern="yyyy-MM-dd" value="${replyDto.rupdatedt }" />
+						</td>
+						<c:if test="${loginMember.mid == replyDto.mid }">
+							<td class="modiv${replyDto.rno }">
+								<button id="replyModBtn" onclick="replyModify(${replyDto.rno });">수정</button>
+							</td>
+						</c:if>
+						<c:if test="${(loginMember.mid == replyDto.mid) || loginMember.mmanyn == 0}">
+							<td>
+								<button id="replyDelBtn" onclick="replyDelete(${replyDto.rno});">삭제</button>
+							</td>
+						</c:if>
+					</tr>
+					</c:forEach>
+				</table>
 			</div>
 			
 			<div class="box-body">
+				<hr/>
 				<input type="hidden" name="mid" id="mid" value="${loginMember.mid}" >
 				<input type="text" id="rcontent" name="rcontent" placeholder="댓글을 입력하세요">
-			</div>
-			
-			<div class="box-footer">
-				<button type="submit" class="btn btn-primary" id="replyAddBtn">등록</button>
+				<button id="replyAddBtn">등록</button>
 			</div>
 		</div>
 		
-		<ul class="timeline">
-		</ul>
 		
-		<div class="text-center">
-			<ul id="pagination" class="pagination pagination-sm no-margin"></ul>
-		</div>
-	</div>
-</div>
-<div id="modifyModal" class="modal modal-primary fade" role="dialog">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<h5 class="modal-title"></h5>
-			</div>
-			<div class="modal-body" data-rno>
-				<p><input type="text" id="replytext" class="form-control"></p>
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-info" id="replyModBtn">수정</button>
-				<button type="button" class="btn btn-remove" id="replyDelBtn">삭제</button>
-				<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
-			</div>
-		</div>
 	</div>
 </div>
 <script type="text/javascript">

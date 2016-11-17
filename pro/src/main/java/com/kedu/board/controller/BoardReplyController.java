@@ -26,7 +26,7 @@ public class BoardReplyController {
 	@Inject
 	private BoardReplyService service;
 	
-	@RequestMapping(value = "", method = RequestMethod.POST)
+	@RequestMapping(value = "/", method = RequestMethod.POST)
 	public ResponseEntity<String> register(@RequestBody BoardReplyDto dto) {
 		
 		ResponseEntity<String> entity = null;
