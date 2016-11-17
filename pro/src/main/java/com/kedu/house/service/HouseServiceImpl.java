@@ -26,8 +26,8 @@ import com.kedu.house.dao.HouseDao;
 
 @Service
 public class HouseServiceImpl implements HouseService{
-	private static String clientID="";
-	private static String clientSecret="";
+	private static String clientID="0GNzYEuHHTbQ5Q4gsSLY";
+	private static String clientSecret="mxGth1kV6a";
 	@Inject
 	private HouseDao dao;
 
