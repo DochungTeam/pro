@@ -51,7 +51,9 @@ header{
 }
 
 #navDown {
-  float: right;
+  display: table;
+  margin-left: auto;
+  margin-right: auto;
   text-decoration: none;
 }
 #navDown > li {
@@ -72,4 +74,56 @@ header{
   overflow: hidden;
   line-height: 50px;
   border-bottom: 3px solid transparent;
+}
+
+.sf-menuDown, .sf-menuDown * {
+	margin:			0;
+	padding:		0;
+	list-style:		none;
+}
+.sf-menuDown {
+	
+}
+.sf-menuDown ul {
+	position:		absolute;
+	top:			-999em;
+	width:			10em; /* left offset of submenus need to match (see below) */
+}
+.sf-menuDown ul li {
+	width:			100%;
+}
+.sf-menuDown li:hover {
+	visibility:		inherit; /* fixes IE7 'sticky bug' */
+}
+.sf-menuDown li {
+	float:			left;
+	position:		relative;
+}
+.sf-menuDown a {
+	display:		block;
+	position:		relative;
+}
+.sf-menuDown li:hover ul,
+.sf-menuDown li.sfHover ul {
+	left:			0;
+	top:			2.5em; /* match top ul list item height */
+	z-index:		99;
+}
+ul.sf-menuDown li:hover li ul,
+ul.sf-menuDown li.sfHover li ul {
+	top:			-999em;
+}
+ul.sf-menuDown li li:hover ul,
+ul.sf-menuDown li li.sfHover ul {
+	left:			10em; /* match ul width */
+	top:			0;
+}
+ul.sf-menuDown li li:hover li ul,
+ul.sf-menuDown li li.sfHover li ul {
+	top:			-999em;
+}
+ul.sf-menuDown li li li:hover ul,
+ul.sf-menuDown li li li.sfHover ul {
+	left:			10em; /* match ul width */
+	top:			0;
 }
