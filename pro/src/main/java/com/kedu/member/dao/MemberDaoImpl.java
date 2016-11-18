@@ -10,6 +10,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.kedu.house.dto.HouseDto;
+import com.kedu.house.dto.SearchCriteria;
 import com.kedu.member.dto.MemberDto;
 
 @Repository
@@ -37,6 +38,12 @@ public class MemberDaoImpl implements MemberDao {
 	public void insert(MemberDto dto) throws Exception {
 		
 		session.insert(namespace + ".memberInsert", dto);
+	}
+	
+	@Override
+	public void update(MemberDto dto) throws Exception {
+		
+		session.update(namespace + ".memberUpdate", dto);		
 	}
 	
 	@Override
@@ -106,5 +113,29 @@ public class MemberDaoImpl implements MemberDao {
 		int result = session.selectOne(namespace+".Jjimchk",paramMap );
 		
 		return result;
+	}
+	
+	@Override
+	public MemberDto selectMember(MemberDto dto) {
+		return session.selectOne(namespace+".selectMember", dto);
+	}
+	
+	@Override
+	public List<HouseDto> JjimList(String mid) throws Exception {
+
+		List<HouseDto> list =session.selectList(namespace+".JjimList", mid);
+	
+		return list;
+	}
+	
+	@Override
+	public int JjimListcheck(SearchCriteria cri, String mid) throws Exception {
+		
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		
+		paramMap.put("cri", cri);
+		paramMap.put("mid", mid);
+		
+		return session.selectOne(namespace + ".JjimListCheck", paramMap);
 	}
 }

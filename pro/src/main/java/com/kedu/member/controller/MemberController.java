@@ -25,6 +25,8 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.util.WebUtils;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.kedu.house.dto.PageMaker;
+import com.kedu.house.dto.SearchCriteria;
 import com.kedu.member.dto.EmailDto;
 import com.kedu.member.dto.EmailSender;
 import com.kedu.member.dto.LoginDto;
@@ -88,6 +90,38 @@ public class MemberController {
 				
 	}
 	
+//	회원정보 수정 페이지 이동
+	@RequestMapping(value="/modify",method=RequestMethod.GET)
+	public void memberModifyGET(HttpSession session, Model model)throws Exception{
+		if(session.getAttribute("loginMember") != null){
+			MemberDto memberDto = (MemberDto)session.getAttribute("loginMember");
+			
+			if(memberDto.getMmanyn() == 0 || memberDto.getMmanyn() == 1){
+//			회원정보 select
+				memberDto = service.selectMember(memberDto);
+				String email = memberDto.getMemail();
+				int index = email.indexOf('@');
+				memberDto.setFirstmemail(email.substring(0, index));
+				memberDto.setSecondmemail(email.substring(index));
+				
+				model.addAttribute("memberDto", memberDto);			
+			}
+		}
+		
+	}
+//	회원정보수정
+	@RequestMapping(value="/modify",method=RequestMethod.POST)
+	public String memberModifyPOST(MemberDto member,Model model)throws Exception{
+		
+		member.setMemail(member.getFirstmemail() + member.getSecondmemail());
+		
+		System.out.println(member);
+		
+//		회원정보 update
+		service.update(member);
+		
+		return "redirect:/house/list";
+	}
 
 //	메일 인증 처리
 	@RequestMapping(value="/confirm",method=RequestMethod.GET)
@@ -114,10 +148,6 @@ public class MemberController {
 	
 	}
 	
-	@RequestMapping(value="/face",method=RequestMethod.GET)
-	public void memberF(Model model)throws Exception{
-	}
-  
 	
 	@RequestMapping(value="/idcheck", method=RequestMethod.POST)
 	@ResponseBody
@@ -186,6 +216,9 @@ public class MemberController {
 			if(check == 1){
 				member = service.login(member);
 				
+//				보안을 위해 세션에 암호값 제거
+				member.setMpw("");
+				
 				session.setAttribute("loginMember", member);
 								
 				url = "redirect:/house/list";
@@ -242,5 +275,25 @@ public class MemberController {
 		ObjectMapper mapper = new ObjectMapper();
 		
 		response.getWriter().print(mapper.writeValueAsString(result));
+	}
+	@RequestMapping(value="/myjjim", method = RequestMethod.GET)
+	public void myJjim(@ModelAttribute("cri") SearchCriteria cri
+ 			 , Model model
+ 			 , HttpSession session) throws Exception{
+
+	    
+		MemberDto memberDto = (MemberDto)session.getAttribute("loginMember");
+		
+		if(memberDto != null){
+			model.addAttribute("list", service.JjimList(memberDto.getMid()));
+		
+		    PageMaker pageMaker = new PageMaker();
+		    pageMaker.setCri(cri);
+	
+		    pageMaker.setTotalCount(service.JjimListCheck(cri, memberDto.getMid()));
+	
+		    model.addAttribute("pageMaker", pageMaker);
+		}
+		
 	}
 }

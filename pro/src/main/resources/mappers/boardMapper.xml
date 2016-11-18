@@ -55,7 +55,7 @@
 	
 	<select id="listSearch" resultType="BoardDto">
 	<![CDATA[
-		select bno, btitle, bcontent, bwritedt, bcount, bwriter from board
+		select bno, btitle, bcontent, bwritedt, bcount, bwriter, rcount from board
 		where bno > 0 
 	]]>
 	
