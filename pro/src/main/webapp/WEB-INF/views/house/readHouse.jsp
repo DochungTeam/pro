@@ -44,6 +44,261 @@
 					</div>
 					<!-- entry-content -->
 					<div class="entry-content cf">
+					<section class="content">
+						<div class="row">
+							<!-- left column -->
+							<div class="col-md-12">
+								<!-- general form elements -->
+									<h3 class="box-title">맛집 상세보기</h3>
+					
+									<form role="form" action="modifyPage" method="post">
+					
+										<input type='hidden' id="hno" name='hno' value="${houseDto.hno}"> <input
+											type='hidden' name='page' value="${cri.page}"> <input
+											type='hidden' name='perPageNum' value="${cri.perPageNum}">
+										<input type='hidden' name='searchType' value="${cri.searchType}">
+										<input type='hidden' name='keyword' value="${cri.keyword}">
+					
+									</form>
+					
+										<table style="width : 500px">
+											<tr>
+												<th>맛집이름</th>
+												<td>${houseDto.hnm}</td>
+											</tr>
+											<tr>
+												<th>전화번호</th>
+												<td>${houseDto.hphone}</td>
+											</tr>
+											<tr>
+												<th>주소</th>
+												<td>${houseDto.haddr}</td>
+											</tr>
+											<tr>
+												<th>맛집테마</th>
+												<td>${houseDto.hkind}</td>
+											</tr>
+											<tr>
+												<th>맛집메뉴</th>
+												<td>${houseDto.hmenu}</td>
+											</tr>
+											<tr>
+												<th>영업시간</th>
+												<td>${houseDto.htime}</td>
+											</tr>
+											<tr>
+												<th>휴무</th>
+												<td>${houseDto.hholiday}</td>
+											</tr>
+											<tr>
+												<th>맛집설명</th>
+												<td>${houseDto.hcontent}</td>
+											</tr>
+											<tr>
+												<th>블로그주소</th>
+												<td>${houseDto.hurl}</td>
+											</tr>
+											<tr>
+											 
+												<td><input type="hidden" class="xxx" name="hmapx" value='${houseDto.hmapx }'></td>
+												<td><input type="hidden" class="yyy" name="hmapy" value='${houseDto.hmapy }'></td> 
+											</tr>
+										</table>
+										<%-- <div class="form-group">
+											<label for="exampleInputEmail1">맛집 이름</label> <input type="text"
+												name='hnm' class="form-control" value="${houseDto.hnm}"
+												readonly="readonly">
+										</div>
+										<div class="form-group">
+											<label for="exampleInputPassword1">맛집 설명</label>
+											<textarea class="form-control" name="hcontent" rows="3"
+												readonly="readonly">${houseDto.hcontent}</textarea>
+										</div>
+										<div class="form-group">
+											<label for="exampleInputEmail1">hkind</label> <input type="text"
+												name="hkind" class="form-control" value="${houseDto.hkind}"
+												readonly="readonly">
+										</div> --%>
+									<!-- /.box-body -->
+									<div id="map"  style="border:1px solid #000;"></div>
+					  <div class="box-footer">
+					    
+					    <div><hr></div>
+						맛집 사진
+					    <ul class="mailbox-attachments clearfix uploadedList">
+					    </ul>
+					 <%-- <c:if test="${login.uid == houseDto.writer}"> --%>
+					    <button type="submit" class="btn btn-warning" id="modifyBtn">수정</button>
+					    <button type="submit" class="btn btn-danger" id="removeBtn">삭제</button>
+					 <%-- </c:if> --%>
+					    <button type="submit" class="btn btn-primary" id="goListBtn">목록 </button>
+					  </div>
+								<!-- /.box -->
+							</div>
+							<!--/.col (left) -->
+					
+						</div>
+						<!-- /.row -->
+					
+					
+					<!-- 리플시작 -->
+					<div>
+									<hr/>
+									<h4>댓글 목록[${houseDto.hreplycnt }]</h4>
+									<hr/>
+									<table id="replyTable">
+										<tr>
+											<td>
+												댓글 번호
+											</td>
+											<td>
+												댓글 내용
+											</td>
+											<td>
+												댓글 작성자
+											</td>
+											<td>
+												댓글 작성일
+											</td>
+											<td>
+												댓글 수정일
+											</td>
+										</tr>
+										
+										<c:forEach items="${replyList }" var="replyDto">
+										<tr>
+											<td>
+												${replyDto.hrno }
+											</td>
+											<td class="td${replyDto.hrno }">
+												<input type="hidden" class="hidden${replyDto.hrno }" value="${replyDto.hrcontent }"/>
+												<div class="d${replyDto.hrno }">${replyDto.hrcontent }</div>
+											</td>
+											<td>
+												${replyDto.mid }
+											</td>
+											<td>
+												<fmt:formatDate pattern="yyyy-MM-dd" value="${replyDto.hrwritedt }" />
+											</td>
+											<td>
+												<fmt:formatDate pattern="yyyy-MM-dd" value="${replyDto.hrupdatedt }" />
+											</td>
+											<c:if test="${loginMember.mid == replyDto.mid }">
+												<td class="modiv${replyDto.hrno }">
+													<button id="replyModBtn" onclick="replyModify(${replyDto.hrno });">수정</button>
+												</td>
+											</c:if>
+											<c:if test="${(loginMember.mid == replyDto.mid) || loginMember.mmanyn == 0}">
+												<td>
+													<button id="replyDelBtn" onclick="replyDelete(${replyDto.hrno});">삭제</button>
+												</td>
+											</c:if>
+										</tr>
+										</c:forEach>
+									</table>
+									<c:if test="${pageMaker.prev }">
+										<a href="readHouse${pageMaker.makeSearch(pageMaker.startPage - 1) }&hno=${houseDto.hno}">&laquo;</a>
+									</c:if>
+									<c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }" var="idx">
+										<a href="readHouse${pageMaker.makeSearch(idx) }&hno=${boardDto.bno}">${idx }</a>
+									</c:forEach>
+									<c:if test="${pageMaker.next && pageMaker.endPage > 0 }">
+										<a href="readHouse${pageMaker.makeSearch(pageMaker.endPage + 1) }&hno=${houseDto.hno}">&raquo;</a>
+									</c:if>
+								</div>
+								
+								<div class="box-body">
+									<hr/>
+									<input type="hidden" name="mid" id="mid" value="${loginMember.mid}" >
+									<input type="text" id="hrcontent" name="hrcontent" placeholder="댓글을 입력하세요"
+									style="width: 800px;height: 40px;border: 1px solid #ccc;">
+									<button id="replyAddBtn" >등록</button>
+								</div>
+					<!-- 리플끝 -->
+					
+					
+						<%-- <div class="row">
+							<div class="col-md-12">
+					
+					
+					<div class="box box-success">
+					  <div class="box-header">
+					    <h3 class="box-title">댓글 추가</h3>
+					  </div>
+					  
+					  
+					
+					
+					  <c:if test="${not empty login}">  
+					  <div class="box-body">
+					    <label for="exampleInputEmail1">작성자</label>
+					    <input class="form-control" type="text" placeholder="작성자" 
+					    	id="newReplyWriter" value="${login.uid }" readonly="readonly">     
+					    <label for="exampleInputEmail1">댓글 내용</label> 
+					    <input class="form-control" type="text" placeholder="댓글 내용" id="newReplyText">
+					    </div>
+					  
+							<div class="box-footer">
+							  <button type="submit" class="btn btn-primary" id="replyAddBtn">등록</button>
+							</div>
+					  </c:if>
+					  
+					  <c:if test="${empty login}">
+					    <div class="box-body">
+					      <div><a href="javascript:goLogin();" >로그인 해주세요.</a></div>
+					    </div>
+					  </c:if>				                 
+					</div>            
+					
+					
+							
+							<!-- The time line -->
+							<ul class="timeline">
+							  <!-- timeline time label -->
+							<li class="time-label" id="repliesDiv">
+							  <span class="bg-green">
+							    댓글 목록 <small id='replycntSmall'> [ ${houseDto.replycnt} ] </small>
+							    </span>
+							  </li>
+							</ul>
+							   
+								<div class='text-center'>
+									<ul id="pagination" class="pagination pagination-sm no-margin ">
+					
+									</ul>
+								</div>
+					
+							</div>
+							<!-- /.col -->
+						</div>
+						<!-- /.row -->
+					
+					
+					          
+					<!-- Modal -->
+					<div id="modifyModal" class="modal modal-primary fade" role="dialog">
+					  <div class="modal-dialog">
+					    <!-- Modal content-->
+					    <div class="modal-content">
+					      <div class="modal-header">
+					        <button type="button" class="close" data-dismiss="modal">&times;</button>
+					        <h4 class="modal-title"></h4>
+					      </div>
+					      <div class="modal-body" data-rno>
+					        <p><input type="text" id="replytext" class="form-control"></p>
+					      </div>
+					      <div class="modal-footer">
+					        <button type="button" class="btn btn-info" id="replyModBtn">수정</button>
+					        <button type="button" class="btn btn-danger" id="replyDelBtn">삭제</button>
+					        <button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
+					      </div>
+					    </div>
+					  </div>
+					</div>      
+					
+					 --%>	
+						
+					</section>
 					
 					
 					</div>
@@ -52,261 +307,6 @@
 		
 
 	
-<section class="content">
-	<div class="row">
-		<!-- left column -->
-		<div class="col-md-12">
-			<!-- general form elements -->
-				<h3 class="box-title">맛집 상세보기</h3>
-
-				<form role="form" action="modifyPage" method="post">
-
-					<input type='hidden' id="hno" name='hno' value="${houseDto.hno}"> <input
-						type='hidden' name='page' value="${cri.page}"> <input
-						type='hidden' name='perPageNum' value="${cri.perPageNum}">
-					<input type='hidden' name='searchType' value="${cri.searchType}">
-					<input type='hidden' name='keyword' value="${cri.keyword}">
-
-				</form>
-
-					<table style="width : 500px">
-						<tr>
-							<th>맛집이름</th>
-							<td>${houseDto.hnm}</td>
-						</tr>
-						<tr>
-							<th>전화번호</th>
-							<td>${houseDto.hphone}</td>
-						</tr>
-						<tr>
-							<th>주소</th>
-							<td>${houseDto.haddr}</td>
-						</tr>
-						<tr>
-							<th>맛집테마</th>
-							<td>${houseDto.hkind}</td>
-						</tr>
-						<tr>
-							<th>맛집메뉴</th>
-							<td>${houseDto.hmenu}</td>
-						</tr>
-						<tr>
-							<th>영업시간</th>
-							<td>${houseDto.htime}</td>
-						</tr>
-						<tr>
-							<th>휴무</th>
-							<td>${houseDto.hholiday}</td>
-						</tr>
-						<tr>
-							<th>맛집설명</th>
-							<td>${houseDto.hcontent}</td>
-						</tr>
-						<tr>
-							<th>블로그주소</th>
-							<td>${houseDto.hurl}</td>
-						</tr>
-						<tr>
-						 
-							<td><input type="hidden" class="xxx" name="hmapx" value='${houseDto.hmapx }'></td>
-							<td><input type="hidden" class="yyy" name="hmapy" value='${houseDto.hmapy }'></td> 
-						</tr>
-					</table>
-					<%-- <div class="form-group">
-						<label for="exampleInputEmail1">맛집 이름</label> <input type="text"
-							name='hnm' class="form-control" value="${houseDto.hnm}"
-							readonly="readonly">
-					</div>
-					<div class="form-group">
-						<label for="exampleInputPassword1">맛집 설명</label>
-						<textarea class="form-control" name="hcontent" rows="3"
-							readonly="readonly">${houseDto.hcontent}</textarea>
-					</div>
-					<div class="form-group">
-						<label for="exampleInputEmail1">hkind</label> <input type="text"
-							name="hkind" class="form-control" value="${houseDto.hkind}"
-							readonly="readonly">
-					</div> --%>
-				<!-- /.box-body -->
-				<div id="map"  style="border:1px solid #000;"></div>
-  <div class="box-footer">
-    
-    <div><hr></div>
-	맛집 사진
-    <ul class="mailbox-attachments clearfix uploadedList">
-    </ul>
- <%-- <c:if test="${login.uid == houseDto.writer}"> --%>
-    <button type="submit" class="btn btn-warning" id="modifyBtn">수정</button>
-    <button type="submit" class="btn btn-danger" id="removeBtn">삭제</button>
- <%-- </c:if> --%>
-    <button type="submit" class="btn btn-primary" id="goListBtn">목록 </button>
-  </div>
-			<!-- /.box -->
-		</div>
-		<!--/.col (left) -->
-
-	</div>
-	<!-- /.row -->
-
-
-<!-- 리플시작 -->
-<div>
-				<hr/>
-				<h4>댓글 목록[${houseDto.hreplycnt }]</h4>
-				<hr/>
-				<table id="replyTable">
-					<tr>
-						<td>
-							댓글 번호
-						</td>
-						<td>
-							댓글 내용
-						</td>
-						<td>
-							댓글 작성자
-						</td>
-						<td>
-							댓글 작성일
-						</td>
-						<td>
-							댓글 수정일
-						</td>
-					</tr>
-					
-					<c:forEach items="${replyList }" var="replyDto">
-					<tr>
-						<td>
-							${replyDto.hrno }
-						</td>
-						<td class="td${replyDto.hrno }">
-							<input type="hidden" class="hidden${replyDto.hrno }" value="${replyDto.hrcontent }"/>
-							<div class="d${replyDto.hrno }">${replyDto.hrcontent }</div>
-						</td>
-						<td>
-							${replyDto.mid }
-						</td>
-						<td>
-							<fmt:formatDate pattern="yyyy-MM-dd" value="${replyDto.hrwritedt }" />
-						</td>
-						<td>
-							<fmt:formatDate pattern="yyyy-MM-dd" value="${replyDto.hrupdatedt }" />
-						</td>
-						<c:if test="${loginMember.mid == replyDto.mid }">
-							<td class="modiv${replyDto.hrno }">
-								<button id="replyModBtn" onclick="replyModify(${replyDto.hrno });">수정</button>
-							</td>
-						</c:if>
-						<c:if test="${(loginMember.mid == replyDto.mid) || loginMember.mmanyn == 0}">
-							<td>
-								<button id="replyDelBtn" onclick="replyDelete(${replyDto.hrno});">삭제</button>
-							</td>
-						</c:if>
-					</tr>
-					</c:forEach>
-				</table>
-				<c:if test="${pageMaker.prev }">
-					<a href="readHouse${pageMaker.makeSearch(pageMaker.startPage - 1) }&hno=${houseDto.hno}">&laquo;</a>
-				</c:if>
-				<c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }" var="idx">
-					<a href="readHouse${pageMaker.makeSearch(idx) }&hno=${boardDto.bno}">${idx }</a>
-				</c:forEach>
-				<c:if test="${pageMaker.next && pageMaker.endPage > 0 }">
-					<a href="readHouse${pageMaker.makeSearch(pageMaker.endPage + 1) }&hno=${houseDto.hno}">&raquo;</a>
-				</c:if>
-			</div>
-			
-			<div class="box-body">
-				<hr/>
-				<input type="hidden" name="mid" id="mid" value="${loginMember.mid}" >
-				<input type="text" id="hrcontent" name="hrcontent" placeholder="댓글을 입력하세요"
-				style="width: 800px;height: 40px;border: 1px solid #ccc;">
-				<button id="replyAddBtn" >등록</button>
-			</div>
-<!-- 리플끝 -->
-
-
-	<%-- <div class="row">
-		<div class="col-md-12">
-
-
-<div class="box box-success">
-  <div class="box-header">
-    <h3 class="box-title">댓글 추가</h3>
-  </div>
-  
-  
-
-
-  <c:if test="${not empty login}">  
-  <div class="box-body">
-    <label for="exampleInputEmail1">작성자</label>
-    <input class="form-control" type="text" placeholder="작성자" 
-    	id="newReplyWriter" value="${login.uid }" readonly="readonly">     
-    <label for="exampleInputEmail1">댓글 내용</label> 
-    <input class="form-control" type="text" placeholder="댓글 내용" id="newReplyText">
-    </div>
-  
-		<div class="box-footer">
-		  <button type="submit" class="btn btn-primary" id="replyAddBtn">등록</button>
-		</div>
-  </c:if>
-  
-  <c:if test="${empty login}">
-    <div class="box-body">
-      <div><a href="javascript:goLogin();" >로그인 해주세요.</a></div>
-    </div>
-  </c:if>				                 
-</div>            
-
-
-		
-		<!-- The time line -->
-		<ul class="timeline">
-		  <!-- timeline time label -->
-		<li class="time-label" id="repliesDiv">
-		  <span class="bg-green">
-		    댓글 목록 <small id='replycntSmall'> [ ${houseDto.replycnt} ] </small>
-		    </span>
-		  </li>
-		</ul>
-		   
-			<div class='text-center'>
-				<ul id="pagination" class="pagination pagination-sm no-margin ">
-
-				</ul>
-			</div>
-
-		</div>
-		<!-- /.col -->
-	</div>
-	<!-- /.row -->
-
-
-          
-<!-- Modal -->
-<div id="modifyModal" class="modal modal-primary fade" role="dialog">
-  <div class="modal-dialog">
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title"></h4>
-      </div>
-      <div class="modal-body" data-rno>
-        <p><input type="text" id="replytext" class="form-control"></p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-info" id="replyModBtn">수정</button>
-        <button type="button" class="btn btn-danger" id="replyDelBtn">삭제</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
-      </div>
-    </div>
-  </div>
-</div>      
-
- --%>	
-	
-</section>
 <!-- /.content -->
 
 
