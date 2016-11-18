@@ -204,7 +204,7 @@ $(document).ready(function(){
 	<div id="page">
 		<jsp:include page="../include/header.jsp" />
 		<div id="main">
-			<div class="wrapper cf">
+			<div id="start" class="wrapper cf">
 <form role="form" action="modifyPage" method="post">
 	
 	<input type="hidden" name="bno" id="bno" value="${boardDto.bno }">
