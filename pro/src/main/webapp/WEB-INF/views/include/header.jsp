@@ -3,7 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <script type="text/javascript">
-<<<<<<< HEAD
 	var logout = function() {
 		$.ajax({
 			type : 'get',
@@ -20,24 +19,6 @@
 
 		});
 	}
-=======
-		var logout = function() {
-			$.ajax({
-				type : 'get',
-				url : '/member/logout/',
-				headers : {
-					"Content-Type" : "application/json",
-					"X-HTTP-Method-Override" : "PUT"
-				},
-				dataType : "text",
-				success : function() {
-					history.go(0);
-				}
-
-			});
-		}
-		
->>>>>>> 8c5e7c614ca6c5081bd914685e77876abd49624d
 </script>
 
 <header>
@@ -57,12 +38,8 @@
 								환영합니다!</a>
 							<ul>
 								<li><a href="/member/myjjim">나의 찜 목록</a></li>
-<<<<<<< HEAD
 								<c:if
 									test="${!(loginMember.mmanyn == 3 || loginMember.mmanyn == 4)}">
-=======
-								<c:if test="${(loginMember.mmanyn == 0 || loginMember.mmanyn == 1)}">
->>>>>>> 8c5e7c614ca6c5081bd914685e77876abd49624d
 									<li><a href="/member/modify">회원 정보 수정</a></li>
 								</c:if>
 							</ul></li>
