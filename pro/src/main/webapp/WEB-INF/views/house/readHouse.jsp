@@ -35,7 +35,7 @@
 	<div id="page">
 		<%@include file="../include/header.jsp"%>
 		<div id="main">
-			<div class="wrapper cf">
+			<div id="start" class="wrapper cf">
 				<!-- page content-->
 				<div id="page-content" class="cf">
 				<div class='popup back' style="display:none;"></div>

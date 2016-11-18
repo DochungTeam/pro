@@ -54,8 +54,8 @@
 <body>
 	<div id="page">
 		<jsp:include page="../include/header.jsp" />
-		<div id="main">
-			<div class="wrapper cf">
+		<div  id="main">
+			<div id="start" class="wrapper cf">
 
 
 
