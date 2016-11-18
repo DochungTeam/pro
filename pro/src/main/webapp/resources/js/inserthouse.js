@@ -23,20 +23,11 @@ function housecheck_ok() {
 		return false;			
 	}
 	
-	//주소 api받아서 등록되면 적용 시키기!!!!!주석 지우지말것!!
-	/*else if (frm.haddr.value=="") {
-		alert("우편번호를 입력하셔야 합니다.");
+	else if (frm.haddr.value=="") {
+		alert("주소를 입력하셔야 합니다.");
 		frm.haddr.value= "";
-		frm.haddr.focus();
 		return false;			
 	}
-	
-	else if (frm.haddr2.value=="") {
-		alert("주소를 입력하셔야 합니다.");
-		frm.haddr2.value= "";
-		frm.haddr2.focus();
-		return false;			
-	}*/
 	
 	else if (frm.hkind.value=="") {
 		alert("맛집테마를 선택하셔야 합니다.");
