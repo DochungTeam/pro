@@ -367,7 +367,14 @@ function jjimBtn(hno){
 	
 		var mid = '${loginMember.mid}';
 		
-		if(mid !=""){
+		if(mid==""){
+			if (confirm("로그인 시 이용가능한 서비스입니다. 로그인 페이지로 이동하시겠습니까?") == true){
+				location.replace("/member/login");
+			}else{
+				history.go(0);
+			}
+		}else{
+			
 			$.ajax({
 				url : "/member/jjim",
 				type : "get",
@@ -389,8 +396,7 @@ function jjimBtn(hno){
 					console.log("class : "+$("#"+hno).attr("class"));
 				}
 			})
-		}else {
-			alert("로그인해주세요");
+	
 		}
 }
 
