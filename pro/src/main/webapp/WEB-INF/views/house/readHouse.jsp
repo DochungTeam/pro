@@ -603,7 +603,7 @@ $(document).ready(function(){
 			}
 		});
 	}
-	var replyModifyCancel = function(rno){
+	var replyModifyCancel = function(hrno){
 		
 		var hrcontent = $(".hidden"+hrno).val();
 		
@@ -620,7 +620,7 @@ $(document).ready(function(){
 		
 	}
 	
-	var replyDelete = function(rno) {
+	var replyDelete = function(hrno) {
 		
 		$.ajax({
 			type:'delete',
