@@ -23,7 +23,6 @@
 			<!-- general form elements -->
 
 			<div class="box">
-			
 				<%-- <div class="box-body">
 					<table class="table table-bordered">
 						<tr>
