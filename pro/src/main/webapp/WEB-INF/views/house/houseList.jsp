@@ -24,7 +24,7 @@
 .iw_inner{
 	height: auto;
 	width: 400px;
-}
+} 
 </style>
 
 <link href="/resources/jqueryui/jquery-ui.min.css" rel="stylesheet">
