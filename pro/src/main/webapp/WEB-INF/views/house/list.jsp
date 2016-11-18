@@ -18,9 +18,6 @@
 	<div class="row">
 		<!-- left column -->
 
-<<<<<<< HEAD
-=======
-
 		<div class="col-md-12">
 			<!-- general form elements -->
 
@@ -28,7 +25,6 @@
 			<c:if test="${loginMember.mmanyn == 0}">
 			<button><a href='/house/insertHouse'>맛집 등록</a></button>
 			</c:if>
->>>>>>> 09ba9ddc7789e02adfb200a9cd4875b704e0f4ff
 				<%-- <div class="box-body">
 					<table class="table table-bordered">
 						<tr>

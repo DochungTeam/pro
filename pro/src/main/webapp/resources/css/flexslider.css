@@ -66,7 +66,8 @@ html[xmlns] .slides {
 .home-slider {
   width: 620px;
   background: rgba(0, 0, 0, 0.1);
-  padding: 10px;
+  float: right;
+  position: relative;
 }
 .flexslider .slides {
   zoom: 1;
