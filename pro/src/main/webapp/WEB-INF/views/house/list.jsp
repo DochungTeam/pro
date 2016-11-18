@@ -8,10 +8,7 @@
 <%@include file="../include/mainheader.jsp"%>
 
 
-<<<<<<< HEAD
-=======
 
->>>>>>> 8a6b5500ef674bd7c2210b748a84ac7b6c979716
 <style>
 /* img {
 	cursor:pointer
