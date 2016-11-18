@@ -8,11 +8,7 @@
 <%@include file="../include/mainheader.jsp"%>
 
 
-<style>
-img {
-	cursor:pointer
-}
-</style>
+
 <!-- Main content -->
 <section class="content">
 	<div class="row">
@@ -184,7 +180,7 @@ img {
 
 <script id="templateAttach" type="text/x-handlebars-template">
 <li data-src='{{fullName}}'>
-  <span class="mailbox-attachment-icon has-img"><img src="{{imgsrc}}" alt="Attachment"></span>
+  <span class="mailbox-attachment-icon has-img"><img src="{{imgsrc}}" alt="Attachment" ></span>
   <div class="mailbox-attachment-info">
 	<a href="{{getLink}}" class="mailbox-attachment-name">{{fileName}}</a>
 	</span>
