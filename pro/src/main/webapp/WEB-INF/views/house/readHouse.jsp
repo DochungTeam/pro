@@ -127,10 +127,10 @@
 						맛집 사진
 					    <ul class="mailbox-attachments clearfix uploadedList">
 					    </ul>
-					 <%-- <c:if test="${login.uid == houseDto.writer}"> --%>
+					 <c:if test="${loginMember.mmanyn == 0}">
 					    <button type="submit" class="btn btn-warning" id="modifyBtn">수정</button>
 					    <button type="submit" class="btn btn-danger" id="removeBtn">삭제</button>
-					 <%-- </c:if> --%>
+					 </c:if>
 					    <button type="submit" class="btn btn-primary" id="goListBtn">목록 </button>
 					  </div>
 								<!-- /.box -->
