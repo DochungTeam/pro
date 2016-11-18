@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<link rel="stylesheet" type="text/css" href="../css/header.css">
 <script type="text/javascript">
 
 	var logout = function(){
@@ -48,7 +48,7 @@
 					</c:otherwise>
 				</c:choose>
 			</li>
-			<li>|</li>
+			<li><a>|</a></li>
 			<li>
 				<c:choose>
 					<c:when test="${empty loginMember.mid}">
@@ -61,4 +61,3 @@
 			</li>
 		</ul>
 		<!-- ends nav -->
-	<div id="combo-holder"></div>
