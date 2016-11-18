@@ -69,7 +69,6 @@ $(document).ready(function(){
 		var rcontent = $("#rcontent").val();
 		var bno = $("#bno").val();
 		
-		alert(mid + " : " + rcontent +" : " + bno);
 		if(mid==""){
 			if (confirm("로그인 시 이용가능한 서비스입니다. 로그인 페이지로 이동하시겠습니까?") == true){
 				location.replace("/member/login");
