@@ -219,8 +219,10 @@ public class BoardSearchBoardController {
 			 //이미지이므로 신규 파일로 디렉토리 설정 및 업로드	
 			 //파일 기본경로
 			 String dftFilePath = request.getSession().getServletContext().getRealPath("/");
+			 logger.info("기본기본기본기본기본기본기본기본기본기본기본기본기본기본기본기본기본기본기본"+dftFilePath);
 			 //파일 기본경로 _ 상세경로
 			 String filePath = dftFilePath + "resources" + File.separator + "editor" + File.separator +"multiupload" + File.separator;
+			 logger.info("상세상세상세상세상세상세상세상세상세상세상세상세상세상세상세상세상세상세"+filePath);
 			 File file = new File(filePath);
 			 if(!file.exists()) {
 			 	file.mkdirs();
@@ -248,7 +250,7 @@ public class BoardSearchBoardController {
 			 // 정보 출력
 			 sFileInfo += "&bNewLine=true";
 			 // img 태그의 title 속성을 원본파일명으로 적용시켜주기 위함
-			 sFileInfo += "&sFileName="+ filename;;
+			 sFileInfo += "&sFileName="+ filename;
 			 sFileInfo += "&sFileURL="+"/resources/editor/multiupload/"+realFileNm;
 			 PrintWriter print = response.getWriter();
 			 print.print(sFileInfo);
