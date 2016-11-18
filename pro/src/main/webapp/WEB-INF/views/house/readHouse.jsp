@@ -209,8 +209,9 @@
 			<div class="box-body">
 				<hr/>
 				<input type="hidden" name="mid" id="mid" value="${loginMember.mid}" >
-				<input type="text" id="hrcontent" name="hrcontent" placeholder="댓글을 입력하세요">
-				<button id="replyAddBtn">등록</button>
+				<input type="text" id="hrcontent" name="hrcontent" placeholder="댓글을 입력하세요"
+				style="width: 800px;height: 40px;border: 1px solid #ccc;">
+				<button id="replyAddBtn" >등록</button>
 			</div>
 <!-- 리플끝 -->
 
