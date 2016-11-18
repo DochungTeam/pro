@@ -1,5 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-<<<<<<< HEAD
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
@@ -40,8 +39,6 @@
 		<!-- ENDS SLIDER -->
 	</div>
 </header>
-=======
-    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <style type="text/css">
@@ -82,4 +79,3 @@
 			</div>
 		</div>
 				<!-- ENDS SLIDER -->
->>>>>>> 09ba9ddc7789e02adfb200a9cd4875b704e0f4ff

@@ -1,10 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<<<<<<< HEAD
 <link rel="stylesheet" type="text/css" href="../css/header.css">
-=======
->>>>>>> 09ba9ddc7789e02adfb200a9cd4875b704e0f4ff
 
 <script type="text/javascript">
 		var logout = function() {
@@ -26,13 +23,10 @@
 </script>
 
 <header>
-<<<<<<< HEAD
 	<div class="headerwrap">
 			<div id="logo">
-=======
 	<div class="wrapper cf">
 		<div id="logo">
->>>>>>> 09ba9ddc7789e02adfb200a9cd4875b704e0f4ff
 			<a href="index.html"><img src="/resources/img/logo.png"
 				alt="Simpler"></a>
 		</div>
@@ -55,11 +49,8 @@
 					</c:otherwise>
 				</c:choose>
 			</li>
-<<<<<<< HEAD
 			<li><a>|</a></li>
-=======
 			<li>|</li>
->>>>>>> 09ba9ddc7789e02adfb200a9cd4875b704e0f4ff
 			<li>
 				<c:choose>
 					<c:when test="${empty loginMember.mid}">
@@ -72,10 +63,7 @@
 			</li>
 		</ul>
 		<!-- ends nav -->
-<<<<<<< HEAD
-=======
 	<div id="combo-holder"></div>
->>>>>>> 09ba9ddc7789e02adfb200a9cd4875b704e0f4ff
 	</div>
 </header>
 	<div class="downNav">
