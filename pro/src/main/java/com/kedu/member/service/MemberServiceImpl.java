@@ -39,6 +39,11 @@ public class MemberServiceImpl implements MemberService {
 	}
 	
 	@Override
+	public void update(MemberDto member) throws Exception {
+		dao.update(member);
+	}
+	
+	@Override
 	public int confrim(MemberDto member) throws Exception {
 		return dao.confrim(member);
 	}
@@ -81,7 +86,15 @@ public class MemberServiceImpl implements MemberService {
 		return result;
 	}
 	
+	@Override
+	public MemberDto selectMember(MemberDto member) throws Exception {
+		return dao.selectMember(member);
+	}
 	
+	@Override
+	public List<HouseDto> JjimList(String mid) throws Exception {
+	     return dao.JjimList(mid);
+	}
 	
 	
 }

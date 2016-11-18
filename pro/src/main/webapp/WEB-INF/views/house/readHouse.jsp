@@ -48,7 +48,7 @@
 
 				<form role="form" action="modifyPage" method="post">
 
-					<input type='hidden' name='hno' value="${houseDto.hno}"> <input
+					<input type='hidden' id="hno" name='hno' value="${houseDto.hno}"> <input
 						type='hidden' name='page' value="${cri.page}"> <input
 						type='hidden' name='perPageNum' value="${cri.perPageNum}">
 					<input type='hidden' name='searchType' value="${cri.searchType}">
@@ -140,8 +140,82 @@
 	<!-- /.row -->
 
 
+<!-- 리플시작 -->
+<div>
+				<hr/>
+				<h4>댓글 목록[${houseDto.hreplycnt }]</h4>
+				<hr/>
+				<table id="replyTable">
+					<tr>
+						<td>
+							댓글 번호
+						</td>
+						<td>
+							댓글 내용
+						</td>
+						<td>
+							댓글 작성자
+						</td>
+						<td>
+							댓글 작성일
+						</td>
+						<td>
+							댓글 수정일
+						</td>
+					</tr>
+					
+					<c:forEach items="${replyList }" var="replyDto">
+					<tr>
+						<td>
+							${replyDto.hrno }
+						</td>
+						<td class="td${replyDto.hrno }">
+							<input type="hidden" class="hidden${replyDto.hrno }" value="${replyDto.hrcontent }"/>
+							<div class="d${replyDto.hrno }">${replyDto.hrcontent }</div>
+						</td>
+						<td>
+							${replyDto.mid }
+						</td>
+						<td>
+							<fmt:formatDate pattern="yyyy-MM-dd" value="${replyDto.hrwritedt }" />
+						</td>
+						<td>
+							<fmt:formatDate pattern="yyyy-MM-dd" value="${replyDto.hrupdatedt }" />
+						</td>
+						<c:if test="${loginMember.mid == replyDto.mid }">
+							<td class="modiv${replyDto.hrno }">
+								<button id="replyModBtn" onclick="replyModify(${replyDto.hrno });">수정</button>
+							</td>
+						</c:if>
+						<c:if test="${(loginMember.mid == replyDto.mid) || loginMember.mmanyn == 0}">
+							<td>
+								<button id="replyDelBtn" onclick="replyDelete(${replyDto.hrno});">삭제</button>
+							</td>
+						</c:if>
+					</tr>
+					</c:forEach>
+				</table>
+				<c:if test="${pageMaker.prev }">
+					<a href="readHouse${pageMaker.makeSearch(pageMaker.startPage - 1) }&hno=${houseDto.hno}">&laquo;</a>
+				</c:if>
+				<c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }" var="idx">
+					<a href="readHouse${pageMaker.makeSearch(idx) }&hno=${boardDto.bno}">${idx }</a>
+				</c:forEach>
+				<c:if test="${pageMaker.next && pageMaker.endPage > 0 }">
+					<a href="readHouse${pageMaker.makeSearch(pageMaker.endPage + 1) }&hno=${houseDto.hno}">&raquo;</a>
+				</c:if>
+			</div>
+			
+			<div class="box-body">
+				<hr/>
+				<input type="hidden" name="mid" id="mid" value="${loginMember.mid}" >
+				<input type="text" id="hrcontent" name="hrcontent" placeholder="댓글을 입력하세요">
+				<button id="replyAddBtn">등록</button>
+			</div>
+<!-- 리플끝 -->
 
-	<div class="row">
+
+	<%-- <div class="row">
 		<div class="col-md-12">
 
 
@@ -181,7 +255,7 @@
 		  <!-- timeline time label -->
 		<li class="time-label" id="repliesDiv">
 		  <span class="bg-green">
-		  <%--   댓글 목록 <small id='replycntSmall'> [ ${houseDto.replycnt} ] </small> --%>
+		    댓글 목록 <small id='replycntSmall'> [ ${houseDto.replycnt} ] </small>
 		    </span>
 		  </li>
 		</ul>
@@ -219,7 +293,8 @@
     </div>
   </div>
 </div>      
-	
+
+ --%>	
 	
 </section>
 <!-- /.content -->
@@ -237,207 +312,6 @@
 
 
           
-<script id="template" type="text/x-handlebars-template">
-				{{#each .}}
-	         <li class="replyLi" data-rno={{rno}}>
-             <i class="fa fa-comments bg-blue"></i>
-             <div class="timeline-item" >
-                <span class="time">
-                  <i class="fa fa-clock-o"></i>{{prettifyDate regdate}}
-                </span>
-                <h3 class="timeline-header"><strong>{{rno}}</strong> -{{replyer}}</h3>
-                <div class="timeline-body">{{replytext}} </div>
-								<div class="timeline-footer">
-								{{#eqReplyer replyer }}
-                  <a class="btn btn-primary btn-xs" 
-									data-toggle="modal" data-target="#modifyModal">Modify</a>
-								{{/eqReplyer}}
-							  </div>
-	            </div>			
-           </li>
-        {{/each}}
-</script>  
-
-<script>
-
-	
-	Handlebars.registerHelper("eqReplyer", function(replyer, block) {
-		var accum = '';
-		if (replyer == '${login.uid}') {
-			accum += block.fn();
-		}
-		return accum;
-	});
-
-	Handlebars.registerHelper("prettifyDate", function(timeValue) {
-		var dateObj = new Date(timeValue);
-		var year = dateObj.getFullYear();
-		var month = dateObj.getMonth() + 1;
-		var date = dateObj.getDate();
-		return year + "/" + month + "/" + date;
-	});
-
-	var printData = function(replyArr, target, templateObject) {
-
-		var template = Handlebars.compile(templateObject.html());
-
-		var html = template(replyArr);
-		$(".replyLi").remove();
-		target.after(html);
-
-	}
-
-	var hno = $
-	{
-		houseDto.hno
-	};
-
-	var replyPage = 1;
-
-	function getPage(pageInfo) {
-
-		$.getJSON(pageInfo, function(data) {
-			printData(data.list, $("#repliesDiv"), $('#template'));
-			printPaging(data.pageMaker, $(".pagination"));
-
-			$("#modifyModal").modal('hide');
-			$("#replycntSmall").html("[ " + data.pageMaker.totalCount + " ]");
-
-		});
-	}
-
-	var printPaging = function(pageMaker, target) {
-
-		var str = "";
-
-		if (pageMaker.prev) {
-			str += "<li><a href='" + (pageMaker.startPage - 1)
-					+ "'> << </a></li>";
-		}
-
-		for (var i = pageMaker.startPage, len = pageMaker.endPage; i <= len; i++) {
-			var strClass = pageMaker.cri.page == i ? 'class=active' : '';
-			str += "<li "+strClass+"><a href='"+i+"'>" + i + "</a></li>";
-		}
-
-		if (pageMaker.next) {
-			str += "<li><a href='" + (pageMaker.endPage + 1)
-					+ "'> >> </a></li>";
-		}
-
-		target.html(str);
-	};
-
-	$("#repliesDiv").on("click", function() {
-
-		if ($(".timeline li").size() > 1) {
-			return;
-		}
-		getPage("/replies/" + hno + "/1");
-
-	});
-
-	$(".pagination").on("click", "li a", function(event) {
-
-		event.preventDefault();
-
-		replyPage = $(this).attr("href");
-
-		getPage("/replies/" + hno + "/" + replyPage);
-
-	});
-
-	$("#replyAddBtn").on("click", function() {
-
-		var replyerObj = $("#newReplyWriter");
-		var replytextObj = $("#newReplyText");
-		var replyer = replyerObj.val();
-		var replytext = replytextObj.val();
-
-		$.ajax({
-			type : 'post',
-			url : '/replies/',
-			headers : {
-				"Content-Type" : "application/json",
-				"X-HTTP-Method-Override" : "POST"
-			},
-			dataType : 'text',
-			data : JSON.stringify({
-				hno : hno,
-				replyer : replyer,
-				replytext : replytext
-			}),
-			success : function(result) {
-				console.log("result: " + result);
-				if (result == 'SUCCESS') {
-					alert("등록 되었습니다.");
-					replyPage = 1;
-					getPage("/replies/" + hno + "/" + replyPage);
-					replyerObj.val("");
-					replytextObj.val("");
-				}
-			}
-		});
-	});
-
-	$(".timeline").on("click", ".replyLi", function(event) {
-
-		var reply = $(this);
-
-		$("#replytext").val(reply.find('.timeline-body').text());
-		$(".modal-title").html(reply.attr("data-rno"));
-
-	});
-
-	$("#replyModBtn").on("click", function() {
-
-		var rno = $(".modal-title").html();
-		var replytext = $("#replytext").val();
-
-		$.ajax({
-			type : 'put',
-			url : '/replies/' + rno,
-			headers : {
-				"Content-Type" : "application/json",
-				"X-HTTP-Method-Override" : "PUT"
-			},
-			data : JSON.stringify({
-				replytext : replytext
-			}),
-			dataType : 'text',
-			success : function(result) {
-				console.log("result: " + result);
-				if (result == 'SUCCESS') {
-					alert("수정 되었습니다.");
-					getPage("/replies/" + hno + "/" + replyPage);
-				}
-			}
-		});
-	});
-
-	$("#replyDelBtn").on("click", function() {
-
-		var rno = $(".modal-title").html();
-		var replytext = $("#replytext").val();
-
-		$.ajax({
-			type : 'delete',
-			url : '/replies/' + rno,
-			headers : {
-				"Content-Type" : "application/json",
-				"X-HTTP-Method-Override" : "DELETE"
-			},
-			dataType : 'text',
-			success : function(result) {
-				console.log("result: " + result);
-				if (result == 'SUCCESS') {
-					alert("삭제 되었습니다.");
-					getPage("/replies/" + hno + "/" + replyPage);
-				}
-			}
-		});
-	});
-</script>
 
 
 <script>
@@ -583,6 +457,185 @@ $(document).ready(function(){
 </script>
 
 
+<!-- 성모 댓글처리 코딩 -->
+
+<script type="text/javascript">
+$(document).ready(function(){
+	var hno = ${houseDto.hno};
+	var replyPage = 1;
+	
+	function getPage(pageInfo){
+		$.getJSON(pageInfo,function(data){
+			printData(data.list, $("#repliesDiv"), $('#template'));
+			printPaging(data.pageMaker, $(".pagination"));
+			
+			$("#modifyModal").modal('hide');
+			$("#replycntSmall").html("[ " + data.pageMaker.totalCount + " ]");
+		});
+	}
+	
+	var printPaging = function(pageMaker, target){
+		
+		var str = "";
+		
+		if(pageMaker.prev){
+			str += "<li><a href='"+(pageMaker.startPage-1)+"'> << </a></li>";
+		}
+		
+		for(var i=pageMaker.startPage, len = pageMaker.endPage; i <= len; i++){
+			var strClass = pageMaker.cri.page == i?'class=active':'';
+			str += "<li " + strClass +"><a href='"+ i + "'>"+ i +"</a></li>";
+		}
+		
+		if(pageMaker.next){
+			str += "<li><a href='"+(pageMaker.endPage + 1)+"'> >> </a></li>";
+		}
+		
+		target.html(str);
+	};
+	
+	$("#repliesDiv").on("click", function() {
+		
+		if ($(".timeline li").size() > 1) {
+			return;
+		}
+		getPage("/hreply/" + hno + "/1");
+		
+	});
+	
+	$(".pagination").on("click", "li a", function(event) {
+		
+		event.preventDefault();
+		
+		replyPage = $(this).attr("href");
+		
+		getPage("/hreply/" + hno + "/" + replyPage);
+		
+	});
+	
+	$("#replyAddBtn").on("click", function() {
+		
+		var mid = $("#mid").val();
+		var hrcontent = $("#hrcontent").val();
+		var hno = $("#hno").val();
+		
+		if(mid==""){
+			alert("먼저 로그인을 해주세요.");
+			history.go(0);
+		}else{
+			
+		$.ajax({
+			type : 'post',
+			url : '/hreply/',
+			headers : {
+				"Content-Type" : "application/json",
+				"X-HTTP-Method-Override" : "PUT"
+			},
+			data : JSON.stringify({mid:mid, hno:hno, hrcontent:hrcontent}),
+			dataType : "text",
+			success : function(result){
+				console.log("result: " + result);
+				if(result == 'SUCCESS'){
+					alert("등록 되었습니다.");
+					history.go(0);
+				}
+				
+			}
+			
+		});
+		}
+		
+		
+	});
+	
+	$(".timeline").on("click", ".replyLi", function(event) {
+		
+		var reply = $(this);
+		
+		$("#replytext").val(reply.find('.timeline-body').text());
+		$(".modal-title").html(reply.atter("data-hrno"));
+		
+	});
+	
+	
+});
+</script>
+<script type="text/javascript">
+	var replyModify = function(hrno) {
+		
+		var hrcontent = $(".hidden"+hrno).val();
+		
+		$(".d"+hrno).remove();
+		$(".modiv"+hrno+" button").remove();
+
+		$(".td"+hrno).append(
+			"<span class='span"+hrno+"'><input type='text' class='text"+hrno+"' value='"+hrcontent+"'/></span>"		
+		);
+		$(".modiv"+hrno).append(
+			"<button onclick='replyModifyOk("+hrno+");'>확인</button>"+	
+			"<button onclick='replyModifyCancel("+hrno+");'>취소</button>"	
+		);
+		
+	}
+	
+	var replyModifyOk = function(hrno){
+		
+		var mid = $("#mid").val();
+		var hrcontent = $(".text"+hrno).val();
+		
+		$.ajax({
+			type:'put',
+			url:'/hreply/' + hrno,
+			headers: {
+				"Content-Type": "application/json",
+				"X-HTTP-Method-Override": "PUT" },
+			data: JSON.stringify({mid:mid,hrcontent:hrcontent}),
+			dataType:'text',
+			success:function(result){
+				console.log("result: " + result);
+				if(result == 'SUCCESS'){
+					alert("수정 되었습니다.");
+					history.go(0);
+				}
+			}
+		});
+	}
+	var replyModifyCancel = function(rno){
+		
+		var hrcontent = $(".hidden"+hrno).val();
+		
+		
+		$(".span"+hrno).remove();
+		$(".modiv"+hrno+" button").remove();
+
+		$(".td"+hrno).append(
+			"<div class='d"+hrno+"'>"+hrcontent+"</div>"
+		);
+		$(".modiv"+hrno).append(
+			"<button class='ok"+hrno+"' onclick='replyModify("+hrno+");'>수정</button>"
+		);
+		
+	}
+	
+	var replyDelete = function(rno) {
+		
+		$.ajax({
+			type:'delete',
+			url:'/hreply/'+hrno,
+			headers: {
+				"Content-Type": "application/json",
+				"X-HTTP-Method-Override": "DELETE"},
+			dataType:'text',
+			success:function(result){
+				console.log("result: " + result);
+				if(result == 'SUCCESS'){
+					alert("삭제 되었습니다.");
+					history.go(0);
+				}
+			}
+		});
+	}
+</script>
 
 
 <%@include file="../include/footer.jsp"%>

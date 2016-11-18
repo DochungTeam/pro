@@ -21,6 +21,24 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		and 
 			mpw = #{mpw}
 	</select>
+	<select id="selectMember" resultType="MemberDto">
+		select 
+			  mid
+			, mnm
+			, muuid
+			, mgender
+			, mmanyn
+			, mphone
+			, memail
+		from 
+			member 
+		where 
+			1=1
+		and
+			mid = #{mid} 
+		and 
+			muuid = #{muuid}
+	</select>
 	<select id="confirm" resultType="int">
 		select 
 			  count(mid)
@@ -68,6 +86,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			, #{memail}
 		)
 	</insert>
+	<update id="memberUpdate">
+		update
+			member
+		set
+			  mpw = #{mpw}
+			, mnm = #{mnm}
+			, mgender = #{mgender}
+			, mphone = #{mphone}
+			, memail = #{memail}
+		where
+			1 = 1
+		and
+			mid = #{mid}
+		and
+			muuid = #{muuid}
+	</update>
 	<update id="mailConfrim">
 		update
 			member
@@ -104,7 +138,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<insert id="regiJjim">
-		insert into mypage
+		insert into mypage(mid, hno)
 		values(#{mid}, #{hno})
 	</insert>
 
@@ -115,6 +149,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		   and hno = #{hno}
 	</delete>
 	
+<<<<<<< HEAD
 	<select id="JjimList" resultType="HouseDto">
 		select  h.hno
 		 	  , h.hnm
@@ -138,11 +173,71 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			and h.hno = ha.hno
 	</select>
 	
+=======
+>>>>>>> bd5539db4b0039bca79c2b908f7311460bbab037
 	<select id="Jjimchk" resultType="int">
 		select count(*)
 		  from mypage
 		 where mid = #{mid}
-		   and hno = #{hno};
+		   and hno = #{hno}
+	</select>
+	
+	<select id="JjimListCheck" resultType="int">
+	<![CDATA[
+	select  
+			  h.hno
+			, h.hnm
+            , h.hcontent
+            , h.hkind
+            , h.hphone
+            , h.hregdate
+            , h.hviewcnt
+            , h.hreplycnt 
+            , ha.fullName
+            , case when jjim.hno is null then 1 else 0 end jjimchk
+	from 
+		house_attach ha
+      , house h 
+    join(
+    	select 
+    		hno
+    	from 
+    		mypage
+        where
+        	mid = #{mid}
+               ) jjim
+       	on h.hno = jjim.hno
+        where h.hno > 0 
+        and h.hno = ha.hno
+    ]]>
+	</select>
+	<select id="JjimList" resultType="HouseDto">
+	<![CDATA[
+	select  h.hno
+			, h.hnm
+            , h.hcontent
+            , h.hkind
+            , h.hphone
+            , h.hregdate
+            , h.hviewcnt
+            , h.hreplycnt 
+            , ha.fullName
+            , case when jjim.hno is null then 1 else 0 end jjimchk
+	from 
+		house_attach ha
+      , house h 
+    join(
+    	select 
+    		hno
+    	from 
+    		mypage
+        where
+        	mid = #{mid}
+               ) jjim
+       	on h.hno = jjim.hno
+        where h.hno > 0 
+        and h.hno = ha.hno
+    ]]>
 	</select>
 </mapper>
 

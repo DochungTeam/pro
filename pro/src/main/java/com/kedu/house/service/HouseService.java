@@ -35,6 +35,9 @@ public interface HouseService {
 	  public List<HouseDto> nonMemberList(SearchCriteria cri)throws Exception;
 	  
 	  public void imageUpdate(String fullName, Integer hno);
+	  
+	  public int listCountReply(int hno) throws Exception;
+	  
 	}
 	
 //	public List<HouseDto> searchHouse(String keyword,int display,int start)throws Exception;

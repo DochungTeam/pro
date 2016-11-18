@@ -9,9 +9,9 @@
 
 
 <style>
-img {
+/* img {
 	cursor:pointer
-}
+} */
 </style>
 <!-- Main content -->
 <section class="content">

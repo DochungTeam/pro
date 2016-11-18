@@ -217,6 +217,15 @@ update house_attach set fullname = #{fullName}
 where hno = #{hno}
 </update>
 
+<select id="countReplyPaging" resultType="int">
+		select count(hrno) from hreply
+		where hno = #{hno}
+</select>
+<update id="updateRcount">
+		update house set hreplycnt = (select count(hrno) from hreply where hno = house.hno)
+		where hno > 0
+</update>
+
 </mapper>
 
     

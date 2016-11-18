@@ -46,4 +46,8 @@ public interface HouseDao {
 	  public List<HouseDto> nonMemberList(SearchCriteria cri)throws Exception;
 	  
 	  public void imageUpdate(String fullName, Integer hno);
+	  
+	  public void updateRcount(int hno, int amount) throws Exception;
+	  
+	  public int countReplyPaging(int hno) throws Exception;
 }
