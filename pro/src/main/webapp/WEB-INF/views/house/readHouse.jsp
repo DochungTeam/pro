@@ -6,6 +6,7 @@
 
 <head>
 	<%@include file="../include/script.jsp"%>
+	<link rel="stylesheet" href="/resources/css/yumdo.css" type="text/css"/>
 	<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?clientId=qloX_gYvM6K9W0RyObTM&submodules=geocoder"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 	<script type="text/javascript" src="/resources/jqueryui/jquery-ui.min.js"></script>
@@ -49,7 +50,7 @@
 							<!-- left column -->
 							<div class="col-md-12">
 								<!-- general form elements -->
-									<h3 class="box-title">맛집 상세보기</h3>
+									<h2 class="box-title">맛집 상세보기<br><br></h2>
 					
 									<form role="form" action="modifyPage" method="post">
 					
@@ -60,7 +61,7 @@
 										<input type='hidden' name='keyword' value="${cri.keyword}">
 					
 									</form>
-					
+									<div class="insert_form" style="display:inline-block;">
 										<table style="width : 500px">
 											<tr>
 												<th>맛집이름</th>
@@ -99,11 +100,14 @@
 												<td>${houseDto.hurl}</td>
 											</tr>
 											<tr>
-											 
-												<td><input type="hidden" class="xxx" name="hmapx" value='${houseDto.hmapx }'></td>
-												<td><input type="hidden" class="yyy" name="hmapy" value='${houseDto.hmapy }'></td> 
-											</tr>
+												<th style="display: table-cell; vertical-align: middle;">맛집 사진</th>
+												<td><ul class="mailbox-attachments clearfix uploadedList" ></ul></td>
+					    					</tr>
+											
 										</table>
+												<input type="hidden" class="xxx" name="hmapx" value='${houseDto.hmapx }'>
+												<input type="hidden" class="yyy" name="hmapy" value='${houseDto.hmapy }'> 
+									</div>
 										<%-- <div class="form-group">
 											<label for="exampleInputEmail1">맛집 이름</label> <input type="text"
 												name='hnm' class="form-control" value="${houseDto.hnm}"
@@ -120,21 +124,39 @@
 												readonly="readonly">
 										</div> --%>
 									<!-- /.box-body -->
-									<div id="map"  style="border:1px solid #000;"></div>
-					  <div class="box-footer">
+									
+									<div id="map"  style="border:1px solid #000; display:inline-block;"></div>
+					  <div class="box-footer" >
 					    
-					    <div><hr></div>
-						맛집 사진
-					    <ul class="mailbox-attachments clearfix uploadedList">
-					    </ul>
-					 <c:if test="${loginMember.mmanyn == 0}">
-					    <button type="submit" class="btn btn-warning" id="modifyBtn">수정</button>
-					    <button type="submit" class="btn btn-danger" id="removeBtn">삭제</button>
-					 </c:if>
-					    <button type="submit" class="btn btn-primary" id="goListBtn">목록 </button>
 					  </div>
-								<!-- /.box -->
-							</div>
+					 <c:if test="${loginMember.mmanyn == 0}">
+					    <button type="submit" class="btn btn-warning" id="modifyBtn"
+					    style="background: #6799FF;
+						color: #fff;
+						width: 100px;
+						height: 35px;
+						border: 0;
+						margin-top: 20px;
+						cursor: pointer;">수정</button>
+					    <button type="submit" class="btn btn-danger" id="removeBtn"
+					    style="background: #F15F5F;
+						color: #fff;
+						width: 100px;
+						height: 35px;
+						border: 0;
+						margin-top: 20px;
+						cursor: pointer;">삭제</button>
+					 </c:if>
+					    <button type="submit" class="btn btn-primary" id="goListBtn"
+					    style="background: #86E57F;
+						color: #fff;
+						width: 100px;
+						height: 35px;
+						border: 0;
+						margin-top: 20px;
+						cursor: pointer;">목록 </button>
+					  </div>
+							
 							<!--/.col (left) -->
 					
 						</div>
@@ -146,7 +168,8 @@
 									<hr/>
 									<h4>댓글 목록[${houseDto.hreplycnt }]</h4>
 									<hr/>
-									<table id="replyTable">
+									<div class="reply_form">
+									<table id="replyTable" style="border:0px;">
 										<tr>
 											<td>
 												댓글 번호
@@ -185,17 +208,18 @@
 											</td>
 											<c:if test="${loginMember.mid == replyDto.mid }">
 												<td class="modiv${replyDto.hrno }">
-													<button id="replyModBtn" onclick="replyModify(${replyDto.hrno });">수정</button>
+													<button id="replyModBtn" onclick="replyModify(${replyDto.hrno });" class="reply_btn">수정</button>
 												</td>
 											</c:if>
 											<c:if test="${(loginMember.mid == replyDto.mid) || loginMember.mmanyn == 0}">
 												<td>
-													<button id="replyDelBtn" onclick="replyDelete(${replyDto.hrno});">삭제</button>
+													<button id="replyDelBtn" onclick="replyDelete(${replyDto.hrno});" class="reply_btn">삭제</button>
 												</td>
 											</c:if>
 										</tr>
 										</c:forEach>
 									</table>
+									</div>
 									<c:if test="${pageMaker.prev }">
 										<a href="readHouse${pageMaker.makeSearch(pageMaker.startPage - 1) }&hno=${houseDto.hno}">&laquo;</a>
 									</c:if>
@@ -212,7 +236,14 @@
 									<input type="hidden" name="mid" id="mid" value="${loginMember.mid}" >
 									<input type="text" id="hrcontent" name="hrcontent" placeholder="댓글을 입력하세요"
 									style="width: 800px;height: 40px;border: 1px solid #ccc;">
-									<button id="replyAddBtn" >등록</button>
+									<button id="replyAddBtn" 
+									style="background: #6799FF;
+									color: #fff;
+									width: 100px;
+									height: 35px;
+									border: 0;
+									margin-top: 20px;
+									cursor: pointer;">등록</button>
 								</div>
 					<!-- 리플끝 -->
 					
@@ -585,10 +616,10 @@ $(document).ready(function(){
 			"<span class='span"+hrno+"'><input type='text' class='text"+hrno+"' value='"+hrcontent+"'/></span>"		
 		);
 		$(".modiv"+hrno).append(
-			"<button onclick='replyModifyOk("+hrno+");'>확인</button>"+	
-			"<button onclick='replyModifyCancel("+hrno+");'>취소</button>"	
+			"<button onclick='replyModifyOk("+hrno+");' class='reply_btn'>확인</button>"+	
+			"<button onclick='replyModifyCancel("+hrno+");' class='reply_btn reply_btn_margin'>취소</button>"	
 		);
-		
+		 /* $(".reply_btn").css("margin-left", "5px" ); */
 	}
 	
 	var replyModifyOk = function(hrno){
@@ -625,7 +656,7 @@ $(document).ready(function(){
 			"<div class='d"+hrno+"'>"+hrcontent+"</div>"
 		);
 		$(".modiv"+hrno).append(
-			"<button class='ok"+hrno+"' onclick='replyModify("+hrno+");'>수정</button>"
+			"<button class='ok"+hrno+" reply_btn' onclick='replyModify("+hrno+");'>수정</button>"
 		);
 		
 	}
