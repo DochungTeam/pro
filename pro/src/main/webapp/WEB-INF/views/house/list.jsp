@@ -19,14 +19,6 @@
 		<!-- left column -->
 
 
-		<div class="col-md-12">
-			<!-- general form elements -->
-
-			<div class="box">
-			<button><a href='/house/insertHouse'>맛집 등록</a></button>
-				<div class="box-header with-border">
-					<h3 class="box-title">맛집 리스트</h3>
-				</div>
 				<%-- <div class="box-body">
 					<table class="table table-bordered">
 						<tr>
@@ -77,6 +69,14 @@
 					<li><a href="#" data-filter=".04">퓨전</a></li>
 					<li><a href="#" data-filter=".05">디저트</a></li>
 				</ul>
+		
+			<!-- general form elements -->
+
+			<div class="box">
+				<div class="box-header with-border">
+					<h3 class="box-title">맛집 리스트</h3>
+			<button class="link-button"><a href='/house/insertHouse'>맛집 등록</a></button>
+				</div>
 				
 				<!-- Filter container -->
 				
@@ -141,7 +141,6 @@
 		</div>
 		<!--/.col (left) -->
 
-	</div>
 	<!-- /.row -->
 </section>
 <!-- /.content -->
