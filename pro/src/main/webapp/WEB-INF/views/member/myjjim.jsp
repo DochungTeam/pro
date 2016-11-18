@@ -7,6 +7,12 @@
 <%@include file="../include/header.jsp"%>
 
 
+	<c:if test="${empty loginMember }">
+		<script>
+			alert("로그인을 해주세용~");
+			location.replace("/member/login");
+		</script>
+	</c:if>
 <style>
 img {
    cursor:pointer
@@ -378,6 +384,7 @@ function jjimBtn(hno){
                }else{
                   $("#"+hno).attr("class",1);
                    $("#"+hno).attr("src","/resources/img/soso.png");
+                   history.go(0);
                }
             }
          })

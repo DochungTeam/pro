@@ -283,9 +283,11 @@ public class MemberController {
 
 	    
 		MemberDto memberDto = (MemberDto)session.getAttribute("loginMember");
-	    
-	   	model.addAttribute("list", service.JjimList(memberDto.getMid()));
-	    
+		
+		if(memberDto != null){
+			model.addAttribute("list", service.JjimList(memberDto.getMid()));
+		}
+		
 	   /* 
 	    PageMaker pageMaker = new PageMaker();
 	    pageMaker.setCri(cri);
