@@ -389,7 +389,7 @@ function jjimBtn(hno){
 					console.log("class : "+$("#"+hno).attr("class"));
 				}
 			})
-		}else{
+		}else {
 			alert("로그인해주세요");
 		}
 }
