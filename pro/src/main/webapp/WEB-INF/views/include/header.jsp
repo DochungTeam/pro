@@ -13,7 +13,6 @@
 			},
 			dataType : "text",
 			success : function() {
-				alert("???");
 				history.go(0);
 			}
 

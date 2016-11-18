@@ -4,47 +4,60 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>   
 
-<%@include file="../include/script.jsp"%>
-<%@include file="../include/header.jsp"%>
-<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?clientId=qloX_gYvM6K9W0RyObTM&submodules=geocoder"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-<script type="text/javascript" src="/resources/jqueryui/jquery-ui.min.js"></script>
-<script type="text/javascript" src="/resources/js/upload.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
-<!-- Main content -->
-    <style type="text/css">
-    .popup {position: absolute;}
-    .back { background-color: gray; opacity:0.5; width: 100%; height: 300%; overflow:hidden;  z-index:1101;}
-    .front { 
-       z-index:1110; opacity:1; boarder:1px; margin: auto; 
-      }
-     .show{
-       position:relative;
-       max-width: 1200px; 
-       max-height: 800px; 
-       overflow: auto;       
-     } 
-  	
-  	#map{
-	height: 250px;
-	width: 350px;
-    </style>
+<head>
+	<%@include file="../include/script.jsp"%>
+	<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?clientId=qloX_gYvM6K9W0RyObTM&submodules=geocoder"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	<script type="text/javascript" src="/resources/jqueryui/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/resources/js/upload.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
+	<!-- Main content -->
+	    <style type="text/css">
+	    .popup {position: absolute;}
+	    .back { background-color: gray; opacity:0.5; width: 100%; height: 300%; overflow:hidden;  z-index:1101;}
+	    .front { 
+	       z-index:1110; opacity:1; boarder:1px; margin: auto; 
+	      }
+	     .show{
+	       position:relative;
+	       max-width: 1200px; 
+	       max-height: 800px; 
+	       overflow: auto;       
+	     } 
+	  	
+	  	#map{
+		height: 250px;
+		width: 350px;
+	    </style>
+	
+</head>
+<body>
+	<div id="page">
+		<%@include file="../include/header.jsp"%>
+		<div id="main">
+			<div class="wrapper cf">
+				<!-- page content-->
+				<div id="page-content" class="cf">
+				<div class='popup back' style="display:none;"></div>
+					<div id="popup_front" class='popup front' style="display:none;">
+				    	<img id="popup_img">
+					</div>
+					<!-- entry-content -->
+					<div class="entry-content cf">
+					
+					
+					</div>
+				</div>
+			</div>
+		
 
-    <div class='popup back' style="display:none;"></div>
-    <div id="popup_front" class='popup front' style="display:none;">
-     <img id="popup_img">
-    </div>
-
+	
 <section class="content">
 	<div class="row">
 		<!-- left column -->
 		<div class="col-md-12">
 			<!-- general form elements -->
-			<div class="box box-primary">
-				<div class="box-header">
-					<h3 class="box-title">맛집 상세보기</h3>
-				</div>
-				<!-- /.box-header -->
+				<h3 class="box-title">맛집 상세보기</h3>
 
 				<form role="form" action="modifyPage" method="post">
 
@@ -56,7 +69,6 @@
 
 				</form>
 
-				<div class="box-body">
 					<table style="width : 500px">
 						<tr>
 							<th>맛집이름</th>
@@ -115,7 +127,6 @@
 							name="hkind" class="form-control" value="${houseDto.hkind}"
 							readonly="readonly">
 					</div> --%>
-				</div>
 				<!-- /.box-body -->
 				<div id="map"  style="border:1px solid #000;"></div>
   <div class="box-footer">
@@ -130,8 +141,6 @@
  <%-- </c:if> --%>
     <button type="submit" class="btn btn-primary" id="goListBtn">목록 </button>
   </div>
-
-			</div>
 			<!-- /.box -->
 		</div>
 		<!--/.col (left) -->
@@ -641,5 +650,7 @@ $(document).ready(function(){
 	}
 </script>
 
-
+		</div>
+	</div>
 <%@include file="../include/footer.jsp"%>
+</body>
