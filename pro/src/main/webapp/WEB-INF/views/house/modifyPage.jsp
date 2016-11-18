@@ -5,6 +5,7 @@
 <%@include file="../include/header.jsp"%>
 
 <link href="/resources/jqueryui/jquery-ui.min.css" rel="stylesheet">
+<link rel="stylesheet" href="/resources/css/yumdo.css" type="text/css"/>
 <script type="text/javascript" src="/resources/jqueryui/jquery-ui.min.js"></script>
 
 <style>
@@ -12,7 +13,7 @@
   width: 50%;
   height: 100px;
   border: 1px dotted gray;
-  background-color: #B8B8B8;
+  background-color: #efeee7;
   margin: auto;
   
 }
@@ -44,7 +45,7 @@
 			<!-- general form elements -->
 			<div class="box box-primary">
 				<div class="box-header">
-					<h3 class="box-title">맛집 수정 페이지</h3>
+					<h2 class="box-title">맛집 수정 페이지</h2>
 				</div>
 				<!-- /.box-header -->
 
@@ -56,19 +57,20 @@
 	<input type='hidden' name='keyword' value="${cri.keyword}">
 
 					<div class="box-body">
+					<div class="insert_form">
 						<table style="width : 750px">
 						<tr>
-							<th style="background-color : #B8B8B8; ">맛집이름</th>
+							<th>맛집이름</th>
 							<td><input type ="text" name="hnm" size="20" value="${houseDto.hnm}" ></td>
 						</tr>
 						<tr>
-							<th style="background-color : #B8B8B8; ">전화번호</th>
+							<th>전화번호</th>
 							<td><input type ="text" name="hphone" size="20" value="${houseDto.hphone}" maxlength="11">(전화번호는 - 없이 입력해주세요.)</td>
 						</tr>
 						<tr>
-							<th style="background-color : #B8B8B8; ">주소</th>
-							<td><input type ="text" name="haddr" id="hhaddr" size="20" value="${houseDto.haddr}" readonly="readonly">
-							<input type="button" value="주소 검색" class="haddr">
+							<th>주소</th>
+							<td><input type ="text" name="haddr" id="hhaddr" size="20" value="${houseDto.haddr}" readonly="readonly" style="width : 400; ">
+							<input type="button" value="주소 검색" class="haddr" style="width : 100; ">
 							<input type="hidden" name="hmapx" id="hhmapx" value="${houseDto.hmapx}">
 							<input type="hidden" name="hmapy" id="hhmapy"value="${houseDto.hmapy}">
 							</td>
@@ -78,8 +80,8 @@
 							
 						</tr>
 						<tr>
-						<th style="background-color : #B8B8B8; "> 맛집테마 *</th>
-						<td><select class="select" name="hkind" value="${houseDto.hkind}">
+						<th> 맛집테마 *</th>
+						<td><select class="select" name="hkind" value="${houseDto.hkind}" style="width : 300; ">
 								<option value="">선택하세요</option>
 								<option value="00">한식</option>
 								<option value="01">양식</option>
@@ -90,23 +92,23 @@
 						</select></td>
 					</tr>
 						<tr>
-							<th style="background-color : #B8B8B8; ">맛집메뉴</th>
+							<th>맛집메뉴</th>
 							<td><input type ="text" name="hmenu" size="20" value="${houseDto.hmenu}" ></td>
 						</tr>
 						<tr>
-							<th style="background-color : #B8B8B8; ">영업시간</th>
+							<th>영업시간</th>
 							<td><input type ="text" name="htime" size="20" value="${houseDto.htime}" ></td>
 						</tr>
 						<tr>
-							<th style="background-color : #B8B8B8; ">휴무</th>
+							<th>휴무</th>
 							<td><input type ="text" name="hholiday" size="20" value="${houseDto.hholiday}" ></td>
 						</tr>
 						<tr>
-							<th style="background-color : #B8B8B8; ">맛집설명</th>
+							<th>맛집설명</th>
 							<td><input type ="text" name="hcontent" size="20" value="${houseDto.hcontent}" ></td>
 						</tr>
 						<tr>
-							<th style="background-color : #B8B8B8; ">블로그주소</th>
+							<th>블로그주소</th>
 							<td><input type ="text" name="hurl" size="20" value="${houseDto.hurl}" ></td>
 						</tr>
 						
@@ -143,9 +145,25 @@
 						<table class="modaladdr">
 						</table>
 						</div>
+						</div>
 		<ul class="mailbox-attachments clearfix uploadedList"></ul>
-    <input type="submit"class="btn btn-primary" onclick="return housecheck_ok()" value="수정">
-    <input type="button" value="취소"id="goListBtn">
+    		<button type="submit"class="btn btn-primary" onclick="return housecheck_ok()"
+    		style="background: #6799FF;
+			color: #fff;
+			width: 100px;
+			height: 35px;
+			border: 0;
+			margin-top: 20px;
+			cursor: pointer;">수정</button>
+    		<button type="button" id="goListBtn"
+    		style="background: #F15F5F;
+			color: #fff;
+			width: 100px;
+			height: 35px;
+			border: 0;
+			margin-top: 20px;
+			margin-left: 5px;
+			cursor: pointer;">취소</button>
 					</div>
 					<!-- /.box-body -->
 

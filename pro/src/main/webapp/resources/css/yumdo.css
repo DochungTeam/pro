@@ -61,6 +61,10 @@ body, div, span, input{
     height: 300px;
     box-sizing: border-box;
 }
+.reply_form td, th{
+	border:  solid 0px;
+	padding: 5px;
+}
 .login_form{
 	width: 400px;padding:40px 40px 20px; border: 1px solid #e1e1e1; border-radius:5px;background: #efefef;margin: 50px auto;position: relative;
 }
@@ -146,4 +150,17 @@ a{
 a:HOVER {
 	text-decoration: underline;
 	color: red;
+}
+
+.reply_btn{
+background: #5D5D5D;
+color: #fff;
+width: 50px;
+height: 25px;
+border: 0;
+margin-top: 20px;
+cursor: pointer;
+}
+.reply_btn_margin{
+	margin-left : 5px;
 }

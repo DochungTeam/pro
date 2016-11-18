@@ -23,9 +23,7 @@
 			<!-- general form elements -->
 
 			<div class="box">
-			<c:if test="${loginMember.mmanyn == 0}">
-			<button><a href='/house/insertHouse'>맛집 등록</a></button>
-			</c:if>
+			
 				<%-- <div class="box-body">
 					<table class="table table-bordered">
 						<tr>
@@ -82,7 +80,9 @@
 			<div class="box">
 				<div class="box-header with-border">
 					<h3 class="box-title">맛집 리스트</h3>
-			<button class="link-button"><a href='/house/insertHouse'>맛집 등록</a></button>
+					<c:if test="${loginMember.mmanyn == 0}">
+						<button class="link-button"><a href='/house/insertHouse'>맛집 등록</a></button>
+					</c:if>
 				</div>
 				
 				<!-- Filter container -->
