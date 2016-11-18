@@ -3,6 +3,7 @@ package com.kedu.member.dao;
 import java.util.List;
 
 import com.kedu.house.dto.HouseDto;
+import com.kedu.house.dto.SearchCriteria;
 import com.kedu.member.dto.MemberDto;
 
 public interface MemberDao {
@@ -34,6 +35,9 @@ public interface MemberDao {
 	public MemberDto selectMember(MemberDto dto);
 	
 	public List<HouseDto> JjimList(String mid) throws Exception;
+	
+	public int JjimListcheck(SearchCriteria cri, String mid) throws Exception;
+	
 }
 
 

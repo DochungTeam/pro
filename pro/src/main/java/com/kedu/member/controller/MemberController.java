@@ -286,16 +286,14 @@ public class MemberController {
 		
 		if(memberDto != null){
 			model.addAttribute("list", service.JjimList(memberDto.getMid()));
-		}
 		
-	   /* 
-	    PageMaker pageMaker = new PageMaker();
-	    pageMaker.setCri(cri);
-
-	    pageMaker.setTotalCount(service.listSearchCount(cri));
-
-	    model.addAttribute("pageMaker", pageMaker);
-	   */				
+		    PageMaker pageMaker = new PageMaker();
+		    pageMaker.setCri(cri);
+	
+		    pageMaker.setTotalCount(service.JjimListCheck(cri, memberDto.getMid()));
+	
+		    model.addAttribute("pageMaker", pageMaker);
+		}
 		
 	}
 }
