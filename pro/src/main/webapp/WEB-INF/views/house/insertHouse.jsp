@@ -3,6 +3,7 @@
 
 <%@include file="../include/script.jsp"%>
 <link href="/resources/jqueryui/jquery-ui.min.css" rel="stylesheet">
+<link rel="stylesheet" href="/resources/css/yumdo.css" type="text/css"/>
 <script type="text/javascript" src="/resources/jqueryui/jquery-ui.min.js"></script>
 
 
