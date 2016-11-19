@@ -137,8 +137,8 @@
  					       '<h4>'+hnms[i]+'</h4></br>'+
  					      '<p><b>'+hcontents[i]+'</p></b>'+
  					       '<p><b>'+hphones[i]+'</p></b>'+
- 					       '<p><b>'+hlinks[i]+'</p></b>'+
- 					       '<p><b>'+hkinds[i]+'</p></b>'+
+ 					       "<p><b><a target='_blank' href ='"+hlinks[i]+"'>"+((hlinks[i]=="")? "":"홈페이지로 이동")+"</a></p></b>"+
+							'<p><b>'+hkinds[i]+'</p></b>'+
  					       '<p><b>'+haddrs[i]+'</p></b>'+
  					       '</p></div>',
  					       maxWidth : 240,
