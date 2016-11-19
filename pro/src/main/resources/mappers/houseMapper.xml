@@ -33,11 +33,31 @@ select fullname from house_attach where hno = #{hno} order by hregdate
 
 
 <select id="read" resultType="com.kedu.house.dto.HouseDto">
- select 
-   hno, hnm, hphone, haddr, hmenu, htime, hholiday, hurl, hcontent, hkind, hregdate, hviewcnt, haddr, hmapx, hmapy, hreplycnt
- from 
-   house 
- where hno = #{hno}
+ select hno
+ 	  , hnm
+ 	  , hphone
+ 	  , haddr
+ 	  , hmenu
+ 	  , htime
+ 	  , hholiday
+ 	  , hurl
+ 	  , hcontent
+ 	  , case hkind
+ 			when'00'then'한식'
+ 			when'01'then'양식'
+ 			when'02'then'중식'
+ 			when'03'then'일식'
+ 			when'04'then'퓨전'
+ 			when'05'then'디저트'
+ 			end as hkind
+ 	  , hregdate
+ 	  , hviewcnt
+ 	  , haddr
+ 	  , hmapx
+ 	  , hmapy
+ 	  , hreplycnt
+   from house 
+  where hno = #{hno}
  </select>
 
  <update id="update">
