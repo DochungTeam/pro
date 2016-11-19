@@ -280,6 +280,18 @@ public class MemberController {
 		
 		response.getWriter().print(mapper.writeValueAsString(result));
 	}
+	
+	@RequestMapping(value="/myPage", method = RequestMethod.GET)
+	public void myPage(@ModelAttribute("cri") SearchCriteria cri
+					 , Model model
+					 , HttpSession session)throws Exception{
+		String mid = null;
+		
+		mid = ((MemberDto)session.getAttribute("loginMember")).getMid();
+		
+		model.addAttribute("list", service.JjimList(mid));
+	}
+		
 	@RequestMapping(value="/myjjim", method = RequestMethod.GET)
 	public void myJjim(@ModelAttribute("cri") SearchCriteria cri
  			 , Model model

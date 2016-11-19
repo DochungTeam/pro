@@ -2,25 +2,61 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<head>
-<%@include file="../include/script.jsp"%>
 
+<%@include file="../include/script.jsp"%>
+<%@include file="../include/header.jsp"%>
 
 
 <style>
-/* img {
+img {
 	cursor:pointer
-} */
+}
 </style>
 <!-- Main content -->
-</head>
-<body class="page">
+<section class="content">
+	<div class="row">
+		<!-- left column -->
 
-		<%@include file="../include/header.jsp"%>
-		<div id="main">
+
+		<div class="col-md-12">
+			<!-- general form elements -->
+
+			<div class="box">
+				<div class="box-header with-border">
+					<h3 class="box-title">마이 페이지</h3>
+				</div>
+				<%-- <div class="box-body">
+					<table class="table table-bordered">
+						<tr>
+							<th style="width: 20px">no</th>
+							<th style="width: 100px">맛집이름</th>
+							<th style="width: 70px">맛집테마</th>
+							<th style="width: 100px">등록 날짜</th>
+							<th style="width: 100px">조회</th>
+						</tr>
+
+						<c:forEach items="${list}" var="houseDto">
+
+							<tr>
+								<td>${houseDto.hno}</td>
+								<td><a href='/house/readHouse${pageMaker.makeSearch(pageMaker.cri.page) }&hno=${houseDto.hno}'>
+										${houseDto.hnm} <strong>[ ${houseDto.hreplycnt }]</strong> 
+										</a></td>
+								<td>${houseDto.hkind}</td>
+								<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm"
+										value="${houseDto.hregdate}" /></td>
+								<td>${houseDto.hviewcnt }</td>
+							</tr>
+
+						</c:forEach>
+
+					</table>
+					
+					
+				</div> --%>
 				
-			<div id="start" class="wrapper cf">
-			<%@include file="../include/mainheader.jsp"%>
+				<!-- MAIN -->
+			<div class="wrapper cf">
 			
 			
 			<input type='hidden' name='hno' value="${houseDto.hno}">
@@ -37,18 +73,8 @@
 					<li><a href="#" data-filter=".02">중식</a></li>
 					<li><a href="#" data-filter=".03">일식</a></li>
 					<li><a href="#" data-filter=".04">퓨전</a></li>
-					<li><a href="#" data-filter=".05">디저트</a></li>
+					<li><a href="#" data-filter=".05">기타</a></li>
 				</ul>
-		
-			<!-- general form elements -->
-
-			<div class="box">
-				<div class="box-header with-border">
-					<h3 class="box-title">맛집 리스트</h3>
-					<c:if test="${loginMember.mmanyn == 0}">
-						<a href='/house/insertHouse'><button class="link-button">맛집 등록</button></a>
-					</c:if>
-				</div>
 				
 				<!-- Filter container -->
 				
@@ -57,13 +83,12 @@
 				<c:forEach items="${list}" var="houseDto">
 					<figure class="${houseDto.hkind}">
 						<a href='/house/readHouse${pageMaker.makeSearch(pageMaker.cri.page) }&hno=${houseDto.hno}'class="thumb">
-						<img src="/resources/img/house${houseDto.fullName}" alt="alt" /></a>
+						<img src="/resources/img/house${houseDto.fullName}" alt="alt" height="350" width="300"/></a>
 						<figcaption>
-							
-							<h3 class="heading"><a href='/house/readHouse${pageMaker.makeSearch(pageMaker.cri.page) }&hno=${houseDto.hno}'>
-							${houseDto.hnm}</a></h3>
-							주소 : ${houseDto.haddr}<br> TEL : ${houseDto.hphone}<br> 
-								<img style="cursor:pointer" onclick="jjimBtn(${houseDto.hno })" id='${houseDto.hno }' 
+							<a href='/house/readHouse${pageMaker.makeSearch(pageMaker.cri.page) }&hno=${houseDto.hno}'>
+							<h3 class="heading"> ${houseDto.hnm} </h3></a>
+							주소 : ${houseDto.haddr} <br> TEL : ${houseDto.hphone}<br> 
+								<img onclick="jjimBtn(${houseDto.hno })" id='${houseDto.hno }' 
 									 <c:choose>
 									 	<c:when test="${houseDto.jjimchk == 0 }">
 									 		src="/resources/img/love.png"
@@ -80,6 +105,7 @@
 				</div>
 			</div>
 			</div>
+				<!-- /.box-body -->
 
 				<div class="box-footer">
 
@@ -113,6 +139,7 @@
 		</div>
 		<!--/.col (left) -->
 
+	</div>
 	<!-- /.row -->
 </section>
 <!-- /.content -->
@@ -155,7 +182,7 @@
 
 <script id="templateAttach" type="text/x-handlebars-template">
 <li data-src='{{fullName}}'>
-  <span class="mailbox-attachment-icon has-img"><img src="{{imgsrc}}" alt="Attachment" ></span>
+  <span class="mailbox-attachment-icon has-img"><img src="{{imgsrc}}" alt="Attachment"></span>
   <div class="mailbox-attachment-info">
 	<a href="{{getLink}}" class="mailbox-attachment-name">{{fileName}}</a>
 	</span>
@@ -337,14 +364,7 @@ function jjimBtn(hno){
 	
 		var mid = '${loginMember.mid}';
 		
-		if(mid==""){
-			if (confirm("로그인 시 이용가능한 서비스입니다. 로그인 페이지로 이동하시겠습니까?") == true){
-				location.replace("/member/login");
-			}else{
-				history.go(0);
-			}
-		}else{
-			
+		if(mid !=""){
 			$.ajax({
 				url : "/member/jjim",
 				type : "get",
@@ -353,20 +373,16 @@ function jjimBtn(hno){
 					console.log(responseData);
 					
 					if(responseData==0){
-						console.log('success!');
-						console.log($("#"+hno).attr("src"));
 						$("#"+hno).attr("class",0);
 						$("#"+hno).attr("src","/resources/img/love.png");
 					}else{
 						$("#"+hno).attr("class",1);
 					 	$("#"+hno).attr("src","/resources/img/soso.png");
-					 
 					}
-					
-					console.log("class : "+$("#"+hno).attr("class"));
 				}
 			})
-	
+		}else{
+			alert("로그인해주세요");
 		}
 }
 
@@ -380,6 +396,8 @@ function jjimBtn(hno){
 
 	</div>
 	<!-- /.row -->
-<%@include file="../include/footer.jsp"%>
-</body>
+</section>
+<!-- /.content -->
+<!-- /.content-wrapper -->
 
+<%@include file="../include/footer.jsp"%>

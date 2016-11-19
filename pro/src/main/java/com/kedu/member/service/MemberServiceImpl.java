@@ -66,9 +66,9 @@ public class MemberServiceImpl implements MemberService {
 
 
 	@Override
-	public List<HouseDto> JjimList(String mid, int hno) throws Exception {
+	public List<HouseDto> JjimList(String mid) throws Exception {
 		
-		return dao.JjimList(mid, hno);
+		return dao.JjimList(mid);
 	}
 
 	@Transactional
@@ -93,14 +93,8 @@ public class MemberServiceImpl implements MemberService {
 	}
 	
 	@Override
-	public List<HouseDto> JjimList(String mid) throws Exception {
-	     return dao.JjimList(mid);
-	}
-	
-	@Override
 	public int JjimListCheck(SearchCriteria cri, String mid) throws Exception {
 		return dao.JjimListcheck(cri, mid);
 	}
-	
 	
 }
