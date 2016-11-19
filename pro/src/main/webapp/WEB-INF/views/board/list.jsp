@@ -55,24 +55,19 @@
 </div>
 
 <div class="text-center">
-	<ul class="pagination">
 		
 		<c:if test="${pageMaker.prev }">
-			<li><a href="list${pageMaker.makeSearch(pageMaker.startPage - 1) }">&laquo;</a></li>
+			<a href="list${pageMaker.makeSearch(pageMaker.startPage - 1) }">&laquo;</a>
 		</c:if>
 		
 		<c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }" var="idx">
-			<li
-				<c:out value="${pageMaker.cri.page == idx?'class =active':'' }"/>>
 				<a href="list${pageMaker.makeSearch(idx) }">${idx }</a>
-			</li>
 		</c:forEach>
 		
 		<c:if test="${pageMaker.next && pageMaker.endPage > 0 }">
-			<li><a href="list${pageMaker.makeSearch(pageMaker.endPage + 1) }">&raquo;</a></li>
+			<a href="list${pageMaker.makeSearch(pageMaker.endPage + 1) }">&raquo;</a>
 		</c:if>
 		
-	</ul>
 </div>
 
 <form id="jobForm">
@@ -118,7 +113,7 @@ $(document).ready(function(){
 	});
 	
 	$('#newBtn').on("click", function(event){
-		self.location = "register";
+		self.location = "/board/register ";
 	});
 });
 </script>
