@@ -34,13 +34,8 @@ public interface MemberDao {
 	
 	public MemberDto selectMember(MemberDto dto);
 	
-<<<<<<< HEAD
-=======
-	public List<HouseDto> JjimList(String mid) throws Exception;
-	
 	public int JjimListcheck(SearchCriteria cri, String mid) throws Exception;
 	
->>>>>>> fa30b4a84226ca28e5c4e3a49ffcce2fe53e1e27
 }
 
 

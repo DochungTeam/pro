@@ -63,7 +63,7 @@
 							<h3 class="heading"><a href='/house/readHouse${pageMaker.makeSearch(pageMaker.cri.page) }&hno=${houseDto.hno}'>
 							${houseDto.hnm}</a></h3>
 							주소 : ${houseDto.haddr}<br> TEL : ${houseDto.hphone}<br> 
-								<img onclick="jjimBtn(${houseDto.hno })" id='${houseDto.hno }' 
+								<img style="cursor:pointer" onclick="jjimBtn(${houseDto.hno })" id='${houseDto.hno }' 
 									 <c:choose>
 									 	<c:when test="${houseDto.jjimchk == 0 }">
 									 		src="/resources/img/love.png"

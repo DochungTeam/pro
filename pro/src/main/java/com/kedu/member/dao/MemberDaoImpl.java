@@ -115,16 +115,6 @@ public class MemberDaoImpl implements MemberDao {
 		return session.selectOne(namespace+".selectMember", dto);
 	}
 	
-<<<<<<< HEAD
-=======
-	@Override
-	public List<HouseDto> JjimList(String mid) throws Exception {
-
-		List<HouseDto> list =session.selectList(namespace+".JjimList", mid);
-	
-		return list;
-	}
-	
 	@Override
 	public int JjimListcheck(SearchCriteria cri, String mid) throws Exception {
 		
@@ -135,5 +125,4 @@ public class MemberDaoImpl implements MemberDao {
 		
 		return session.selectOne(namespace + ".JjimListCheck", paramMap);
 	}
->>>>>>> fa30b4a84226ca28e5c4e3a49ffcce2fe53e1e27
 }
