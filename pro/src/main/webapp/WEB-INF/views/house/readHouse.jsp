@@ -166,7 +166,7 @@
 					<!-- 리플시작 -->
 					<div>
 									<hr/>
-									<h4>댓글 목록[${houseDto.hreplycnt }]</h4>
+									<h4>댓글 목록[${ houseDto.hreplycnt }]</h4>
 									<hr/>
 									<div class="reply_form">
 									<table id="replyTable" style="border:0px;">
