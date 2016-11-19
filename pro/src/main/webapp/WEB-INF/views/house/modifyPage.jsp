@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<head>
 <%@include file="../include/script.jsp"%>
-<%@include file="../include/header.jsp"%>
+
 
 <link href="/resources/jqueryui/jquery-ui.min.css" rel="stylesheet">
 <link rel="stylesheet" href="/resources/css/yumdo.css" type="text/css"/>
@@ -35,9 +35,13 @@
     <div id="popup_front" class='popup front' style="display:none;">
      <img id="popup_img">
     </div>
- 
+ </head>
 
 <!-- Main content -->
+<body class="page">
+<%@include file="../include/header.jsp"%>
+<div id="main">
+<div id="start" class="wrapper cf">
 <section class="content">
 	<div class="row">
 		<!-- left column -->
@@ -45,7 +49,7 @@
 			<!-- general form elements -->
 			<div class="box box-primary">
 				<div class="box-header">
-					<h2 class="box-title">맛집 수정 페이지</h2>
+					<h2 class="box-title">맛집 수정 페이지</h2><br><br>
 				</div>
 				<!-- /.box-header -->
 
@@ -171,6 +175,9 @@
 
 	</div>
 </form>
+
+</div>
+</div>
 
 
 <script type="text/javascript" src="/resources/js/upload.js"></script>
@@ -468,3 +475,4 @@ $(document).ready(function(){
 </script>
 
 <%@include file="../include/footer.jsp"%>
+</body>

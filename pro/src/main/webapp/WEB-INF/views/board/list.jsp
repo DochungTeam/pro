@@ -13,7 +13,7 @@
 <div id="page">
 	<jsp:include page="../include/header.jsp"/>
 	<div id="main">
-		<div class="wrapper cf">
+		<div id="start" class="wrapper cf">
 
 <table class="table table-bordered">
 	<tr>
