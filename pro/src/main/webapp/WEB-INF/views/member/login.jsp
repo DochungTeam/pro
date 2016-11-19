@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!doctype html>
 <html class="no-js">
@@ -34,6 +35,7 @@
 }
 </style>
 <script src="http://connect.facebook.net/ko_KR/all.js"></script>
+
 <script type="text/javascript">
 	
 
@@ -163,8 +165,14 @@
 	}
 	
 	</script>
-</head>
 	
+</head>
+<c:if test="${fallmsg != null}">
+	<script type="text/javascript">
+		alert("아이디 또는 비밀번호가 잘못되었습니다.");
+	</script>
+</c:if>
+
 	
 <body class="page">
 
@@ -182,7 +190,6 @@
 
 				<!-- entry-content -->
 				<div class="entry-content cf">
-
 					<form method="post" name="frm" id="loginform">
 						<div class="last">
 							<h5>아이디</h5>

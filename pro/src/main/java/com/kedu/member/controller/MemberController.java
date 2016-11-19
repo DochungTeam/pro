@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.util.WebUtils;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -169,7 +170,7 @@ public class MemberController {
 
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String loginPOST(MemberDto member, HttpSession session, Model model) throws Exception {
+	public String loginPOST(MemberDto member, HttpSession session,  RedirectAttributes rttr) throws Exception {
 
 		String url = "";
 		String mail = "";
@@ -223,7 +224,10 @@ public class MemberController {
 								
 				url = "redirect:/house/list";
 			}else{
-				url = "redirect:/house/list";
+				
+				rttr.addFlashAttribute("fallmsg", "fallmsg");
+				
+				url = "redirect:/member/login";
 			}
 		}
 		
