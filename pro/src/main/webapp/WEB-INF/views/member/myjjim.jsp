@@ -2,9 +2,9 @@
    pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-
+<head>
 <%@include file="../include/script.jsp"%>
-<%@include file="../include/header.jsp"%>
+
 
 
 	<c:if test="${empty loginMember }">
@@ -19,6 +19,12 @@ img {
 }
 </style>
 <!-- Main content -->
+</head>
+<body>
+<div id="page">
+<%@include file="../include/header.jsp"%>
+	<div id="main">
+		
 <section class="content">
    <div class="row">
       <!-- left column -->
@@ -62,7 +68,7 @@ img {
             </div> --%>
             
             <!-- MAIN -->
-         <div class="wrapper cf">
+         <div id="start" class="wrapper cf">
          
          
          <input type='hidden' name='hno' value="${houseDto.hno}">
@@ -89,7 +95,7 @@ img {
             <c:forEach items="${list}" var="houseDto">
                <figure class="${houseDto.hkind}">
                   <a href='/house/readHouse${pageMaker.makeSearch(pageMaker.cri.page) }&hno=${houseDto.hno}'class="thumb">
-                  <img src="/resources/img/house${houseDto.fullName}" alt="alt" height="350" width="300"/></a>
+                  <img src="/resources/img/house${houseDto.fullName}" alt="alt" /></a>
                   <figcaption>
                      <a href='/house/readHouse${pageMaker.makeSearch(pageMaker.cri.page) }&hno=${houseDto.hno}'>
                      <h3 class="heading"> ${houseDto.hnm} </h3></a>
@@ -146,8 +152,10 @@ img {
       <!--/.col (left) -->
 
    </div>
+   
    <!-- /.row -->
 </section>
+
 <!-- /.content -->
 
 
@@ -408,3 +416,4 @@ function jjimBtn(hno){
 <!-- /.content-wrapper -->
 
 <%@include file="../include/footer.jsp"%>
+</body>
