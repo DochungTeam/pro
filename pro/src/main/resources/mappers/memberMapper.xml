@@ -182,16 +182,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="JjimListCheck" resultType="int">
 	<![CDATA[
 	select  
-			  h.hno
-			, h.hnm
-            , h.hcontent
-            , h.hkind
-            , h.hphone
-            , h.hregdate
-            , h.hviewcnt
-            , h.hreplycnt 
-            , ha.fullName
-            , case when jjim.hno is null then 1 else 0 end jjimchk
+			  count(h.hno)
 	from 
 		house_attach ha
       , house h 

@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.kedu.house.dto.HouseDto;
+import com.kedu.house.dto.SearchCriteria;
 import com.kedu.member.dao.MemberDao;
 import com.kedu.member.dto.LoginDto;
 import com.kedu.member.dto.MemberDto;
@@ -91,4 +92,18 @@ public class MemberServiceImpl implements MemberService {
 		return dao.selectMember(member);
 	}
 	
+<<<<<<< HEAD
+=======
+	@Override
+	public List<HouseDto> JjimList(String mid) throws Exception {
+	     return dao.JjimList(mid);
+	}
+	
+	@Override
+	public int JjimListCheck(SearchCriteria cri, String mid) throws Exception {
+		return dao.JjimListcheck(cri, mid);
+	}
+	
+	
+>>>>>>> fa30b4a84226ca28e5c4e3a49ffcce2fe53e1e27
 }

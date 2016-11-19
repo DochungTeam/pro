@@ -69,10 +69,12 @@ $(document).ready(function(){
 		var rcontent = $("#rcontent").val();
 		var bno = $("#bno").val();
 		
-		alert(mid + " : " + rcontent +" : " + bno);
 		if(mid==""){
-			alert("먼저 로그인을 해주세요.");
-			history.go(0);
+			if (confirm("로그인 시 이용가능한 서비스입니다. 로그인 페이지로 이동하시겠습니까?") == true){
+				location.replace("/member/login");
+			}else{
+				history.go(0);
+			}
 		}else{
 			
 		$.ajax({
@@ -202,7 +204,7 @@ $(document).ready(function(){
 	<div id="page">
 		<jsp:include page="../include/header.jsp" />
 		<div id="main">
-			<div class="wrapper cf">
+			<div id="start" class="wrapper cf">
 <form role="form" action="modifyPage" method="post">
 	
 	<input type="hidden" name="bno" id="bno" value="${boardDto.bno }">

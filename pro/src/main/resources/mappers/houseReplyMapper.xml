@@ -31,7 +31,7 @@
 		select count(hrno) from hreply where hno = #{hno}
 	</select>
 	
-	<select id="getBno" resultType="int">
+	<select id="getHno" resultType="int">
 		select hno from hreply where hrno = #{hrno}
 	</select>
 	

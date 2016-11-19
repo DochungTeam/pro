@@ -129,20 +129,15 @@
 				width: 700px;
 			}
 		</style>
-		
-		
 	</head>
 
 	<body class="page">
-	
 		<jsp:include page="../include/header.jsp"/>
-		
 		<!-- MAIN -->
 		<div id="main">
+			<div id="start" class="wrapper cf">
 			
-
-			<div class="wrapper cf">
-			
+			<jsp:include page="../include/mainheader.jsp"/>
 			<!-- page content-->
         	<div id="page-content" class="cf">        	
 	        	

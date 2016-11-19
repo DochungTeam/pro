@@ -61,7 +61,7 @@
 		<div id="main">
 			
 
-			<div class="wrapper cf">
+			<div id="start" class="wrapper cf">
 			
 			<!-- page content-->
         	<div id="page-content" class="cf">        	

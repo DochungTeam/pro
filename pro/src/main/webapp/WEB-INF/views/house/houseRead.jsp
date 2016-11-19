@@ -132,7 +132,7 @@ $(document).ready(function(){
 	
 	naver.maps.Event.addListener(map, 'click', function(e) {
 	    marker.setPosition(e.coord);
-	}); */
+	}); 
 });	  */
 /* 	var tmp; // 임시용 변수
 
@@ -304,7 +304,7 @@ $(document).ready(function(){
 	    if (!marker.setMap()) return;
 	    marker.setMap(null);
 	} 
-});	 */
+});	 
 	var nmap = new nhn.api.map.Map('nmap', {
 		point : new nhn.api.map.LatLng(37.4236619, 127.0218764),
 		zoom : 12,                                                                       

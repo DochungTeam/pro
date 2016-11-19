@@ -2,41 +2,42 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<header>
-		<!-- SLIDER -->
-		<div id="home-slider" class="lof-slidecontent">
+<%@include file="../include/script.jsp"%>
 
-			<div class="preload">
-				<div></div>
-			</div>
+<div id="home-slider" class="lof-slidecontent" style="display: block; margin: 0 auto;">
+	<!-- slider content -->
+	<div class="main-slider-content" style="margin: auto;">
+		<div class="sliders-wrapper" style="width: 940px;">
+			<ul class="sliders-wrap-inner" style="left: 0px; width: 6580px;">
+				<li style="width: 940px;"><img
+					src="/resources/img/dummies/slides/01.jpg" title="" alt="alt"
+					class="piece" /></li>
 
-			<!-- slider content -->
-			<div class="main-slider-content">
-				<div class="sliders-wrapper" style="width: 940px;">
-					<ul class="sliders-wrap-inner"
-						style="left: -1880px; width: 6580px;">
-						<li style="width: 940px;"><img
-							src="/resources/img/dummies/slides/01.jpg" title="" alt="alt" />
-							<div class="slider-description"></div></li>
+				<li style="width: 940px;"><img
+					src="/resources/img/dummies/slides/02.jpg" title="" alt="alt"
+					class="piece" /></li>
 
-						<li><img src="/resources/img/dummies/slides/02.jpg" title=""
-							alt="alt" />
-						<li><img src="/resources/img/dummies/slides/03.jpg" title=""
-							alt="alt" />
-						<li><img src="/resources/img/dummies/slides/04.jpg" title=""
-							alt="alt" />
-						<li><img src="/resources/img/dummies/slides/05.jpg" title=""
-							alt="alt" />
-						<li><img src="/resources/img/dummies/slides/06.jpg" title=""
-							alt="alt" />
-						<li><img src="/resources/img/dummies/slides/07.jpg" title=""
-							alt="alt" />
-					</ul>
-				</div>
-				<!-- ENDS slider content -->
-			</div>
-			<!-- slider nav -->
+				<li style="width: 940px;"><img
+					src="/resources/img/dummies/slides/03.jpg" title="" alt="alt"
+					class="piece" /></li>
 
+				<li style="width: 940px;"><img
+					src="/resources/img/dummies/slides/04.jpg" title="" alt="alt"
+					class="piece" /></li>
+
+				<li style="width: 940px;"><img
+					src="/resources/img/dummies/slides/05.jpg" title="" alt="alt"
+					class="piece" /></li>
+
+				<li style="width: 940px;"><img
+					src="/resources/img/dummies/slides/06.jpg" title="" alt="alt"
+					class="piece" /></li>
+
+				<li style="width: 940px;"><img
+					src="/resources/img/dummies/slides/07.jpg" title="" alt="alt"
+					class="piece" /></li>
+			</ul>
 		</div>
-		<!-- ENDS SLIDER -->
-</header>
+	</div>
+	<!-- ENDS SLIDER -->
+</div>

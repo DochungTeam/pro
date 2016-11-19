@@ -68,4 +68,17 @@
 		
 		<!-- insertHouse -->
 		<script src="/resources/js/inserthouse.js"></script>
+		<!-- 헤드 장식 -->
+		<link rel="stylesheet" href="/resources/css/headskin.css" >
+	
+	
+<!-- test -->
+<link rel="shortcut icon" href="http://c1.poing.co.kr/original/images/favicon.png" type="image/x-icon">
+<link rel="icon" href="http://c1.poing.co.kr/original/images/favicon.png" type="image/x-icon">
+<link rel="stylesheet" type="text/css" href="../css/main.css">
+<link rel="stylesheet" type="text/css" href="../css/poingslider.css">
+<script type="text/javascript" src="../js/poingslider.js"></script>
+		
+		<!-- 헤드 장식 -->
+		<link rel="stylesheet" href="/resources/css/headskin.css" >
 		
