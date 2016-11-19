@@ -111,7 +111,6 @@
  				var hkinds=[];
  				var haddrs=[];
  				$($(".hhnm")).each(function(i){
- 					alert($(".hhcontent").eq(i).data("hcontent"));
  					hnms.push($(".hhnm").eq(i).data("hnm"));
  					hcontents.push($(".hhcontent").eq(i).data("hcontent"));
  					hphones.push($(".hhphone").eq(i).data("hphone"));
