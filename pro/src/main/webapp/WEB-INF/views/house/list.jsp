@@ -2,9 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-
+<head>
 <%@include file="../include/script.jsp"%>
-<%@include file="../include/mainheader.jsp"%>
 
 
 
@@ -14,46 +13,14 @@
 } */
 </style>
 <!-- Main content -->
-<section class="content">
-	<div class="row">
-		<!-- left column -->
+</head>
+<body class="page">
 
-		<div class="col-md-12">
-			<!-- general form elements -->
-
-			<div class="box">
-				<%-- <div class="box-body">
-					<table class="table table-bordered">
-						<tr>
-							<th style="width: 20px">no</th>
-							<th style="width: 100px">맛집이름</th>
-							<th style="width: 70px">맛집테마</th>
-							<th style="width: 100px">등록 날짜</th>
-							<th style="width: 100px">조회</th>
-						</tr>
-
-						<c:forEach items="${list}" var="houseDto">
-
-							<tr>
-								<td>${houseDto.hno}</td>
-								<td><a href='/house/readHouse${pageMaker.makeSearch(pageMaker.cri.page) }&hno=${houseDto.hno}'>
-										${houseDto.hnm} <strong>[ ${houseDto.hreplycnt }]</strong> 
-										</a></td>
-								<td>${houseDto.hkind}</td>
-								<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm"
-										value="${houseDto.hregdate}" /></td>
-								<td>${houseDto.hviewcnt }</td>
-							</tr>
-
-						</c:forEach>
-
-					</table>
-					
-					
-				</div> --%>
+		<%@include file="../include/header.jsp"%>
+		<div id="main">
 				
-				<!-- MAIN -->
-			<div class="wrapper cf">
+			<div id="start" class="wrapper cf">
+			<%@include file="../include/mainheader.jsp"%>
 			
 			
 			<input type='hidden' name='hno' value="${houseDto.hno}">
@@ -79,7 +46,7 @@
 				<div class="box-header with-border">
 					<h3 class="box-title">맛집 리스트</h3>
 					<c:if test="${loginMember.mmanyn == 0}">
-						<button class="link-button"><a href='/house/insertHouse'>맛집 등록</a></button>
+						<a href='/house/insertHouse'><button class="link-button">맛집 등록</button></a>
 					</c:if>
 				</div>
 				
@@ -92,9 +59,10 @@
 						<a href='/house/readHouse${pageMaker.makeSearch(pageMaker.cri.page) }&hno=${houseDto.hno}'class="thumb">
 						<img src="/resources/img/house${houseDto.fullName}" alt="alt" /></a>
 						<figcaption>
-							<a href='/house/readHouse${pageMaker.makeSearch(pageMaker.cri.page) }&hno=${houseDto.hno}'>
-							<h3 class="heading"> ${houseDto.hnm} </h3></a>
-							주소 : ${houseDto.haddr} <br> TEL : ${houseDto.hphone}<br> 
+							
+							<h3 class="heading"><a href='/house/readHouse${pageMaker.makeSearch(pageMaker.cri.page) }&hno=${houseDto.hno}'>
+							${houseDto.hnm}</a></h3>
+							주소 : ${houseDto.haddr}<br> TEL : ${houseDto.hphone}<br> 
 								<img onclick="jjimBtn(${houseDto.hno })" id='${houseDto.hno }' 
 									 <c:choose>
 									 	<c:when test="${houseDto.jjimchk == 0 }">
@@ -112,7 +80,6 @@
 				</div>
 			</div>
 			</div>
-				<!-- /.box-body -->
 
 				<div class="box-footer">
 
@@ -413,8 +380,6 @@ function jjimBtn(hno){
 
 	</div>
 	<!-- /.row -->
-</section>
-<!-- /.content -->
-<!-- /.content-wrapper -->
-
 <%@include file="../include/footer.jsp"%>
+</body>
+
