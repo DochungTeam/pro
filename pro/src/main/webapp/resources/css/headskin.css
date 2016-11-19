@@ -13,7 +13,7 @@ header{
 .downNav{
 	width : 100%;
 	text-align : center;
-	background-color: #B2EBF4;
+	background-color: #980000;
 	margin: 0 auto;
 	padding: 0;
 	border: 0;
@@ -67,7 +67,7 @@ header{
   padding-right: 0px;
 }
 #navDown > li > a {
-	color: #000000;
+color: #dcd2be;
   font-family: Arial, sans-serif;
   font-size: 12px;
   display: block;
