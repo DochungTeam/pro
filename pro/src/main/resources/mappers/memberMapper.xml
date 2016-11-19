@@ -149,7 +149,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		   and hno = #{hno}
 	</delete>
 	
-<<<<<<< HEAD
 	<select id="JjimList" resultType="HouseDto">
 		select  h.hno
 		 	  , h.hnm
@@ -173,8 +172,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			and h.hno = ha.hno
 	</select>
 	
-=======
->>>>>>> bd5539db4b0039bca79c2b908f7311460bbab037
 	<select id="Jjimchk" resultType="int">
 		select count(*)
 		  from mypage
@@ -186,34 +183,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<![CDATA[
 	select  
 			  h.hno
-			, h.hnm
-            , h.hcontent
-            , h.hkind
-            , h.hphone
-            , h.hregdate
-            , h.hviewcnt
-            , h.hreplycnt 
-            , ha.fullName
-            , case when jjim.hno is null then 1 else 0 end jjimchk
-	from 
-		house_attach ha
-      , house h 
-    join(
-    	select 
-    		hno
-    	from 
-    		mypage
-        where
-        	mid = #{mid}
-               ) jjim
-       	on h.hno = jjim.hno
-        where h.hno > 0 
-        and h.hno = ha.hno
-    ]]>
-	</select>
-	<select id="JjimList" resultType="HouseDto">
-	<![CDATA[
-	select  h.hno
 			, h.hnm
             , h.hcontent
             , h.hkind

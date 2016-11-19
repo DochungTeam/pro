@@ -33,7 +33,6 @@ public interface MemberDao {
 	
 	public MemberDto selectMember(MemberDto dto);
 	
-	public List<HouseDto> JjimList(String mid) throws Exception;
 }
 
 

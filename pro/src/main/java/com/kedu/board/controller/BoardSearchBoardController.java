@@ -221,7 +221,8 @@ public class BoardSearchBoardController {
 			 String dftFilePath = request.getSession().getServletContext().getRealPath("/");
 			 logger.info("기본기본기본기본기본기본기본기본기본기본기본기본기본기본기본기본기본기본기본"+dftFilePath);
 			 //파일 기본경로 _ 상세경로
-			 String filePath = dftFilePath + "resources" + File.separator + "editor" + File.separator +"multiupload" + File.separator;
+			 //String filePath = dftFilePath + "resources" + File.separator + "editor" + File.separator +"multiupload" + File.separator;
+			 String filePath ="D:\\dev_spring\\workspace\\teampro\\pro\\src\\main\\webapp\\resources\\editor\\multiupload\\";
 			 logger.info("상세상세상세상세상세상세상세상세상세상세상세상세상세상세상세상세상세상세"+filePath);
 			 File file = new File(filePath);
 			 if(!file.exists()) {

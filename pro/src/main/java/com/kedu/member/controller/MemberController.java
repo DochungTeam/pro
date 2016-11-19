@@ -25,10 +25,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.util.WebUtils;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-<<<<<<< HEAD
-=======
 import com.kedu.house.dto.PageMaker;
->>>>>>> bd5539db4b0039bca79c2b908f7311460bbab037
 import com.kedu.house.dto.SearchCriteria;
 import com.kedu.member.dto.EmailDto;
 import com.kedu.member.dto.EmailSender;
@@ -279,7 +276,6 @@ public class MemberController {
 		
 		response.getWriter().print(mapper.writeValueAsString(result));
 	}
-<<<<<<< HEAD
 	
 	@RequestMapping(value="/myPage", method = RequestMethod.GET)
 	public void myPage(@ModelAttribute("cri") SearchCriteria cri
@@ -290,7 +286,8 @@ public class MemberController {
 		mid = ((MemberDto)session.getAttribute("loginMember")).getMid();
 		
 		model.addAttribute("list", service.JjimList(mid));
-=======
+	}
+		
 	@RequestMapping(value="/myjjim", method = RequestMethod.GET)
 	public void myJjim(@ModelAttribute("cri") SearchCriteria cri
  			 , Model model
@@ -312,6 +309,5 @@ public class MemberController {
 	    model.addAttribute("pageMaker", pageMaker);
 	   */				
 		
->>>>>>> bd5539db4b0039bca79c2b908f7311460bbab037
 	}
 }

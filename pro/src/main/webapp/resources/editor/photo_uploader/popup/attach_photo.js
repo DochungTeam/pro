@@ -41,7 +41,7 @@
 				if(!!oNavigator.safari && oNavigator.version <= 5){
 					bSupportDragAndDropAPI = false;
 				}else{
-					bSupportDragAndDropAPI = true;
+					bSupportDragAndDropAPI = false;
 				}
 			} else {
 				bSupportDragAndDropAPI = false;
@@ -245,13 +245,18 @@
 			//초기화	
 			files = ev.dataTransfer.files;
 			nCount = files.length;
-						
+			
+			console.log("진짜 첫 files :" + files);
+			alert("진짜 첫 files" + files);
+			
 			if (!!files && nCount === 0){
 				//파일이 아닌, 웹페이지에서 이미지를 드래서 놓는 경우.
 				alert("정상적인 첨부방식이 아닙니다.");
 				return ;
 			}
 			
+			console.log("첫 Files :" +files);
+			alert("첫Files :" +files);
 			for (var i = 0, j = nImageFileCount ; i < nCount ; i++){
 				if (!rFilter.test(files[i].type)) {
 					alert("이미지파일 (jpg,gif,png,bmp)만 업로드 가능합니다.");
@@ -271,6 +276,8 @@
 					}
 				}
 			}
+			console.log("files :" + files);
+			console.log("두번째"+sListTag);
 			if(j > 0){
 				//배경 이미지 변경
 				startModeBG();
@@ -330,7 +337,8 @@
      * HTML5 DragAndDrop으로 사진을 추가하고, 확인버튼을 누른 경우에 동작한다.
      * @return
      */
-    function html5Upload() {	
+    function html5Upload() {
+    	alert("암걸리네");
     	var tempFile,
     		sUploadURL;
     	
@@ -341,6 +349,8 @@
     		tempFile = htImageInfo['img'+j];
     		try{
 	    		if(!!tempFile){
+	    			alert("아진짜ㅁㅎㄴㅇㅎㄴㅁㅇㅎㄻㄴㅇㄹ");
+	    			console.log("첫번쨰"+tempFile);
 	    			//Ajax통신하는 부분. 파일과 업로더할 url을 전달한다.
 	    			callAjaxForHTML5(tempFile,sUploadURL);
 	    			k += 1;
@@ -351,6 +361,8 @@
 	}
     
     function callAjaxForHTML5 (tempFile, sUploadURL){
+    	console.log("tempFile : "+tempFile);
+    	alert("이익");
     	var oAjax = jindo.$Ajax(sUploadURL, {
 			type: 'xhr',
 			method : "post",
@@ -479,7 +491,7 @@
  	function callFileUploader (){
  		oFileUploader = new jindo.FileUploader(jindo.$("uploadInputBox"),{
  			sUrl  : '/board/file_uploader',	//샘플 URL입니다.
- 	        sCallback : '/resources/editor/photo_uploader/callback.html',	//업로드 이후에 iframe이 redirect될 콜백페이지의 주소
+ 	        sCallback : '/resources/editor/photo_uploader/popup/callback.html',	//업로드 이후에 iframe이 redirect될 콜백페이지의 주소
  	    	sFiletype : "*.jpg;*.png;*.bmp;*.gif",						//허용할 파일의 형식. ex) "*", "*.*", "*.jpg", 구분자(;)	
  	    	sMsgNotAllowedExt : 'JPG, GIF, PNG, BMP 확장자만 가능합니다',	//허용할 파일의 형식이 아닌경우에 띄워주는 경고창의 문구
  	    	bAutoUpload : false,									 	//파일이 선택됨과 동시에 자동으로 업로드를 수행할지 여부 (upload 메소드 수행)

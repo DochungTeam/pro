@@ -91,10 +91,4 @@ public class MemberServiceImpl implements MemberService {
 		return dao.selectMember(member);
 	}
 	
-	@Override
-	public List<HouseDto> JjimList(String mid) throws Exception {
-	     return dao.JjimList(mid);
-	}
-	
-	
 }

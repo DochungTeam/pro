@@ -23,8 +23,6 @@ public interface MemberService {
   
   public int logincheck(MemberDto member) throws Exception;
   
-  public List<HouseDto> JjimList(String mid)throws Exception; 
-  
   public int Jjim(String mid, int hno)throws Exception;
   
   public MemberDto selectMember(MemberDto member)throws Exception;
