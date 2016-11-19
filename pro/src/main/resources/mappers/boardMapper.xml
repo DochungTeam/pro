@@ -9,11 +9,11 @@
 	</insert>
 
 	<select id="read" resultType="BoardDto">
-		select bno, btitle, bcontent, bwritedt, bcount, bwriter, rcount, filedata, callback, callback_func from board where bno = #{bno}
+		select bno, btitle, bcontent, bwritedt, bboard, bcount, bwriter, rcount, filedata, callback, callback_func from board where bno = #{bno}
 	</select>
 
 	<update id="update">
-		update board set btitle = #{btitle}, bcontent = #{bcontent}, filedata = #{filedata}, callback = #{callback}, callback_func = #{callback_func}, bupdatedt = now() where bno = #{bno}
+		update board set btitle = #{btitle}, bcontent = #{bcontent}, filedata = #{filedata}, callback = #{callback}, callback_func = #{callback_func}, bboard = #{bboard}, bupdatedt = now() where bno = #{bno}
 	</update>
 
 	<delete id="delete">

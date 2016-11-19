@@ -40,9 +40,9 @@ $(document).ready(function(){
 			
 				<div class="box-body">
 					<div class="form-group">
-						<input type="text" name="bno" class="form-control" value="${boardDto.bno }" readonly="readonly">
+						<input type="hidden" name="bno" class="form-control" value="${boardDto.bno }" readonly="readonly">
 						<input type="text" name="btitle" class="form-control" value="${boardDto.btitle }">
-						<input type="text" name="bwriter" class="form-control" value="${boardDto.bwriter }" readonly="readonly">
+						<input type="hidden" name="bwriter" class="form-control" value="${boardDto.bwriter }" readonly="readonly">
 						<c:if test="${loginMember.mmanyn == 0}">
 							<c:choose>
 								<c:when test="${boardDto.bboard == 1}">
