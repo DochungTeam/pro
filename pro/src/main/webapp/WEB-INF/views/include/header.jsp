@@ -24,7 +24,7 @@
 <header>
 		<div class="wrapper cf">
 			<div id="logo">
-				<a href="/house/list"><img src="/resources/img/nologo.png"
+				<a href="/house/list"><img src="/resources/img/nologo.gif"
 					alt="Simpler"></a>
 			</div>
 			<!-- nav -->
