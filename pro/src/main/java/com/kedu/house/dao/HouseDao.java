@@ -5,6 +5,7 @@ import java.util.List;
 import com.kedu.house.dto.Criteria;
 import com.kedu.house.dto.SearchCriteria;
 import com.kedu.house.dto.HouseDto;
+import com.kedu.house.dto.SearchAreaDto;
 
 public interface HouseDao {
 	public List<HouseDto> listAll()throws Exception;
@@ -50,4 +51,10 @@ public interface HouseDao {
 	  public void updateRcount(int hno, int amount) throws Exception;
 	  
 	  public int countReplyPaging(int hno) throws Exception;
+	  
+	  public List<SearchAreaDto> searchGugun(String sido) throws Exception;
+	  
+	  public List<SearchAreaDto> searchDong(String sigungu) throws Exception;
+	  
+	  public void insertHouseAddr(HouseDto dto) throws Exception;
 }

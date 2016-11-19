@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -22,8 +23,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.kedu.house.dto.SearchCriteria;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kedu.house.dto.HouseDto;
 import com.kedu.house.dto.PageMaker;
+import com.kedu.house.dto.SearchAreaDto;
 import com.kedu.house.service.HouseReplyService;
 import com.kedu.house.service.HouseService;
 import com.kedu.member.dto.MemberDto;
@@ -41,16 +44,121 @@ public class HouseController {
 	
 	@RequestMapping(value="/houseList",method=RequestMethod.GET)
 	public void houseList(@RequestParam(required=false)String keyword,Model model) throws Exception{
-		logger.info(keyword);
+	/*	logger.info(keyword);
 		if(keyword!=null){
 			model.addAttribute("list",service.searchHouse(keyword, 10, 1));
 			System.out.println(keyword);
 
-		/*	model.addAttribute("list1",service.searchImage(keyword, 3, 1));
-			System.out.println(keyword);*/
+			
+			
+			model.addAttribute("list1",service.searchImage(keyword, 3, 1));
+			System.out.println(keyword);
 
 			logger.info(keyword);
+		}*/
+	}
+	
+	@RequestMapping(value="/houseList",method=RequestMethod.POST)
+	public void houseListPost(@RequestParam(required=false)String keyword,HttpServletResponse response){
+		logger.info(keyword);
+		
+		ObjectMapper mapper= new ObjectMapper();
+		
+		List<HouseDto> dto=null;
+		
+		if(!keyword.isEmpty()){
+			try {
+				dto= service.searchHouse(keyword, 7, 1);
+				response.setCharacterEncoding("UTF-8");
+				
+				response.getWriter().print(mapper.writeValueAsString(dto));
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
+	}
+	
+	@RequestMapping(value="/gunguSearch", method=RequestMethod.POST)
+	   public void sigungu(@RequestParam(value="sido", required=false)String sido, HttpServletResponse response)throws Exception{
+	      logger.info(sido);
+	      
+	      ObjectMapper mapper = new ObjectMapper();
+	      
+	      List<SearchAreaDto> sdto = null;
+	      try{
+	      sdto = service.searchSido(sido);
+	      response.setCharacterEncoding("utf-8");
+	      response.getWriter().print(mapper.writeValueAsString(sdto));
+	      }catch(Exception e){
+	         e.printStackTrace();
+	      }
+	   }
+
+	 @RequestMapping(value = "/dongSearch", method=RequestMethod.POST)
+	   public void dong(@RequestParam(value="sigungu" ,required=false)String sigungu, HttpServletResponse response)throws Exception{
+	      logger.info(sigungu);
+	      
+	      ObjectMapper mapper = new ObjectMapper();
+	      
+	      List<SearchAreaDto> sdto = null;
+	      try{
+	         sdto = service.searchDong(sigungu);
+	         response.setCharacterEncoding("utf-8");
+	         response.getWriter().print(mapper.writeValueAsString(sdto));
+	      }catch(Exception e){
+	         e.printStackTrace();
+	      }
+	   }
+
+	
+	@RequestMapping(value="/type",method=RequestMethod.GET)
+	public void typeGET(Model model)throws Exception{
+		List<HouseDto> dto= null;
+		
+		for(int i=0;i<51;i++){
+			dto= service.searchHouse("강원도 한식", 100, i);
+			
+			for(HouseDto list:dto){
+				service.insertHouseAddr(list);
+			}
+			dto= service.searchHouse("강원도 중식", 100, i);
+			
+			for(HouseDto list:dto){
+				service.insertHouseAddr(list);
+			}
+			dto= service.searchHouse("강원도 일식", 100, i);
+			
+
+	         for(HouseDto list : dto){
+	            service.insertHouse(list);
+	         }
+	            
+	         dto = service.searchHouse("강원도양식", 100, i);
+	         
+	         for(HouseDto list : dto){
+	            service.insertHouse(list);
+	         }
+	         
+	         dto = service.searchHouse("강원도퓨전", 100, i);
+	         
+	         for(HouseDto list : dto){
+	            service.insertHouse(list);
+	         }
+	         
+	         dto = service.searchHouse("강원도디저트", 100, i);
+	         
+	         for(HouseDto list : dto){
+	            service.insertHouse(list);
+	         }
+	         
+	         dto = service.searchHouse("강원도분식", 100, i);
+	         
+	         for(HouseDto list : dto){
+	            service.insertHouse(list);
+	         }
+	         
+		}
+		model.addAttribute("list",dto);
 	}
 	
 	@RequestMapping(value="/insertAjax",method=RequestMethod.POST)

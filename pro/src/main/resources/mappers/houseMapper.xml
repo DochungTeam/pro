@@ -11,6 +11,24 @@
 	]]>
 </select>
 
+<select id="searchGugun" resultType="SearchAreaDto">
+		select distinct sigungu
+		  from addr
+		 where sido = #{sido}	
+	</select>
+
+	<select id="searchDong" resultType="SearchAreaDto">
+		select distinct dong
+		  from addr
+		 where sigungu = #{sigungu}
+	</select>
+	
+<insert id="insertHouseAddr" parameterType="HouseDto">
+	insert into house(hnm,hcontent,hkind,hphone,haddr)
+	values(#{hnm},#{hcontent},#{hkind},#{hphone},#{haddr})
+</insert>
+
+
 <select id="getTime" resultType="string">
 select now()
 </select>

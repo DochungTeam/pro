@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 import com.kedu.house.dto.Criteria;
 import com.kedu.house.dto.SearchCriteria;
 import com.kedu.house.dto.HouseDto;
+import com.kedu.house.dto.SearchAreaDto;
 
 @Repository
 public class HouseDaoImpl implements HouseDao{
@@ -24,6 +25,22 @@ public class HouseDaoImpl implements HouseDao{
 	@Override
 	public List<HouseDto> listAll() throws Exception {
 		return session.selectList(namespace+".listAll");
+	}
+	
+	@Override
+	public List<SearchAreaDto> searchGugun(String sido) throws Exception {
+		return session.selectList(namespace+".searchGugun", sido);
+	}
+
+	@Override
+	public List<SearchAreaDto> searchDong(String sigungu) throws Exception {
+		return session.selectList(namespace+".searchDong", sigungu);
+	}
+
+
+	@Override
+	public void insertHouseAddr(HouseDto dto) throws Exception {
+		session.selectList(namespace+".insertHouseAddr",dto);
 	}
 	
 	@Override

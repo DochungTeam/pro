@@ -21,6 +21,7 @@ import org.xmlpull.v1.XmlPullParserFactory;
 
 import com.kedu.house.dto.SearchCriteria;
 import com.kedu.house.dto.HouseDto;
+import com.kedu.house.dto.SearchAreaDto;
 import com.kedu.house.dto.Criteria;
 import com.kedu.house.dao.HouseDao;
 
@@ -34,6 +35,21 @@ public class HouseServiceImpl implements HouseService{
 	@Override
 	public List<HouseDto> listAll() throws Exception {
 		return dao.listAll();
+	}
+	
+	@Override
+	public List<SearchAreaDto> searchSido(String sido) throws Exception {
+		return dao.searchGugun(sido);
+	}
+
+	@Override
+	public List<SearchAreaDto> searchDong(String sigungu) throws Exception {
+		return dao.searchDong(sigungu);
+	}
+
+	@Override
+	public void insertHouseAddr(HouseDto list) throws Exception {
+		dao.insertHouseAddr(list);
 	}
 	
 //	@Override

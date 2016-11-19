@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.kedu.house.dto.SearchCriteria;
 import com.kedu.house.dto.HouseDto;
+import com.kedu.house.dto.SearchAreaDto;
 import com.kedu.house.dto.Criteria;
 
 public interface HouseService {
@@ -38,6 +39,11 @@ public interface HouseService {
 	  
 	  public int listCountReply(int hno) throws Exception;
 	  
+	  public List<SearchAreaDto> searchSido(String sido) throws Exception;
+	  
+	  public List<SearchAreaDto> searchDong(String sigungu) throws Exception;
+	  
+	  public void insertHouseAddr(HouseDto list) throws Exception;
 	}
 	
 //	public List<HouseDto> searchHouse(String keyword,int display,int start)throws Exception;
