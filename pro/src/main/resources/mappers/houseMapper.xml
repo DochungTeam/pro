@@ -24,8 +24,8 @@
 	</select>
 	
 <insert id="insertHouseAddr" parameterType="HouseDto">
-	insert into house(hnm,hcontent,hkind,hphone,haddr)
-	values(#{hnm},#{hcontent},#{hkind},#{hphone},#{haddr})
+	insert into house(hnm,hcontent,hlink,hkind,hphone,haddr)
+	values(#{hnm},#{hcontent},#{hlink},#{hkind},#{hphone},#{haddr})
 </insert>
 
 

@@ -110,9 +110,8 @@
  				var hlinks=[];
  				var hkinds=[];
  				var haddrs=[];
- 				
  				$($(".hhnm")).each(function(i){
- 
+ 					alert($(".hhcontent").eq(i).data("hcontent"));
  					hnms.push($(".hhnm").eq(i).data("hnm"));
  					hcontents.push($(".hhcontent").eq(i).data("hcontent"));
  					hphones.push($(".hhphone").eq(i).data("hphone"));
@@ -378,7 +377,7 @@
 		 						$("#addrTable").append(
 		 								"<tr><td><hr></td></tr>"
 		 							+	"<tr><td><input type='hidden' class='hhnm' name='hnm' data-hnm='"+haddr[i].hnm+"'> 이름 : " + haddr[i].hnm + "</td></tr>"
-		 							+	"<tr><td><input type='hidden' class='hhcontent' name='hnm' data-hcontent='"+haddr[i].hcontent+"'>내용 : " + haddr[i].hcontent + "</td></tr>"
+		 							+	"<tr><td><input type='hidden' class='hhcontent' name='hcontent' data-hcontent='"+haddr[i].hcontent+"'>내용 : " + haddr[i].hcontent + "</td></tr>"
 		 							+	"<tr><td><input type='hidden' class='hhphone' name='hphone' data-hphone='"+haddr[i].hphone+"'>번호 : " + haddr[i].hphone + "</td></tr>"
 		 							+	"<tr><td><input type='hidden' class='hhlink' name='hlink' data-hlink='"+haddr[i].hlink+"'>링크 : <a target='_blank' href='"+haddr[i].hlink+"'>"
 		 							+	((haddr[i].hlink=="")? "":"이동") +"</a></td></tr>"
