@@ -68,10 +68,8 @@
 		
 		<!-- insertHouse -->
 		<script src="/resources/js/inserthouse.js"></script>
-<<<<<<< HEAD
 		<!-- 헤드 장식 -->
 		<link rel="stylesheet" href="/resources/css/headskin.css" >
-=======
 	
 	
 <!-- test -->
@@ -84,4 +82,3 @@
 		<!-- 헤드 장식 -->
 		<link rel="stylesheet" href="/resources/css/headskin.css" >
 		
->>>>>>> c069634520f81d85c2d56df130fc72ea7e14b5d2

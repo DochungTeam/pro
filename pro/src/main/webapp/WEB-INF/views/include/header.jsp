@@ -1,10 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<<<<<<< HEAD
-=======
 <link rel="stylesheet" type="text/css" href="../css/header.css">
->>>>>>> c069634520f81d85c2d56df130fc72ea7e14b5d2
 
 <script type="text/javascript">
 	var logout = function() {
@@ -25,7 +22,6 @@
 </script>
 
 <header>
-<<<<<<< HEAD
 		<div class="wrapper cf">
 			<div id="logo">
 				<a href="index.html"><img src="/resources/img/logo.png"
@@ -69,7 +65,6 @@
 			</ul>
 		</div>
 </header>
-=======
 	<div class="headerwrap">
 			<div id="logo">
 	<div class="wrapper cf">
@@ -120,4 +115,3 @@
 			<li><a href="/board/list">게시판</a></li>
 		</ul>
 	</div>
->>>>>>> c069634520f81d85c2d56df130fc72ea7e14b5d2

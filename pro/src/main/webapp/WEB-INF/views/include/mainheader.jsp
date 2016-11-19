@@ -40,10 +40,8 @@
 			</ul>
 		</div>
 	</div>
-<<<<<<< HEAD
 	<!-- ENDS SLIDER -->
 </div>
-=======
 </header>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
@@ -85,4 +83,3 @@
 			</div>
 		</div>
 				<!-- ENDS SLIDER -->
->>>>>>> c069634520f81d85c2d56df130fc72ea7e14b5d2
