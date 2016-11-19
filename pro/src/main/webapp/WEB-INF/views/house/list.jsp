@@ -57,7 +57,7 @@
 				<c:forEach items="${list}" var="houseDto">
 					<figure class="${houseDto.hkind}">
 						<a href='/house/readHouse${pageMaker.makeSearch(pageMaker.cri.page) }&hno=${houseDto.hno}'class="thumb">
-						<img src="/resources/img/house${houseDto.fullName}" alt="alt" height="450" width="300"/></a>
+						<img src="/resources/img/house${houseDto.fullName}" alt="alt" /></a>
 						<figcaption>
 							
 							<h3 class="heading"><a href='/house/readHouse${pageMaker.makeSearch(pageMaker.cri.page) }&hno=${houseDto.hno}'>
