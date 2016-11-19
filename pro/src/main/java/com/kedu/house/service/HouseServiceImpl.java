@@ -191,7 +191,12 @@ public class HouseServiceImpl implements HouseService{
 							houseDto.setHnm(parser.nextText());
 						}
 						break;
-					case "discription":
+					case "link":
+						if(houseDto!=null){
+							houseDto.setHlink(parser.nextText());
+						}
+						break;
+					case "description":
 						if(houseDto!=null){
 							houseDto.setHcontent(parser.nextText());
 						}

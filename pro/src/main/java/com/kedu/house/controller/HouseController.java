@@ -70,7 +70,6 @@ public class HouseController {
 			try {
 				dto= service.searchHouse(keyword, 7, 1);
 				response.setCharacterEncoding("UTF-8");
-				
 				response.getWriter().print(mapper.writeValueAsString(dto));
 			} catch (Exception e) {
 				e.printStackTrace();
