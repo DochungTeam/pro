@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<head>
 <%@include file="../include/script.jsp"%>
 <link href="/resources/jqueryui/jquery-ui.min.css" rel="stylesheet">
 <link rel="stylesheet" href="/resources/css/yumdo.css" type="text/css"/>
@@ -34,9 +34,12 @@
     <div id="popup_front" class='popup front' style="display:none;">
      <img id="popup_img">
     </div>
-    
-<%@include file="../include/header.jsp"%>
+</head>
+<body class="page">    
 <!-- Main content -->
+<%@include file="../include/header.jsp"%>
+<div id="main">
+<div id="start" class="wrapper cf">
 <section class="content">
 	<div class="row">
 		<!-- left column -->
@@ -123,8 +126,8 @@
 			<button type="submit" class="btn btn-primary" id="goListBtn"
 			style="background: #F15F5F;
 			color: #fff;
-			width: 100px;
-			height: 35px;
+			width: 80px;
+			height: 30px;
 			border: 0;
 			margin-top: 20px;
 			margin-left: 5px;
@@ -133,8 +136,8 @@
 			<button type="submit" class="btn btn-primary" onclick="return housecheck_ok()" 
 			style="background: #6799FF;
 			color: #fff;
-			width: 100px;
-			height: 35px;
+			width: 80px;
+			height: 30px;
 			border: 0;margin-top: 20px;
 			float: right;
 			cursor: pointer;">등록</button>
@@ -158,17 +161,9 @@
 			<input type="button" value="주소 검색" id="search">			
 	</form>
 		
-	<table class="modaladdr">
-		
-		<%-- <c:forEach items="${list}" var="houseDto">
-		<tr>
-			<td><input type="hidden" value='${houseDto.haddr }' id="modaladdr">${houseDto.haddr }
-			</td>
-			<td><button id="choice">선택</button>
-			</td>
-		</tr>
-		</c:forEach> --%>
-	</table>
+	
+	</div>
+	</div>
 	</div>
 	<!-- /.row -->
 </section>
@@ -388,3 +383,4 @@ $(document).ready(function(){
 </script>
  
 <%@include file="../include/footer.jsp"%>
+</body>
