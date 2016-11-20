@@ -5,7 +5,6 @@
 <head>
 <script src="/resources/plugins/jQuery/jQuery-2.1.4.min.js"></script>
 
-
 <jsp:include page="../include/script.jsp" />
 </head>
 
