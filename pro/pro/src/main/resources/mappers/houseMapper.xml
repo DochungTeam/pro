@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kedu.mapper.HouseMapper">
+<select id="listAll" resultType="HouseDto">
+	<![CDATA[
+	select * 
+	  from house
+	 where hno>0
+	 order by hno desc
+	]]>
+</select>
+
+<select id="getTime" resultType="string">
+select now()
+</select>
+
+<insert id="insertHouse">
+insert into house (hno, hnm, hcontent, hkind, hphone, hmenu, hdetail, himg, hspecial, haddr, hlevel, 
+					htime, hholiday, hwriterdt, hregdate, hmapx, hmapy, hurl, hreplycnt, hviewcnt, hlink) values
+(#{hno}, #{hnm}, #{hcontent}, #{hkind}, #{hphone}, #{hmenu}, #{hdetail}, #{himg}, #{hspecial}, #{haddr}, #{hlevel}, 
+					#{htime}, #{hholiday}, #{hwriterdt}, #{hregdate}, #{hmapx}, #{hmapy}, #{hurl}, #{hreplycnt}, #{hviewcnt}, #{hlink})
+</insert>
+
+<insert id="addAttach">
+	insert into house_attach(fullname, hno) values(#{fullName}, LAST_INSERT_ID())
+</insert>
+
+<select id="getAttach" resultType="string">
+select fullname from house_attach where hno = #{hno} order by hregdate
+</select>
+
+
+
+<select id="read" resultType="com.kedu.house.dto.HouseDto">
+ select hno
+ 	  , hnm
+ 	  , hphone
+ 	  , haddr
+ 	  , hmenu
+ 	  , htime
+ 	  , hholiday
+ 	  , hurl
+ 	  , hcontent
+ 	  , case hkind
+ 			when'00'then'한식'
+ 			when'01'then'양식'
+ 			when'02'then'중식'
+ 			when'03'then'일식'
+ 			when'04'then'퓨전'
+ 			when'05'then'디저트'
+ 			end as hkind
+ 	  , hregdate
+ 	  , hviewcnt
+ 	  , haddr
+ 	  , hmapx
+ 	  , hmapy
+ 	  , hreplycnt
+   from house 
+  where hno = #{hno}
+ </select>
+
+ <update id="update">
+ update house set hnm =#{hnm}, hphone =#{hphone}, haddr =#{haddr}, hkind =#{hkind}, hmenu =#{hmenu}, htime =#{htime}, hholiday =#{hholiday},
+ 					 hmapx =#{hmapx}, hmapy =#{hmapy}, hcontent =#{hcontent}, hurl =#{hurl}
+ where hno = #{hno}
+ </update>
+
+ <delete id="delete">
+ delete from house where hno = #{hno}
+ </delete>
+
+ <select id="listPage" resultType="HouseDto">
+ <![CDATA[
+ select 
+   hno, hnm, hcontent, hkind, hregdate, hviewcnt, haddr, hmapx, hmapy 
+ from 
+   house 
+ where hno > 0 
+ order by hno desc, hregdate desc
+ limit #{page}, 10
+ ]]>  
+ </select>
+
+  <select id="listCriteria" resultType="HouseDto">
+ <![CDATA[
+ select h.hno
+ 	  , h.hnm
+ 	  , h.hcontent
+ 	  , h.hkind
+ 	  , h.hregdate
+ 	  , h.hviewcnt
+ 	  , h.hreplycnt 
+ 	  , case when jjim.hno is null then 'n' else 'y' end jjimchk
+   from house h left outer join(
+								select hno
+								  from mypage
+								 where mid = #{mid} 
+   						   		) jjim
+   						   
+   						     on h.hno = jjim.hno
+  where h.hno > 0 
+  order by hno desc, hregdate desc
+  limit #{pageStart}, #{perPageNum}
+ ]]>  
+ </select>
+
+
+
+ <select id="countPaging" resultType="int">
+ <![CDATA[
+ select 
+   count(hno) 
+ from 
+   house 
+ where 
+   hno > 0 
+ ]]>
+ </select>
+
+
+
+<sql id="search">
+ <if test="searchType != null" > 
+   <if test="searchType == 't'.toString()">
+     and title like CONCAT('%', #{keyword}, '%')
+   </if>
+   <if test="searchType == 'c'.toString()">
+     and content like CONCAT('%', #{keyword}, '%')
+   </if>
+   <if test="searchType == 'w'.toString()">
+     and writer like CONCAT('%', #{keyword}, '%')
+   </if>     
+   <if test="searchType == 'tc'.toString()">
+     and ( title like CONCAT('%', #{keyword}, '%') OR content like CONCAT('%', #{keyword}, '%'))
+   </if>        
+   <if test="searchType == 'cw'.toString()">
+     and ( content like CONCAT('%', #{keyword}, '%') OR writer like CONCAT('%', #{keyword}, '%'))
+   </if>        
+   <if test="searchType == 'tcw'.toString()">
+     and (   title like CONCAT('%', #{keyword}, '%') 
+           OR 
+             content like CONCAT('%', #{keyword}, '%') 
+           OR 
+             writer like CONCAT('%', #{keyword}, '%'))
+   </if>              
+ </if>  
+</sql>
+ <!-- 맛집리스트 -->
+<select id="listSearch" resultType="HouseDto">
+<![CDATA[  
+  select h.hno
+ 	  , h.hnm
+ 	  , h.hcontent
+ 	  , h.hkind
+ 	  , h.hphone
+ 	  , h.hregdate
+ 	  , h.hviewcnt
+ 	  , h.hreplycnt 
+ 	  , ha.fullName
+ 	  , case when jjim.hno is null then 1 else 0 end jjimchk
+   from house_attach ha
+   	  , house h 
+   	  	left outer join(
+							select hno
+							  from mypage
+							 where mid = #{mid}
+   				    	) jjim
+   						     on h.hno = jjim.hno
+  where h.hno > 0 
+	and h.hno = ha.hno
+]]>  
+
+  <include refid="search"></include>
+  
+<![CDATA[    
+  order by hno desc
+  limit #{pageStart}, #{perPageNum}
+]]>  
+</select>
+  
+<select id="nonMemberList" resultType="HouseDto">
+<![CDATA[  
+  select h.hno
+ 	  , h.hnm
+ 	  , h.hcontent
+ 	  , h.hkind
+ 	  , h.hphone
+ 	  , h.hregdate
+ 	  , h.hviewcnt
+ 	  , h.hreplycnt 
+ 	  , ha.fullName
+   from house_attach ha
+   	  , house h 
+  where h.hno > 0 
+	and h.hno = ha.hno
+]]>  
+
+  <include refid="search"></include>
+  
+<![CDATA[    
+  order by hno desc
+  limit #{pageStart}, #{perPageNum}
+]]>  
+</select>  
+  
+<select id="listSearchCount" resultType="int">
+<![CDATA[  
+  select count(hno) 
+  from house 
+  where hno > 0 
+]]>
+  <include refid="search"></include>
+ 
+</select>  
+  
+<update id="updateReplyCnt">
+  update house set hreplycnt = hreplycnt + #{amount} where hno = #{hno}
+</update>
+
+
+<update id="updateViewCnt">
+  update house set hviewcnt = hviewcnt +1 where hno = #{hno}
+</update>
+ 
+ 
+<delete id="deleteAttach">
+delete from house where hno = #{hno}
+</delete>
+
+<insert id="replaceAttach">
+insert into house_attach(fullname, hno) values (#{fullName}, #{hno})
+</insert>
+
+<update id="imageUpdate">
+update house_attach set fullname = #{fullName}
+where hno = #{hno}
+</update>
+
+<select id="countReplyPaging" resultType="int">
+		select count(hrno) from hreply
+		where hno = #{hno}
+</select>
+<update id="updateRcount">
+		update house set hreplycnt = (select count(hrno) from hreply where hno = house.hno)
+		where hno > 0
+</update>
+
+</mapper>
+
+    
