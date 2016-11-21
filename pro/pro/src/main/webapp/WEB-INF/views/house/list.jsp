@@ -7,7 +7,7 @@
 
 
 
-<style>
+<style> 
 /* img {
 	cursor:pointer
 } */
