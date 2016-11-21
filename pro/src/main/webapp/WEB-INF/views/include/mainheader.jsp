@@ -4,7 +4,6 @@
 
 <%@include file="../include/script.jsp"%>
 
-<script src="http://code.jquery.com/jquery-1.10.2.js" type="text/javascript"></script>
 <script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js" type="text/javascript"></script>
 
 <script>
@@ -18,33 +17,67 @@ $(function(){
 	
 	$(".arrow_left").on("click",function(){
 		
-		$("#leftHeadImg").hide("slide",{direction:"left"},50,function(){
+		$("#leftHeadImg").hide("slide",{direction:"left"},100,function(){
 			leftIndex++;
 			if(leftIndex>=imageArray.length){
 				leftIndex=0;
 			}
 			$("#leftHeadImg").attr("src",myImage+imageArray[leftIndex]);
-			$("#leftHeadImg").show("slide",{direction:"right"},50,null);		
 		});
+		$("#leftHeadImg").show("slide",{direction:"right"},100,null);		
 
-		$("#centerHeadImg").hide("slide",{direction:"left"},50,function(){
+		$("#centerHeadImg").hide("slide",{direction:"left"},100,function(){
 			centerIndex++;
 			if(centerIndex>=imageArray.length){
 				centerIndex=0;
 			}
 			$("#centerHeadImg").attr("src",myImage+imageArray[centerIndex]);
-			$("#centerHeadImg").show("slide",{direction:"right"},50,null);		
 		});
+		$("#centerHeadImg").show("slide",{direction:"right"},100,null);		
 		
-		$("#rightHeadImg").hide("slide",{direction:"left"},50,function(){
+		$("#rightHeadImg").hide("slide",{direction:"left"},100,function(){
 			rightIndex++;
 			if(rightIndex>=imageArray.length){
 				rightIndex=0;
 			}
 			$("#rightHeadImg").attr("src",myImage+imageArray[rightIndex]);
-			$("#rightHeadImg").show("slide",{direction:"right"},50,null);		
 			
 		});
+		$("#rightHeadImg").show("slide",{direction:"right"},100,null);		
+
+		
+		
+	});
+	
+	$(".arrow_right").on("click",function(){
+		
+		$("#leftHeadImg").hide("slide",{direction:"right"},100,function(){
+			leftIndex--;
+			if(leftIndex<0){
+				leftIndex=imageArray.length-1;
+			}
+			$("#leftHeadImg").attr("src",myImage+imageArray[leftIndex]);
+		});
+		$("#leftHeadImg").show("slide",{direction:"left"},100,null);		
+
+		$("#centerHeadImg").hide("slide",{direction:"right"},100,function(){
+			centerIndex--;
+			if(centerIndex<0){
+				centerIndex=imageArray.length-1;
+			}
+			$("#centerHeadImg").attr("src",myImage+imageArray[centerIndex]);
+		});
+		$("#centerHeadImg").show("slide",{direction:"left"},100,null);		
+		
+		$("#rightHeadImg").hide("slide",{direction:"right"},100,function(){
+			rightIndex--;
+			if(rightIndex<0){
+				rightIndex=imageArray.length-1;
+			}
+			$("#rightHeadImg").attr("src",myImage+imageArray[rightIndex]);
+			
+		});
+		$("#rightHeadImg").show("slide",{direction:"left"},100,null);		
 
 		
 		

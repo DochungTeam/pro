@@ -142,7 +142,7 @@
 						</div>	
 						<div class="dialogLayout" title="주소검색">
 							<form>
-								<input type="text" name="keyword" id="keyword">
+								<input type="text" name="keyword" id="keyword" placeholder="동을 입력하세요.">
 								<input type="button" value="주소 검색" id="search" class="small button">
 							</form>
 							
@@ -185,7 +185,7 @@
 
 <script id="template" type="text/x-handlebars-template">
 <li id="houseimg">
-  <span class="mailbox-attachment-icon has-img"><img src="{{imgsrc}}" alt="Attachment"><small id="remove-btn">x</small></span>
+  <span class="mailbox-attachment-icon has-img"><img src="{{imgsrc}}" alt="Attachment"><small id="remove-btn" style="cursor:pointer; font-size:25;">x</small></span>
   <div class="mailbox-attachment-info">
 	<a href="{{getLink}}" class="mailbox-attachment-name">{{fileName}}</a>
 	<a href="{{fullName}}" 

@@ -3,6 +3,7 @@
 /* <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"> */
 
 * {box-sizing: border-box;}
+<<<<<<< HEAD
 body{margin: 0;}
 div {padding: 30px 0}
 form {
@@ -10,6 +11,8 @@ form {
   width: 300px;
   margin: 0 auto;
 }
+=======
+>>>>>>> 987154eec727834586b7e7768ac084e75d56c22d
 .dSearchType {
   width: 115px;
   height: 30px;

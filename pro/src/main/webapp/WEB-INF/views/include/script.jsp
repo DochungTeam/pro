@@ -8,7 +8,6 @@
 				
 		<!-- JS -->
 		<script src="/resources/js/jquery-1.7.1.min.js"></script>
-		<script src="/resources/plugins/jQuery/jQuery-2.1.4.min.js"></script>
 		<script src="/resources/js/custom.js"></script>
 		<script src="/resources/js/tabs.js"></script>
 		<script src="/resources/js/css3-mediaqueries.js"></script>
