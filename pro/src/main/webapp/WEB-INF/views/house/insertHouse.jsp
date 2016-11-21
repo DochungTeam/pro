@@ -159,7 +159,6 @@
 				<!-- <input type="button" value="중복 체크" onclick="idCheck()">
  -->
 				<div class="dialogLayout" title="주소 검색">
-<<<<<<< HEAD
 					<form>
 						<input type="text" name="keyword" id="keyword"> <input
 							type="button" value="주소 검색" id="search">
@@ -173,7 +172,6 @@
  -->	
 	
 	
-=======
 		 <form >
 			<input type="text" name="keyword" id="keyword" placeholder="동을 입력하세요.">
 			<input type="button" value="주소 검색" id="search" class="small button" >			
@@ -181,7 +179,6 @@
 		
 		<table class="modaladdr">
 		</table>
->>>>>>> 987154eec727834586b7e7768ac084e75d56c22d
 	</div>
 	</div>
 	</div>

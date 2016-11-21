@@ -64,11 +64,8 @@
 				<form role="form" method="post" id="frm">
 					<div class="box-body">
 						<div class="form-group">
-							<input type="text" name="btitle" class="form-control"> <input
-								type="hidden" name="bwriter" value="${loginMember.mid }"
-								readonly="readonly">
 							<input type="text" name="btitle" class="form-control"
-								placeholder="제목을 입력하세요..."> 
+								placeholder="제목을 입력하세요"> 
 							<input type="hidden"
 								name="bwriter" value="${loginMember.mid }" readonly="readonly">
 							<c:if test="${loginMember.mmanyn == 0}">

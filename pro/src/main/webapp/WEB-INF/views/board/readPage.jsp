@@ -13,9 +13,7 @@
 <jsp:include page="../include/script.jsp" />
 
 <style type="text/css">
-<
-meta name ="viewport " content ="width =device-width, initial-scale =1.0 
-	"><!--[if !IE]><!-- > * {
+ * {
 	margin: 0;
 	padding: 0;
 }
@@ -346,25 +344,6 @@ $(document).ready(function(){
 						type="hidden" name="perPageNum" value="${cri.perPageNum }">
 					<input type="hidden" name="searchType" value="${cri.searchType }">
 					<input type="hidden" name="keyword" value="${cri.keyword }">
-<div class="box-body">
-	<table>
-		<tr>
-			<td class="boardTd">
-				글번호${boardDto.bno }
-			</td>
-			<td class="boardTd">
-				제목${boardDto.btitle }
-			</td>
-			<td class="boardTd">
-				작성자${boardDto.bwriter }
-			</td>
-			<td class="boardTd">
-				작성일<fmt:formatDate pattern="yyyy-MM-dd" value="${boardDto.bwritedt }" />
-			</td>
-		</tr>
-	</table>
-		<div>${boardDto.bcontent }</div>
-</div>
 
 				</form>
 
