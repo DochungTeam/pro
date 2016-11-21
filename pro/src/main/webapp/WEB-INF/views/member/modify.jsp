@@ -157,8 +157,9 @@
 						</c:choose>
 						</select>
 					</div>
-					<input type="submit" class="link-button green" onclick="return membercheck_ok();" value="&nbsp;등록&nbsp;"/>
-					<input type="button" id="cencle" class="link-button red" value="&nbsp;취소&nbsp;"/>
+					<br>
+					<input type="submit" class="small button" onclick="return membercheck_ok();" value="&nbsp;등록&nbsp;"/>
+					<input type="submit" id="cencle" class="small button" value="&nbsp;취소&nbsp;"/>
 					</form>
 										
 				</div>

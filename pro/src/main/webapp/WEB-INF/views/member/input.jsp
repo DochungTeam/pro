@@ -122,7 +122,7 @@
 			}
 			.bigfont{
 				font-weight:bold;
-				font-size: 20px;
+				font-size: 11px;
 			}
 			
 			.addrinput{
@@ -155,7 +155,7 @@
 						<h4>아이디</h4>
 						<input type="text" id="mid" name="mid" maxlength="10">
 						<input type="hidden" id="cid" name="cid" value="">
-						<input type="button" class="checkId" value="중복검사">
+						<input type="submit" class="checkId small button" value="중복검사">
 						<p></p>
 					</div>
 					<div class="last">
@@ -196,8 +196,8 @@
 							<option value="@daum.net">daum.net</option>							
 						</select>
 					</div>
-					<input type="submit" class="link-button green" onclick="return membercheck_ok();" value="&nbsp;등록&nbsp;"/>
-					<input type="button" id="cencle" class="link-button red" value="&nbsp;취소&nbsp;"/>
+					<input type="submit" class="small button" onclick="return membercheck_ok();" value="&nbsp;등록&nbsp;"/>
+					<input type="submit" id="cencle" class="small button" value="&nbsp;취소&nbsp;"/>
 					</form>
 	        		
 	        		

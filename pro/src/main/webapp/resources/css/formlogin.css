@@ -14,7 +14,7 @@
   font-size: 11px;
   color: #888;
 }
-#loginform input:not(.link-button),
+
 #loginform textarea
 {
   padding: 10px 15px;
@@ -26,7 +26,7 @@
   line-height: 1.5em;
   overflow: auto;
 }
-#loginform input:focus,
+
 #loginform textarea:focus
 {
   background: #fff;

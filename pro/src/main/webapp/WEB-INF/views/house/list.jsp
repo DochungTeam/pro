@@ -45,8 +45,9 @@
 			<div class="box">
 				<div class="box-header with-border">
 					<h3 class="box-title">맛집 리스트</h3>
+					<br>
 					<c:if test="${loginMember.mmanyn == 0}">
-						<a href='/house/insertHouse'><button class="link-button">맛집 등록</button></a>
+						<a href='/house/insertHouse'><button class="small button">맛집 등록</button></a>
 					</c:if>
 				</div>
 				

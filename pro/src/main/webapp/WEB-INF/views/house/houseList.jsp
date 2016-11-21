@@ -190,7 +190,7 @@
  					var marker = markers[seq];
  					var infowindow = infoWindows[seq];
  					if (infowindow.getMap()) {
- 						infowindow.close();
+ 						infowindow.();
  						
  					} else {
  						infowindow.open(map, marker);
@@ -471,7 +471,7 @@ $(document).ready(function(){
 		
 				
         <input type="text" name="keyword" id="keyword">
-        <input type="button" value="검색" id="search">
+        <input type="button" value="검색" id="search" class="small button">
         
 		<table id="addrTable" >
 		
@@ -484,7 +484,7 @@ $(document).ready(function(){
 			<td><input type="hidden" class="hnm" value="${houseDto.hnm}"><p><a href="#" class="modalbutton">${houseDto.hnm}</a></p></td>
 			<td><input type="hidden" class="hcontent" value='${houseDto.hcontent }'/>${houseDto.hcontent }</td>
 			<td><input type="hidden" class="hphone" value="${houseDto.hphone }"></td>
-			<td><input type="hidden" class="hlink" value='${houseDto.hlink}'/></a></td>
+			<td><input type="hidden" class="hlink" value='${houseDto.hlink}'/></td>
 			<td><input type="hidden" class="hkind" value='${houseDto.hkind }'/></td>
 			<td><input type="hidden" class="haddr" value='${houseDto.haddr }'/></td>
 			<td><fmt:formatDate value="${houseDto.htime}"/>${houseDto.htime}</td>		

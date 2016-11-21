@@ -10,12 +10,21 @@ form {
   width: 300px;
   margin: 0 auto;
 }
-.d1 {background: #A3D0C3;}
-.d1 input {
-  width: 100%;
-  height: 42px;
+.d1SearchType {
+  width: 115px;
+  height: 30px;
   padding-left: 10px;
-  border: 2px solid #7BA7AB;
+  border: 2px solid #e3a742;
+  border-radius: 5px;
+  outline: none;
+  background: #F9F0DA;
+  color: #9E9C9C;
+}
+.d1 {
+  width: 250px;
+  height: 30px;
+  padding-left: 10px;
+  border: 2px solid #e3a742;
   border-radius: 5px;
   outline: none;
   background: #F9F0DA;

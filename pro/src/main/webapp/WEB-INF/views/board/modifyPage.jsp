@@ -5,6 +5,9 @@
 <head>
 <script src="/resources/plugins/jQuery/jQuery-2.1.4.min.js"></script>
 <jsp:include page="../include/script.jsp"/>
+<style type="text/css">
+
+</style>
 <script>
 
 $(document).ready(function(){
@@ -61,10 +64,11 @@ $(document).ready(function(){
 		</div>
 		
 	</form>
-		
-	<div class="box-footer">
-		<button type="submit" class="btn btn-save">저장</button>
-		<button type="submit" class="btn btn-cancel">취소</button>
+	
+	<br>	
+	<div>
+		<button type="submit" class="btn btn-save small button">저장</button>
+		<button type="submit" class="btn btn-cancel small button">취소</button>
 	</div>
 
 		</div>

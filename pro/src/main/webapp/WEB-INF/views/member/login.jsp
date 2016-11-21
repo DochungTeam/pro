@@ -31,7 +31,7 @@
 
 .bigfont {
 	font-weight: bold;
-	font-size: 20px;
+	font-size: 11px;
 }
 </style>
 <script src="http://connect.facebook.net/ko_KR/all.js"></script>
@@ -206,8 +206,8 @@
 							<input type="hidden" id="muuid" name="muuid" value="null"/>
 							<input type="hidden" id="mmanyn" name="mmanyn" value="2"/>
 						</div>
-						<input type="submit" class="link-button green" onclick="return logincheck_ok();" value=" 로그인 " /> 
-						<input type="button" id="censle" class="link-button red" value=" 취소 " />
+						<input type="submit" class="small button" onclick="return logincheck_ok();" value=" 로그인 " /> 
+						<input type="submit" id="censle" class="small button" value=" 취소 " />
 					</form>
 					<div>
 						<p><a href="/member/input">아이디가 없으십니까?</a></p>
@@ -218,6 +218,7 @@
 							<span class="buttonText">페이스북 로그인</span>	
 						</button>
 					</div>
+					<br>
 					<div id="sns_google">
 						<button class="loginBtn">
 							<span class="icon"></span>

@@ -37,13 +37,11 @@
 					return window.location.pathname.substring(0,
 							window.location.pathname.indexOf("/", 2));
 				}
-				$(".btn-cancel").on("click", function(){
+				$(".btn-cancel").on("click", function() {
 					history.go(-1);
 				});
-				
 
 			});
-	
 </script>
 
 <jsp:include page="../include/script.jsp" />
@@ -66,9 +64,9 @@
 				<form role="form" method="post" id="frm">
 					<div class="box-body">
 						<div class="form-group">
-							<input type="text" name="btitle" class="form-control"
-								placeholder="제목을 입력하세요..."> <input type="hidden"
-								name="bwriter" value="${loginMember.mid }" readonly="readonly">
+							<input type="text" name="btitle" class="form-control"> <input
+								type="hidden" name="bwriter" value="${loginMember.mid }"
+								readonly="readonly">
 							<c:if test="${loginMember.mmanyn == 0}">
 								<input type="checkbox" name="bboard" id="bboard" value="1" />
 								<label for="bboard">공지사항</label>
@@ -76,15 +74,15 @@
 						</div>
 						<div>
 							<div>
-								<textarea id="bcontent" rows="3" name="bcontent"
-									placeholder="내용을 입력하세요..."></textarea>
+								<textarea id="bcontent" rows="3" name="bcontent"></textarea>
 							</div>
 						</div>
 					</div>
-
+					
+					<br>
 					<div class="box-footer">
-						<button type="submit" id="savebutton">등록</button>
-						<input type="button" class="btn-cancel" value="취소" />
+						<button type="submit" id="savebutton" class="small button">등록</button>
+						<input type="submit" class="btn-cancel small button" value="취소" />
 					</div>
 				</form>
 

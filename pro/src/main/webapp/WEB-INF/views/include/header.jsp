@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<link rel="stylesheet" type="text/css" href="../css/header.css">
 
 <script type="text/javascript">
 	var logout = function() {
@@ -24,7 +23,7 @@
 <header>
 		<div class="wrapper cf">
 			<div id="logo">
-				<a href="/house/list"><img src="/resources/img/nologo.gif"
+				<a href="/house/list"><img src="/resources/img/logotmp.png"
 					alt="Simpler"></a>
 			</div>
 			<!-- nav -->

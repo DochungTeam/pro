@@ -2,35 +2,55 @@
 	pageEncoding="UTF-8"%>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>   
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <head>
-	<%@include file="../include/script.jsp"%>
-	<link rel="stylesheet" href="/resources/css/yumdo.css" type="text/css"/>
-	<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?clientId=qloX_gYvM6K9W0RyObTM&submodules=geocoder"></script>
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-	<script type="text/javascript" src="/resources/jqueryui/jquery-ui.min.js"></script>
-	<script type="text/javascript" src="/resources/js/upload.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
-	<!-- Main content -->
-	    <style type="text/css">
-	    .popup {position: absolute;}
-	    .back { background-color: gray; opacity:0.5; width: 100%; height: 300%; overflow:hidden;  z-index:1101;}
-	    .front { 
-	       z-index:1110; opacity:1; boarder:1px; margin: auto; 
-	      }
-	     .show{
-	       position:relative;
-	       max-width: 1200px; 
-	       max-height: 800px; 
-	       overflow: auto;       
-	     } 
-	  	
-	  	#map{
-		height: 250px;
-		width: 350px;
-	    </style>
-	
+<%@include file="../include/script.jsp"%>
+<link rel="stylesheet" href="/resources/css/yumdo.css" type="text/css" />
+<script type="text/javascript"
+	src="https://openapi.map.naver.com/openapi/v3/maps.js?clientId=qloX_gYvM6K9W0RyObTM&submodules=geocoder"></script>
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript"
+	src="/resources/jqueryui/jquery-ui.min.js"></script>
+<script type="text/javascript" src="/resources/js/upload.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
+<!-- Main content -->
+<style type="text/css">
+.popup {
+	position: absolute;
+}
+
+.back {
+	background-color: gray;
+	opacity: 0.5;
+	width: 100%;
+	height: 300%;
+	overflow: hidden;
+	z-index: 1101;
+}
+
+.front {
+	z-index: 1110;
+	opacity: 1;
+	boarder: 1px;
+	margin: auto;
+}
+
+.show {
+	position: relative;
+	max-width: 1200px;
+	max-height: 800px;
+	overflow: auto;
+}
+
+#map {
+	height: 250px;
+	width: 350px;
+}
+</style>
+
 </head>
 <body>
 	<div id="page">
@@ -39,30 +59,33 @@
 			<div id="start" class="wrapper cf">
 				<!-- page content-->
 				<div id="page-content" class="cf">
-				<div class='popup back' style="display:none;"></div>
-					<div id="popup_front" class='popup front' style="display:none;">
-				    	<img id="popup_img">
+					<div class='popup back' style="display: none;"></div>
+					<div id="popup_front" class='popup front' style="display: none;">
+						<img id="popup_img">
 					</div>
 					<!-- entry-content -->
 					<div class="entry-content cf">
-					<section class="content">
-						<div class="row">
-							<!-- left column -->
-							<div class="col-md-12">
-								<!-- general form elements -->
-									<h2 class="box-title">맛집 상세보기<br><br></h2>
-					
+						<section class="content">
+							<div class="row">
+								<!-- left column -->
+								<div class="col-md-12">
+									<!-- general form elements -->
+									<h2 class="box-title">
+										맛집 상세보기<br> <br>
+									</h2>
+
 									<form role="form" action="modifyPage" method="post">
-					
-										<input type='hidden' id="hno" name='hno' value="${houseDto.hno}"> <input
-											type='hidden' name='page' value="${cri.page}"> <input
-											type='hidden' name='perPageNum' value="${cri.perPageNum}">
-										<input type='hidden' name='searchType' value="${cri.searchType}">
+
+										<input type='hidden' id="hno" name='hno'
+											value="${houseDto.hno}"> <input type='hidden'
+											name='page' value="${cri.page}"> <input type='hidden'
+											name='perPageNum' value="${cri.perPageNum}"> <input
+											type='hidden' name='searchType' value="${cri.searchType}">
 										<input type='hidden' name='keyword' value="${cri.keyword}">
-					
+
 									</form>
-									<div class="insert_form" style="display:inline-block;">
-										<table style="width : 500px">
+									<div class="insert_form" style="display: inline-block;">
+										<table style="width: 500px">
 											<tr>
 												<th>맛집이름</th>
 												<td>${houseDto.hnm}</td>
@@ -100,15 +123,18 @@
 												<td>${houseDto.hurl}</td>
 											</tr>
 											<tr>
-												<th style="display: table-cell; vertical-align: middle;">맛집 사진</th>
-												<td><ul class="mailbox-attachments clearfix uploadedList" ></ul></td>
-					    					</tr>
-											
+												<th style="display: table-cell; vertical-align: middle;">맛집
+													사진</th>
+												<td><ul
+														class="mailbox-attachments clearfix uploadedList"></ul></td>
+											</tr>
+
 										</table>
-												<input type="hidden" class="xxx" name="hmapx" value='${houseDto.hmapx }'>
-												<input type="hidden" class="yyy" name="hmapy" value='${houseDto.hmapy }'> 
+										<input type="hidden" class="xxx" name="hmapx"
+											value='${houseDto.hmapx }'> <input type="hidden"
+											class="yyy" name="hmapy" value='${houseDto.hmapy }'>
 									</div>
-										<%-- <div class="form-group">
+									<%-- <div class="form-group">
 											<label for="exampleInputEmail1">맛집 이름</label> <input type="text"
 												name='hnm' class="form-control" value="${houseDto.hnm}"
 												readonly="readonly">
@@ -124,131 +150,100 @@
 												readonly="readonly">
 										</div> --%>
 									<!-- /.box-body -->
-									
-									<div id="map"  style="border:1px solid #000; display:inline-block;"></div>
-					  <div class="box-footer" >
-					    
-					  </div>
-					 <c:if test="${loginMember.mmanyn == 0}">
-					    <button type="submit" class="btn btn-warning" id="modifyBtn"
-					    style="background: #6799FF;
-						color: #fff;
-						width: 100px;
-						height: 35px;
-						border: 0;
-						margin-top: 20px;
-						cursor: pointer;">수정</button>
-					    <button type="submit" class="btn btn-danger" id="removeBtn"
-					    style="background: #F15F5F;
-						color: #fff;
-						width: 100px;
-						height: 35px;
-						border: 0;
-						margin-top: 20px;
-						cursor: pointer;">삭제</button>
-					 </c:if>
-					    <button type="submit" class="btn btn-primary" id="goListBtn"
-					    style="background: #86E57F;
-						color: #fff;
-						width: 100px;
-						height: 35px;
-						border: 0;
-						margin-top: 20px;
-						cursor: pointer;">목록 </button>
-					  </div>
-							
-							<!--/.col (left) -->
-					
-						</div>
-						<!-- /.row -->
-					
-					
-					<!-- 리플시작 -->
-					<div>
-									<hr/>
-									<h4>댓글 목록[${ houseDto.hreplycnt }]</h4>
-									<hr/>
-									<div class="reply_form">
-									<table id="replyTable" style="border:0px;">
+
+									<div id="map"
+										style="border: 1px solid #000; display: inline-block;"></div>
+									<div class="box-footer"></div>
+									<br>
+									<c:if test="${loginMember.mmanyn == 0}">
+										<button type="submit" class="small button" id="modifyBtn">수정</button>
+										<button type="submit" class="small button" id="removeBtn">삭제</button>
+									</c:if>
+									<button type="submit" class="small button" id="goListBtn">목록
+									</button>
+								</div>
+
+								<!--/.col (left) -->
+
+							</div>
+							<!-- /.row -->
+
+
+							<!-- 리플시작 -->
+							<div>
+								<hr />
+								<h4>댓글 [${ houseDto.hreplycnt }]</h4>
+								<hr />
+								<div class="reply_form">
+									<table id="replyTable" style="border: 0px;">
 										<tr>
-											<td>
-												댓글 번호
-											</td>
-											<td>
-												댓글 내용
-											</td>
-											<td>
-												댓글 작성자
-											</td>
-											<td>
-												댓글 작성일
-											</td>
-											<td>
-												댓글 수정일
-											</td>
+											<td>번호</td>
+											<td>내용</td>
+											<td>작성자</td>
+											<td>작성일</td>
+											<td>수정일</td>
 										</tr>
-										
+
 										<c:forEach items="${replyList }" var="replyDto">
-										<tr>
-											<td>
-												${replyDto.hrno }
-											</td>
-											<td class="td${replyDto.hrno }">
-												<input type="hidden" class="hidden${replyDto.hrno }" value="${replyDto.hrcontent }"/>
-												<div class="d${replyDto.hrno }">${replyDto.hrcontent }</div>
-											</td>
-											<td>
-												${replyDto.mid }
-											</td>
-											<td>
-												<fmt:formatDate pattern="yyyy-MM-dd" value="${replyDto.hrwritedt }" />
-											</td>
-											<td>
-												<fmt:formatDate pattern="yyyy-MM-dd" value="${replyDto.hrupdatedt }" />
-											</td>
-											<c:if test="${loginMember.mid == replyDto.mid }">
-												<td class="modiv${replyDto.hrno }">
-													<button id="replyModBtn" onclick="replyModify(${replyDto.hrno });" class="reply_btn">수정</button>
+											<tr>
+												<td>${replyDto.hrno }</td>
+												<td class="td${replyDto.hrno }"><input type="hidden"
+													class="hidden${replyDto.hrno }"
+													value="${replyDto.hrcontent }" />
+													<div class="d${replyDto.hrno }">${replyDto.hrcontent }</div>
 												</td>
-											</c:if>
-											<c:if test="${(loginMember.mid == replyDto.mid) || loginMember.mmanyn == 0}">
-												<td>
-													<button id="replyDelBtn" onclick="replyDelete(${replyDto.hrno});" class="reply_btn">삭제</button>
-												</td>
-											</c:if>
-										</tr>
+												<td>${replyDto.mid }</td>
+												<td><fmt:formatDate pattern="yyyy-MM-dd"
+														value="${replyDto.hrwritedt }" /></td>
+												<td><fmt:formatDate pattern="yyyy-MM-dd"
+														value="${replyDto.hrupdatedt }" /></td>
+												<br>
+												<c:if test="${loginMember.mid == replyDto.mid }">
+													<td class="modiv${replyDto.hrno }">
+														<button id="replyModBtn"
+															onclick="replyModify(${replyDto.hrno });"
+															class="reply_btn small button">수정</button>
+													</td>
+												</c:if>
+												<c:if
+													test="${(loginMember.mid == replyDto.mid) || loginMember.mmanyn == 0}">
+													<td>
+														<button id="replyDelBtn"
+															onclick="replyDelete(${replyDto.hrno});"
+															class="reply_btn small button">삭제</button>
+													</td>
+												</c:if>
+											</tr>
 										</c:forEach>
 									</table>
-									</div>
-									<c:if test="${pageMaker.prev }">
-										<a href="readHouse${pageMaker.makeSearch(pageMaker.startPage - 1) }&hno=${houseDto.hno}">&laquo;</a>
-									</c:if>
-									<c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }" var="idx">
-										<a href="readHouse${pageMaker.makeSearch(idx) }&hno=${boardDto.bno}">${idx }</a>
-									</c:forEach>
-									<c:if test="${pageMaker.next && pageMaker.endPage > 0 }">
-										<a href="readHouse${pageMaker.makeSearch(pageMaker.endPage + 1) }&hno=${houseDto.hno}">&raquo;</a>
-									</c:if>
 								</div>
-								
-								<div class="box-body">
-									<hr/>
-									<input type="hidden" name="mid" id="mid" value="${loginMember.mid}" >
-									<input type="text" id="hrcontent" name="hrcontent" placeholder="댓글을 입력하세요"
-									style="width: 800px;height: 40px;border: 1px solid #ccc;">
-									<button id="replyAddBtn" 
-									style="background: #6799FF;
-									color: #fff;
-									width: 100px;
-									height: 35px;
-									border: 0;
-									margin-top: 20px;
-									cursor: pointer;">등록</button>
-								</div>
-					<!-- 리플끝 -->
-					
-					
-						<%-- <div class="row">
+								<c:if test="${pageMaker.prev }">
+									<a
+										href="readHouse${pageMaker.makeSearch(pageMaker.startPage - 1) }&hno=${houseDto.hno}">&laquo;</a>
+								</c:if>
+								<c:forEach begin="${pageMaker.startPage }"
+									end="${pageMaker.endPage }" var="idx">
+									<a
+										href="readHouse${pageMaker.makeSearch(idx) }&hno=${boardDto.bno}">${idx }</a>
+								</c:forEach>
+								<c:if test="${pageMaker.next && pageMaker.endPage > 0 }">
+									<a
+										href="readHouse${pageMaker.makeSearch(pageMaker.endPage + 1) }&hno=${houseDto.hno}">&raquo;</a>
+								</c:if>
+							</div>
+
+							<div class="box-body">
+								<hr />
+								<input type="hidden" name="mid" id="mid"
+									value="${loginMember.mid}"> <input type="text"
+									id="hrcontent" name="hrcontent" placeholder="댓글을 입력하세요"
+									style="width: 653px; height: 30px; border: 1px solid #ccc;">
+								<button id="replyAddBtn" class="small button">등록</button>
+							</div>
+							<!-- 리플끝 -->
+
+
+							<%-- <div class="row">
 							<div class="col-md-12">
 					
 					
@@ -327,21 +322,21 @@
 					  </div>
 					</div>      
 					
-					 --%>	
-						
-					</section>
-					
-					
+					 --%>
+
+						</section>
+
+
 					</div>
 				</div>
 			</div>
-		
-
-	
-<!-- /.content -->
 
 
-<script id="templateAttach" type="text/x-handlebars-template">
+
+			<!-- /.content -->
+
+
+			<script id="templateAttach" type="text/x-handlebars-template">
 <li data-src='{{fullName}}'>
   <span class="mailbox-attachment-icon has-img"><img src="{{imgsrc}}" alt="Attachment"></span>
   <div class="mailbox-attachment-info">
@@ -349,13 +344,13 @@
 	</span>
   </div>
 </li>                
-</script>  
+</script>
 
 
-          
 
 
-<script>
+
+			<script>
 $(document).ready(function(){
 	
 	var formObj = $("form[role='form']");
@@ -445,9 +440,9 @@ $(document).ready(function(){
 });
 </script>
 
-<!-- 대일 스크립트 -->
+			<!-- 대일 스크립트 -->
 
-<script type="text/javascript">
+			<script type="text/javascript">
 
 $(document).ready(function(){
 	var x= $(".xxx").val();
@@ -498,9 +493,9 @@ $(document).ready(function(){
 </script>
 
 
-<!-- 성모 댓글처리 코딩 -->
+			<!-- 성모 댓글처리 코딩 -->
 
-<script type="text/javascript">
+			<script type="text/javascript">
 $(document).ready(function(){
 	var hno = ${houseDto.hno};
 	var replyPage = 1;
@@ -604,7 +599,7 @@ $(document).ready(function(){
 	
 });
 </script>
-<script type="text/javascript">
+			<script type="text/javascript">
 	var replyModify = function(hrno) {
 		
 		var hrcontent = $(".hidden"+hrno).val();
@@ -683,5 +678,5 @@ $(document).ready(function(){
 
 		</div>
 	</div>
-<%@include file="../include/footer.jsp"%>
+	<%@include file="../include/footer.jsp"%>
 </body>

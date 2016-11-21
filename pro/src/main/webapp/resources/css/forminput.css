@@ -14,7 +14,6 @@
   font-size: 11px;
   color: #888;
 }
-#inputform input:not(.link-button),
 #inputform textarea
 {
   padding: 5px 8px;
@@ -26,7 +25,7 @@
   line-height: 1.5em;
   overflow: auto;
 }
-#inputform input:focus,
+
 #inputform textarea:focus
 {
   background: #fff;
@@ -50,7 +49,7 @@
   margin-top: 10px;
   margin-bottom: 10px;
 }
-#inputform input[type="submit"]:not(.link-button),
+/* #inputform input[type="submit"]:not(.link-button),
 #inputform input[type="button"]:not(.link-button)
 {
   width: auto;
@@ -73,7 +72,7 @@
 #inputform input[type="button"]:hover
 {
   background: #cb5432;
-}
+} */
 #inputform input#submit
 {
   margin-top: 7px;
