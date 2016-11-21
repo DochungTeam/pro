@@ -1,0 +1,31 @@
+From f06e546e124ff373a37e290a5775f3510354a797 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?=ED=99=A9=EC=9B=90=EA=B2=BD?= <dnjsrud427@naver.com>
+Date: Sat, 19 Nov 2016 18:33:07 +0900
+Subject: [PATCH] =?UTF-8?q?=EC=83=9D=EA=B0=81=EB=82=98=20=EC=96=B4?=
+ =?UTF-8?q?=EB=A0=B4=ED=92=8B=EC=9D=B4?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ pro/src/main/webapp/WEB-INF/views/house/houseList.jsp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/pro/src/main/webapp/WEB-INF/views/house/houseList.jsp b/pro/src/main/webapp/WEB-INF/views/house/houseList.jsp
+index 7e28214..4908d7c 100644
+--- a/pro/src/main/webapp/WEB-INF/views/house/houseList.jsp
++++ b/pro/src/main/webapp/WEB-INF/views/house/houseList.jsp
+@@ -137,8 +137,8 @@
+  					       '<h4>'+hnms[i]+'</h4></br>'+
+  					      '<p><b>'+hcontents[i]+'</p></b>'+
+  					       '<p><b>'+hphones[i]+'</p></b>'+
+- 					       '<p><b>'+hlinks[i]+'</p></b>'+
+- 					       '<p><b>'+hkinds[i]+'</p></b>'+
++ 					       "<p><b><a target='_blank' href ='"+hlinks[i]+"'>"+((hlinks[i]=="")? "":"홈페이지로 이동")+"</a></p></b>"+
++							'<p><b>'+hkinds[i]+'</p></b>'+
+  					       '<p><b>'+haddrs[i]+'</p></b>'+
+  					       '</p></div>',
+  					       maxWidth : 240,
+-- 
+2.8.1.windows.1
+

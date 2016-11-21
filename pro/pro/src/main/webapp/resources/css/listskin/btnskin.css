@@ -1,0 +1,71 @@
+@CHARSET "UTF-8";/* Start Button Styles --------------------------------------------- */
+input[type="button"], button {
+border:0 none;
+font:inherit;
+}
+*:focus{outline:0 none;}
+input[type="submit"] {border:1px solid rgba(0, 0, 0, 0.25);}
+input[type="button"], button {-moz-box-sizing: content-box;}/*fixes mozilla padding - mozilla only, doesn't need webkit or other values */
+input[type="button"]::-moz-focus-inner, button::-moz-focus-inner { padding:0;border:0 none; }/*fixes mozilla button padding - mozilla only, doesn't need webkit or other values */
+.clearfix:after {
+clear: both;
+content: '.';
+display: block;
+font-size: 0;
+line-height: 0;
+visibility: hidden;
+width: 0;
+height: 0;
+}
+/* General Button Styles, Cascades Down To Every Button ------------- */
+.button {
+-moz-border-radius:5px;
+-webkit-border-radius:5px;
+border-radius:5px;
+-moz-box-shadow:0 1px 3px rgba(0, 0, 0, 0.50);
+-webkit-box-shadow:0 1px 3px rgba(0, 0, 0, 0.50);
+box-shadow:0 1px 3px rgba(0, 0, 0, 0.50);
+background:#222222 url(button-overlay.png) repeat-x;
+border:1px solid rgba(0, 0, 0, 0.25);
+color:#FFFFFF !important;
+cursor:pointer;
+display:inline-block;
+font-size:13px;
+font-weight:bold;
+line-height:1;
+overflow:visible;
+padding:5px 15px 6px;
+position:relative;
+text-decoration:none;
+text-shadow:0 -1px 1px rgba(0, 0, 0, 0.25);
+width:auto;
+text-align:center;
+}
+.button:hover {
+background:#111111;
+color:#FFFFFF;
+}
+.button:active {
+background:#242424;
+}
+.green.button {
+background-color:#91BD09;
+}
+.green.button:hover {
+background-color:#749A02;
+}
+.green.button:active {
+background-color:#a4d50b;
+}
+/* Small Buttons -------------------------------------------------- */
+.small.button {
+font-size:11px;
+padding:5px 15px 6px;
+background-image:url(small-button-overlay.png);
+}
+input[type="submit"].small.button, .small.button.input {
+padding:3px 15px 4px;
+}
+input[type="button"].small.button, button.small.button {
+padding:4px 15px;
+}
