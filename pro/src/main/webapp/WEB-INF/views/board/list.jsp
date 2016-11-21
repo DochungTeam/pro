@@ -5,8 +5,6 @@
 
 <head>
 <script src="/resources/plugins/jQuery/jQuery-2.1.4.min.js"></script>
-<link rel="stylesheet" media="all" href="/resources/css/searchskin.css"/>
-
 
 <jsp:include page="../include/script.jsp" />
 </head>
@@ -37,12 +35,16 @@ table {
 }
 /* Zebra striping */
 tr:nth-of-type(odd) {
-	background: #eee;
+	background: #f9f0Da;
+}
+
+tr:nth-of-type(even) {
+	background: #FAE1BE;
 }
 
 th {
-	background: #333;
-	color: white;
+	background: #e3a742;
+	color: #eee;
 	font-weight: bold;
 }
 
@@ -138,6 +140,27 @@ td, th {
 		width: 495px;
 	}
 }
+
+.dSearchType {
+  width: 115px;
+  height: 30px;
+  padding-left: 10px;
+  border: 2px solid #e3a742;
+  border-radius: 5px;
+  outline: none;
+  background: #F9F0DA;
+  color: #9E9C9C;
+}
+.dSearchForm {
+  width: 250px;
+  height: 30px;
+  padding-left: 10px;
+  border: 2px solid #e3a742;
+  border-radius: 5px;
+  outline: none;
+  background: #F9F0DA;
+  color: #9E9C9C;
+}
 </style>
 
 
@@ -160,7 +183,7 @@ td, th {
 						</tr>
 					</thead>
 
-					<tbody>
+					<tbody class="notice">
 						<c:forEach items="${notice }" var="boardDto">
 							<tr class="noticeTr">
 								<td class="noticeTd">${boardDto.bno }</td>

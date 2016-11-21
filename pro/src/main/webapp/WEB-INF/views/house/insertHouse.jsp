@@ -162,7 +162,7 @@
 				<div class="dialogLayout" title="주소 검색">
 					<form>
 						<input type="text" name="keyword" id="keyword"> <input
-							type="button" value="주소 검색" id="search" class="small button">
+							type="button" value="주소 검색" id="search">
 					</form>
 
 
@@ -171,12 +171,7 @@
 	</div>
 <!-- <input type="button" value="중복 체크" onclick="idCheck()">
  -->	
-	<div class="dialogLayout" title="주소 검색">
-	 <form >
-			<input type="text" name="keyword" id="keyword" placeholder="동을 입력해주세요.">
-			<input type="button" value="주소 검색" id="search">			
-	</form>
-		
+	
 	
 	</div>
 	</div>
@@ -400,9 +395,7 @@
 																		+ error)
 															}
 														});
-
 											});
-
 							$(".dialogLayout").submit(function(event) {
 								event.preventDefault();
 							});

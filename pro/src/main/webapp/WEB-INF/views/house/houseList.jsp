@@ -15,7 +15,6 @@
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 <script type="text/javascript" src="/resources/jqueryui/jquery-ui.min.js"></script>
 <link rel="stylesheet" type="text/css" href="/resources/css/style.css">
-<link rel="stylesheet" media="all" href="/resources/css/searchskin.css"/>
 
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>샘플코드</title>
@@ -470,7 +469,7 @@ $(document).ready(function(){
 		
 		
 				
-        <input type="text" name="keyword" id="keyword" class="dSearchForm">
+        <input type="text" name="keyword" id="keyword" class="dSearchType">
         <input type="submit" value="검색" id="search" class="small button">
         
 		<table id="addrTable" >

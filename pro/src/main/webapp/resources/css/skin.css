@@ -5,14 +5,14 @@ body {
   background: #f1ede8 url(../img/noise-all.png);
 }
 body a:hover {
-  color: #cb5432;
+  color: #808080;
 }
 a {
-  color: #cb5432;
+  color: #808080;
 }
 header,
 footer {
-  background: #000000;
+  background: #f1ede8;
 }
 /* Selection colours (easy to forget) */
 ::selection {

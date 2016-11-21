@@ -25,9 +25,9 @@ border-radius:5px;
 -moz-box-shadow:0 1px 3px rgba(0, 0, 0, 0.50);
 -webkit-box-shadow:0 1px 3px rgba(0, 0, 0, 0.50);
 box-shadow:0 1px 3px rgba(0, 0, 0, 0.50);
-background:#222222 url(/resources/img/button-overlay.png) repeat-x;
+background:#e3a742 url(/resources/img/button-overlay.png) repeat-x;
 border:1px solid rgba(0, 0, 0, 0.25);
-color:#FFFFFF !important;
+color:#eee !important;
 cursor:pointer;
 display:inline-block;
 font-size:13px;
@@ -42,11 +42,11 @@ width:auto;
 text-align:center;
 }
 .button:hover {
-background:#111111;
-color:#FFFFFF;
+background:#e8ba6c;
+color:#eee;
 }
 .button:active {
-background:#242424;
+background:#e3a742;
 }
 /* Small Buttons -------------------------------------------------- */
 .small.button {
