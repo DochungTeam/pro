@@ -69,8 +69,7 @@
 							<form role="form" method="post" name="frm" id="insertForm">
 								<div class="box-body">
 									<div class="form-group" style="text-align: center">
-										<label for="exampleInputEmail1">맛집 사진 등록(사진 파일을 드래그 해서
-											올려주세요.)</label>
+										<label for="exampleInputEmail1">맛집 사진 등록(사진 파일을 드래그 해서 올려주세요.)</label>
 										<div class="fileDrop"></div>
 									</div>
 								</div>
@@ -161,24 +160,14 @@
  -->
 				<div class="dialogLayout" title="주소 검색">
 					<form>
-						<input type="text" name="keyword" id="keyword"> <input
-							type="button" value="주소 검색" id="search" class="small button">
+						<input type="text" name="keyword" id="keyword"> 
+						<input type="button" value="주소 검색" id="search" class="small button">
 					</form>
-
-
 				</div>
 		</div>
 	</div>
 <!-- <input type="button" value="중복 체크" onclick="idCheck()">
  -->	
-	<div class="dialogLayout" title="주소 검색">
-	 <form >
-			<input type="text" name="keyword" id="keyword" placeholder="동을 입력해주세요.">
-			<input type="button" value="주소 검색" id="search">			
-	</form>
-		
-	
-	</div>
 	</div>
 	</div>
 	<!-- /.row -->
@@ -308,100 +297,63 @@
 
 	<!-- 대일스크립트 -->
 	<script type="text/javascript">
-		$(document)
-				.ready(
-						function() {
+		$(document).ready(
+				function() {
+					/*  $("#choice").on("click",function(e){
+							e.preventDefault();
+							$(".haddr").text($("#modaladdr").val());
+						}); */
 
-							/*  $("#choice").on("click",function(e){
-								e.preventDefault();
-								$(".haddr").text($("#modaladdr").val());
-							}); */
-
-							$(".haddr").on("click", function(e) {
-
-								e.preventDefault();
-
-								dialog.dialog("open");
-
-							});
+					$(".haddr").on("click", function(e) {
+					e.preventDefault();
+					dialog.dialog("open");
+					});
 
 							/* 	var addrinput = function(haddr){
 							 alert("asdsad");
 							 $("#hhaddr").val(haddr);
 							 }; */
+					$(document).on("click", "#ddd", function() {
+						$("#hhaddr").val($("#ddd1").data("haddr"));
+						$("#hhmapx").val($("#ddd1").data("hmapx"));
+						$("#hhmapy").val($("#ddd1").data("hmapy"));
+						dialog.dialog("close");
+					});
 
-							$(document).on("click", "#ddd", function() {
-								$("#hhaddr").val($("#ddd1").data("haddr"));
-								$("#hhmapx").val($("#ddd1").data("hmapx"));
-								$("#hhmapy").val($("#ddd1").data("hmapy"));
-
-								dialog.dialog("close");
+					$("#search").on("click",function(e){
+						e.preventDefault();
+						/* alert($(this).parents("tr").find("td").eq(0).find("input").val());
+						 */
+						var keyword = $("#keyword").val();
+						var values = [];
+						alert("ㅎㅎ");
+						$.ajax({
+							type : 'post',
+							url : '/house/insertAjax',
+							headers : {
+								"Content-Type" : "application/json",
+								"X-HTTP-Method-Override" : "POST"
+							},
+							data : JSON.stringify(keyword),
+							dataType : 'json',
+							success : function(result) {
+								$(".modaladdr tr").remove();
+								$(result).each(function(i,aaa){
+									alert()
+									$(".modaladdr").append(
+										"<tr id='"+aaa.hno+"'>'"+
+										"<td> "+aaa.haddr+"</td>"+
+										"<td><input type='hidden' id='ddd1' data-hmapx='"+aaa.hmapx+"' data-hmapy='"+aaa.hmapy+"' data-haddr='"+aaa.haddr+"'> </td>"+
+										"<td><button id='ddd'>선택</button></td></tr>"
+									);
+									
+								});	
+							},
+							error : function(request,status,error) {
+								alert("code:"+ request.status+"\n"+ "message:"+ request.responseText+ "\n"+ "error:"+ error);
+							}
 							});
-
-							$("#search")
-									.on(
-											"click",
-											function(e) {
-												e.preventDefault();
-												/* alert($(this).parents("tr").find("td").eq(0).find("input").val());
-												 */
-												var keyword = $("#keyword")
-														.val();
-												var values = [];
-
-												$
-														.ajax({
-															type : 'post',
-															url : '/house/insertAjax',
-															headers : {
-																"Content-Type" : "application/json",
-																"X-HTTP-Method-Override" : "POST"
-															},
-
-															data : JSON
-																	.stringify(keyword),
-															dataType : 'json',
-
-															success : function(
-																	result) {
-																$(
-																		".modaladdr tr")
-																		.remove();
-																$(result)
-																		.each(
-																				function(
-																						i,
-																						aaa) {
-
-																					$(
-																							".modaladdr")
-																							.append(
-																									"<tr id='"+aaa.hno+"'>'"
-																											+ "<td> "
-																											+ aaa.haddr
-																											+ "</td>"
-																											+ "<td><input type='hidden' id='ddd1' data-hmapx='"+aaa.hmapx+"' data-hmapy='"+aaa.hmapy+"' data-haddr='"+aaa.haddr+"'> </td>"
-																											+ "<td><button id='ddd'>선택</button></td></tr>");
-
-																				});
-
-															},
-															error : function(
-																	request,
-																	status,
-																	error) {
-																alert("code:"
-																		+ request.status
-																		+ "\n"
-																		+ "message:"
-																		+ request.responseText
-																		+ "\n"
-																		+ "error:"
-																		+ error)
-															}
-														});
-
-											});
+						});
 
 							$(".dialogLayout").submit(function(event) {
 								event.preventDefault();
