@@ -118,6 +118,7 @@ public class BoardSearchBoardController {
 	
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public void registGET() throws Exception {
+		
 		logger.info("register get............");
 	}
 	

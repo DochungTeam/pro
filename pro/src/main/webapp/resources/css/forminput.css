@@ -1,0 +1,109 @@
+/* 회원 가입에서 처리할 CSS*/
+
+#inputform
+{
+  margin-bottom: 70px;
+}
+#inputform
+{
+  margin-bottom: 30px;
+}
+#inputform
+  {
+  margin-bottom: 20px;
+  font-size: 11px;
+  color: #888;
+}
+#inputform input:not(.link-button),
+#inputform textarea
+{
+  padding: 5px 8px;
+  background: #DAD9FF;
+  color: #484848;
+  border: 1px solid #ccc;
+  font-size: 18px;
+  font-family: Helvetica, Arial;
+  line-height: 1.5em;
+  overflow: auto;
+}
+#inputform input:focus,
+#inputform textarea:focus
+{
+  background: #fff;
+  -webkit-box-shadow: 0px 0px 3px rgba(251, 228, 113, 0.4);
+  -moz-box-shadow: 0px 0px 3px rgba(251, 228, 113, 0.4);
+  -o-box-shadow: 0px 0px 3px rgba(251, 228, 113, 0.4);
+  box-shadow: 0px 0px 3px rgba(251, 228, 113, 0.4);
+}
+#inputform input[type="text"],
+#inputform input[type="password"]
+ {
+  overflow: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+#inputform textarea
+{
+  width: 93.1818%;
+  height: 230px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+#inputform input[type="submit"]:not(.link-button),
+#inputform input[type="button"]:not(.link-button)
+{
+  width: auto;
+  color: #444;
+  font-size: 11px;
+  background: #eaeaea;
+  padding: 3px 10px;
+  border: 1px solid #ccc;
+  -webkit-box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.3);
+  -o-box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.3);
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+#inputform input[type="submit"]:hover,
+#inputform input[type="button"]:hover
+{
+  background: #cb5432;
+}
+#inputform input#submit
+{
+  margin-top: 7px;
+}
+#inputform p
+{
+  margin-bottom: 20px;
+}
+#inputform #error
+{
+  margin-left: 10px;
+}
+#inputform #sent-form-msg
+{
+  padding: 5px 10px;
+  margin-bottom: 40px;
+  background: rgba(0, 0, 0, 0.1);
+  color: #444;
+}
+
+#inputform .selectbox{
+	
+	width: 200px; /* 원하는 너비설정 */
+	padding: .4em .4em; /* 여백으로 높이 설정 */
+	font-family: inherit;  /* 폰트 상속 */
+	font-size: 18px;
+	background: #DAD9FF url(https://farm1.staticflickr.com/379/19928272501_4ef877c265_t.jpg) no-repeat 100% 50%; /* 네이티브 화살표 대체 */  
+	border: 1px solid #ccc; 
+	border-radius: 0px; /* iOS 둥근모서리 제거 */
+	-webkit-appearance: none; /* 네이티브 외형 감추기 */
+	-moz-appearance: none;
+	appearance: none;
+}
