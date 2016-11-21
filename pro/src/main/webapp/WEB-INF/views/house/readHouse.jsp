@@ -197,12 +197,11 @@
 														value="${replyDto.hrwritedt }" /></td>
 												<td><fmt:formatDate pattern="yyyy-MM-dd"
 														value="${replyDto.hrupdatedt }" /></td>
-												<br>
 												<c:if test="${loginMember.mid == replyDto.mid }">
 													<td class="modiv${replyDto.hrno }">
 														<button id="replyModBtn"
 															onclick="replyModify(${replyDto.hrno });"
-															class="reply_btn small button">수정</button>
+															class="reply_btn">수정</button>
 													</td>
 												</c:if>
 												<c:if
@@ -210,7 +209,7 @@
 													<td>
 														<button id="replyDelBtn"
 															onclick="replyDelete(${replyDto.hrno});"
-															class="reply_btn small button">삭제</button>
+															class="reply_btn">삭제</button>
 													</td>
 												</c:if>
 											</tr>
@@ -611,8 +610,8 @@ $(document).ready(function(){
 			"<span class='span"+hrno+"'><input type='text' class='text"+hrno+"' value='"+hrcontent+"'/></span>"		
 		);
 		$(".modiv"+hrno).append(
-			"<button onclick='replyModifyOk("+hrno+");' class='reply_btn'>확인</button>"+	
-			"<button onclick='replyModifyCancel("+hrno+");' class='reply_btn reply_btn_margin'>취소</button>"	
+			"<button onclick='replyModifyOk("+hrno+");' class='reply_btn small button'>확인</button>"+	
+			"<button onclick='replyModifyCancel("+hrno+");' class='reply_btn reply_btn_margin small button'>취소</button>"	
 		);
 		 /* $(".reply_btn").css("margin-left", "5px" ); */
 	}
@@ -651,7 +650,7 @@ $(document).ready(function(){
 			"<div class='d"+hrno+"'>"+hrcontent+"</div>"
 		);
 		$(".modiv"+hrno).append(
-			"<button class='ok"+hrno+" reply_btn' onclick='replyModify("+hrno+");'>수정</button>"
+			"<button class='ok"+hrno+" reply_btn small button' onclick='replyModify("+hrno+");'>수정</button>"
 		);
 		
 	}

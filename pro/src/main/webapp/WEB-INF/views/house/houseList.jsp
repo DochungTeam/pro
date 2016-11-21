@@ -15,6 +15,7 @@
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 <script type="text/javascript" src="/resources/jqueryui/jquery-ui.min.js"></script>
 <link rel="stylesheet" type="text/css" href="/resources/css/style.css">
+<link rel="stylesheet" media="all" href="/resources/css/searchskin.css"/>
 
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>샘플코드</title>
@@ -403,8 +404,8 @@ $(document).ready(function(){
 <%@include file="../include/header.jsp"%>
 	<div id="main">
 				<div id="start">
+	<br>
 	<div style="position: relative; float: left; ">
-	
 	<h5>맛집 검색~~</h5>
     <div>
 		<img src="/resources/img/map.png" usemap="#Map" name="map"
@@ -456,7 +457,7 @@ $(document).ready(function(){
 	
 		<div id="content">
 		
-		<input type="text" id="si" name="si" disabled="disabled">
+		<input type="text" id="si" name="si" disabled="disabled" class="dSearchType">
 		
 		구
 		<select id="gu">
@@ -469,8 +470,8 @@ $(document).ready(function(){
 		
 		
 				
-        <input type="text" name="keyword" id="keyword">
-        <input type="button" value="검색" id="search" class="small button">
+        <input type="text" name="keyword" id="keyword" class="dSearchForm">
+        <input type="submit" value="검색" id="search" class="small button">
         
 		<table id="addrTable" >
 		
@@ -494,7 +495,7 @@ $(document).ready(function(){
 		
     </div>
 	</div>
-       <div id="map"style="border:1px solid #000; "></div>
+       <div id="map"></div>
        </div>
        </div>
 <%@include file="../include/footer.jsp"%>

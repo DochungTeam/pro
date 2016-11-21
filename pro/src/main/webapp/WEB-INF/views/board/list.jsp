@@ -5,6 +5,7 @@
 
 <head>
 <script src="/resources/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+<link rel="stylesheet" media="all" href="/resources/css/searchskin.css"/>
 
 
 <jsp:include page="../include/script.jsp" />
@@ -144,7 +145,7 @@ td, th {
 	<div id="page">
 		<jsp:include page="../include/header.jsp" />
 		<div id="main">
-		<br>
+			<br>
 			<div id="start" class="wrapper cf">
 
 				<table>
@@ -226,7 +227,7 @@ td, th {
 				<br>
 				<div style="text-align: center;">
 
-					<select id="selectSearch" name="searchType" class="d1SearchType">
+					<select id="selectSearch" name="searchType">
 						<option value="t"
 							<c:out value="${cri.searchType eq 't'?'selected':'' }"/>>제목
 						</option>
@@ -240,12 +241,11 @@ td, th {
 							<c:out value="${cri.searchType eq 'tc'?'selected':'' }"/>>제목
 							또는 내용</option>
 					</select> <input type="text" name="keyword" id="keywordInput"
-						value="${cri.keyword }" class="d1">
+						value="${cri.keyword }" class="dSearchForm">
 
 					<button id="searchBtn" class="small button">검색</button>
 				</div>
-				<br>
-				<br>
+				<br> <br>
 				<script>
 					$(document)
 							.ready(

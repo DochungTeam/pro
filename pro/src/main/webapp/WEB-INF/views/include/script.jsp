@@ -72,14 +72,11 @@
 		<!-- 헤드 장식 -->
 		<link rel="stylesheet" href="/resources/css/headskin.css" >
 		
-<<<<<<< HEAD
 		<!-- button -->
 		<link rel="stylesheet" href="/resources/css/btnskin.css">
-=======
 		<!-- 헤드 장식 -->
 		<link rel="stylesheet" href="/resources/css/headskin.css" >
 		<link rel="stylesheet" href="/resources/css/mainslider.css" >
->>>>>>> 485762dac415b4f4668627d409bd7ca91d565d9a
 		
 		<!-- searchskin -->
 		<link rel="stylesheet" href="/resources/css/searchskin.css">
