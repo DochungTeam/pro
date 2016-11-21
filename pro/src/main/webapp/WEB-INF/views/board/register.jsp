@@ -37,7 +37,13 @@
 					return window.location.pathname.substring(0,
 							window.location.pathname.indexOf("/", 2));
 				}
+				$(".btn-cancel").on("click", function(){
+					history.go(-1);
+				});
+				
+
 			});
+	
 </script>
 
 <jsp:include page="../include/script.jsp" />
@@ -54,10 +60,8 @@
 <body>
 	<div id="page">
 		<jsp:include page="../include/header.jsp" />
-		<div  id="main">
+		<div id="main">
 			<div id="start" class="wrapper cf">
-
-
 
 				<form role="form" method="post" id="frm">
 					<div class="box-body">
@@ -80,7 +84,7 @@
 
 					<div class="box-footer">
 						<button type="submit" id="savebutton">등록</button>
-						<input type="button" class="cancel" value="취소" />
+						<input type="button" class="btn-cancel" value="취소" />
 					</div>
 				</form>
 
