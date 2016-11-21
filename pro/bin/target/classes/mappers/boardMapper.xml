@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kedu.mapper.BoardMapper">
+
+	<insert id="create">
+		insert into board (btitle, bcontent, bwriter, filedata, callback, callback_func, bboard) values(#{btitle}, #{bcontent}, #{bwriter}, #{filedata}, #{callback}, #{callback_func}, #{bboard})
+	</insert>
+
+	<select id="read" resultType="BoardDto">
+		select bno, btitle, bcontent, bwritedt, bboard, bcount, bwriter, rcount, filedata, callback, callback_func from board where bno = #{bno}
+	</select>
+
+	<update id="update">
+		update board set btitle = #{btitle}, bcontent = #{bcontent}, filedata = #{filedata}, callback = #{callback}, callback_func = #{callback_func}, bboard = #{bboard}, bupdatedt = now() where bno = #{bno}
+	</update>
+
+	<delete id="delete">
+		delete from board where bno = #{bno}
+	</delete>
+	
+	<select id="listAll" resultType="BoardDto">
+	<![CDATA[
+		select bno, btitle, bcontent, bwritedt, bcount, bwriter from board
+		where bno > 0 order by bno desc
+	]]>
+	</select>
+	
+	<select id="listPage" resultType="BoardDto">
+	<![CDATA[
+		select bno, btitle, bcontent, bwritedt, bcount, bwriter from board
+		where bno > 0 order by bno desc limit #{page}, 10
+	]]>
+	</select>
+	
+	<select id="listCriteria" resultType="BoardDto">
+	<![CDATA[
+		select bno, btitle, bcontent, bwritedt, bcount, bwriter, rcount from board
+		where bno > 0 order by bno desc, bwritedt desc limit #{pageStart}, #{perPageNum}
+	]]>
+	</select>
+	
+	<select id="countPaging" resultType="int">
+	<![CDATA[
+		select count(bno) from board
+		where bno > 0
+	]]>
+	</select>
+	
+	<select id="countReplyPaging" resultType="int">
+		select count(rno) from reply
+		where bno = #{bno}
+	</select>
+	
+	<select id="listSearch" resultType="BoardDto">
+	<![CDATA[
+		select bno, btitle, bcontent, bwritedt, bcount, bwriter, rcount from board
+		where bno > 0 
+	]]>
+	
+	<include refid="search"></include>
+		
+	<![CDATA[
+		order by bno desc limit #{pageStart}, #{perPageNum}
+	]]>
+	</select>
+	
+	<select id="listSearchCount" resultType="int">
+	<![CDATA[
+		select count(bno) from board
+		where bno > 0
+	]]>
+	
+		<include refid="search"></include>
+		
+	</select>
+
+	<update id="updateRcount">
+		update board set rcount = (select count(rno) from reply where bno = board.bno)
+		where bno > 0
+	</update>
+	
+	<update id="updateBcount">
+		update board set bcount = bcount + 1 where bno = #{bno}
+	</update>
+	
+	<select id="listNotice" resultType="BoardDto">
+	<![CDATA[
+		select bno, btitle, bcontent, bwritedt, bcount, bwriter, rcount from board
+		where 1=1 and bno > 0 and bboard = 1 order by bno desc, bwritedt desc
+	]]>
+	</select>
+	
+	
+<sql id="search">
+		<if test="searchType != null">
+			<if test="searchType == 't'.toString()">
+				and btitle like CONCAT('%', #{keyword}, '%')
+			</if>
+			<if test="searchType == 'c'.toString()">
+				and bcontent like CONCAT('%', #{keyword}, '%')
+			</if>
+			<if test="searchType == 'w'.toString()">
+				and bwriter like CONCAT('%', #{keyword}, '%')
+			</if>
+			<if test="searchType == 'tc'.toString()">
+				and (btitle like CONCAT('%', #{keyword}, '%') OR bcontent like CONCAT('%', #{keyword}, '%'))
+			</if>
+		</if>
+</sql>
+</mapper>
