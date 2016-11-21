@@ -64,9 +64,16 @@
 				<form role="form" method="post" id="frm">
 					<div class="box-body">
 						<div class="form-group">
+<<<<<<< HEAD
 							<input type="text" name="btitle" class="form-control"> <input
 								type="hidden" name="bwriter" value="${loginMember.mid }"
 								readonly="readonly">
+=======
+							<input type="text" name="btitle" class="form-control"
+								placeholder="제목을 입력하세요..."> 
+							<input type="hidden"
+								name="bwriter" value="${loginMember.mid }" readonly="readonly">
+>>>>>>> 485762dac415b4f4668627d409bd7ca91d565d9a
 							<c:if test="${loginMember.mmanyn == 0}">
 								<input type="checkbox" name="bboard" id="bboard" value="1" />
 								<label for="bboard">공지사항</label>

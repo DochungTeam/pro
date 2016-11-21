@@ -1,0 +1,50 @@
+@CHARSET "UTF-8";
+
+.slider{
+	width:1880px;
+	height: 376px;
+	
+}
+
+.leftDiv{
+	float: left;
+	width: 450px;
+	height: 376px;
+	background-color: #000;
+}
+.leftDiv img{
+	width: 450px;
+	height: 376px;
+	background: #000; filter:alpha(opacity=30); opacity:0.3; -moz-opacity:0.1;
+}
+.rightDiv{
+	float: left;
+	width: 450px;
+	height: 376px;
+	background-color: #000;
+}
+.rightDiv img{
+	width: 450px;
+	height : 376px;
+	background: #000; filter:alpha(opacity=30); opacity:0.3; -moz-opacity:0.1;
+}
+.centerDiv{
+	width: 900px;
+	height : 376px;
+	float: left;
+}
+.centerDiv img{
+	width: 940px;
+	height : 376px;
+}
+
+.arrow_left{
+	position: absolute;
+	left: 400px;
+	top: 300px;	
+}
+.arrow_right{
+	position: absolute;
+	left: 1320px;
+	top: 300px;	
+}

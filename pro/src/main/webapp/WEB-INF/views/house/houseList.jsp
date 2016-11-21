@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fmt"  uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@include file="../include/script.jsp"%>
 
 <!DOCTYPE HTML>
@@ -493,33 +492,6 @@ $(document).ready(function(){
 		</tr>
    		</c:forEach >	
 		
-		
-<%--     <table>
- 		<tr>
-			<td colspan="9" width="100%" bgcolor="pink"></td>
-			
-		</tr>
-		
-		<c:forEach items="${list}" var="houseDto">
-
-				<fmt:formatDate value="${houseDto.htime}" pattern="yyyy-MM-dd HH:mm"/>		
-			<tr>
-				<td>${houseDto.hno }</td>
-			<div id="open"><td ><a href='${houseDto.hnm}'>${houseDto.hnm}</a></td></div>	
-			
-				<td rowspan="1">${houseDto.hnm}</td>
-				<td>${houseDto.hcontent }</td>
-				<td>${houseDto.hphone }</td>
-				<td><a href='${houseDto.hlink}'>${houseDto.hlink}</a></td>
-				<td>${houseDto.hkind }</td>
-				<td>${houseDto.haddr }</td>
-				<td id="hidden" 'x : ${houseDto.hmapx }'></td>
-				<td id="hidden" 'y : ${houseDto.hmapy }'></td> 
-		</tr>
-					
-		</c:forEach>
-	</table>  --%>
-         		
     </div>
 	</div>
        <div id="map"style="border:1px solid #000; "></div>

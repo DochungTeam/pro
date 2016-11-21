@@ -320,7 +320,9 @@ function jjim_mouse_enter(img){
 	if(img.attr("class")==1){
 		img.attr("src","/resources/img/XD.png");
 	}else{
-		
+		if('${loginMember.mid}'==null){
+			
+		}
 	}
 }
 
