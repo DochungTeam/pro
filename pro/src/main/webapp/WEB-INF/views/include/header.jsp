@@ -24,7 +24,7 @@
 <header>
 		<div class="wrapper cf">
 			<div id="logo">
-				<a href="index.html"><img src="/resources/img/logo.png"
+				<a href="/house/list"><img src="/resources/img/nologo.gif"
 					alt="Simpler"></a>
 			</div>
 			<!-- nav -->
@@ -60,7 +60,7 @@
 		<div class="downNav">
 			<ul id="navDown" class="sf-menu">
 				<li><a href="/house/list"><span>맛집 리스트</span></a></li>
-				<li><a href="/house/houseList">맛집 지도</a></li>
+				<li><a href="/house/houseList">맛집 검색</a></li>
 				<li><a href="/board/list">게시판</a></li>
 			</ul>
 		</div>
