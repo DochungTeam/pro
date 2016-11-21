@@ -18,33 +18,33 @@ $(function(){
 	
 	$(".arrow_left").on("click",function(){
 		
-		$("#leftHeadImg").hide("slide",{direction:"left"},50,function(){
+		$("#leftHeadImg").hide("slide",{direction:"left"},250,function(){
 			leftIndex++;
 			if(leftIndex>=imageArray.length){
 				leftIndex=0;
 			}
 			$("#leftHeadImg").attr("src",myImage+imageArray[leftIndex]);
-			$("#leftHeadImg").show("slide",{direction:"right"},50,null);		
 		});
+		$("#leftHeadImg").show("slide",{direction:"right"},250,null);		
 
-		$("#centerHeadImg").hide("slide",{direction:"left"},50,function(){
+		$("#centerHeadImg").hide("slide",{direction:"left"},250,function(){
 			centerIndex++;
 			if(centerIndex>=imageArray.length){
 				centerIndex=0;
 			}
 			$("#centerHeadImg").attr("src",myImage+imageArray[centerIndex]);
-			$("#centerHeadImg").show("slide",{direction:"right"},50,null);		
 		});
+		$("#centerHeadImg").show("slide",{direction:"right"},250,null);		
 		
-		$("#rightHeadImg").hide("slide",{direction:"left"},50,function(){
+		$("#rightHeadImg").hide("slide",{direction:"left"},250,function(){
 			rightIndex++;
 			if(rightIndex>=imageArray.length){
 				rightIndex=0;
 			}
 			$("#rightHeadImg").attr("src",myImage+imageArray[rightIndex]);
-			$("#rightHeadImg").show("slide",{direction:"right"},50,null);		
 			
 		});
+		$("#rightHeadImg").show("slide",{direction:"right"},250,null);		
 
 		
 		
