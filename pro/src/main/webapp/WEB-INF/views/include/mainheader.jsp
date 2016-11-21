@@ -62,7 +62,7 @@ $(function(){
 
 		$("#centerHeadImg").hide("slide",{direction:"right"},100,function(){
 			centerIndex--;
-			if(centerIndex>=imageArray.length){
+			if(centerIndex<0){
 				centerIndex=imageArray.length-1;
 			}
 			$("#centerHeadImg").attr("src",myImage+imageArray[centerIndex]);
@@ -71,7 +71,7 @@ $(function(){
 		
 		$("#rightHeadImg").hide("slide",{direction:"right"},100,function(){
 			rightIndex--;
-			if(rightIndex>=imageArray.length){
+			if(rightIndex<0){
 				rightIndex=imageArray.length-1;
 			}
 			$("#rightHeadImg").attr("src",myImage+imageArray[rightIndex]);
