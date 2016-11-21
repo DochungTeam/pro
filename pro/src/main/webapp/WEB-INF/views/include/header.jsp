@@ -57,7 +57,7 @@
 			<!-- ends nav -->
 		</div>
 		<div class="downNav">
-			<ul id="navDown" class="sf-menu">
+			<ul id="navDown" class="sf-menuDown">
 				<li><a href="/house/list"><span>맛집 리스트</span></a></li>
 				<li><a href="/house/houseList">맛집 검색</a></li>
 				<li><a href="/board/list">게시판</a></li>

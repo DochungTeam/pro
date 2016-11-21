@@ -341,13 +341,11 @@ $(document).ready(function(){
 			<div id="start" class="wrapper cf">
 				<form role="form" action="modifyPage" method="post">
 
-<<<<<<< HEAD
 					<input type="hidden" name="bno" id="bno" value="${boardDto.bno }">
 					<input type="hidden" name="page" value="1"> <input
 						type="hidden" name="perPageNum" value="${cri.perPageNum }">
 					<input type="hidden" name="searchType" value="${cri.searchType }">
 					<input type="hidden" name="keyword" value="${cri.keyword }">
-=======
 <div class="box-body">
 	<table>
 		<tr>
@@ -367,7 +365,6 @@ $(document).ready(function(){
 	</table>
 		<div>${boardDto.bcontent }</div>
 </div>
->>>>>>> 485762dac415b4f4668627d409bd7ca91d565d9a
 
 				</form>
 

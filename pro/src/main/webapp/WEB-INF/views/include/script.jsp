@@ -69,8 +69,6 @@
 		
 		<!-- insertHouse -->
 		<script src="/resources/js/inserthouse.js"></script>
-		<!-- 헤드 장식 -->
-		<link rel="stylesheet" href="/resources/css/headskin.css" >
 		
 		<!-- button -->
 		<link rel="stylesheet" href="/resources/css/btnskin.css">
