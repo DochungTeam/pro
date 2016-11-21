@@ -81,4 +81,5 @@
 		
 		<!-- 헤드 장식 -->
 		<link rel="stylesheet" href="/resources/css/headskin.css" >
+		<link rel="stylesheet" href="/resources/css/mainslider.css" >
 		
