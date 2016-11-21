@@ -141,9 +141,9 @@
 										<tr>
 											<td colspan="2">
 												<button type="submit" class="btn btn-primary small button"
-													id="goListBtn">취소</button>
-												<button type="submit" class="btn btn-primary small button"
 													onclick="return housecheck_ok()">등록</button>
+												<button type="submit" class="btn btn-primary small button"
+													id="goListBtn">취소</button>
 											</td>
 										</tr>
 									</table>
@@ -159,15 +159,14 @@
 				<!-- <input type="button" value="중복 체크" onclick="idCheck()">
  -->
 				<div class="dialogLayout" title="주소 검색">
-					<form>
-						<input type="text" name="keyword" id="keyword"> 
-						<input type="button" value="주소 검색" id="search" class="small button">
-					</form>
-				</div>
-		</div>
+		 <form >
+			<input type="text" name="keyword" id="keyword" placeholder="동을 입력하세요.">
+			<input type="button" value="주소 검색" id="search" class="small button" >			
+		</form>
+		
+		<table class="modaladdr">
+		</table>
 	</div>
-<!-- <input type="button" value="중복 체크" onclick="idCheck()">
- -->	
 	</div>
 	</div>
 	<!-- /.row -->
@@ -326,7 +325,7 @@
 						 */
 						var keyword = $("#keyword").val();
 						var values = [];
-						alert("ㅎㅎ");
+						
 						$.ajax({
 							type : 'post',
 							url : '/house/insertAjax',
@@ -336,10 +335,11 @@
 							},
 							data : JSON.stringify(keyword),
 							dataType : 'json',
+							
 							success : function(result) {
 								$(".modaladdr tr").remove();
 								$(result).each(function(i,aaa){
-									alert()
+									
 									$(".modaladdr").append(
 										"<tr id='"+aaa.hno+"'>'"+
 										"<td> "+aaa.haddr+"</td>"+
