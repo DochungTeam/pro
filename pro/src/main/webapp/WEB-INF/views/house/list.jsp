@@ -16,11 +16,11 @@
 </head>
 <body class="page">
 
-		<%@include file="../include/header.jsp"%>
+		<jsp:include page="../include/header.jsp"/>
 		<div id="main">
 				
-			<div id="start" class="wrapper cf">
-			<%@include file="../include/mainheader.jsp"%>
+			<jsp:include page="../include/mainheader.jsp"/>
+			<div class="wrapper cf">
 			
 			
 			<input type='hidden' name='hno' value="${houseDto.hno}">

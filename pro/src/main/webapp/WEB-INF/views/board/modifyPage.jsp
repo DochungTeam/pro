@@ -5,16 +5,13 @@
 <head>
 <script src="/resources/plugins/jQuery/jQuery-2.1.4.min.js"></script>
 <jsp:include page="../include/script.jsp"/>
-<<<<<<< HEAD
 <style type="text/css">
 
 </style>
-=======
 <script type="text/javascript"
 	src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script type="text/javascript"
 	src="/resources/editor/js/HuskyEZCreator.js" charset="utf-8"></script>
->>>>>>> 485762dac415b4f4668627d409bd7ca91d565d9a
 <script>
 
 /* $(document).ready(function(){
@@ -74,7 +71,7 @@ $(document).ready(
 	<!-- MAIN -->
 	<div id="main">
 		<div id="start" class="wrapper cf">
-	<form role="form" id="frm" method="post">
+		<form role="form" id="frm" method="post">
 	
 		<input type="hidden" name="page" value="${cri.page }">
 		<input type="hidden" name="perPageNum" value="${cri.perPageNum }">
@@ -104,21 +101,18 @@ $(document).ready(
 		</div>
 		
 	</form>
-<<<<<<< HEAD
-	
 	<br>	
 	<div>
 		<button type="submit" class="btn btn-save small button">저장</button>
 		<button type="submit" class="btn btn-cancel small button">취소</button>
-=======
 		
 	<div class="box-footer">
 		<button type="submit" class="savebutton">저장</button>
 		<button type="submit" class="btn-cancel">취소</button>
->>>>>>> 485762dac415b4f4668627d409bd7ca91d565d9a
 	</div>
 
 		</div>
 	</div>
+</div>
 <jsp:include page="../include/footer.jsp"/>
 </body>

@@ -3,13 +3,6 @@
 /* <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"> */
 
 * {box-sizing: border-box;}
-body{margin: 0;}
-div {padding: 30px 0}
-form {
-  position: relative;
-  width: 300px;
-  margin: 0 auto;
-}
 .d1SearchType {
   width: 115px;
   height: 30px;

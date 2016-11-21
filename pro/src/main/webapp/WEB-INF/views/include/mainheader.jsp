@@ -18,31 +18,31 @@ $(function(){
 	
 	$(".arrow_left").on("click",function(){
 		
-		$("#leftHeadImg").hide("slide",{direction:"left"},100,function(){
+		$("#leftHeadImg").hide("slide",{direction:"left"},50,function(){
 			leftIndex++;
 			if(leftIndex>=imageArray.length){
 				leftIndex=0;
 			}
 			$("#leftHeadImg").attr("src",myImage+imageArray[leftIndex]);
-			$("#leftHeadImg").show("slide",{direction:"right"},100,null);		
+			$("#leftHeadImg").show("slide",{direction:"right"},50,null);		
 		});
 
-		$("#centerHeadImg").hide("slide",{direction:"left"},100,function(){
+		$("#centerHeadImg").hide("slide",{direction:"left"},50,function(){
 			centerIndex++;
 			if(centerIndex>=imageArray.length){
 				centerIndex=0;
 			}
 			$("#centerHeadImg").attr("src",myImage+imageArray[centerIndex]);
-			$("#centerHeadImg").show("slide",{direction:"right"},100,null);		
+			$("#centerHeadImg").show("slide",{direction:"right"},50,null);		
 		});
 		
-		$("#rightHeadImg").hide("slide",{direction:"left"},100,function(){
+		$("#rightHeadImg").hide("slide",{direction:"left"},50,function(){
 			rightIndex++;
 			if(rightIndex>=imageArray.length){
 				rightIndex=0;
 			}
 			$("#rightHeadImg").attr("src",myImage+imageArray[rightIndex]);
-			$("#rightHeadImg").show("slide",{direction:"right"},100,null);		
+			$("#rightHeadImg").show("slide",{direction:"right"},50,null);		
 			
 		});
 
@@ -55,7 +55,7 @@ $(function(){
 </script>
 
 
-<div id="start" class="slider">
+<div id="mainstart" class="slider">
 	<div class="leftDiv">
 		<img id="leftHeadImg" src="/resources/img/dummies/slides/08.jpg" title="" alt="alt"/>
 	</div>

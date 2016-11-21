@@ -135,8 +135,7 @@
 		<jsp:include page="../include/header.jsp"/>
 		<!-- MAIN -->
 		<div id="main">
-			<jsp:include page="../include/mainheader.jsp"/>
-			<div class="wrapper cf">
+			<div id="start" class="wrapper cf">
 			
 			<!-- page content-->
         	<div id="page-content" class="cf">        	

@@ -166,10 +166,8 @@
 					</form>
 
 
-<<<<<<< HEAD
 				</div>
 		</div>
-=======
 	</div>
 <!-- <input type="button" value="중복 체크" onclick="idCheck()">
  -->	
@@ -182,7 +180,6 @@
 	
 	</div>
 	</div>
->>>>>>> 485762dac415b4f4668627d409bd7ca91d565d9a
 	</div>
 	<!-- /.row -->
 	</section>
