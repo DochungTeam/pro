@@ -142,7 +142,7 @@
 						</div>	
 						<div class="dialogLayout" title="주소검색">
 							<form>
-								<input type="text" name="keyword" id="keyword">
+								<input type="text" name="keyword" id="keyword" placeholder="동을 입력하세요.">
 								<input type="button" value="주소 검색" id="search" class="small button">
 							</form>
 							
