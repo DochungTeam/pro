@@ -67,7 +67,8 @@
 					<div class="box-body">
 						<div class="form-group">
 							<input type="text" name="btitle" class="form-control"
-								placeholder="제목을 입력하세요..."> <input type="hidden"
+								placeholder="제목을 입력하세요..."> 
+							<input type="hidden"
 								name="bwriter" value="${loginMember.mid }" readonly="readonly">
 							<c:if test="${loginMember.mmanyn == 0}">
 								<input type="checkbox" name="bboard" id="bboard" value="1" />

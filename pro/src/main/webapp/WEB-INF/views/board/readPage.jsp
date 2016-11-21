@@ -219,16 +219,16 @@ $(document).ready(function(){
 	<table>
 		<tr>
 			<td class="boardTd">
-				${boardDto.bno }
+				글번호${boardDto.bno }
 			</td>
 			<td class="boardTd">
-				${boardDto.btitle }
+				제목${boardDto.btitle }
 			</td>
 			<td class="boardTd">
-				${boardDto.bwriter }
+				작성자${boardDto.bwriter }
 			</td>
 			<td class="boardTd">
-				<fmt:formatDate pattern="yyyy-MM-dd" value="${boardDto.bwritedt }" />
+				작성일<fmt:formatDate pattern="yyyy-MM-dd" value="${boardDto.bwritedt }" />
 			</td>
 		</tr>
 	</table>
